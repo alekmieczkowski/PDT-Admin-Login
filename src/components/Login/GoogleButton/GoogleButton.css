@@ -1,0 +1,22 @@
+.Button{
+    display: flex;
+    flex-flow: row;
+    align-content: center;
+    padding: 4px;
+
+}
+
+.Logo{
+    height:40px;
+}
+
+.Button img{
+    
+    flex: 1;
+    align-self: center;
+    padding-right: 5px;
+}
+
+.Button h2{
+    flex: 1;
+}
