@@ -153,6 +153,17 @@ module.exports = {
               compact: true,
             },
           },
+          {
+            //Handle Images with URL loader
+            test: /\.(png|jp(e*)g|svg)$/,  
+            use: [{
+                loader: 'img-loader',
+                options: { 
+                    limit: 8000, // Convert images < 8kb to base64 strings
+                    name: '[hash]-[name].[ext]'
+                } 
+            }]
+          },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
