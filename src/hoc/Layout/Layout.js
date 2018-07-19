@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Background from '../../components/Background/Background';
 import classes from './Layout.css';
-import Aux from '../Aux/Aux';
+import Aux from '../Auxilary/Aux';
 
 class Layout extends Component{
 
