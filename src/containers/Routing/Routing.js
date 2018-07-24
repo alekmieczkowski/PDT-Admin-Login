@@ -4,23 +4,19 @@ import Login from '../Login/Login';
 import Home from '../Home/Home';
 import Aux from '../../hoc/Wrapper/Wrapper';
 
-//auth stuff
-import * as actionTypes from '../../store/auth/actions-auth';
+//get state from reducers
 import {connect} from 'react-redux';
 
 
-class Routing extends Component {
+const routing = (props) => {
 
-    render(){
-
-        let page = this.props.auth ? <Home/> : <Login/>;
+        let page = props.auth ? <Home/> : <Login/>;
         return(
             <Aux>
                 {page}
             </Aux>
         );
 
-    }
 }
 
 //map auth state in reducer to local state
@@ -30,4 +26,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(Routing);
+export default connect(mapStateToProps)(routing);
