@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 //import classes from './Home.css';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import Aux from '../../hoc/Wrapper/Wrapper';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import PrivateRoute from '../../services/Auth/PrivateRoute';
 import HomePage from '../../components/Home/Home/Home';
 import Members from '../../components/Home/Members/Members';
