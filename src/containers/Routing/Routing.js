@@ -16,9 +16,9 @@ const routing = (props) => {
             <Aux>
                 <Router basename="/">
                     <Switch>
-                        <PrivateRoute path={'/home'} auth={props.auth} component={Home} />
+                        <PrivateRoute path={'/home/'} auth={props.auth} component={Home} />
                         <Route path={'/login'} component={Login}/>
-                        <Redirect to={'/home'}/>
+                        <Redirect to={'/home/'}/>
                     </Switch>
                 </Router>
             </Aux>

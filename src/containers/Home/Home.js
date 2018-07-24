@@ -26,8 +26,9 @@ class Home extends Component {
             <Aux>
                 <Toolbar url={this.props.match.url}/>
                 <Switch>
-                    <PrivateRoute path={this.props.match.url+'/'}  exact location={this.props.match.url} auth={this.props.auth} component={HomePage} />
-                    <PrivateRoute path={this.props.match.url+'/members'}  exact location={this.props.match.url} auth={this.props.auth} component={Members} />
+                    
+                    <PrivateRoute path={this.props.match.url+'/members'} exact location={this.props.match.url} auth={this.props.auth} component={Members} />
+                    <PrivateRoute path={this.props.match.url+'/'}   exact location={this.props.match.url} auth={this.props.auth} component={HomePage} />
                 </Switch>
             </Aux>
         );
