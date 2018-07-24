@@ -1,15 +1,34 @@
-import React from 'react';
-import Login from '../../components/Login/Login';
+import React, {Component} from 'react';
+import Login_Comp from '../../components/Login/Login';
+import * as actionTypes from '../../store/auth/actions-auth';
 
-const login = (props) => {
+//get state from reducers
+import {connect} from 'react-redux';
 
-        const width = "340px";
+class Login extends Component {
 
+        render(){
 
-        return(
-                <Login width={width} signIn={props.signInHandler}/>
-        );
+                const width = "340px";
+
+                return(
+                        <Login_Comp width={width} signIn={this.props.onLogin}/>
+                );
+        }
 }
 
+//map auth state in reducer to local state
+const mapStateToProps = state => {
+        return {
+            auth: state.authenticated
+        };
+    };
+    
+    //dispatch props to auth reducer
+    const mapDispatchToProps = dispatch => {
+        return {
+            onLogin: () => dispatch({type: actionTypes.LOGIN}),
+        }
+    };
 
-export default login;
+export default connect(mapStateToProps,mapDispatchToProps)(Login);

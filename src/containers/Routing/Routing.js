@@ -13,7 +13,7 @@ class Routing extends Component {
 
     render(){
 
-        let page = this.props.auth ? <Home/> : <Login signInHandler={() => this.props.onLogin()}/>;
+        let page = this.props.auth ? <Home/> : <Login/>;
         return(
             <Aux>
                 {page}
@@ -30,14 +30,4 @@ const mapStateToProps = state => {
     };
 };
 
-//dispatch props to auth reducer
-const mapDispatchToProps = dispatch => {
-    return {
-        onLogin: () => dispatch({type: actionTypes.LOGIN}),
-    }
-};
-
-
-
-
-export default connect(mapStateToProps,mapDispatchToProps)(Routing);
+export default connect(mapStateToProps)(Routing);
