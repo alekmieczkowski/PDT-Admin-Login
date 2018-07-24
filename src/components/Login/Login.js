@@ -1,33 +1,19 @@
-import React, {Component} from 'react';
-import Layout from '../../hoc/Layout/Layout';
+import React from 'react';
 import Form from '../../hoc/Form/Form';
 import Logo from '../Logo/Logo';
 import GoogleButton from './GoogleButton/GoogleButton';
 import classes from './Login.css';
 
-class Login extends Component {
-
-
-    onSignInHandler = () =>{
-        alert("You Pressed Sign In!");
-    }
-
-    render() {
-        
-        const width = "340px";
-
+const login = (props)=> {
 
         return(
-            <Layout>
-                <Form minWidth={width}>
+                <Form minWidth={props.width}>
                     <Logo height="140px" color="#003054"/>
                     <hr className={classes.Divider}/>
-                    <GoogleButton minWidth={width} clicked={this.onSignInHandler}/>
+                    <GoogleButton minWidth={props.width} clicked={props.signIn}/>
                 </Form>
-            </Layout>
         );
-    }
 
 }
 
-export default Login;
+export default login;
