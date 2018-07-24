@@ -19,7 +19,7 @@
 }
 
 .Wave {
-  background: url('../../assets/img/Background/wave2.svg') repeat-x;
+  background: url('../../../assets/img/Backdrop/wave2.svg') repeat-x;
   position: absolute;
   top: -330px;
   width: 6400px;

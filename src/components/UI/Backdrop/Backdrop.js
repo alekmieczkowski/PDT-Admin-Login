@@ -1,7 +1,7 @@
 import React from 'react';
-import classes from './Background.css';
+import classes from './Backdrop.css';
 
-const background = (props) =>{
+const backdrop = (props) =>{
 
 
     return(
@@ -15,4 +15,4 @@ const background = (props) =>{
 
 }
 
-export default background;
+export default backdrop;

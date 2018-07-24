@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Background from '../../components/Background/Background';
+import Backdrop from '../../components/UI/Backdrop/Backdrop';
 import classes from './Layout.css';
 import Aux from '../Wrapper/Wrapper';
 import Routing from '../../containers/Routing/Routing';
@@ -13,8 +13,8 @@ class Layout extends Component{
             <Aux>
                 <main className={classes.Layout}>
                     <Routing/>
-                </main>
-                <Background />
+                </main> 
+                <Backdrop />
             </Aux>
         );
     }
