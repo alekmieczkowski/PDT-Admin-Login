@@ -1,19 +1,26 @@
-import React, {Component} from 'react';
+import React from 'react';
 //import classes from './Routing.css';
 import Login from '../Login/Login';
 import Home from '../Home/Home';
 import Aux from '../../hoc/Wrapper/Wrapper';
-
-//get state from reducers
+import { BrowserRouter as Router, Redirect, Switch, Route } from 'react-router-dom';
+import PrivateRoute from '../../services/Auth/PrivateRoute';
 import {connect} from 'react-redux';
 
 
 const routing = (props) => {
 
-        let page = props.auth ? <Home/> : <Login/>;
+    {props.auth ? <Home/> : <Login/>}
+
         return(
             <Aux>
-                {page}
+                <Router basename="/">
+                    <Switch>
+                        <PrivateRoute path={'/home'} auth={props.auth} component={Home} />
+                        <Route path={'/login'} component={Login}/>
+                        <Redirect to={'/home'}/>
+                    </Switch>
+                </Router>
             </Aux>
         );
 
@@ -25,5 +32,6 @@ const mapStateToProps = state => {
         auth: state.authenticated
     };
 };
+
 
 export default connect(mapStateToProps)(routing);

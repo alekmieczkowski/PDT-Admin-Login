@@ -1,18 +1,26 @@
 import React, {Component} from 'react';
-import Login_Comp from '../../components/Login/Login';
+import LoginComp from '../../components/Login/Login';
 import * as actionTypes from '../../store/auth/actions-auth';
-
+import { withRouter } from "react-router-dom";
 //get state from reducers
 import {connect} from 'react-redux';
 
 class Login extends Component {
 
+
+        
         render(){
+
+            //temp
+            if(this.props.auth){
+                
+                this.props.history.push('/');
+            }
 
                 const width = "340px";
 
                 return(
-                        <Login_Comp width={width} signIn={this.props.onLogin}/>
+                        <LoginComp width={width} signIn={this.props.onLogin}/>
                 );
         }
 }
@@ -31,4 +39,4 @@ const mapStateToProps = state => {
         }
     };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Login);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Login));
