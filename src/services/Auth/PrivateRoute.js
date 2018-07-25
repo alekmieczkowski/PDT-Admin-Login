@@ -2,10 +2,9 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom'
 
 
-const PrivateRoute = ({ component: Component, auth, ...rest }, location) => {
+const PrivateRoute = ({ component: Component, auth, ...rest }) => {
 
-  const data = console.log("Redirecting to login");
-  console.log("Private Route: " + location.toString());
+  const data = console.log("In private route");
   return (
     <Route
       {...rest}
@@ -13,7 +12,7 @@ const PrivateRoute = ({ component: Component, auth, ...rest }, location) => {
         auth ? (
           <Component {...props} /> 
         ) : (
-          <Redirect to={{ pathname: '/login', state: { from: location } }} /> 
+          <Redirect to={{ pathname: '/login', state: { from: props.location } }} /> 
         )
       }
     />

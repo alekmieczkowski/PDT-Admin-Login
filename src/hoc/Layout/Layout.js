@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import Backdrop from '../../components/UI/Backdrop/Backdrop';
 import classes from './Layout.css';
 import Aux from '../Wrapper/Wrapper';
-import Routing from '../../containers/Routing/Routing';
 
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 
 class Layout extends Component{
 
@@ -11,8 +11,9 @@ class Layout extends Component{
     render(){
         return(
             <Aux>
+                {this.props.auth ? <Toolbar/>: null}
                 <main className={classes.Layout}>
-                    <Routing/>
+                    {this.props.children}
                 </main> 
                 <Backdrop />
             </Aux>
@@ -21,6 +22,4 @@ class Layout extends Component{
 }
 
 
-
-
-export default  Layout;
+export default Layout;

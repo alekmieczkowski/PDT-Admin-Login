@@ -6,6 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import reducer from './store/auth/reducer-auth';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 const store = createStore(reducer);
 
