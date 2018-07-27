@@ -4,6 +4,7 @@ import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Button from '../../UI/Button/Button';
 import * as actionTypes from '../../../store/auth/actions-auth';
+import {withRouter} from 'react-router-dom';
 
 //get state from reducers
 import {connect} from 'react-redux';
@@ -35,4 +36,4 @@ const mapStateToProps = state => {
         }
     };
 
-export default connect(mapStateToProps, mapDispatchToProps)(toolbar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(toolbar));

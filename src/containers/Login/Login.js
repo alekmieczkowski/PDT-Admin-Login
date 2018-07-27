@@ -11,21 +11,22 @@ class Login extends Component {
 
         
         render(){
-            //let plzwork = this.props.auth ?  <Redirect to={'/home'}/> : null;
+            let plzwork = this.props.auth ?  <Redirect to={'/home'}/> : null;
 
             console.log("In login");
 
             //temp
             if(this.props.auth === true){
                 
-                this.props.history.push('/home');
+                this.props.history.push('/');
             }
             
 
                 const width = "340px";
 
+                
                 return(
-                    
+                        
                         <LoginComp width={width} signIn={this.props.onLogin}/>
                     
                 );
@@ -46,4 +47,4 @@ const mapStateToProps = state => {
         }
     };
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Login));
+export default connect(mapStateToProps,mapDispatchToProps)(Login);

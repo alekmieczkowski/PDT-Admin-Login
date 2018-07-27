@@ -1,9 +1,15 @@
 import React from 'react';
 //import classes from './Routing.css';
-import Login from '../Login/Login';
-import Home from '../Homepage/Home';
+import Layout from '../../hoc/Layout/Layout';
 import Aux from '../../hoc/Wrapper/Wrapper';
-import {Redirect, Switch, Route } from 'react-router-dom';
+import PrivateRoute from '../../services/Auth/PrivateRoute';
+import HomePage from '../../containers/Homepage/Home';
+import Members from '../../components/Members/Members';
+import Analytics from '../../components/Analytics/Analytics';
+import Login from '../Login/Login';
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
+import {connect} from 'react-redux';
+import {Redirect, Switch, Route, withRouter } from 'react-router-dom';
 
 
 
@@ -11,11 +17,21 @@ const routing = (props) => {
 
         return(
             <Aux>
-                <div>
-                    
-                   
-                    </div>
                 
+                    <Layout>
+                        {props.auth ? <Toolbar/>: null}
+                        <Switch>
+                            <PrivateRoute path={'/analytics'}   auth={props.auth} component={Analytics} />
+                            <PrivateRoute path={'/members'}     auth={props.auth} component={Members} />
+                            <PrivateRoute path={'/'}   exact    auth={props.auth} component={HomePage} />
+                            
+                            <Route path='/login' component={Login}/>
+                            {props.auth ?  <Redirect to={'/'}/> : <Redirect to={'/login'}/>}
+                        </Switch>
+        
+        
+                    </Layout>
+                 
             </Aux>
         );
 
@@ -31,4 +47,4 @@ const mapStateToProps = state => {
 
 
 
-export default routing;
+export default withRouter(connect(mapStateToProps)(routing));

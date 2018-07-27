@@ -11,7 +11,6 @@ class Layout extends Component{
     render(){
         return(
             <Aux>
-                {this.props.auth ? <Toolbar/>: null}
                 <main className={classes.Layout}>
                     {this.props.children}
                 </main> 
