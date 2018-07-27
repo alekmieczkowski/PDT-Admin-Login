@@ -1,13 +1,10 @@
 
 .FormFrame{
     display: flex;
-    flex-flow: column;
+    flex-flow: row;
     align-items: center;
     margin: auto;
     box-sizing: 'border-box';
-    padding: 20px 10px;
-    min-height: 20px;
-    
     background-color: white;
     border: 2px solid white;
     border-radius: 8px;

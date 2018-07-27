@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import LoginComp from '../../components/Login/Login';
-
+import classes from './Login.css';
 import * as actionTypes from '../../store/auth/actions-auth';
 //get state from reducers
 import {connect} from 'react-redux';
@@ -18,14 +18,12 @@ class Login extends Component {
                 
                 this.props.history.push('/');
             }
-            
-
-                const width = "340px";
 
                 
                 return(
-                        
-                        <LoginComp width={width} signIn={this.props.onLogin}/>
+                        <div className={classes.Wrapper}>
+                        <LoginComp signIn={this.props.onLogin}/>
+                        </div>
                     
                 );
         }

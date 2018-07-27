@@ -5,3 +5,16 @@
     background-color: #003054;
     border: none;
 }
+
+.FormCSS{
+    align-content: center;
+    justify-content: center;
+    
+}
+
+.AdminText{
+    text-align: center;
+    margin:0;
+    margin-top:-10px;
+    padding-bottom: 10px;
+}

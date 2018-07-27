@@ -8,15 +8,16 @@
 
 .Logo{
     height:40px;
+    width: 40px;
 }
 
 .Button img{
     
-    flex: 1;
     align-self: center;
     padding-right: 5px;
+
 }
 
-.Button h2{
-    flex: 1;
+.Text{
+    padding-left: 10px;
 }

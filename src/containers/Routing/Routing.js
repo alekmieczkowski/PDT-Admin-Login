@@ -3,7 +3,7 @@ import React from 'react';
 import Layout from '../../hoc/Layout/Layout';
 import Aux from '../../hoc/Wrapper/Wrapper';
 import PrivateRoute from '../../services/Auth/PrivateRoute';
-import HomePage from '../../containers/Homepage/Home';
+import HomePage from '../../containers/Homepage/Homepage';
 import Members from '../../components/Members/Members';
 import Analytics from '../../components/Analytics/Analytics';
 import Login from '../Login/Login';

@@ -7,7 +7,7 @@ const googleButton = (props) => {
     return(
         <div className={classes.Button} onClick={props.clicked}>
             <img className={classes.Logo} src={GoogleLogo} alt="google-logo"/>
-            <h3>Sign in with Google</h3>
+            <h3 className={classes.Text}>Sign in with Google</h3>
 
         </div>
     );
