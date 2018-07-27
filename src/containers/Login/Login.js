@@ -22,7 +22,7 @@ class Login extends Component {
                 
                 return(
                         <div className={classes.Wrapper}>
-                        <LoginComp signIn={this.props.onLogin}/>
+                            <LoginComp signIn={this.props.onLogin}/>
                         </div>
                     
                 );
