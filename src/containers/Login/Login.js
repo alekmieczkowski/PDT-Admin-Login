@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import LoginComp from '../../components/Login/Login';
-import Layout from '../../hoc/Layout/Layout';
+
 import * as actionTypes from '../../store/auth/actions-auth';
-import { withRouter, Redirect } from "react-router-dom";
 //get state from reducers
 import {connect} from 'react-redux';
 
@@ -11,7 +10,6 @@ class Login extends Component {
 
         
         render(){
-            let plzwork = this.props.auth ?  <Redirect to={'/home'}/> : null;
 
             console.log("In login");
 

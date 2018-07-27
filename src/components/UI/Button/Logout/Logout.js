@@ -1,5 +1,4 @@
 import React from 'react';
-import classes from './Logout.css'
 
 const logout = (props) => {
 

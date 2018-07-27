@@ -10,6 +10,9 @@ const button = (props) => {
         case "logout":
             type= <Logout size={props.size} color={props.color}/>
             break;
+        default:
+            type= null;
+            break;
 
     }
 

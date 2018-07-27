@@ -3,7 +3,6 @@ import Backdrop from '../../components/UI/Backdrop/Backdrop';
 import classes from './Layout.css';
 import Aux from '../Wrapper/Wrapper';
 
-import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 
 class Layout extends Component{
 
