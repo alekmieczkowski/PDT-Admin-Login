@@ -1,0 +1,70 @@
+
+.Container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: block;
+    width: 380px;
+    padding: 4px;
+
+}
+
+.ImgContainer{
+    flex: 1;
+    margin-right: 30px;
+}
+
+.DataContainer{
+    flex: 2;
+}
+
+.Name{
+    font-size: 26px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.Badges{
+    position: relative;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.ButtonCSS{
+    background-color: white;
+    border-radius: 6px;
+    color: #003056;
+    outline: white;
+    font: inherit;
+    padding: 4px;
+    margin-bottom: 4px;
+    font-weight: bold;
+    display: flex;
+    border-radius: 4px;
+}
+
+.ButtonCSS:hover{
+    background-color: rgba(0,128,148, .1);
+}
+
+.ButtonTextCSS{
+    color: #003056;
+    padding-left: 8px;
+}
+
+.ImgWrapper{
+    max-width:128px;
+    max-height:128px;
+    position: fixed;
+    overflow: hidden;
+    border-radius:50%;
+    border: 4px solid #003056;
+  }
+
+  .ImgWrapper img {
+    height:128px;
+	min-width:100%;
+	max-width:none;
+  }
+
+

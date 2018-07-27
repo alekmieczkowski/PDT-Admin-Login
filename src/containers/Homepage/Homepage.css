@@ -1,4 +1,28 @@
 .Homepage{
     flex-grow: 1;
     padding-top: 20px;
+    max-width: 1300px;
+    margin: 0px auto;
+
 }
+
+.Container{
+    padding-top: 10px;
+    display: flex;
+    margin:0px auto;
+    width: 95%;
+}
+
+.RowA{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.RowAItemA{
+    flex: 1;
+}
+
+.RowAItemB{
+    flex: 2;
+}
+

@@ -1,0 +1,9 @@
+.FormCSS{
+    height: 500px;
+    width: 400px;
+    display: flex;
+    margin: 5px;
+    flex-direction: column;
+    padding-top: 30px;
+}
+
