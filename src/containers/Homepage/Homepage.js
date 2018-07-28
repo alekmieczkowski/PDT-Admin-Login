@@ -3,6 +3,7 @@ import Welcome from '../../components/Home/Welcome/Welcome';
 import classes from './Homepage.css';
 import User from '../../components/Home/User/User';
 import PlaceholderUser from '../../assets/img/Homepage/placeholder-user.png';
+import Quicklinks from '../../components/Home/Quicklinks/Quicklinks';
 class Homepage extends Component {
 
     componentDidUpdate(){
@@ -28,9 +29,9 @@ class Homepage extends Component {
                     <div className={classes.RowA}>
                         <div className={classes.RowAItemA}>
                             <User userData={fakeUser}/>
+                            <Quicklinks/>
                         </div>
                         <div className={classes.RowAItemB}>
-                            
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,15 @@
+.FormCSS{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.HeaderText{
+    color: #003056;
+}
+
+@media(max-width: 380px){
+    .FormCSS{
+        max-width: 95vw;
+    }
+}
