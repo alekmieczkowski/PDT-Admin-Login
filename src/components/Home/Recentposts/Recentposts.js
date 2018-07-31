@@ -20,6 +20,7 @@ const recentposts = (props) => {
     }
 
     const fakePost = {
+        id: 1,
         User: fakeUser,
         likes: 20,
         comments: 69,
@@ -28,9 +29,9 @@ const recentposts = (props) => {
 
     let PostArr = [fakePost, fakePost, fakePost, fakePost, fakePost];
 
-    const renderPosts = PostArr.map(postData =>{
+    const renderPosts = PostArr.map((postData, index) =>{
         return (
-            <Aux>
+            <Aux key={index}>
                 <Posts data={postData}/>
                 <hr className={classes.PostDivider}/>
             </Aux>
