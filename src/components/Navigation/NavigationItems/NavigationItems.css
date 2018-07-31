@@ -1,37 +1,29 @@
 .NavigationItems{
- margin: 0;
- padding: 0;
- list-style: none;
- display: flex;
- align-items: center;
- height: 100%;
- flex-flow: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    -ms-flex-flow: column;
+    flex-flow: column;
     
 }
 
-.ButtonCSS{
-    background-color: #003054;
-    border: none;
-    color: #fff;
-    outline: #003054;
-    font: inherit;
-    padding: 10px;
-    margin: 10px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4px;
-    right: 0;
-    position:fixed;
-    margin-top: 0;
-}
-
-
-@media (min-width: 500px) {
+@media (min-width: 668px) {
     .NavigationItems{
         flex-flow: row;
+        align-items: center;
+        height: 100%;
            
        }
        
+}
+
+@media(max-width: 667px){
+    .NavigationItems{
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+    }
 }

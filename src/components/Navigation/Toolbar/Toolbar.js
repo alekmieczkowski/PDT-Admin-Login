@@ -1,45 +1,65 @@
-import React from 'react';
+import React, {Component} from 'react';
 import classes from './Toolbar.css';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Button from '../../UI/Button/Button';
 import * as actionTypes from '../../../store/auth/actions-auth';
 import {withRouter} from 'react-router-dom';
+import DrawerToggle from '../MobileNav/DrawerToggle/DrawerToggle';
 import MobileNav from '../MobileNav/MobileNav';
 
 //get state from reducers
 import {connect} from 'react-redux';
 
-const toolbar = (props) => (
-    <header className={classes.Toolbar}>
-        <MobileNav/>
-        <div className={classes.Logo}>
-            <Logo height="36px" width="80px" color="#003054"/>
-        </div >
-        <div  className={classes.DesktopOnly}>
-            <nav>
-                <NavigationItems url={props.url} onLogout={()=> props.onLogout()}/> 
-                
-            </nav>
-            
-        </div>
-        <div className={classes.MobileOnly}>
-            <Button buttonCSS={classes.ButtonCSS} type="logout" size="16px"clicked={()=> props.onLogout()}/>
-        </div>
-    </header>
-);
+ class Toolbar extends Component{
+    
+    state = {
+        mobileNavClicked: false
+    }
 
-const mapStateToProps = state => {
+    drawerToggleHandler = () =>{
+        this.setState({mobileNavClicked: !this.state.mobileNavClicked});
+    }
+
+    render(){
+
+        return(
+            <header className={classes.Toolbar}>
+                <DrawerToggle toggleHandler={this.drawerToggleHandler} toggle={this.state.mobileNavClicked}/>
+               
+                <div className={classes.Logo}>
+                    <Logo height="36px" width="80px" color="#003054"/>
+                </div >
+                <div  className={classes.DesktopOnly}>
+                    <nav>
+                        <NavigationItems url={this.props.url} onLogout={()=> this.props.onLogout()}/> 
+                        
+                        
+                    </nav>
+                    <Button buttonCSS={classes.ButtonCSS} type="logout" size="16px"clicked={()=> this.props.onLogout()}>Logout</Button>
+                    
+                </div>
+                <div className={classes.MobileOnly}>
+                    <Button buttonCSS={classes.ButtonMobileCSS} type="logout" size="16px"clicked={()=> this.props.onLogout()}/>
+                    <MobileNav toggle={this.state.mobileNavClicked} toggleHandler={this.drawerToggleHandler}/>
+                </div>
+                
+            </header>
+        );
+    }
+}
+
+const mapStateToprops = state => {
     return {
         auth: state.authenticated
     };
 };
 
-    //dispatch props to auth reducer
-    const mapDispatchToProps = dispatch => {
+    //dispatch this.props to auth reducer
+    const mapDispatchToprops = dispatch => {
         return {
             onLogout: () => dispatch({type: actionTypes.LOGOUT}),
         }
     };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(toolbar));
+export default withRouter(connect(mapStateToprops, mapDispatchToprops)(Toolbar));

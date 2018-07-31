@@ -1,24 +1,35 @@
 import React, {Component} from 'react';
 import NavigationItems from '../NavigationItems/NavigationItems';
-import DrawerToggle from './DrawerToggle/DrawerToggle';
 import Aux from '../../../hoc/Wrapper/Wrapper';
 import classes from './MobileNav.css'
 
 
 class MobileNav extends Component{
 
-    state = {
-        clicked: false
-    }
+    
 
-    drawerToggleHandler = () =>{
-        this.setState({clicked: !this.state.clicked});
-    }
+    
+
+
     render(){
+
+
+
+        //add isActive on click
+        let animateDropdown = [classes.MobileNav];
+        let animateNav = [classes.NavItems];
+
+        if(this.props.toggle){
+            animateDropdown = [classes.MobileNav,classes.isActive].join(' ');
+            animateNav = [classes.NavItems, classes.ToggleNav].join(' ');
+        }
+
         return (
-            <Aux>
-                <DrawerToggle toggle={this.state.clicked} toggleHandler={this.drawerToggleHandler}/>
-            </Aux>
+                <div className={animateDropdown}>
+                    <div className={animateNav} onClick={this.props.toggleHandler}>
+                        <NavigationItems/>
+                    </div>
+                </div>
 
         );
     }

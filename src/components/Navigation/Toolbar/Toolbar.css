@@ -16,11 +16,28 @@
 .DesktopOnly{
     height: 100%;
     margin: auto;
+    display:flex;
 
 }
 
-
 .ButtonCSS{
+    background-color: #003054;
+    border: none;
+    color: #fff;
+    outline: #003054;
+    font: inherit;
+    padding: 10px;
+    margin: 4px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    right: 0;
+    position:fixed;
+}
+
+.ButtonMobileCSS{
     background-color: white;
     border: none;
     color: #003056;

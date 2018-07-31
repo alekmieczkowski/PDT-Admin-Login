@@ -9,7 +9,6 @@ const navigationItems = (props) => (
         <NavigationItem exact link='/'   >Home</NavigationItem>
         <NavigationItem exact link='/members' >Members</NavigationItem>
         <NavigationItem exact link='/analytics' >Analytics</NavigationItem>
-        <Button buttonCSS={classes.ButtonCSS} type="logout" size="16px" clicked={props.onLogout}>Logout</Button> 
     </ul>
 );
 
