@@ -13,20 +13,46 @@
     z-index: 90;
 }
 
-.Toolbar nav{
+.DesktopOnly{
     height: 100%;
     margin: auto;
 
 }
 
-.Logo{
-    height: 80%;
-    padding: 0px;
-    padding-top: 4px;
+
+.ButtonCSS{
+    background-color: white;
+    border: none;
+    color: #003056;
+    outline: #003054;
+    font: inherit;
+    padding: 8px;
+    font-weight: bold;
+    display: flex;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+    border-radius: 4px;
+    border: 2px solid #003056;
+    right: 0;
 }
 
-@media (max-width: 499px){
+
+
+.Logo{
+    height: 80%;
+}
+
+@media (max-width: 667px){
     .DesktopOnly {
+        display: none;
+    }
+
+    .Logo{
+        margin: auto;
+    }
+}
+@media (min-width: 668px){
+    .MobileOnly {
         display: none;
     }
 }

@@ -6,7 +6,6 @@ import Aux from '../Wrapper/Wrapper';
 
 class Layout extends Component{
 
-
     render(){
         return(
             <Aux>
