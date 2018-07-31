@@ -14,14 +14,12 @@ const linkbtn = (props) => {
     }
 
     return(
-        <div className={classes.Linkbtn}>
-            <NavLink to={props.link} exact={props.exact}>
+        <NavLink className={classes.Linkbtn} to={props.link} exact={props.exact}>
                 <p className={classes.Text}>
                     {badge}
                     {props.children}
                 </p>
-            </NavLink>
-        </div>
+        </NavLink>
     );
    
 };
