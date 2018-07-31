@@ -1,20 +1,32 @@
 import React from 'react';
 import classes from './Button.css';
-import {MdExitToApp, MdPhone, MdEmail} from 'react-icons/lib/md';
+import {MdExitToApp, MdPhone, MdEmail, MdClear, MdComment} from 'react-icons/lib/md';
 
 const button = (props) => {
 
     let type = "";
+
+    //check icon size
+    let iconSize = 20;
+    if(props.IconSize){
+        iconSize = props.IconSize;
+    }
     
     switch(props.type){
         case "logout":
-            type= <MdExitToApp size={20} color={props.iconColor}/>;
+            type= <MdExitToApp size={iconSize} color={props.iconColor}/>;
             break;
         case "email":
-            type= <MdEmail size={20} style={props.iconColor}/>;
+            type= <MdEmail size={iconSize} style={props.iconColor}/>;
             break;
         case "phone":
-            type= <MdPhone size={20} color={props.iconColor}/>;
+            type= <MdPhone size={iconSize} color={props.iconColor}/>;
+            break;
+        case "clear":
+            type= <MdClear size={iconSize} color={props.iconColor}/>;
+            break;
+        case "comment":
+            type= <MdComment size={iconSize} color={props.iconColor}/>;
             break;
         default:
             type= null;
@@ -34,16 +46,22 @@ const button = (props) => {
         textCSS = props.textCSS;
     }
 
+    //check if theres text
+    let textData = props.children;
+    if(textData){
+        textData = (
+            <div className={textCSS}>
+                {props.children}
+            </div>
+        )
+    }
 
     return(
     <div className={buttonCSS} onClick={props.clicked}>
         <div className={classes.icon}>
             {type}
         </div>
-        <div className={textCSS}>
-            {props.children}
-        </div>
-        
+       {textData}
 
     </div>
     );

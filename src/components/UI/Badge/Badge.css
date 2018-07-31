@@ -11,6 +11,7 @@
     display: inline-block;
     border: 2px solid #003056;
     border-radius: 4px;
+    position:relative;
 }
 
 .BadgeText{

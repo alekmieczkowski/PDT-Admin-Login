@@ -1,0 +1,28 @@
+.Container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 8px;
+
+
+
+}
+
+.ButtonCSS{
+    background-color: white;
+    color: #003056;
+}
+
+.ButtonIconColor{
+    color: #003056;
+}
+
+.CountText{
+    text-align:center;
+    color: #003056;
+    font-weight:bold;
+    padding: 0;
+    margin:0;
+    padding-top: 2px;
+}

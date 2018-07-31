@@ -1,0 +1,12 @@
+.Container{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.PostText{
+    padding-bottom: 0;
+    margin-bottom: 0;
+    color: #003056;
+    
+}

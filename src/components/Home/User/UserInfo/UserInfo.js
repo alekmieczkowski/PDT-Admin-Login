@@ -19,7 +19,7 @@ const userinfo = (props) => {
             {/*Image Container*/}
             <div className={classes.ImgContainer}>
                 <div className={classes.ImgWrapper}>
-                    <img src={props.data.profile_img}/>
+                    <img src={props.data.profile_img} alt="profile"/>
                 </div>
             </div>
 

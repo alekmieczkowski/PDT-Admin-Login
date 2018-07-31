@@ -1,0 +1,15 @@
+.Container{
+    padding-right: 8px;
+    float: right;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.ButtonCSS{
+    background-color: #003056;
+    color: white;
+    border: 2px solid #003056;
+    border-radius: 2px;
+    margin-bottom: 4px;
+}

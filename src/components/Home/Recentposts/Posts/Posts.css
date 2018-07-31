@@ -1,0 +1,18 @@
+.Container{
+    display: flex;
+    flex-direction: row;
+    padding: 0 10px;
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+
+.Manage{
+    flex: 1;
+    max-width: 60px;
+}
+
+.Post{
+    padding-left: 8px;
+    flex: 4;
+    border-left: 2px solid #003056;
+}

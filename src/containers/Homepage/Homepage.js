@@ -4,6 +4,8 @@ import classes from './Homepage.css';
 import User from '../../components/Home/User/User';
 import PlaceholderUser from '../../assets/img/Homepage/placeholder-user.png';
 import Quicklinks from '../../components/Home/Quicklinks/Quicklinks';
+import Recentposts from '../../components/Home/Recentposts/Recentposts';
+
 class Homepage extends Component {
 
     componentDidUpdate(){
@@ -30,8 +32,10 @@ class Homepage extends Component {
                         <div className={classes.RowAItemA}>
                             <User userData={fakeUser}/>
                             <Quicklinks/>
+                            
                         </div>
                         <div className={classes.RowAItemB}>
+                            <Recentposts/>
                         </div>
                     </div>
                 </div>

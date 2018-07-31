@@ -16,6 +16,7 @@
     font-weight: bold;
     font-size: 18px;
     flex-direction: row;
+    position: relative;
 }
 
 a{
@@ -29,7 +30,7 @@ a{
     width: 20px;
     border: 2px solid #003056;
     border-radius: 20px;
-    position: fixed;
+    position: absolute;
     overflow: hidden;
     margin-left: -30px;
     margin-top: -2px;
