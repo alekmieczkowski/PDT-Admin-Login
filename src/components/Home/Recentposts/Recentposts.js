@@ -32,11 +32,12 @@ const recentposts = (props) => {
     const renderPosts = PostArr.map((postData, index) =>{
         return (
             <Aux key={index}>
-                <Posts data={postData}/>
+                <Posts data={postData} delete={props.delete}/>
                 <hr className={classes.PostDivider}/>
             </Aux>
         );
-    })
+    });
+
     return(
         <Form css={classes.FormCSS}>
             <h1 className={classes.Header}>Recent Posts</h1>

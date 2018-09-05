@@ -11,6 +11,11 @@ class Homepage extends Component {
     componentDidUpdate(){
         console.log("Home did update");
     }
+
+    removePostClickedHandler = () =>{
+        alert("button clicked");
+    }
+
     render(){
     
         const fakeUser = {
@@ -23,6 +28,8 @@ class Homepage extends Component {
 
         }
 
+
+
         console.log("in home");
         return(
             <div className={classes.Homepage}>
@@ -30,12 +37,12 @@ class Homepage extends Component {
                 <div className={classes.Container}>
                     <div className={classes.RowA}>
                         <div className={classes.RowAItemA}>
-                            <User userData={fakeUser}/>
+                            <User userData={fakeUser} myUser={"alek"}/>
                             <Quicklinks/>
                             
                         </div>
                         <div className={classes.RowAItemB}>
-                            <Recentposts/>
+                            <Recentposts delete={this.removePostClickedHandler}/>
                         </div>
                     </div>
                 </div>

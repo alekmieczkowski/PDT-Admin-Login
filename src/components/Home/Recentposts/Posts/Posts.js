@@ -11,7 +11,7 @@ const posts = (props) => {
     return (
     <div className={classes.Container}>
         <div className={classes.Manage}>
-            <Manage LikeCount={props.data.likes} CommentCount={props.data.comments}/>
+            <Manage LikeCount={props.data.likes} CommentCount={props.data.comments} delete={props.delete}/>
         </div>
         <div className={classes.Post}>
             <Post data={props.data}/>
