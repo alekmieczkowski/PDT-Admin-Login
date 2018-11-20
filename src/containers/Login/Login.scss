@@ -7,3 +7,26 @@
     padding-top: 15vh;
 
 }
+
+
+//animation
+
+:global(.login-enter){
+    opacity: 0.01;
+    transform:  translateY(30%);
+
+}
+:global(.login-enter-active) {
+    opacity: 1;
+    transform:  translateY(0%);
+    transition: all 400ms ease-in-out;
+}
+
+:global(.login-exit) {
+    opacity: 1;
+}
+:global(.login-exit-active) {
+    opacity: 0.01;
+    transform:  translateY(30%);
+    transition: all 400ms ease-in-out;
+}

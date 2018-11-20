@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import DrawerToggle from '../MobileNav/DrawerToggle/DrawerToggle';
 import MobileNav from '../MobileNav/MobileNav';
 import { GoogleLogout } from 'react-google-login';
+import { CSSTransition } from 'react-transition-group';
 
 //get state from reducers
 import { connect } from 'react-redux';
@@ -15,7 +16,12 @@ import { connect } from 'react-redux';
 class Toolbar extends Component {
 
     state = {
-        mobileNavClicked: false
+        mobileNavClicked: false,
+        showToolbar: false
+    }
+
+    componentDidMount(){
+        this.setState({showToolbar: true});
     }
 
     drawerToggleHandler = () => {
@@ -28,12 +34,26 @@ class Toolbar extends Component {
 
     _logout = async () =>{
         await localStorage.clear();
-        this.props.onLogout();
+        await this.setState({showToolbar: false});
+
+        //wait for toolbar to animate out
+        setTimeout(function() { 
+            this.props.onLogout(); 
+        }.bind(this), 600);
+        
     }
 
     render() {
 
         return (
+            <CSSTransition
+                in={this.state.showToolbar}
+                timeout={1600}
+                classNames="navigation"
+                appear={true}
+                unmountOnExit
+
+            >
             <header className={classes.Toolbar}>
                 <DrawerToggle toggleHandler={this.drawerToggleHandler} toggle={this.state.mobileNavClicked} />
 
@@ -71,6 +91,7 @@ class Toolbar extends Component {
                 </div>
 
             </header>
+            </CSSTransition>
         );
     }
 }

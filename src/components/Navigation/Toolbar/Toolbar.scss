@@ -73,3 +73,29 @@
         display: none;
     }
 }
+
+//animation
+
+:global(.navigation-appear){
+    opacity: 0.01;
+}
+:global(.navigation-appear-active){
+    opacity: 0.01;
+    transition: all 600ms ease-in-out;
+}
+
+:global(.navigation-enter){
+    opacity: 0.01;
+}
+:global(.navigation-enter-active) {
+    opacity: 1;
+    transition: all 1300ms ease-in-out;
+    }
+
+    :global(.navigation-exit) {
+        opacity: 1;
+        }
+        :global(.navigation-exit-active) {
+        opacity: 0.01;
+        transition: all 600ms ease-in-out;
+        }
