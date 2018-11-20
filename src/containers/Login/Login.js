@@ -4,7 +4,7 @@ import classes from './Login.scss';
 import { connect } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
 import { clientId } from '../../constants/secrets';
-import * as actionTypes from '../../store/auth/actions-auth';
+import * as authActions from '../../store/auth/actions-auth';
 import GoogleButton from '../../components/Login/GoogleButton/GoogleButton';
 import { requestUserAccessRequest, ENUM_USERACCESSREQUEST_STATUS_ACCEPTED } from '../../Api/accessRequest';
 
@@ -93,7 +93,7 @@ const mapStateToProps = state => {
 //dispatch props to auth reducer
 const mapDispatchToProps = dispatch => {
     return {
-        onLogin: () => dispatch({ type: actionTypes.LOGIN }),
+        onLogin: () => dispatch({ type: authActions.LOGIN, payload: {pauseLoad: true, spinnerText: "Loading Data"}}),
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

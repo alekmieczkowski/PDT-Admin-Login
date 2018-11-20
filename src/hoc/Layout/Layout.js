@@ -3,12 +3,14 @@ import Backdrop from '../../components/UI/Backdrop/Backdrop';
 import classes from './Layout.scss';
 import Wrapper from '../Wrapper/Wrapper';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import {connect} from 'react-redux';
 
 class Layout extends Component{
-
+    
     render(){
         return(
-            <Wrapper>              
+            <Wrapper>
+                <Spinner SpinnerText={this.props.spinnerText} isActive={this.props.animateSpinner}/>              
                 <main className={classes.Layout}>
                     {this.props.children}
                 </main> 
@@ -17,7 +19,15 @@ class Layout extends Component{
         );
     }
 }
+
 //map auth state in reducer to local state
+const mapStateToProps = state => {
+    //console.log("Mapping redux to state");
+    return {
+        pauseLoad: state.spinner.pauseLoad,
+        spinnerText: state.spinner.spinnerText,
+        animateSpinner: state.spinner.animateSpinner,
+    };
+};
 
-
-export default Layout;
+export default connect(mapStateToProps)(Layout);

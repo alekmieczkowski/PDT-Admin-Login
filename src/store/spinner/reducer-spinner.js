@@ -1,22 +1,33 @@
-import * as actionTypes from './actions-spinner';
+import * as spinnerActions from './actions-spinner';
+import * as authActions from '../auth/actions-auth';
 
-const initialState = {
-    animateSpinner: false,
-    spinnerText: ""
-};
 
-const spinner = ( state = initialState, action ) => {
-    switch ( action.type ) {
-        case actionTypes.START:
-            return {
+
+const spinner = (state = {}, action) => {
+    switch (action.type) {
+        case spinnerActions.START:
+            return state = {
+                ...state,
                 animateSpinner: true,
-                spinnerText: action.message
+                spinnerText: action.payload.spinnerText,
+                pauseLoad: action.payload.pauseLoad
             }
-        case actionTypes.STOP:
-            return {
-                animateSpinner: false
+
+        case spinnerActions.STOP:
+            return state = {
+                ...state,
+                animateSpinner: false,
+                pauseLoad: false,
             }
-        default: 
+
+        case authActions.LOGIN:
+            return state = {
+                ...state,
+                animateSpinner: true,
+                spinnerText: action.payload.spinnerText,
+                pauseLoad: action.payload.pauseLoad
+            }
+        default:
             return state;
     }
 };

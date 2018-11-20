@@ -38,7 +38,7 @@ const routing = (props) => {
 const mapStateToProps = state => {
     //console.log("In router auth:" + JSON.stringify(state.auth));
     return {
-        auth: state.auth
+        auth: state.auth,
     };
 };
 
