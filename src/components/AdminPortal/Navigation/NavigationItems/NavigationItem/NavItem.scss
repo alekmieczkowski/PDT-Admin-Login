@@ -1,5 +1,7 @@
+@import '../../../../../constants/theme';
+
 .NavigationItem{
-    margin: 10px 0;
+    margin: 20px 0;
     box-sizing: border-box;
     display: block;
     width: 100%;
@@ -7,26 +9,27 @@
 }
 
 .NavigationItem a {
-    color: #003056;
+    color: $secondary;
     text-decoration: none;
     width: 100%;
     box-sizing: border-box;
     display: block;
     font-weight: bold;
+    margin: 20px 0;
 
 }
 
 .NavigationItem a:hover,
 .NavigationItem a:active,
 .NavigationItem a.active{
-    color:#40a4c8;
+    color:$triary;
 }
 
 
 @media (min-width: 668px){
 
     .NavigationItem{
-        color: white;
+        color: $secondary;
         margin: 30px;
         display: flex;
         height: 100%;
@@ -37,7 +40,7 @@
     }
     
     .NavigationItem a {
-        color: #003064;
+        color: $secondary;
         font-weight: bold;
         text-decoration: none;
         height: 100%;
@@ -49,8 +52,8 @@
     .NavigationItem a:hover,
     .NavigationItem a:active,
     .NavigationItem a.active{
-        background-color: #003064;
-        color:white;
+        background-color: $primary;
+        color:$triary;
     }
 }
 

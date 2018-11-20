@@ -5,10 +5,12 @@ import PrivateRoute from '../../services/Auth/PrivateRoute';
 import HomePage from '../../containers/Homepage/Homepage';
 import Members from '../Members/Members';
 import Analytics from '../../components/Analytics/Analytics';
+import AdminHome from '../../containers/AdminPortal/AdminPortal';
 import Login from '../Login/Login';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import {connect} from 'react-redux';
 import {Switch, Route, withRouter } from 'react-router-dom';
+
 
 
 
@@ -20,6 +22,7 @@ const routing = (props) => {
                     <Layout>
                         {props.auth ? <Toolbar/>: null}  
                         <Switch>
+                            <PrivateRoute path={'/admin'}    auth={props.auth} component={AdminHome} />
                             <PrivateRoute path={'/analytics'}    auth={props.auth} component={Analytics} />
                             <PrivateRoute path={'/members'}      auth={props.auth} component={Members} />
                             <PrivateRoute path={'/'}   exact     auth={props.auth} component={HomePage} />
