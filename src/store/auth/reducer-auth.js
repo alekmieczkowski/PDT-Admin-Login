@@ -1,22 +1,16 @@
 import * as actionTypes from './actions-auth';
 
-const initialState = {
-    authenticated: false
-};
 
-const reducer = ( state = initialState, action ) => {
+
+const auth = ( state = false , action ) => {
     switch ( action.type ) {
         case actionTypes.LOGIN:
-            return {
-                authenticated: true
-            }
+            return true;
         case actionTypes.LOGOUT:
-            return {
-                authenticated: false
-            }
+            return false;
         default: 
             return state;
     }
 };
 
-export default reducer;
+export default auth;

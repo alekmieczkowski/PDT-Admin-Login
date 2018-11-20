@@ -29,7 +29,7 @@ export async function getUserAccessRequests(enumSearchByStatus) {
 
 export async function requestUserAccessRequest(token, bondNumber, phoneNumber) {
     
-    console.log("Incoming Token: " + token);
+    //console.log("Incoming Token: " + token);
     let data = null;
 
     if(bondNumber !== null && phoneNumber !== null){
@@ -57,6 +57,6 @@ export async function requestUserAccessRequest(token, bondNumber, phoneNumber) {
             data = error;
         });
     }
-    console.log(JSON.stringify(data));
+    //console.log(JSON.stringify(data));
     return data;
 }

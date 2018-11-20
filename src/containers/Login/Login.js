@@ -6,13 +6,18 @@ import { GoogleLogin } from 'react-google-login';
 import { clientId } from '../../constants/secrets';
 import * as actionTypes from '../../store/auth/actions-auth';
 import GoogleButton from '../../components/Login/GoogleButton/GoogleButton';
-import { requestUserAccessRequest, ENUM_USERACCESSREQUEST_STATUS_ACCEPTED, ENUM_USERACCESSREQUEST_STATUS_DENIED, ENUM_USERACCESSREQUEST_STATUS_WAITING } from '../../Api/accessRequest';
+import { requestUserAccessRequest, ENUM_USERACCESSREQUEST_STATUS_ACCEPTED } from '../../Api/accessRequest';
 
 
 
 
 class Login extends Component {
 
+
+    state = {
+        token: null
+    }
+        
 
     success = async (response) => {
         //console.log(JSON.stringify(response));
@@ -31,6 +36,8 @@ class Login extends Component {
             alert("Sorry, you are not authorized to access this app");
         }
         else{
+            //save token to localstorage
+            localStorage.setItem("token", response.tokenId);
             //sign user in
             this.props.onLogin();
             this.props.history.push("/");
@@ -44,7 +51,7 @@ class Login extends Component {
     }
 
     loading = () => {
-        console.log('loading') // eslint-disable-line
+        //console.log('loading') // eslint-disable-line
     }
 
 
@@ -77,7 +84,7 @@ class Login extends Component {
 
 //map auth state in reducer to local state
 const mapStateToProps = state => {
-    console.log("Mapping redux to state");
+    //console.log("Mapping redux to state");
     return {
         auth: state.authenticated
     };

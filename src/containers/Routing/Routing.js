@@ -8,7 +8,7 @@ import Analytics from '../../components/Analytics/Analytics';
 import Login from '../Login/Login';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import {connect} from 'react-redux';
-import {Redirect, Switch, Route, withRouter } from 'react-router-dom';
+import {Switch, Route, withRouter } from 'react-router-dom';
 
 
 
@@ -18,14 +18,12 @@ const routing = (props) => {
             <Aux>
                 
                     <Layout>
-                        {props.auth ? <Toolbar/>: null}
+                        {props.auth ? <Toolbar/>: null}  
                         <Switch>
-                            <PrivateRoute path={'/analytics'}   auth={props.auth} component={Analytics} />
-                            <PrivateRoute path={'/members'}     auth={props.auth} component={Members} />
-                            <PrivateRoute path={'/'}   exact    auth={props.auth} component={HomePage} />
-                            
+                            <PrivateRoute path={'/analytics'}    auth={props.auth} component={Analytics} />
+                            <PrivateRoute path={'/members'}      auth={props.auth} component={Members} />
+                            <PrivateRoute path={'/'}   exact     auth={props.auth} component={HomePage} />
                             <Route path='/login' component={Login}/>
-                            {props.auth ?  <Redirect to={'/'}/> : <Redirect to={'/login'}/>}
                         </Switch>
         
         
@@ -38,12 +36,10 @@ const routing = (props) => {
 
 //map auth state in reducer to local state
 const mapStateToProps = state => {
+    //console.log("In router auth:" + JSON.stringify(state.auth));
     return {
-        auth: state.authenticated
+        auth: state.auth
     };
 };
-
-
-
 
 export default withRouter(connect(mapStateToProps)(routing));

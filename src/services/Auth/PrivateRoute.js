@@ -1,6 +1,16 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom'
 
+const checkAuth = (auth) =>{
+  const token = localStorage.getItem('token');
+  console.log("Auth value: " + auth);
+
+
+  if(!token || !auth){
+    return false;
+  }
+  return true;
+}
 
 const PrivateRoute = ({ component: Component, auth, ...rest }) => {
 
@@ -8,7 +18,7 @@ const PrivateRoute = ({ component: Component, auth, ...rest }) => {
     <Route
       {...rest}
       render={props =>
-        auth ? (
+        checkAuth(auth) ? (
           <Component {...props} /> 
         ) : (
           <Redirect to={{ pathname: '/login', state: { from: props.location } }} /> 

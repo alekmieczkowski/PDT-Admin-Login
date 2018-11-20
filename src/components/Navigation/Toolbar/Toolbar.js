@@ -23,7 +23,12 @@ class Toolbar extends Component {
     }
     
     failure = (response) =>{
-        console.log(JSON.stringify(response));
+        //console.log(JSON.stringify(response));
+    }
+
+    _logout = async () =>{
+        await localStorage.clear();
+        this.props.onLogout();
     }
 
     render() {
@@ -44,8 +49,7 @@ class Toolbar extends Component {
                     
                     <GoogleLogout
                         buttonText="Logout"
-                        onLogoutSuccess={this.props.onLogout}
-                        onLogoutFailure={this.failure}
+                        onLogoutSuccess={this._logout}
                         autoload={false}
                         render={renderProps => (
                             <Button buttonCSS={classes.ButtonCSS} type="logout" size="16px" clicked={renderProps.onClick}>Logout</Button>
@@ -56,7 +60,7 @@ class Toolbar extends Component {
 
                     <GoogleLogout
                         buttonText="Logout"
-                        onLogoutSuccess={this.props.onLogout}
+                        onLogoutSuccess={this._logout}
                         autoload={false}
                         render={renderProps => (
                             <Button buttonCSS={classes.ButtonMobileCSS} type="logout" size="16px" clicked={renderProps.onClick} />
