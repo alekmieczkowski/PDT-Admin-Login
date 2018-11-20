@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom'
 
+
 const checkAuth = (auth) =>{
   const token = localStorage.getItem('token');
   console.log("Auth value: " + auth);

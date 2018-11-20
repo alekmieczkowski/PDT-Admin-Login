@@ -10,7 +10,7 @@ class Layout extends Component{
     render(){
         return(
             <Wrapper>
-                <Spinner SpinnerText={this.props.spinnerText} isActive={this.props.animateSpinner}/>              
+                <Spinner spinnerText={this.props.spinnerText} isActive={this.props.animateSpinner}/>              
                 <main className={classes.Layout}>
                     {this.props.children}
                 </main> 
@@ -22,7 +22,6 @@ class Layout extends Component{
 
 //map auth state in reducer to local state
 const mapStateToProps = state => {
-    //console.log("Mapping redux to state");
     return {
         pauseLoad: state.spinner.pauseLoad,
         spinnerText: state.spinner.spinnerText,

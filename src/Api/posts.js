@@ -24,6 +24,7 @@ export async function createPost(token, content) {
 }
 
 export async function deletePost(token, postId){
+    let data = null;
     await axios(token).delete('/post/'+postId)
     .then(response => {
         data = response.data;

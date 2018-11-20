@@ -5,23 +5,20 @@ import { connect } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
 import { clientId } from '../../constants/secrets';
 import * as authActions from '../../store/auth/actions-auth';
+import * as spinnerActions from '../../store/spinner/actions-spinner';
 import GoogleButton from '../../components/Login/GoogleButton/GoogleButton';
 import { requestUserAccessRequest, ENUM_USERACCESSREQUEST_STATUS_ACCEPTED } from '../../Api/accessRequest';
+import {getUsers} from '../../Api/users';
+import {getPosts} from '../../Api/posts';
 
 
 
 
 class Login extends Component {
 
-
-    state = {
-        token: null
-    }
         
 
     success = async (response) => {
-        //console.log(JSON.stringify(response));
-        //console.log(response.tokenId) // eslint-disable-line
 
         let requestResponse = null;
         //call server sign in
@@ -36,10 +33,29 @@ class Login extends Component {
             alert("Sorry, you are not authorized to access this app");
         }
         else{
-            //save token to localstorage
-            localStorage.setItem("token", response.tokenId);
-            //sign user in
+            //start animation out
             this.props.onLogin();
+            //save token to localstorage
+            await localStorage.setItem("token", response.tokenId);
+
+            
+
+            //pull user data
+            await getUsers(response.tokenId).then(response =>{
+                console.log(JSON.stringify(response.result));
+                localStorage.setItem("users", JSON.stringify(response.result));
+            });
+
+            //pull post data
+            await getPosts(response.tokenId).then(response =>{
+                console.log(JSON.stringify(response.result));
+                localStorage.setItem("posts", JSON.stringify(response.result));
+            });
+
+            //hide spinner
+            this.props.stopSpinner();
+
+            //Allow User past
             this.props.history.push("/");
         }
 
@@ -93,7 +109,8 @@ const mapStateToProps = state => {
 //dispatch props to auth reducer
 const mapDispatchToProps = dispatch => {
     return {
-        onLogin: () => dispatch({ type: authActions.LOGIN, payload: {pauseLoad: true, spinnerText: "Loading Data"}}),
+        onLogin: () => dispatch({ type: authActions.LOGIN, payload: {spinnerText: "Loading Data"}}),
+        stopSpinner: () => dispatch({type: spinnerActions.STOP})
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

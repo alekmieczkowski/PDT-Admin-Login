@@ -25,7 +25,6 @@ export default class Spinner extends Component {
                     <div className={classes.container}>
                         <div className={classes.textBox}>
                             {this.props.spinnerText}
-                            Placeholder Text
                     </div>
 
                         <div className={classes.spinnerBox}>
