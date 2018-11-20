@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Badge.css';
+import classes from './Badge.scss';
 
 
 const badge = (props) => (

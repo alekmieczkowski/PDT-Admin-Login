@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Linkbtn.css';
+import classes from './Linkbtn.scss';
 import {withRouter, NavLink} from 'react-router-dom';
 
 const linkbtn = (props) => {

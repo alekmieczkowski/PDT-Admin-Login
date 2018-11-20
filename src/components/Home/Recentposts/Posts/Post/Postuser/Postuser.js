@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Postuser.css';
+import classes from './Postuser.scss';
 
 
 const postuser = (props) => (

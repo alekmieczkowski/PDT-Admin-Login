@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Commentcount.css';
+import classes from './Commentcount.scss';
 import Button from '../../../../../UI/Button/Button';
 
 

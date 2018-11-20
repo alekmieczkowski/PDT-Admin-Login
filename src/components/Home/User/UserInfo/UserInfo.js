@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './UserInfo.css';
+import classes from './UserInfo.scss';
 import Badge from '../../../UI/Badge/Badge';
 import Button from '../../../UI/Button/Button';
 

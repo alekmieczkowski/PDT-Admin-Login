@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Backdrop from '../../components/UI/Backdrop/Backdrop';
-import classes from './Layout.css';
+import classes from './Layout.scss';
 import Wrapper from '../Wrapper/Wrapper';
 
 

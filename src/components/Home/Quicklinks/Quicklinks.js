@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Quicklinks.css';
+import classes from './Quicklinks.scss';
 import Form from "../../../hoc/Form/Form";
 import Linkbtn from './Linkbtn/Linkbtn';
 

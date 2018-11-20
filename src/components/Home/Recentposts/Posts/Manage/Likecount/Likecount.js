@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Likecount.css';
+import classes from './Likecount.scss';
 import Heart from './Heart/Heart';
 
 

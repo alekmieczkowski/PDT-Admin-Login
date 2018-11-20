@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Posts.css';
+import classes from './Posts.scss';
 import Manage from './Manage/Manage';
 import Post from './Post/Post';
 

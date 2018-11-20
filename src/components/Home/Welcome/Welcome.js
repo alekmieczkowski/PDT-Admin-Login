@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Welcome.css';
+import classes from './Welcome.scss';
 import Form from "../../../hoc/Form/Form";
 
 const welcome = (props) => (

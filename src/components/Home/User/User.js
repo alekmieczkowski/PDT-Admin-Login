@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './User.css';
+import classes from './User.scss';
 import Form from "../../../hoc/Form/Form";
 import UserInfo from './UserInfo/UserInfo';
 

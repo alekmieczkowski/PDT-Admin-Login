@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Manage.css';
+import classes from './Manage.scss';
 import LikeCount from './Likecount/Likecount';
 import Commentcount from './Commentcount/Commentcount';
 import Button from '../../../../UI/Button/Button';

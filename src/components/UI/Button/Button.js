@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Button.css';
+import classes from './Button.scss';
 import {MdExitToApp, MdPhone, MdEmail, MdClear, MdComment} from 'react-icons/lib/md';
 
 const button = (props) => {

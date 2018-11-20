@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Recentposts.css';
+import classes from './Recentposts.scss';
 import Form from "../../../hoc/Form/Form";
 import Posts from './Posts/Posts';
 import Aux from '../../../hoc/Wrapper/Wrapper';

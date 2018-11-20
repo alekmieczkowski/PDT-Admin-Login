@@ -1,8 +1,11 @@
+@import '../../../constants/theme';
+
 .Button{
     display: flex;
     flex-flow: row;
     align-content: center;
     padding: 4px;
+    cursor: pointer;
 
 }
 
@@ -20,4 +23,5 @@
 
 .Text{
     padding-left: 10px;
+    color: $primary
 }
