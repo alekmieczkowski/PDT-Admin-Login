@@ -1,0 +1,28 @@
+
+.AdminButton {
+    background-color: #940007;
+    border: none;
+    color: #fff;
+    outline: #003054;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+  
+
+}
+
+.Button:first-of-type {
+    margin-left: 0;
+
+}
+
+
+.text{
+    margin: 4px;
+}

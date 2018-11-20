@@ -9,6 +9,9 @@ const navigationItems = (props) => (
         <NavigationItem exact link='/'   >Home</NavigationItem>
         <NavigationItem exact link='/members' >Members</NavigationItem>
         <NavigationItem exact link='/analytics' >Analytics</NavigationItem>
+
+        {/* navigation item for admin testing */}
+        <NavigationItem exact link='/testing' >Testing</NavigationItem>
     </ul>
 );
 

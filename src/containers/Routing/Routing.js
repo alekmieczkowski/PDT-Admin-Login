@@ -10,6 +10,8 @@ import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import {connect} from 'react-redux';
 import {Redirect, Switch, Route, withRouter } from 'react-router-dom';
 
+// import for testing container
+import Testing from '../Testing/Testing'
 
 
 const routing = (props) => {
@@ -23,6 +25,9 @@ const routing = (props) => {
                             <PrivateRoute path={'/analytics'}   auth={props.auth} component={Analytics} />
                             <PrivateRoute path={'/members'}     auth={props.auth} component={Members} />
                             <PrivateRoute path={'/'}   exact    auth={props.auth} component={HomePage} />
+                            
+                            {/* route added for testing - D.H.*/}
+                            <PrivateRoute path={'/testing'}     auth={props.auth} component={Testing} />
                             
                             <Route path='/login' component={Login}/>
                             {props.auth ?  <Redirect to={'/'}/> : <Redirect to={'/login'}/>}
