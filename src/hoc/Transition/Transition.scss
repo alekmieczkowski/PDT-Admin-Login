@@ -1,0 +1,21 @@
+//animation
+
+:global(.transition-enter){
+    opacity: 0.01;
+
+
+}
+:global(.transition-enter-active) {
+    opacity: 1;
+
+    transition: all 400ms ease-in-out;
+}
+
+:global(.transition-exit) {
+    opacity: 1;
+}
+:global(.transition-exit-active) {
+    opacity: 0.01;
+
+    transition: all 400ms ease-in-out;
+}

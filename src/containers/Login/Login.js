@@ -6,6 +6,7 @@ import { GoogleLogin } from 'react-google-login';
 import { clientId } from '../../constants/secrets';
 import * as authActions from '../../store/auth/actions-auth';
 import * as spinnerActions from '../../store/spinner/actions-spinner';
+import * as transitionActions from '../../store/transition/actions-transition';
 import GoogleButton from '../../components/Login/GoogleButton/GoogleButton';
 import { requestUserAccessRequest, ENUM_USERACCESSREQUEST_STATUS_ACCEPTED } from '../../Api/accessRequest';
 import { getUsers } from '../../Api/users';
@@ -19,6 +20,11 @@ class Login extends Component {
 
     state={
         animateIn: false
+    }
+
+    componentWillUnmount(){
+        //start transtion animation for homepage
+        this.props.startTransition();
     }
 
     success = async (response) => {
@@ -58,6 +64,8 @@ class Login extends Component {
 
             //hide spinner
             this.props.stopSpinner();
+
+            
 
             //Allow User past
             this.props.history.push("/");
@@ -127,7 +135,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onLogin: () => dispatch({ type: authActions.LOGIN, payload: { spinnerText: "Loading Data" } }),
-        stopSpinner: () => dispatch({ type: spinnerActions.STOP })
+        stopSpinner: () => dispatch({ type: spinnerActions.STOP }),
+        startTransition: () => dispatch({type: transitionActions.TRANSITION_START})
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
