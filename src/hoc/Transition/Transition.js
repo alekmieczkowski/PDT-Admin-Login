@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import classes from "./Transition.scss";
+import { connect } from 'react-redux';
 
 class Transition extends Component {
 
+
+
     render() {
+
+
+        console.log("Transition State: " + this.props.transition);
         return (
             <CSSTransition
-                in={this.state.transition}
-                timeout={800}
+                in={this.props.transition}
+                timeout={850}
                 classNames="transition"
                 appear={true}
-                unmountOnExit
+                //unmountOnExit
 
             >
                 <div className={classes.transition}>
@@ -25,12 +31,12 @@ class Transition extends Component {
 
 }
 
-//map auth state in reducer to local state
+//get page transition queues 
 const mapStateToProps = state => {
-    //console.log("Mapping redux to state");
     return {
-        transition: state.authenticated
+        transition: state.transition.pageTransition
     };
 };
+
 
 export default connect(mapStateToProps)(Transition);

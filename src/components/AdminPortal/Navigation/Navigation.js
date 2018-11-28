@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classes from './Navigation.scss';
-import Logo from '../../Logo/Logo';
 import NavigationItems from './NavigationItems/NavigationItems';
 
 

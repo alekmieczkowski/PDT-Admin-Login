@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import NavigationItems from '../NavigationItems/NavigationItems';
-import Aux from '../../../hoc/Wrapper/Wrapper';
 import classes from './MobileNav.scss'
 
 

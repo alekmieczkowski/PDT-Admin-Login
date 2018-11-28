@@ -3,7 +3,7 @@ import PrivateRoute from '../../../services/Auth/PrivateRoute';
 import AdminHome from '../../../containers/AdminPortal/AdminHome/AdminHome';
 
 import { connect } from 'react-redux';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, withRouter } from 'react-router-dom';
 
 
 

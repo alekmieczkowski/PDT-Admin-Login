@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Wrapper from '../../hoc/Wrapper/Wrapper';
 import AdminRouter from '../Routing/AdminRouting/AdminRouting';
 import AdminToolbar from  '../../components/AdminPortal/Navigation/Navigation';
 import classes from './AdminPortal.scss'

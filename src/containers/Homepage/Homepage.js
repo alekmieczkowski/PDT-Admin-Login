@@ -8,9 +8,6 @@ import Recentposts from '../../components/Home/Recentposts/Recentposts';
 
 class Homepage extends Component {
 
-    componentDidUpdate(){
-        console.log("Home did update");
-    }
 
     removePostClickedHandler = () =>{
         alert("button clicked");

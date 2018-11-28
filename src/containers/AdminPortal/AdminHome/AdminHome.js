@@ -8,7 +8,7 @@ class AdminHome extends Component{
 
         return(
 
-                <div>
+                <div className={classes.container}>
                     HOME
                 </div>
                 

@@ -3,7 +3,8 @@ import classes from './Toolbar.scss';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Button from '../../UI/Button/Button';
-import * as actionTypes from '../../../store/auth/actions-auth';
+import * as authActions from '../../../store/auth/actions-auth';
+import * as transitionActions from '../../../store/transition/actions-transition';
 import { withRouter } from 'react-router-dom';
 import DrawerToggle from '../MobileNav/DrawerToggle/DrawerToggle';
 import MobileNav from '../MobileNav/MobileNav';
@@ -34,8 +35,12 @@ class Toolbar extends Component {
 
     _logout = async () =>{
         await localStorage.clear();
-        await this.setState({showToolbar: false});
 
+        //fade out toolbar
+        this.setState({showToolbar: false});
+        //fade out page
+        this.props.fadeOut();
+        
         //wait for toolbar to animate out
         setTimeout(function() { 
             this.props.onLogout(); 
@@ -105,7 +110,8 @@ const mapStateToprops = state => {
 //dispatch this.props to auth reducer
 const mapDispatchToprops = dispatch => {
     return {
-        onLogout: () => dispatch({ type: actionTypes.LOGOUT }),
+        onLogout: () => dispatch({ type: authActions.LOGOUT }),
+        fadeOut: () => dispatch({ type: transitionActions.TRANSITION_STOP }),
     }
 };
 

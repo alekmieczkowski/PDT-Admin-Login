@@ -20,7 +20,8 @@ const routing = (props) => {
             <Aux>
                 
                     <Layout>
-                        {props.auth ? <Toolbar/>: null}  
+                        {props.auth ? <Toolbar/>: null}
+                        
                         <Switch>
                             <PrivateRoute path={'/admin'}    auth={props.auth} component={AdminHome} />
                             <PrivateRoute path={'/analytics'}    auth={props.auth} component={Analytics} />
@@ -28,6 +29,7 @@ const routing = (props) => {
                             <PrivateRoute path={'/'}   exact     auth={props.auth} component={HomePage} />
                             <Route path='/login' component={Login}/>
                         </Switch>
+                        
         
         
                     </Layout>

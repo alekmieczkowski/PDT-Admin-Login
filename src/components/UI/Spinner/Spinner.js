@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classes from './Spinner.scss';
-import Form from '../../../hoc/Form/Form';
 import SpinnerIcon from '../../../assets/img/Spinner/spinner.gif';
 import { CSSTransition } from 'react-transition-group';
 
@@ -12,7 +11,7 @@ export default class Spinner extends Component {
 
     render() {
 
-        console.log("Spinner: " + this.props.isActive);
+        //console.log("Spinner: " + this.props.isActive);
         return (
             <CSSTransition
                 in={this.props.isActive}
@@ -28,7 +27,7 @@ export default class Spinner extends Component {
                     </div>
 
                         <div className={classes.spinnerBox}>
-                            <img src={SpinnerIcon} className={classes.spinnerIcon} />
+                            <img src={SpinnerIcon} className={classes.spinnerIcon} alt={"Where'd the spinner go?..."}/>
                         </div>
 
                     </div>

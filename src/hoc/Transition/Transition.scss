@@ -7,7 +7,7 @@
 }
 :global(.transition-enter-active) {
     opacity: 1;
-
+    transition-delay: 450ms;
     transition: all 400ms ease-in-out;
 }
 

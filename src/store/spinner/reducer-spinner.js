@@ -6,6 +6,7 @@ import * as authActions from '../auth/actions-auth';
 const spinner = (state = {}, action) => {
     switch (action.type) {
         case spinnerActions.START:
+            console.log("Spinner start called");
             return state = {
                 ...state,
                 animateSpinner: true,

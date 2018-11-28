@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom'
+import Transition from '../../hoc/Transition/Transition';
 
 
 const checkAuth = (auth) =>{
@@ -20,7 +21,7 @@ const PrivateRoute = ({ component: Component, auth, ...rest }) => {
       {...rest}
       render={props =>
         checkAuth(auth) ? (
-          <Component {...props} /> 
+          <Transition><Component {...props} />  </Transition>
         ) : (
           <Redirect to={{ pathname: '/login', state: { from: props.location } }} /> 
         )
