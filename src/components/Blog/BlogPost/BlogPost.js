@@ -13,6 +13,16 @@ class BlogPost extends Component {
 
     render() {
 
+
+        //image container handling
+        let images = null;
+
+        /*
+        if(this.props.data.images.length > 0 && this.props.data.images.length !== null || undefined){
+            images = <div className={classes.postImageContainer}></div>;
+        }
+        */
+
         return (
 
             <div className={classes.container}>
@@ -28,10 +38,11 @@ class BlogPost extends Component {
                         <div className={classes.postContentContainer}>
                             <PostContents/>
                         </div>
-
                         {/*Post Images*/}
-                        <div className={classes.postImageContainer}>
-                        </div>
+                        {images}
+                        
+                        {/*Buttons */}
+                        <Options delete={null} submit={null}/>
 
                     </div>
                     {/*Comments Contents */}
@@ -39,7 +50,7 @@ class BlogPost extends Component {
                     </div>
                 </Form>
                 <div className={classes.optionContainer}>
-                    <Options delete={null} submit={null}/>
+                    
                 </div>
             </div>
 
