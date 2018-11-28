@@ -8,33 +8,65 @@ import * as transitionActions from '../../../../store/transition/actions-transit
 class navigationItem extends Component{
 
 
+    state={
+        navHighlight: false,
+    }
+
     /**
      * Handles transitions between screens
      * 
      * When a new screen is selected, a delay is set between transition to ensure the fade out animation for the screen. 
      */
     Delay = (e) => {
-        e.preventDefault()
+
+        //check if the link youre going to is the page you are on 
+        if(this.props.link === this.props.history.location.pathname){
+            e.preventDefault();
+        }
+        else{
+            this.setState({navHighlight: true});
+            e.preventDefault()
         
-        //qeueue fade out 
-        this.props.stopTransition();
+            //qeueue fade out 
+            this.props.stopTransition();
 
-        //wait for fade out to finish
-        setTimeout(() => {
+            
+    
+            //wait for fade out to finish
+            setTimeout(() => {
 
-            //push new page
-            this.props.history.push(this.props.link);
+                //get rid of active nav 
+            this.setState({navHighlight: false});
+                
+    
+                //push new page
+                this.props.history.push(this.props.link);
+    
+                //queue fade in
+                this.props.startTransition();
 
-            //queue fade in
-            this.props.startTransition();
-        },500)
+                
+            },500)
+        }
+       
     }
     
 
     render(){
 
+        let navColor = null;
+
+        if(this.state.navHighlight){
+            navColor = [classes.NavigationItem, classes.navActive].join(' ');
+
+        }
+        else{
+            navColor = classes.NavigationItem;
+
+        }
+
         return(
-            <li className={classes.NavigationItem}>
+            <li className={navColor}>
             <NavLink
                 to={this.props.link}
                 exact={this.props.exact}

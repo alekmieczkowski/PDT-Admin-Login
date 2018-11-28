@@ -1,3 +1,8 @@
+@import '../../../../constants/theme';
+
+//fade speed of the navbar tabs
+$tabFadeSpeed: 250ms;
+
 .NavigationItem{
     margin: 10px 0;
     box-sizing: border-box;
@@ -7,7 +12,7 @@
 }
 
 .NavigationItem a {
-    color: #003056;
+    color: $primary;
     text-decoration: none;
     width: 100%;
     box-sizing: border-box;
@@ -19,14 +24,14 @@
 .NavigationItem a:hover,
 .NavigationItem a:active,
 .NavigationItem a.active{
-    color:#40a4c8;
+    color:$triary;
 }
 
 
 @media (min-width: 668px){
 
     .NavigationItem{
-        color: white;
+        color: $secondary;
         margin: 30px;
         display: flex;
         height: 100%;
@@ -37,21 +42,38 @@
     }
     
     .NavigationItem a {
-        color: #003064;
+        color: $primary;
         font-weight: bold;
         text-decoration: none;
         height: 100%;
         padding: 16px 10px;
         border-bottom: 4px solid transparent;
+        -webkit-transition: background-color $tabFadeSpeed ease-in;
+        -moz-transition:background-color $tabFadeSpeed ease-in;
+        -o-transition: background-color $tabFadeSpeed ease-in;
+        transition:background-color $tabFadeSpeed ease-in;
+        
     
     }
-    
-    .NavigationItem a:hover,
+
     .NavigationItem a:active,
-    .NavigationItem a.active{
-        background-color: #003064;
-        color:white;
+    .NavigationItem a.active,
+    .navActive a{
+        background-color: $primary;
+        color: $secondary;
     }
+
+
+    .NavigationItem a:hover{
+        background-color: $primary;
+        color: $secondary;
+        -webkit-transition: background-color $tabFadeSpeed ease-in;
+        -moz-transition:background-color $tabFadeSpeed ease-in;
+        -o-transition: background-color $tabFadeSpeed ease-in;
+        transition:background-color $tabFadeSpeed ease-in;
+        
+    }
+
 }
 
 @media(max-width:667px){
