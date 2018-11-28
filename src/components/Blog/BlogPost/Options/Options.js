@@ -7,8 +7,9 @@ const options = (props) =>{
     return(
 
         <div className={classes.containers}>
-            <Button clicked={props.delete} buttonCSS={classes.button} iconSize={32} iconColor={'#003056' } type={"clear"}/>
+            <Button clicked={props.delete} buttonCSS={classes.button} iconSize={32} iconColor={'#003056' } type={"comment"}/>
             <Button clicked={props.submit} buttonCSS={classes.button} iconSize={32} iconColor={'#003056' } type={"edit"}/>
+            <Button clicked={props.delete} buttonCSS={classes.button} iconSize={32} iconColor={'#003056' } type={"delete"}/>
         </div>
     );
 

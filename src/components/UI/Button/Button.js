@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Button.scss';
 import {MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdBorderColor} from 'react-icons/lib/md';
+import {IoTrashB} from 'react-icons/lib/io'
 
 const button = (props) => {
 
@@ -30,6 +31,9 @@ const button = (props) => {
             break;
         case "edit":
             type= <MdBorderColor size={iconSize} color={props.iconColor}/>;
+            break;
+        case "delete":
+            type= <IoTrashB size={iconSize} color={props.iconColor}/>;
             break;
         default:
             type= null;
