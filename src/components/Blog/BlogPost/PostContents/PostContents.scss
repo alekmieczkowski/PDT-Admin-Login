@@ -1,0 +1,21 @@
+@import '../../../../constants/theme';
+
+.container{
+    flex: 1;
+    flex-direction: column;
+}
+
+.postContentsContainer{
+    flex: 9;
+    color: $primary;
+    font-size: 14px;
+    padding: 15px;
+    margin-top: 4px;
+}
+
+.dateSubmittedContainer{
+    flex: 1;
+    color: $triary;
+    font-size: 12px;
+    font-style: italic;
+}

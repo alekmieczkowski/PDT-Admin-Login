@@ -3,6 +3,7 @@ import classes from './BlogPost.scss';
 import Form from '../../../hoc/Form/Form';
 import Options from './Options/Options';
 import UserInfo from './UserInfo/UserInfo';
+import PostContents from './PostContents/PostContents';
 
 
 class BlogPost extends Component {
@@ -25,6 +26,7 @@ class BlogPost extends Component {
 
                         {/*User Post */}
                         <div className={classes.postContentContainer}>
+                            <PostContents/>
                         </div>
 
                         {/*Post Images*/}
