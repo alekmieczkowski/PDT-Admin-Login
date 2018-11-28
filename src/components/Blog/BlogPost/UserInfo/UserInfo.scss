@@ -1,0 +1,42 @@
+@import '../../../../constants/theme';
+
+.container{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.imageContainer{
+    padding: 5px;
+    flex: 1;
+}
+
+.profileImage{
+    max-height: 60px;
+    max-width: 60px;
+    border-radius: 4px;
+    border: 1px solid  $primary;
+}
+
+.userInfoContainer{
+    padding-top: 10px;
+    flex: 6;
+    flex-direction: column;
+}
+
+.userNameContainer{
+    flex: 1;
+    font-size: 20px;
+    color: $primary;
+}
+
+.userBondText{
+    font-size: 18px;
+    font-style: italic;
+    color: $triary;
+}
+
+.userBadgeContainer{
+    flex: 1;
+    flex-direction: row;
+}

@@ -4,7 +4,13 @@ import classes from './Form.scss';
 
 const form = (props) => {
 
-    const formCSS = [classes.FormFrame, props.css];
+    let formCSS = null;
+    if(props.customCSS){
+        formCSS = [props.css, ""];
+    }
+    else{
+        formCSS = [classes.FormFrame, props.css];
+    }
 
     return(
         <div className={formCSS.join(' ')}>

@@ -15,8 +15,9 @@
 
 .DesktopOnly{
     height: 100%;
-    margin: auto;
+    //margin: auto;
     display:flex;
+    width: 100%;
 
 }
 
@@ -35,6 +36,10 @@
     border-radius: 4px;
     right: 0;
     position:fixed;
+}
+
+.ButtonCSS:hover{
+    cursor: pointer;
 }
 
 .ButtonMobileCSS{

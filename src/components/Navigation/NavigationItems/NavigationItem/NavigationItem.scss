@@ -7,7 +7,7 @@ $tabFadeSpeed: 250ms;
     margin: 10px 0;
     box-sizing: border-box;
     display: block;
-    width: 100%;
+    width: 100px;
     
 }
 
@@ -32,8 +32,8 @@ $tabFadeSpeed: 250ms;
 
     .NavigationItem{
         color: $secondary;
-        margin: 30px;
-        display: flex;
+        margin: 20px;
+        //display: flex;
         height: 100%;
         align-items: center;
         width: auto;

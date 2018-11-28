@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Button.scss';
-import {MdExitToApp, MdPhone, MdEmail, MdClear, MdComment} from 'react-icons/lib/md';
+import {MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdBorderColor} from 'react-icons/lib/md';
 
 const button = (props) => {
 
@@ -8,8 +8,8 @@ const button = (props) => {
 
     //check icon size
     let iconSize = 20;
-    if(props.IconSize){
-        iconSize = props.IconSize;
+    if(props.iconSize){
+        iconSize = props.iconSize;
     }
     
     switch(props.type){
@@ -27,6 +27,9 @@ const button = (props) => {
             break;
         case "comment":
             type= <MdComment size={iconSize} color={props.iconColor}/>;
+            break;
+        case "edit":
+            type= <MdBorderColor size={iconSize} color={props.iconColor}/>;
             break;
         default:
             type= null;

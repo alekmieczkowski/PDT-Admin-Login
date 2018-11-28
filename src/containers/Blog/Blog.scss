@@ -1,0 +1,32 @@
+.container{
+    
+    align-self: center;
+    padding-top: 20px;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    height: 100vh;
+    justify-content: center;
+    
+}
+
+.layout{
+    padding-top: 20px;
+    -ms-flex-line-pack: center;
+    -ms-flex: 1 1;
+    display: flex;
+    flex: 1 1;
+    flex-direction: row;
+    width: 80vw;
+    margin: auto;
+
+}
+
+.sidebar{
+    flex: 1;
+
+}
+
+.blogView{
+    flex: 4;
+}
+
