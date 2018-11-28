@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import Welcome from '../../components/Home/Welcome/Welcome';
+import Welcome from '../../../components/Home/Welcome/Welcome';
 import classes from './Homepage.scss';
-import User from '../../components/Home/User/User';
-import PlaceholderUser from '../../assets/img/Homepage/placeholder-user.png';
-import Quicklinks from '../../components/Home/Quicklinks/Quicklinks';
-import Recentposts from '../../components/Home/Recentposts/Recentposts';
+import User from '../../../components/Home/User/User';
+import PlaceholderUser from '../../../assets/img/Homepage/placeholder-user.png';
+import Quicklinks from '../../../components/Home/Quicklinks/Quicklinks';
+import Recentposts from '../../../components/Home/Recentposts/Recentposts';
 
 class Homepage extends Component {
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Member from '../../components/Members/Members';
+import Member from '../../../components/Members/Members';
 
 /**
  * 

@@ -2,14 +2,17 @@ import React from 'react';
 import Layout from '../../hoc/Layout/Layout';
 import Aux from '../../hoc/Wrapper/Wrapper';
 import PrivateRoute from '../../services/Auth/PrivateRoute';
-import HomePage from '../../containers/Homepage/Homepage';
-import Members from '../Members/Members';
-import Analytics from '../../components/Analytics/Analytics';
-import AdminPortal from '../../containers/AdminPortal/AdminPortal';
-import Login from '../Login/Login';
-import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import {connect} from 'react-redux';
 import {Switch, Route, withRouter } from 'react-router-dom';
+
+//Pages
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
+import Blog from '../Blog/Blog';
+import Calendar from '../Calendar/Calendar';
+import Directory from '../Directory/Directory';
+import Profile from '../Profile/Profile';
+import AdminPortal from '../../containers/AdminPortal/AdminPortal';
+import Login from '../Login/Login';
 
 
 
@@ -24,10 +27,11 @@ const routing = (props) => {
                         {props.auth ? <Toolbar/>: null}
                         
                         <Switch>
-                            <PrivateRoute path={'/admin'}        auth={props.auth} component={AdminPortal} />
-                            <PrivateRoute path={'/analytics'}    auth={props.auth} component={Analytics} />
-                            <PrivateRoute path={'/members'}      auth={props.auth} component={Members} />
-                            <PrivateRoute path={'/'}   exact     auth={props.auth} component={HomePage} />
+                            <PrivateRoute path={'/Admin'}        auth={props.auth} component={AdminPortal} />
+                            <PrivateRoute path={'/Profile'}    auth={props.auth} component={Profile} />
+                            <PrivateRoute path={'/Directory'}    auth={props.auth} component={Directory} />
+                            <PrivateRoute path={'/Calendar'}      auth={props.auth} component={Calendar} />
+                            <PrivateRoute path={'/'}   exact     auth={props.auth} component={Blog} />
                             <Route path='/login' component={Login}/>
                         </Switch>
                         
