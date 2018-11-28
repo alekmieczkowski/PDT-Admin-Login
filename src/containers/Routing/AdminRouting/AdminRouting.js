@@ -3,18 +3,19 @@ import PrivateRoute from '../../../services/Auth/PrivateRoute';
 import AdminHome from '../../../containers/AdminPortal/AdminHome/AdminHome';
 
 import { connect } from 'react-redux';
-import { Switch, withRouter } from 'react-router-dom';
+import { Switch, withRouter, Route } from 'react-router-dom';
 
 
 
 const adminRouting = (props) => {
 
+    console.log(props.match);
     return (
 
         <Switch>
             <PrivateRoute path={'/admin/analytics'} auth={props.auth} component={AdminHome} />
-            <PrivateRoute path={'/admin/members'} auth={props.auth} component={AdminHome} />
-            <PrivateRoute path={'/admin/home'}   auth={props.auth} component={AdminHome} />
+            <PrivateRoute path={'/admin/members'}  auth={props.auth} component={AdminHome} />
+            <PrivateRoute path={'/admin'}    auth={props.auth} component={AdminHome} />
         </Switch>
 
     );
