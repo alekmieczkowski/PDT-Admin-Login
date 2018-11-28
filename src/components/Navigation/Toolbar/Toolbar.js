@@ -34,8 +34,18 @@ class Toolbar extends Component {
     }
 
     _logout = async () =>{
+        console.log("Logout pressed");
         await localStorage.clear();
 
+        if (window.gapi) {
+            const auth2 = window.gapi.auth2.getAuthInstance()
+            if (auth2 != null) {
+                auth2.signOut().then(
+                    auth2.disconnect().then(this.props.onLogoutSuccess)
+                )
+            }
+        }
+        
         //fade out toolbar
         this.setState({showToolbar: false});
         //fade out page
@@ -45,7 +55,7 @@ class Toolbar extends Component {
         setTimeout(function() { 
             this.props.onLogout(); 
         }.bind(this), 600);
-        
+        this.forceUpdate()
     }
 
     render() {
@@ -71,15 +81,17 @@ class Toolbar extends Component {
 
 
                     </nav>
-                    
+                    <Button buttonCSS={classes.ButtonCSS} type="logout" size="16px" clicked={this._logout}>Logout</Button> 
+                    {/* 
                     <GoogleLogout
                         buttonText="Logout"
+                        onFailure={console.log("Error loggin gout")}
                         onLogoutSuccess={this._logout}
                         autoload={false}
                         render={renderProps => (
                             <Button buttonCSS={classes.ButtonCSS} type="logout" size="16px" clicked={renderProps.onClick}>Logout</Button>
                         )}
-                    />
+                        />*/}
                 </div>
                 <div className={classes.MobileOnly}>
 

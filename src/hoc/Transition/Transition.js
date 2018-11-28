@@ -10,7 +10,7 @@ class Transition extends Component {
     render() {
 
 
-        console.log("Transition State: " + this.props.transition);
+        
         return (
             <CSSTransition
                 in={this.props.transition}

@@ -13,6 +13,7 @@ import Directory from '../Directory/Directory';
 import Profile from '../Profile/Profile';
 import AdminPortal from '../../containers/AdminPortal/AdminPortal';
 import Login from '../Login/Login';
+import {authHeader} from '../../services/Auth/AuthService';
 
 
 
@@ -24,14 +25,14 @@ const routing = (props) => {
             <Aux>
                 
                     <Layout>
-                        {props.auth ? <Toolbar/>: null}
+                        {authHeader() !== false ? <Toolbar/>: null}
                         
                         <Switch>
-                            <PrivateRoute path={'/Admin'}        auth={props.auth} component={AdminPortal} />
-                            <PrivateRoute path={'/Profile'}    auth={props.auth} component={Profile} />
-                            <PrivateRoute path={'/Directory'}    auth={props.auth} component={Directory} />
-                            <PrivateRoute path={'/Calendar'}      auth={props.auth} component={Calendar} />
-                            <PrivateRoute path={'/'}   exact     auth={props.auth} component={Blog} />
+                            <PrivateRoute path={'/Admin'}         component={AdminPortal} />
+                            <PrivateRoute path={'/Profile'}     component={Profile} />
+                            <PrivateRoute path={'/Directory'}    component={Directory} />
+                            <PrivateRoute path={'/Calendar'}   component={Calendar} />
+                            <PrivateRoute path={'/'}   exact    component={Blog} />
                             <Route path='/login' component={Login}/>
                         </Switch>
                         

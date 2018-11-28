@@ -12,6 +12,7 @@ import { requestUserAccessRequest, ENUM_USERACCESSREQUEST_STATUS_ACCEPTED } from
 import { getUsers } from '../../Api/users';
 import { getPosts } from '../../Api/posts';
 import { CSSTransition } from 'react-transition-group';
+import { authHeader } from '../../services/Auth/AuthService';
 
 
 
@@ -26,6 +27,7 @@ class Login extends Component {
         //start transtion animation for homepage
         this.props.startTransition();
     }
+
 
     success = async (response) => {
 
@@ -46,8 +48,10 @@ class Login extends Component {
             this.props.onLogin();
             this.setState({animateIn: false});
             //save token to localstorage
-            await localStorage.setItem("token", response.tokenId);
+            await localStorage.setItem("token", JSON.stringify(response.tokenId));
 
+            //save google sign in instance to storage
+            await localStorage.setItem("gapi", window.gapi.auth2.getAuthInstance());
 
 
             //pull user data
@@ -83,7 +87,16 @@ class Login extends Component {
     }
 
     componentDidMount(){
-        this.setState({animateIn: true});
+
+        //check if user is already logged in
+        if(authHeader() !== false){
+            console.log("in push");
+            this.props.history.push("/");
+        }
+        else{
+            this.setState({animateIn: true});
+        }
+        
     }
 
 
