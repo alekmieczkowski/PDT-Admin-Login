@@ -1,0 +1,78 @@
+@import  '../../../../constants/theme';
+
+.container{
+    flex: 1;
+    min-height: 60px;
+    background-color: $secondary;
+    flex-direction: row;
+    display: flex;
+    margin-bottom: 4px;
+}
+
+.commentContainer{
+    flex: 3;
+    flex-direction: column;
+
+}
+
+.profileContainer{
+    flex: 1;
+    flex-direction: row;
+    display: flex;
+
+}
+
+.imageContainer{
+    padding-left: 6px;
+    padding-top: 6px;
+    width: 40px;
+}
+
+.profileImg{
+    height: 30px;
+    border: 1px solid $primary;
+}
+
+.profileInfoContainer{
+    padding-top: 8px;
+    flex: 2;
+    flex-direction: column;
+}
+
+.nameContainer{
+    flex: 1 1;
+    font-size: 14px;
+}
+
+.bondContainer{
+    flex: 1 1;
+    font-size: 10px;
+}
+
+.commentTextContainer{
+    flex: 1 1;
+    padding: 10px;
+    font-size: 11px;
+    font-style: italic;
+
+}
+
+.likeContainer{
+    flex: 1;
+    padding-top: 8px;
+}
+
+.button{
+    position: relative;
+    padding-left: 10px;
+    padding-top: 1px;
+}
+
+
+.buttonEmblemText{
+    margin-top: -1px;
+    font-size: 18px;
+    margin-left: -6px;
+    color: $primary;
+}
+

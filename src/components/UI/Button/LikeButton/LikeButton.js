@@ -37,14 +37,28 @@ class LikeButton extends Component{
             icon = <FaHeart size={this.props.iconSize} color={this.props.iconColor}/>
         }
 
+        //check for button CSS
         let buttonCSS = classes.container;
         if(this.props.css){
             buttonCSS = [classes.container, this.props.css].join(' ');
         }
 
+        //check for emblem CSS
+        let emblemCSS = classes.emblem;
+        if(this.props.emblemCSS){
+            emblemCSS = this.props.emblemCSS;
+        }
+
+        //check for emblem text CSS
+        let emblemText = classes.emblemText;
+        if(this.props.emblemTextCSS){
+            emblemText = this.props.emblemTextCSS;
+        }
+
+
         return(
             <div className={buttonCSS} onClick={this._handleLike} >
-                <div className={classes.emblem}><div className={classes.emblemText}>{this.state.likes}</div></div>
+                <div className={emblemCSS}><div className={emblemText}>{this.state.likes}</div></div>
                 {icon}
             </div>
            

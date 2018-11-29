@@ -4,6 +4,7 @@ import Form from '../../../hoc/Form/Form';
 import Options from './Options/Options';
 import UserInfo from './UserInfo/UserInfo';
 import PostContents from './PostContents/PostContents';
+import Comments from '../Comments/Comments';
 
 
 class BlogPost extends Component {
@@ -50,6 +51,7 @@ class BlogPost extends Component {
                     </Form>
                     {/*Comments Contents */}
                     <div className={classes.commentContainer}>
+                        <Comments/>
                     </div>
                     {/*<div className={classes.optionContainer}></div>*/}
                 </div>
