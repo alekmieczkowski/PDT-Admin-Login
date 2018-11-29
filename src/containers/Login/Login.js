@@ -50,9 +50,6 @@ class Login extends Component {
             //save token to localstorage
             await localStorage.setItem("token", JSON.stringify(response.tokenId));
 
-            //save google sign in instance to storage
-            await localStorage.setItem("gapi", window.gapi.auth2.getAuthInstance());
-
 
             //pull user data
             await getUsers(response.tokenId).then(response => {

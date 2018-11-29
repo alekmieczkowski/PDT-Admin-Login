@@ -26,32 +26,34 @@ class BlogPost extends Component {
         return (
 
             <div className={classes.container}>
-                <Form customCSS={true} css={classes.postContainer}>
-                    {/*Post Contents */}
-                    <div className={classes.userPostContainer}>
-                        {/*User Information */}
-                        <div className={classes.userInformationContainer}>
-                            <UserInfo/>
+                <div className={classes.postContainer}>
+                    <Form customCSS={true} css={classes.FormCSS}>
+                        {/*Post Contents */}
+                        <div className={classes.userPostContainer}>
+                            {/*User Information */}
+                            <div className={classes.userInformationContainer}>
+                                <UserInfo />
+                            </div>
+
+                            {/*User Post */}
+                            <div className={classes.postContentContainer}>
+                                <PostContents />
+                            </div>
+                            {/*Post Images*/}
+                            {images}
+
+                            {/*Buttons */}
+                            <Options delete={null} submit={null} />
+
                         </div>
 
-                        {/*User Post */}
-                        <div className={classes.postContentContainer}>
-                            <PostContents/>
-                        </div>
-                        {/*Post Images*/}
-                        {images}
-                        
-                        {/*Buttons */}
-                        <Options delete={null} submit={null}/>
-
-                    </div>
+                    </Form>
                     {/*Comments Contents */}
                     <div className={classes.commentContainer}>
                     </div>
-                </Form>
-                <div className={classes.optionContainer}>
-                    
+                    {/*<div className={classes.optionContainer}></div>*/}
                 </div>
+
             </div>
 
 

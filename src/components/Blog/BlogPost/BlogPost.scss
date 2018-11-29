@@ -11,21 +11,25 @@
 
 .postContainer{
     flex: 8;
-    max-width: 900px;
+    //max-width: 500px;
     //min-height: 400px;
+    display: flex;
+    flex-direction: row;
+}
+
+.FormCSS{
     align-items: inherit;
     -webkit-box-sizing: 'border-box';
     box-sizing: 'border-box';
     background-color: $secondary;
     border: 2px solid $primary;
     border-radius: 2px;
-    display: flex;
-    flex-direction: row;
 }
 
 .userPostContainer{
     flex: 3;
     min-height: 400px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     border-right: 1px solid $primary;
@@ -50,7 +54,8 @@
 
 .commentContainer{
     flex: 2;
-    height: 400px;
+    //height: 400px;
+    max-width:300px;
 }
 
 .optionContainer{

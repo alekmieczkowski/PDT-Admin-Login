@@ -37,6 +37,7 @@ class Toolbar extends Component {
         console.log("Logout pressed");
         await localStorage.clear();
 
+        //check if google api session exists, if not then clear storage and force sign out.
         if (window.gapi) {
             const auth2 = window.gapi.auth2.getAuthInstance()
             if (auth2 != null) {

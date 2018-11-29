@@ -1,0 +1,30 @@
+@import '../../../../constants/theme';
+
+
+.container{
+    position: relative;
+
+}
+
+.emblem{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    
+    margin-left: 38px;
+    margin-top: 5px;
+}
+
+.emblemText{
+    color: $primary;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 1px;
+    padding-right: 1px;
+}
+
+
+.buttonColor{
+    color: $primary;
+}
+
