@@ -15,8 +15,9 @@ class CommentButton extends Component{
 
         return(
             <div className={buttonCSS}>
-                <div className={classes.emblem}><div className={classes.emblemText}>{this.props.comments}</div></div>
                 <MdComment size={this.props.iconSize} color={this.props.iconColor}/>
+                <div className={classes.emblem}><div className={classes.emblemText}>{this.props.comments}</div></div>
+                
             </div>
            
         );

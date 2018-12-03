@@ -1,3 +1,5 @@
+@import '../../constants/theme';
+
 .container{
     
     align-self: center;
@@ -10,7 +12,7 @@
 }
 
 .layout{
-    padding-top: 20px;
+    //padding-top: 20px;
     -ms-flex-line-pack: center;
     -ms-flex: 1 1;
     display: flex;
@@ -22,11 +24,21 @@
 }
 
 .sidebar{
-    flex: 3;
+    flex: 4;
 
 }
 
 .blogView{
-    flex: 7;
+    flex: 6;
+}
+
+.blogHeader{
+    font-size: 24px;
+    color: $primary;
+    justify-content: center;
+    font-weight: bold;
+    padding: 6px;
+    margin-bottom: 4px;
+
 }
 

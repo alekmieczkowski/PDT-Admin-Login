@@ -1,0 +1,16 @@
+@import '../../../../constants/theme';
+
+.container{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.inputContainer{
+    flex: 2;
+}
+
+.submitContainer{
+    flex: 1;
+}
+

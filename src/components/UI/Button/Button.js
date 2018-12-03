@@ -1,7 +1,9 @@
 import React from 'react';
 import classes from './Button.scss';
-import {MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdBorderColor} from 'react-icons/lib/md';
+import {MdExitToApp, MdPhone, MdEmail, MdClear, MdComment} from 'react-icons/lib/md';
 import {IoTrashB} from 'react-icons/lib/io'
+import { FaEdit } from "react-icons/lib/fa";
+import FitText from '@kennethormandy/react-fittext'
 
 const button = (props) => {
 
@@ -30,7 +32,7 @@ const button = (props) => {
             type= <MdComment size={iconSize} color={props.iconColor}/>;
             break;
         case "edit":
-            type= <MdBorderColor size={iconSize} color={props.iconColor}/>;
+            type= <FaEdit size={iconSize} color={props.iconColor}/>;
             break;
         case "delete":
             type= <IoTrashB size={iconSize} color={props.iconColor}/>;
@@ -57,9 +59,12 @@ const button = (props) => {
     let textData = props.children;
     if(textData){
         textData = (
+            <FitText compressor={.5} minFontSize={12} >
             <div className={textCSS}>
                 {props.children}
             </div>
+                
+            </FitText>
         )
     }
 
@@ -68,7 +73,10 @@ const button = (props) => {
         <div className={classes.icon}>
             {type}
         </div>
-       {textData}
+        
+        {textData}
+      
+       
 
     </div>
     );

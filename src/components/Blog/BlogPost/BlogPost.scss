@@ -12,9 +12,10 @@
 .postContainer{
     flex: 8;
     //max-width: 500px;
-    //min-height: 400px;
+    max-height: 90vh;
     display: flex;
     flex-direction: row;
+    overflow: auto;
 }
 
 .FormCSS{
@@ -29,7 +30,7 @@
 .userPostContainer{
     flex: 3;
     min-height: 400px;
-    max-width: 500px;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     border-right: 1px solid $primary;
@@ -52,10 +53,11 @@
 
 }
 
-.commentContainer{
+.rightContainer{
     flex: 2;
     //height: 400px;
     max-width:300px;
+    margin-top: 2px;
 }
 
 .optionContainer{

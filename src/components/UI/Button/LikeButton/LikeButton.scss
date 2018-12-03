@@ -3,9 +3,12 @@
 
 .container{
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
-
+/*
 .emblem{
     position: absolute;
     height: 30px;
@@ -14,6 +17,9 @@
     margin-left: 38px;
     margin-top: 5px;
 }
+*/
+
+
 
 .emblemText{
     color: $primary;

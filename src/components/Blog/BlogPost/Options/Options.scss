@@ -2,8 +2,10 @@
 
 .container{
     display: flex;
-    flex-direction: row;
-    height: 80px;
+    flex-direction: column;
+
+    background-color: $secondary;
+    width: 60px;
 
 
 }
@@ -15,9 +17,9 @@
 
 .button{
     flex: 1 1;
-    height: 40px;
-    max-width: 40px;
-    margin: auto;
+    //height: 40px;
+    //max-width: 40px;
+    margin: 10px;
     text-align: center;
     opacity: 1;
     -webkit-transition: opacity .3s ease-in;
@@ -30,4 +32,11 @@
     cursor: pointer;
     opacity: .8;
     transition: opacity .3s ease-in;
+}
+
+
+.divider{
+    min-height: 2px;
+    width: 60px;
+    background-color: $primary;
 }

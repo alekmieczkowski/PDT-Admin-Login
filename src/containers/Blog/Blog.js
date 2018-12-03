@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './Blog.scss';
 import BlogRender from '../../components/Blog/Blog';
+import Form from '../../hoc/Form/Form';
 
 
 class Blog extends Component {
@@ -10,11 +11,23 @@ class Blog extends Component {
         return (
             <div className={classes.container}>
                 <div className={classes.layout}>
-                    <div className={classes.sidebar}>
-                        THIS WILL BE THE SIDEBAR
+
+                {/*Left Side Bar*/}
+                <div className={classes.sidebar}>
+                    THIS WILL BE THE SIDEBAR
                 </div>
-                    <div className={classes.blogView}>
-                        <BlogRender/>
+
+                {/*Center Blog view */}
+                <div className={classes.blogView}>
+                    <Form css={classes.blogHeader}>
+                        Recent Posts
+                    </Form>
+
+                    <BlogRender/>
+                </div>
+
+                {/*Right Side Bar*/}
+                <div className={classes.sidebar}>
                 </div>
 
                 </div>

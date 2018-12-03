@@ -58,8 +58,9 @@ class LikeButton extends Component{
 
         return(
             <div className={buttonCSS} onClick={this._handleLike} >
-                <div className={emblemCSS}><div className={emblemText}>{this.state.likes}</div></div>
                 {icon}
+                <div className={emblemCSS}><div className={emblemText}>{this.state.likes}</div></div>
+                
             </div>
            
         );

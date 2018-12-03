@@ -1,8 +1,10 @@
+@import '../../../constants/theme';
+
 .Button {
-    background-color: #003054;
+    background-color: $primary;
     border: none;
-    color: #fff;
-    outline: #003054;
+    color: $secondary;
+    outline: $primary;
     cursor: pointer;
     font: inherit;
     padding: 10px;
@@ -11,7 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 4px;
+    //border-radius: 4px;
 
 }
 
@@ -20,7 +22,12 @@
 
 }
 
-
 .text{
-    margin: 4px;
+    padding-top: 4px;
+    color: $primary;
+    //font-size: 16px;
+    font-weight: bold;
+    //width: 100%;
+    text-align: center;
+
 }

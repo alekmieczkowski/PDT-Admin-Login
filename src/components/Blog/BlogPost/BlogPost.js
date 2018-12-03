@@ -5,6 +5,7 @@ import Options from './Options/Options';
 import UserInfo from './UserInfo/UserInfo';
 import PostContents from './PostContents/PostContents';
 import Comments from '../Comments/Comments';
+import AddComment from './AddComment/AddComment';
 
 
 class BlogPost extends Component {
@@ -43,15 +44,17 @@ class BlogPost extends Component {
                             {/*Post Images*/}
                             {images}
 
-                            {/*Buttons */}
-                            <Options delete={null} submit={null} />
+                            {/*Comments */}
+                            <AddComment/>
+                            <Comments/>
 
                         </div>
 
                     </Form>
                     {/*Comments Contents */}
-                    <div className={classes.commentContainer}>
-                        <Comments/>
+                    <div className={classes.rightContainer}>
+                        {/*Buttons */}
+                        <Options delete={null} submit={null} admin={true}/>
                     </div>
                     {/*<div className={classes.optionContainer}></div>*/}
                 </div>
