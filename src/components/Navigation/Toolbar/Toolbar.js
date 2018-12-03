@@ -82,7 +82,7 @@ class Toolbar extends Component {
 
 
                     </nav>
-                    <Button buttonCSS={classes.ButtonCSS} type="logout" size="16px" clicked={this._logout}>Logout</Button> 
+                    <Button buttonCSS={classes.ButtonCSS} textCSS={classes.buttonText} type="logout" size="16px" clicked={this._logout}>Logout</Button> 
                     {/* 
                     <GoogleLogout
                         buttonText="Logout"

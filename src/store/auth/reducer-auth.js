@@ -1,7 +1,7 @@
 import * as actionTypes from './actions-auth';
 import { isNullOrUndefined } from 'util';
 
-let token = JSON.parse(localStorage.getItem('token'));
+let token = localStorage.getItem('token');
 const initialState = isNullOrUndefined(token) ? false : true;
 
 console.log("auth state: "+ initialState);
