@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Button.scss';
-import {MdExitToApp, MdPhone, MdEmail, MdClear, MdComment} from 'react-icons/lib/md';
+import {MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend} from 'react-icons/lib/md';
 import {IoTrashB} from 'react-icons/lib/io'
 import { FaEdit } from "react-icons/lib/fa";
 import FitText from '@kennethormandy/react-fittext'
@@ -36,6 +36,9 @@ const button = (props) => {
             break;
         case "delete":
             type= <IoTrashB size={iconSize} color={props.iconColor}/>;
+            break;
+        case "submit":
+            type= <MdSend size={iconSize} color={props.iconColor}/>;
             break;
         default:
             type= null;

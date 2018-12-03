@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import classes from './AddComment.scss';
+import Textarea from 'react-textarea-autosize';
+import Button from '../../../UI/Button/Button';
 
 
 class AddComment extends Component {
@@ -14,16 +16,16 @@ class AddComment extends Component {
 
 
     render() {
-
-        console.log("Text: " + this.state.comment);
         return (
             <div className={classes.container}>
 
                 <div className={classes.inputContainer}>
-                    <textarea value={this.state.comment} onChange={this._updateText} />
+                    <Textarea className={classes.textInput} placeholder={"Enter Comment..."} maxLength={250} value={this.state.comment} onChange={this._updateText} />
+                    <div className={classes.characterCounterContainer}>{this.state.comment.length}/250</div>
                 </div>
                 <div className={classes.submitContainer}>
                     {/*Submit Button*/}
+                    <Button clicked={null} type="submit" buttonCSS={classes.sendButton} textCSS={classes.buttonText} iconColor={"#003056"}>Send</Button>
                 </div>
 
             </div>
