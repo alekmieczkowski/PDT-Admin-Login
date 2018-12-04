@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Comment.scss';
-import LikeButton from '../../../UI/Button/LikeButton/LikeButton';
+import LikeButton from './LikeButton/LikeButton';
 import Placeholder from '../../../../assets/img/Homepage/placeholder-user.png';
 
 
@@ -18,17 +18,17 @@ const comment = (props) => {
                     <div className={classes.profileInfoContainer}>
 
                         <div className={classes.nameContainer}>
-                            Alek Mieczkowski
+                            Alek Mieczkowski<span className={classes.submittedText}>&nbsp;&nbsp;xx/xx/xx</span>
                         </div>
 
                         <div className={classes.bondContainer}>
-                            #55
+                            #55 
                         </div>
 
                     </div>
 
                     <div className={classes.likeContainer}>
-                        <LikeButton emblemTextCSS={classes.buttonEmblemText} emblemCSS={classes.buttonEmblem} css={classes.button} likes={12} iconSize={26} iconColor={'#003056'} />
+                        <LikeButton emblemTextCSS={classes.buttonEmblemText} emblemCSS={classes.buttonEmblem} css={classes.button} likes={12} iconSize={22} iconColor={'#003056'} />
                     </div>
 
                 </div>

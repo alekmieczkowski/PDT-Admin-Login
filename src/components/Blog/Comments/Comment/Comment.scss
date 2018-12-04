@@ -6,12 +6,13 @@
     background-color: $secondary;
     flex-direction: row;
     display: flex;
-    margin-bottom: 4px;
+    //margin-bottom: 4px;
 }
 
 .commentContainer{
     flex: 3;
     flex-direction: column;
+    border-top: 1px solid #003056;
 
 }
 
@@ -37,11 +38,18 @@
     padding-top: 8px;
     flex: 2;
     flex-direction: column;
+    color: $primary;
 }
 
 .nameContainer{
     flex: 1 1;
     font-size: 14px;
+}
+
+.submittedText{
+    color: $triary;
+    font-size: 11px;
+    font-style: italic;
 }
 
 .bondContainer{
@@ -51,14 +59,17 @@
 
 .commentTextContainer{
     flex: 1 1;
-    padding: 10px;
+    padding: 14px;
     font-size: 11px;
     font-style: italic;
+    color: $primary;
 
 }
 
 .likeContainer{
     flex: 1;
+    max-width: 60px;
+    padding-right: 20px;
     padding-top: 8px;
 }
 
@@ -69,10 +80,10 @@
 }
 
 
+
 .buttonEmblemText{
-    margin-top: -1px;
     font-size: 18px;
-    margin-left: -6px;
+    margin-left: 6px;
     color: $primary;
 }
 

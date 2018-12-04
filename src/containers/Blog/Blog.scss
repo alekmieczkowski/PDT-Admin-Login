@@ -34,11 +34,15 @@
 
 .blogHeader{
     font-size: 24px;
-    color: $primary;
+    color: $secondary;
+    text-align: center;
     justify-content: center;
     font-weight: bold;
     padding: 6px;
     margin-bottom: 4px;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    border-bottom: 2px solid white;
 
 }
 
