@@ -24,7 +24,6 @@ class BlogPost extends Component {
             images = <div className={classes.postImageContainer}></div>;
         }
         */
-
         return (
 
             <div className={classes.container}>
@@ -34,19 +33,19 @@ class BlogPost extends Component {
                         <div className={classes.userPostContainer}>
                             {/*User Information */}
                             <div className={classes.userInformationContainer}>
-                                <UserInfo />
+                                <UserInfo data={this.props.data.user}/>
                             </div>
 
                             {/*User Post */}
                             <div className={classes.postContentContainer}>
-                                <PostContents />
+                                <PostContents content={this.props.data.content} submitted={this.props.data.created_at}/>
                             </div>
                             {/*Post Images*/}
                             {images}
 
                             {/*Comments */}
                             <AddComment/>
-                            <Comments/>
+                            <Comments data={this.props.data.comments}/>
 
                         </div>
 
@@ -54,7 +53,8 @@ class BlogPost extends Component {
                     {/*Comments Contents */}
                     <div className={classes.rightContainer}>
                         {/*Buttons */}
-                        <Options delete={null} submit={null} admin={true}/>
+                        <Options delete={null} submit={null} admin={true} likes={this.props.data.likes} comments={this.props.data.comments.length}/>
+                        
                     </div>
                     {/*<div className={classes.optionContainer}></div>*/}
                 </div>

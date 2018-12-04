@@ -4,7 +4,7 @@ import HomePage from '../../../containers/AdminPortal/Homepage/Homepage';
 import Members from '../../AdminPortal/Members/Members';
 
 import { connect } from 'react-redux';
-import { Switch, withRouter, Route } from 'react-router-dom';
+import { Switch, withRouter } from 'react-router-dom';
 
 
 

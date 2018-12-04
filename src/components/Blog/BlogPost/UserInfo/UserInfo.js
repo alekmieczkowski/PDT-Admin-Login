@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './UserInfo.scss';
 import Badge from '../../../UI/Badge/Badge';
-import Placeholder from "../../../../assets/img/Homepage/placeholder-user.png";
 
 
 const userInfo = (props) =>{
@@ -11,14 +10,14 @@ const userInfo = (props) =>{
             
             {/*User Image */}
             <div className={classes.imageContainer}>
-                <img src={Placeholder} className={classes.profileImage} alt={"Profile Image"}/>
+                <img src={props.data.google_picture} className={classes.profileImage} alt={"Profile"}/>
             </div>
             
             {/*User Information */}
             <div className={classes.userInfoContainer}>
                 {/*User Name and Bond */}
                 <div className={classes.userNameContainer}>
-                    Aleksander Mieczkowski <span className={classes.userBondText}>#55</span>
+                    {props.data.full_name} <span className={classes.userBondText}>#{props.data.bond_number}</span>
                 </div>
 
                 {/*User Badges*/}

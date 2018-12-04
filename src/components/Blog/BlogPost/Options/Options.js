@@ -10,8 +10,8 @@ const options = (props) => {
     return (
 
         <div className={classes.container}>
-            <LikeButton css={classes.button} likes={12} iconSize={26} iconColor={'#003056'} />
-            <CommentButton css={classes.button} comments={20} iconSize={26} iconColor={'#003056'} />
+            <LikeButton css={classes.button} likes={props.likes} iconSize={26} iconColor={'#003056'} />
+            <CommentButton css={classes.button} comments={props.comments} iconSize={26} iconColor={'#003056'} />
 
             {/*If admin, show edit options*/}
             {props.admin === true ?

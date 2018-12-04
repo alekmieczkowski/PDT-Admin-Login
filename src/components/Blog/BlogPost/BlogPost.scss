@@ -27,8 +27,8 @@
 
 .userPostContainer{
     flex: 3;
-    min-height: 400px;
-    max-width: 600px;
+    //min-height: 400px;
+    min-width: 600px;
     display: flex;
     flex-direction: column;
     //border-right: 1px solid $primary;
@@ -41,7 +41,7 @@
 
 .postContentContainer{
     //flex: 1;
-    min-height: 200px;
+    //min-height: 200px;
     //background-color: blue;
 }
 

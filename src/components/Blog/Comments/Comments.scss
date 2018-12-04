@@ -21,3 +21,18 @@
     border: 2px solid $secondary;
     padding-top: 10px;
 }
+
+.showComments{
+    background-color: $primary;
+    color: $secondary;
+    font-size: 20px;
+    text-align: center;
+    height: 40px;
+    border: 1px solid $secondary;
+    -ms-flex-pack: center;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    display: flex;
+
+}
