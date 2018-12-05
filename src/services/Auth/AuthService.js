@@ -2,6 +2,7 @@ import {store} from '../../store/configureStore';
 import { userLogout, userLogin, updateToken } from '../../store/actions/auth';
 import { getUsers, getUser } from '../../Api/users';
 import { getPosts } from '../../Api/posts';
+import {clearReduxState} from '../../store/actions/global';
 
 
 
@@ -19,8 +20,15 @@ export function authHeader() {
 }
 
 export function logout() {
+
+    //clear local storage
     localStorage.clear();
+
+    //log user out
     store.dispatch(userLogout());
+
+    //clear redux state and storage
+    store.dispatch(clearReduxState());
 }
 
 export async function login(token) {

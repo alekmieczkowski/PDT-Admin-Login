@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/auth';
+import {CLEAR_STATE} from '../actions/global';
 
 let initialState = {
     auth: false,
@@ -24,6 +25,8 @@ const auth = ( state = initialState , action ) => {
                 ...state,
                 token: action.token
             }
+        case CLEAR_STATE:
+            return initialState;
         default: 
             return state;
     }

@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/api';
+import {CLEAR_STATE} from '../actions/global';
 
 let initialState = {
     user: null,
@@ -29,6 +30,8 @@ const api = ( state = initialState , action ) => {
                 ...state,
                 calendar: action.calendar
             }
+        case CLEAR_STATE:
+            return initialState;
         default: 
             return state;
     }

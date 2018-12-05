@@ -1,5 +1,5 @@
 import * as transitionActions from '../actions/transition';
-
+import {CLEAR_STATE} from '../actions/global';
 
 
 
@@ -16,6 +16,10 @@ const transition = (state = {}, action) => {
                 ...state,
                 pageTransition: false,
             }
+
+        case CLEAR_STATE:
+            return {};
+
         default:
             return state;
     }

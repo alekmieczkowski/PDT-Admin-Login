@@ -1,5 +1,5 @@
 import * as spinnerActions from '../actions/spinner';
-
+import {CLEAR_STATE} from '../actions/global';
 
 
 const spinner = (state = {}, action) => {
@@ -16,6 +16,8 @@ const spinner = (state = {}, action) => {
                 ...state,
                 animateSpinner: false,
             }
+        case CLEAR_STATE:
+            return {};
 
         default:
             return state;
