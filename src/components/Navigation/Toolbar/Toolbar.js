@@ -3,14 +3,13 @@ import classes from './Toolbar.scss';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Button from '../../UI/Button/Button';
-import * as authActions from '../../../store/actions/auth';
 import * as transitionActions from '../../../store/actions/transition';
 import { withRouter } from 'react-router-dom';
 import DrawerToggle from '../MobileNav/DrawerToggle/DrawerToggle';
 import MobileNav from '../MobileNav/MobileNav';
 import { GoogleLogout } from 'react-google-login';
 import { CSSTransition } from 'react-transition-group';
-import {logout} from '../../../services/Auth/AuthService';
+import * as AuthService from '../../../services/Auth/AuthService';
 
 //get state from reducers
 import { connect } from 'react-redux';
@@ -22,22 +21,19 @@ class Toolbar extends Component {
         showToolbar: false
     }
 
-    componentDidMount(){
-        this.setState({showToolbar: true});
+    componentDidMount() {
+        this.setState({ showToolbar: true });
     }
 
     drawerToggleHandler = () => {
         this.setState({ mobileNavClicked: !this.state.mobileNavClicked });
     }
-    
-    failure = (response) =>{
+
+    failure = (response) => {
         //console.log(JSON.stringify(response));
     }
 
-    _logout = async () =>{
-        console.log("Logout pressed");
-        
-        
+    _logout = async () => {
 
         //check if google api session exists, if not then clear storage and force sign out.
         if (window.gapi) {
@@ -48,18 +44,17 @@ class Toolbar extends Component {
                 )
             }
         }
-        
+
         //fade out toolbar
-        this.setState({showToolbar: false});
+        this.setState({ showToolbar: false });
         //fade out page
         this.props.fadeOut();
-        
+
         //wait for toolbar to animate out
-        setTimeout(function() { 
-            //this.props.onLogout(); 
+        setTimeout(function () {
 
             //AuthService.logout()
-            logout();
+            AuthService.logout();
             this.props.history.push("/login");
         }.bind(this), 600);
         this.forceUpdate();
@@ -76,36 +71,36 @@ class Toolbar extends Component {
                 unmountOnExit
 
             >
-            <header className={classes.Toolbar}>
-                <DrawerToggle toggleHandler={this.drawerToggleHandler} toggle={this.state.mobileNavClicked} />
+                <header className={classes.Toolbar}>
+                    <DrawerToggle toggleHandler={this.drawerToggleHandler} toggle={this.state.mobileNavClicked} />
 
-                <div className={classes.Logo}>
-                    <Logo height="36px" width="80px" color="#003054" />
-                </div >
-                <div className={classes.DesktopOnly}>
-                    <nav>
-                        <NavigationItems url={this.props.url} />
+                    <div className={classes.Logo}>
+                        <Logo height="36px" width="80px" color="#003054" />
+                    </div >
+                    <div className={classes.DesktopOnly}>
+                        <nav>
+                            <NavigationItems url={this.props.url} />
 
 
-                    </nav>
-                    <Button buttonCSS={classes.ButtonCSS} textCSS={classes.buttonText} type="logout" size="16px" clicked={this._logout}>Logout</Button> 
+                        </nav>
+                        <Button buttonCSS={classes.ButtonCSS} textCSS={classes.buttonText} type="logout" size="16px" clicked={this._logout}>Logout</Button>
 
-                </div>
-                <div className={classes.MobileOnly}>
+                    </div>
+                    <div className={classes.MobileOnly}>
 
-                    <GoogleLogout
-                        buttonText="Logout"
-                        onLogoutSuccess={this._logout}
-                        autoload={false}
-                        render={renderProps => (
-                            <Button buttonCSS={classes.ButtonMobileCSS} type="logout" size="16px" clicked={renderProps.onClick} />
-                        )}
-                    />
-                   
-                    <MobileNav toggle={this.state.mobileNavClicked} toggleHandler={this.drawerToggleHandler} />
-                </div>
+                        <GoogleLogout
+                            buttonText="Logout"
+                            onLogoutSuccess={this._logout}
+                            autoload={false}
+                            render={renderProps => (
+                                <Button buttonCSS={classes.ButtonMobileCSS} type="logout" size="16px" clicked={renderProps.onClick} />
+                            )}
+                        />
 
-            </header>
+                        <MobileNav toggle={this.state.mobileNavClicked} toggleHandler={this.drawerToggleHandler} />
+                    </div>
+
+                </header>
             </CSSTransition>
         );
     }

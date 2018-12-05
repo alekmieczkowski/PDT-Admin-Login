@@ -1,6 +1,5 @@
-import { store } from '../../index';
+import {store} from '../../store/configureStore';
 import { userLogout, userLogin, updateToken } from '../../store/actions/auth';
-import * as api from '../../store/actions/api';
 import { getUsers, getUser } from '../../Api/users';
 import { getPosts } from '../../Api/posts';
 

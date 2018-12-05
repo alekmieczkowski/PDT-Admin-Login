@@ -3,16 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import reducer from './store/reducers';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import reduxThunk from 'redux-thunk';
-import logger from 'redux-logger';
+import { PersistGate } from 'redux-persist/integration/react'
+import {store, persistor} from './store/configureStore';
 
-export const store = createStore(
-    reducer,
-    applyMiddleware(reduxThunk, logger)
-    );
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+
+
+ReactDOM.render(
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+            <App />
+        </PersistGate>
+    </Provider>
+    
+    
+    , document.getElementById('root'));
 registerServiceWorker();

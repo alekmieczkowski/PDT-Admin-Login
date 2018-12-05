@@ -2,8 +2,10 @@ import React from 'react';
 import Layout from '../../hoc/Layout/Layout';
 import Aux from '../../hoc/Wrapper/Wrapper';
 import PrivateRoute from '../../services/Auth/PrivateRoute';
-import {connect} from 'react-redux';
 import {Switch, Route, withRouter } from 'react-router-dom';
+
+//Auth
+import {authHeader} from '../../services/Auth/AuthService';
 
 //Pages
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
@@ -13,7 +15,8 @@ import Directory from '../Directory/Directory';
 import Profile from '../Profile/Profile';
 import AdminPortal from '../../containers/AdminPortal/AdminPortal';
 import Login from '../Login/Login';
-import {authHeader} from '../../services/Auth/AuthService';
+
+
 
 
 

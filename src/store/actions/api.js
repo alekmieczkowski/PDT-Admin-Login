@@ -1,8 +1,3 @@
-import {getUsers, getUser} from '../../Api/users';
-import {getPosts} from '../../Api/posts';
-import { store } from '../../index';
-
-
 export const SET_USER = "SET_USER";
 export const SET_USERS = "SET_USERS";
 export const SET_POSTS = "SET_POSTS";
@@ -17,7 +12,6 @@ export let setUsers = (users) =>{
 }
 
 export let setUser = (user) =>{
-    console.log("In api actions: " + JSON.stringify(user));
     return{
         type: SET_USER,
         user

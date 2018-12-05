@@ -1,5 +1,4 @@
 import * as spinnerActions from '../actions/spinner';
-import * as authActions from '../actions/auth';
 
 
 

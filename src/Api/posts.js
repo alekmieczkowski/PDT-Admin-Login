@@ -1,5 +1,5 @@
 import axios from './axios_config';
-import {store} from '../index';
+import {store} from '../store/configureStore';
 import * as api from '../store/actions/api';
 
 /*

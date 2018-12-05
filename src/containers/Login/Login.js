@@ -7,8 +7,6 @@ import { clientId } from '../../constants/secrets';
 import * as transitionActions from '../../store/actions/transition';
 import GoogleButton from '../../components/Login/GoogleButton/GoogleButton';
 import { requestUserAccessRequest, ENUM_USERACCESSREQUEST_STATUS_ACCEPTED } from '../../Api/accessRequest';
-import { getUsers } from '../../Api/users';
-import { getPosts } from '../../Api/posts';
 import { CSSTransition } from 'react-transition-group';
 import * as AuthService from '../../services/Auth/AuthService';
 
@@ -28,7 +26,6 @@ class Login extends Component {
 
         //check if user is already logged in
         if(AuthService.authHeader() !== false){
-            console.log("in push");
             this.props.history.push("/");
         }
         else{
