@@ -25,7 +25,7 @@ class AddComment extends Component {
                 </div>
                 <div className={classes.submitContainer}>
                     {/*Submit Button*/}
-                    <Button clicked={null} type="submit" buttonCSS={classes.sendButton} textCSS={classes.buttonText} iconColor={"#003056"}>Send</Button>
+                    <Button clicked={null} type="submit" buttonCSS={classes.sendButton} iconSize={30} textCSS={classes.buttonText} iconColor={"#003056"}>Send</Button>
                 </div>
 
             </div>
