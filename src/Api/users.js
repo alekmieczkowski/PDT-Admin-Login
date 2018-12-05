@@ -1,21 +1,25 @@
 import axios from './axios_config';
+import {store} from '../index';
+import * as api from '../store/actions/api';
 
-export async function getUsers(token) {
-    let data = null;
-    await axios(token).get('/users').then(response => {
-        data = response.data;
-    }).catch(error => {
-        data = error;
-    });
-    return data;
+
+export let getUsers = (token) =>{
+    return (dispatch) =>{
+        return axios(token).get('/users').then(
+            response => store.dispatch(api.setUsers(response.data.result.users)),
+            error => console.log(error)
+        );
+    }
+     
 }
 
-export async function getCurrentUser(token) {
-    let data = null;
-    await axios(token).get('/user').then(response => {
-        data = response.data;
-    }).catch(error => {
-        data = error;
-    });
-    return data;
+
+export let getUser = (token) =>{
+    return (dispatch) =>{
+        return axios(token).get('/user').then(
+            response => store.dispatch(api.setUser(response.data.result.user)),
+            error => console.log(error)
+        );
+    }
+     
 }

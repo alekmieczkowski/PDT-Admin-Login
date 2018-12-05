@@ -4,15 +4,16 @@ import classes from './Login.scss';
 import { connect } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
 import { clientId } from '../../constants/secrets';
-import * as authActions from '../../store/auth/actions-auth';
-import * as spinnerActions from '../../store/spinner/actions-spinner';
-import * as transitionActions from '../../store/transition/actions-transition';
+import * as transitionActions from '../../store/actions/transition';
 import GoogleButton from '../../components/Login/GoogleButton/GoogleButton';
 import { requestUserAccessRequest, ENUM_USERACCESSREQUEST_STATUS_ACCEPTED } from '../../Api/accessRequest';
 import { getUsers } from '../../Api/users';
 import { getPosts } from '../../Api/posts';
 import { CSSTransition } from 'react-transition-group';
-import { authHeader } from '../../services/Auth/AuthService';
+import * as AuthService from '../../services/Auth/AuthService';
+
+//redux actions
+import {startSpinner, stopSpinner} from '../../store/actions/spinner';
 
 
 
@@ -22,6 +23,20 @@ class Login extends Component {
     state={
         animateIn: false
     }
+
+    componentDidMount(){
+
+        //check if user is already logged in
+        if(AuthService.authHeader() !== false){
+            console.log("in push");
+            this.props.history.push("/");
+        }
+        else{
+            this.setState({animateIn: true});
+        }
+        
+    }
+    
 
     componentWillUnmount(){
         //start transtion animation for homepage
@@ -45,8 +60,11 @@ class Login extends Component {
         }
         else {
             //start animation out
-            this.props.onLogin();
+            this.props.startSpinner();
             this.setState({animateIn: false});
+
+            /*
+            console.log(response.tokenId);
             //save token to localstorage
             await localStorage.setItem("token", JSON.stringify(response.tokenId));
 
@@ -62,9 +80,13 @@ class Login extends Component {
                 //console.log(JSON.stringify(response.result));
                 localStorage.setItem("posts", JSON.stringify(response.result));
             });
+            */
+
+            //AuthService.login
+            await AuthService.login(response.tokenId);
 
             //hide spinner
-            this.props.stopSpinner();
+            this.props.hideSpinner();
 
             
 
@@ -83,23 +105,10 @@ class Login extends Component {
         //console.log('loading') // eslint-disable-line
     }
 
-    componentDidMount(){
-
-        //check if user is already logged in
-        if(authHeader() !== false){
-            console.log("in push");
-            this.props.history.push("/");
-        }
-        else{
-            this.setState({animateIn: true});
-        }
-        
-    }
+    
 
 
     render() {
-
-
 
         return (
             <div className={classes.Wrapper}>
@@ -137,20 +146,12 @@ class Login extends Component {
 
 
 
-//map auth state in reducer to local state
-const mapStateToProps = state => {
-    //console.log("Mapping redux to state");
-    return {
-        auth: state.authenticated
-    };
-};
-
 //dispatch props to auth reducer
 const mapDispatchToProps = dispatch => {
     return {
-        onLogin: () => dispatch({ type: authActions.LOGIN, payload: { spinnerText: "Loading Data" } }),
-        stopSpinner: () => dispatch({ type: spinnerActions.STOP }),
+        startSpinner: () => dispatch(startSpinner("Loading Data")),
+        hideSpinner: () => dispatch(stopSpinner()),
         startTransition: () => dispatch({type: transitionActions.TRANSITION_START})
     }
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

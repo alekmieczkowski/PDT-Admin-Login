@@ -45,13 +45,5 @@ const routing = (props) => {
 
 }
 
-//map auth state in reducer to local state
-const mapStateToProps = state => {
-    //console.log("In router auth:" + JSON.stringify(state.auth));
-    return {
-        auth: state.auth,
-        
-    };
-};
 
-export default withRouter(connect(mapStateToProps)(routing));
+export default withRouter(routing);

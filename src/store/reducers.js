@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import auth from './auth/reducer-auth';
-import spinner from './spinner/reducer-spinner';
-import transition from './transition/reducer-transition';
+import auth from './reducers/auth';
+import spinner from './reducers/spinner';
+import transition from './reducers/transition';
+import api from './reducers/api';
 
 export default combineReducers({
     auth,
     spinner,
-    transition
+    transition,
+    api
 })

@@ -1,5 +1,8 @@
 import axios from './axios_config';
+import {store} from '../index';
+import * as api from '../store/actions/api';
 
+/*
 export async function getPosts(token) {
     let data = null;
     await axios(token).get('/posts').then(response => {
@@ -44,4 +47,17 @@ export async function updatePost(token, postId, content) {
         data = error;
     });
     return data;
+}
+
+
+----------------------------------------*/
+
+export let getPosts = (token) =>{
+    return (dispatch) =>{
+        return axios(token).get('/posts').then(
+            response => store.dispatch(api.setPosts(response.data.result.posts)),
+            error => console.log(error)
+        );
+    }
+     
 }

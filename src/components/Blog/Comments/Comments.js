@@ -20,18 +20,28 @@ class Comments extends Component {
             return <Comment key={comment.comment_id} data={comment} />;
         });
 
+
         //save all comments - first one
         let allComments = null;
         if(comments.length > 1){
             allComments = comments;
             allComments = allComments.splice(1);
+            
         }
 
-        //change text on button
-        let  commentText = "No Comments";
+        //change css to innactive
+        let commentStyle = [classes.showComments, classes.innactive].join(' ');
         
+        let  commentText = "No More Comments";
+        //change text on button
+        if(comments.length  === 0){
+            commentText = "No Comments";
+        }
+        
+        //if there are more comments
         if(allComments !== null){
 
+            commentStyle = [classes.showComments, classes.active].join(' ');
             let grammar = "Comment";
             if(allComments.length > 1){
                 grammar = "Comments";
@@ -42,9 +52,9 @@ class Comments extends Component {
 
         return(
             <div className={classes.container}>
-                {comments[0]}
+                {comments.length !== 0 ? comments[0] : null}
                 {this.state.showComments ? allComments : null}
-                <div className={classes.showComments} onClick={this._toggleComments}> {commentText}</div>               
+                <div className={commentStyle} onClick={this._toggleComments}> {commentText}</div>               
             </div>
 
         );

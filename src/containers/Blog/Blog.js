@@ -7,6 +7,8 @@ import FakeData from './fakePosts';
 
 class Blog extends Component {
 
+    
+
     render() {
         return (
             <div className={classes.container}>

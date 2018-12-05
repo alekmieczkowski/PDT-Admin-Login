@@ -23,7 +23,6 @@
 }
 
 .showComments{
-    background-color: $primary;
     color: $secondary;
     font-size: 20px;
     text-align: center;
@@ -34,5 +33,15 @@
     align-items: center;
     margin: 2px;
     display: flex;
+    
 
+}
+
+.active{
+    background-color: $primary;
+    cursor: pointer;
+}
+
+.innactive{
+    background-color: #59879C;
 }

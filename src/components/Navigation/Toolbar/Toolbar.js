@@ -3,13 +3,14 @@ import classes from './Toolbar.scss';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Button from '../../UI/Button/Button';
-import * as authActions from '../../../store/auth/actions-auth';
-import * as transitionActions from '../../../store/transition/actions-transition';
+import * as authActions from '../../../store/actions/auth';
+import * as transitionActions from '../../../store/actions/transition';
 import { withRouter } from 'react-router-dom';
 import DrawerToggle from '../MobileNav/DrawerToggle/DrawerToggle';
 import MobileNav from '../MobileNav/MobileNav';
 import { GoogleLogout } from 'react-google-login';
 import { CSSTransition } from 'react-transition-group';
+import {logout} from '../../../services/Auth/AuthService';
 
 //get state from reducers
 import { connect } from 'react-redux';
@@ -35,7 +36,8 @@ class Toolbar extends Component {
 
     _logout = async () =>{
         console.log("Logout pressed");
-        await localStorage.clear();
+        
+        
 
         //check if google api session exists, if not then clear storage and force sign out.
         if (window.gapi) {
@@ -54,9 +56,13 @@ class Toolbar extends Component {
         
         //wait for toolbar to animate out
         setTimeout(function() { 
-            this.props.onLogout(); 
+            //this.props.onLogout(); 
+
+            //AuthService.logout()
+            logout();
+            this.props.history.push("/login");
         }.bind(this), 600);
-        this.forceUpdate()
+        this.forceUpdate();
     }
 
     render() {
@@ -83,16 +89,7 @@ class Toolbar extends Component {
 
                     </nav>
                     <Button buttonCSS={classes.ButtonCSS} textCSS={classes.buttonText} type="logout" size="16px" clicked={this._logout}>Logout</Button> 
-                    {/* 
-                    <GoogleLogout
-                        buttonText="Logout"
-                        onFailure={console.log("Error loggin gout")}
-                        onLogoutSuccess={this._logout}
-                        autoload={false}
-                        render={renderProps => (
-                            <Button buttonCSS={classes.ButtonCSS} type="logout" size="16px" clicked={renderProps.onClick}>Logout</Button>
-                        )}
-                        />*/}
+
                 </div>
                 <div className={classes.MobileOnly}>
 
@@ -114,18 +111,13 @@ class Toolbar extends Component {
     }
 }
 
-const mapStateToprops = state => {
-    return {
-        auth: state.authenticated
-    };
-};
+
 
 //dispatch this.props to auth reducer
 const mapDispatchToprops = dispatch => {
     return {
-        onLogout: () => dispatch({ type: authActions.LOGOUT }),
         fadeOut: () => dispatch({ type: transitionActions.TRANSITION_STOP }),
     }
 };
 
-export default withRouter(connect(mapStateToprops, mapDispatchToprops)(Toolbar));
+export default withRouter(connect(null, mapDispatchToprops)(Toolbar));

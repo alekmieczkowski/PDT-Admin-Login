@@ -4,10 +4,15 @@ import './index.scss';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import reducer from './store/reducers';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import reduxThunk from 'redux-thunk';
+import logger from 'redux-logger';
 
-const store = createStore(reducer);
+export const store = createStore(
+    reducer,
+    applyMiddleware(reduxThunk, logger)
+    );
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();

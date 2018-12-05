@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import classes from './NavigationItem.scss';
 import { withRouter } from 'react-router'
-import * as transitionActions from '../../../../store/transition/actions-transition';
+import * as transitionActions from '../../../../store/actions/transition';
 
 class navigationItem extends Component{
 

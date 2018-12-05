@@ -23,7 +23,6 @@ class Layout extends Component{
 //map auth state in reducer to local state
 const mapStateToProps = state => {
     return {
-        pauseLoad: state.spinner.pauseLoad,
         spinnerText: state.spinner.spinnerText,
         animateSpinner: state.spinner.animateSpinner,
     };
