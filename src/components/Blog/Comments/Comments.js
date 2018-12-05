@@ -9,9 +9,19 @@ class Comments extends Component {
     }
 
 
+    //check if post should update on data refresh
+    shouldComponentUpdate(nextProps, nextState) {
+        //check if post data is the same, and if you are not trying to open comments/settings
+        if (this.props.data === nextProps.data && this.state.showComments === nextState.showComments) {
+            return false;
+        }
+        return true;
+    }
+
     _toggleComments = () =>{
         this.setState({showComments: !this.state.showComments});
     }
+
 
     render(){
 

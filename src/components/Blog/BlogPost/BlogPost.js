@@ -10,7 +10,14 @@ import AddComment from './AddComment/AddComment';
 
 class BlogPost extends Component {
 
-
+    //check if post should update on data refresh
+    shouldComponentUpdate(nextProps, nextState) {
+        //check if post data is the same
+        if (this.props.data === nextProps.data) {
+            return false;
+        }
+        return true;
+    }
 
 
     render() {
@@ -56,7 +63,6 @@ class BlogPost extends Component {
                         <Options delete={null} submit={null} admin={true} likes={this.props.data.likes} comments={this.props.data.comments.length}/>
                         
                     </div>
-                    {/*<div className={classes.optionContainer}></div>*/}
                 </div>
 
             </div>

@@ -1,3 +1,5 @@
+@import './constants/theme';
+
 .App {
   text-align: center;
 }
@@ -8,10 +10,10 @@
 }
 
 .App-header {
-  background-color: #003056;
+  background-color: $primary;
   height: 150px;
   padding: 20px;
-  color: white;
+  color: $secondary;
 }
 
 .App-title {
@@ -28,13 +30,13 @@
 }
 
 .primary{
-  color: #003056;
+  color: $primary;
 }
 
 .secondary{
-  color: #ffffff;
+  color: $secondary;
 }
 
 .triary{
-  color: rgb(0,129,198);
+  color: $triary;
 }

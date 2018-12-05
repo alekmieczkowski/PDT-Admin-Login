@@ -59,26 +59,7 @@ class Login extends Component {
             //start animation out
             this.props.startSpinner();
             this.setState({animateIn: false});
-
-            /*
-            console.log(response.tokenId);
-            //save token to localstorage
-            await localStorage.setItem("token", JSON.stringify(response.tokenId));
-
-
-            //pull user data
-            await getUsers(response.tokenId).then(response => {
-                //console.log(JSON.stringify(response.result));
-                localStorage.setItem("users", JSON.stringify(response.result));
-            });
-
-            //pull post data
-            await getPosts(response.tokenId).then(response => {
-                //console.log(JSON.stringify(response.result));
-                localStorage.setItem("posts", JSON.stringify(response.result));
-            });
-            */
-
+            
             //AuthService.login
             await AuthService.login(response.tokenId);
 
