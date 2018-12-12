@@ -27,7 +27,7 @@ const comment = (props) => {
                     </div>
 
                     <div className={classes.likeContainer}>
-                        <LikeButton emblemTextCSS={classes.buttonEmblemText} emblemCSS={classes.buttonEmblem} css={classes.button} likes={props.data.likes} iconSize={22} iconColor={'#003056'} />
+                        <LikeButton emblemTextCSS={classes.buttonEmblemText} emblemCSS={classes.buttonEmblem} css={classes.button} commentId={props.data.comment_id} clicked={props.updateLike}  likedByUser={props.data.isLikedByUser} likes={props.data.likes} iconSize={22} iconColor={'#003056'} />
                     </div>
 
                 </div>

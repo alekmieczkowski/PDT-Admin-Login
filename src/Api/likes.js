@@ -48,3 +48,26 @@ export let setPostLike = (token, postId) =>{
         );
     }
 }
+
+export let setCommentLike = (token, commentId) =>{
+
+    console.log("commentID: " + commentId);
+    return (dispatch) =>{
+        return axios(token).post('/like',{
+            comment_id: commentId
+        }).then(
+            response => {
+                console.log(JSON.stringify(response));
+                let commentLiked = true;
+                //if post has been unliked
+                if(typeof response.data.result.like === 'undefined'){
+                    commentLiked = false;
+                }
+                
+                //send dispatch
+                store.dispatch(api.setCommentLike({comment_id: commentId, liked: commentLiked}));
+            },
+            error => console.log(error)
+        );
+    }
+}

@@ -29,7 +29,7 @@ class LikeButton extends Component{
         }
         this.setState({likes: likes});
 
-        //call redux async
+        //call redux
         this.props.clicked();
     }
 

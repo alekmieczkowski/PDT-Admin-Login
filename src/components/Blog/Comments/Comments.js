@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import classes from './Comments.scss';
 import Comment from './Comment/Comment';
+import {updateCommentLike} from '../../../services/PostService';
 
 class Comments extends Component {
 
@@ -22,12 +23,17 @@ class Comments extends Component {
         this.setState({showComments: !this.state.showComments});
     }
 
+    _updateCommentLike = (commentId) =>{
+        console.log("Calling comment like update");
+        updateCommentLike(commentId);
+    }
+
 
     render(){
 
         //render out comments
         let comments = this.props.data.map((comment) => {
-            return <Comment key={comment.comment_id} data={comment} />;
+            return <Comment key={comment.comment_id} data={comment} updateLike={this._updateCommentLike}/>;
         });
 
 
