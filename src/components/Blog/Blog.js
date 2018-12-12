@@ -6,7 +6,7 @@ import BlogPost from './BlogPost/BlogPost';
 const blog = (props) => {
 
     let posts = props.data.map((post) => {
-        return <BlogPost key={post.post_id} data={post} />;
+        return <BlogPost key={post.post_id} data={post} userId={props.userId} admin={props.admin}/>;
     })
 
     return (

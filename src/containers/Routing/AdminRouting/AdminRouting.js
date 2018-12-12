@@ -1,5 +1,5 @@
 import React from 'react';
-import PrivateRoute from '../../../services/Auth/PrivateRoute';
+import PrivateRoute from '..//PrivateRoute';
 import HomePage from '../../../containers/AdminPortal/Homepage/Homepage';
 import Members from '../../AdminPortal/Members/Members';
 

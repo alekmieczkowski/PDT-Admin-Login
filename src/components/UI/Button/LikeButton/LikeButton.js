@@ -12,7 +12,7 @@ class LikeButton extends Component{
     }
 
     componentDidMount(){
-        this.setState({likes: this.props.likes});
+        this.setState({likes: this.props.likes, liked: this.props.likedByUser});
     }
 
     _handleLike = () =>{
@@ -28,6 +28,9 @@ class LikeButton extends Component{
             likes++;
         }
         this.setState({likes: likes});
+
+        //call redux async
+        this.props.clicked();
     }
 
     render(){

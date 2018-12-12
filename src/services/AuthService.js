@@ -1,8 +1,8 @@
-import {store} from '../../store/configureStore';
-import { userLogout, userLogin, updateToken } from '../../store/actions/auth';
-import { getUsers, getUser } from '../../Api/users';
-import { getPosts } from '../../Api/posts';
-import {clearReduxState} from '../../store/actions/global';
+import {store} from '../store/configureStore';
+import { userLogout, userLogin, updateToken } from '../store/actions/auth';
+import { getUsers, getUser } from '../Api/users';
+import { getPosts } from '../Api/posts';
+import {clearReduxState} from '../store/actions/global';
 
 
 
@@ -32,6 +32,8 @@ export function logout() {
 }
 
 export async function login(token) {
+
+    console.log(token);
 
     //set Token
     await store.dispatch(updateToken(token));

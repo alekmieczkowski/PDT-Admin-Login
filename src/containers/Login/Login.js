@@ -8,7 +8,7 @@ import * as transitionActions from '../../store/actions/transition';
 import GoogleButton from '../../components/Login/GoogleButton/GoogleButton';
 import { requestUserAccessRequest, ENUM_USERACCESSREQUEST_STATUS_ACCEPTED } from '../../Api/accessRequest';
 import { CSSTransition } from 'react-transition-group';
-import * as AuthService from '../../services/Auth/AuthService';
+import * as AuthService from '../../services/AuthService';
 
 //redux actions
 import {startSpinner, stopSpinner} from '../../store/actions/spinner';

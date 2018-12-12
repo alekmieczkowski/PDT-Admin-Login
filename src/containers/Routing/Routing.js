@@ -1,11 +1,11 @@
 import React from 'react';
 import Layout from '../../hoc/Layout/Layout';
 import Aux from '../../hoc/Wrapper/Wrapper';
-import PrivateRoute from '../../services/Auth/PrivateRoute';
+import PrivateRoute from './PrivateRoute';
 import {Switch, Route, withRouter } from 'react-router-dom';
 
 //Auth
-import {authHeader} from '../../services/Auth/AuthService';
+import {authHeader} from '../../services/AuthService';
 
 //Pages
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';

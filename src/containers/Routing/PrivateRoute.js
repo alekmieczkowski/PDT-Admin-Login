@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom'
 import Transition from '../../hoc/Transition/Transition';
-import {authHeader} from './AuthService';
+import {authHeader} from '../../services/AuthService';
 
 
 const PrivateRoute = ({ component: Component, auth, ...rest }) => {

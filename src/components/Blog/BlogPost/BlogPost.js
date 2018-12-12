@@ -7,6 +7,9 @@ import PostContents from './PostContents/PostContents';
 import Comments from '../Comments/Comments';
 import AddComment from './AddComment/AddComment';
 
+//like update
+import {updatePostLike} from '../../../services/PostService';
+
 
 class BlogPost extends Component {
 
@@ -17,6 +20,12 @@ class BlogPost extends Component {
             return false;
         }
         return true;
+    }
+
+    _updateLike =  () =>{
+
+        console.log("Update like clicked");
+        updatePostLike(this.props.data.post_id);
     }
 
 
@@ -31,6 +40,14 @@ class BlogPost extends Component {
             images = <div className={classes.postImageContainer}></div>;
         }
         */
+
+        //check if user has admin privelages for post
+        let admin = false;
+        //console.log("userId: " + this.props.userId + " admin: " + this.props.admin + " ownerId: " + this.props.data.owner_id);
+        if(this.props.userId === this.props.data.owner_id || this.props.admin){
+            admin = true;
+        }
+
         return (
 
             <div className={classes.container}>
@@ -60,7 +77,7 @@ class BlogPost extends Component {
                     {/*Comments Contents */}
                     <div className={classes.rightContainer}>
                         {/*Buttons */}
-                        <Options delete={null} submit={null} admin={true} likes={this.props.data.likes} comments={this.props.data.comments.length}/>
+                        <Options delete={null} submit={null} admin={admin} updateLike={this._updateLike} likes={this.props.data.likes} likedByUser={this.props.data.isLikedByUser} comments={this.props.data.comments.length}/>
                         
                     </div>
                 </div>

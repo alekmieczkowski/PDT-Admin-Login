@@ -9,7 +9,7 @@ import DrawerToggle from '../MobileNav/DrawerToggle/DrawerToggle';
 import MobileNav from '../MobileNav/MobileNav';
 import { GoogleLogout } from 'react-google-login';
 import { CSSTransition } from 'react-transition-group';
-import * as AuthService from '../../../services/Auth/AuthService';
+import * as AuthService from '../../../services/AuthService';
 
 //get state from reducers
 import { connect } from 'react-redux';
