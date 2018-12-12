@@ -68,7 +68,7 @@ class BlogPost extends Component {
                             {images}
 
                             {/*Comments */}
-                            <AddComment/>
+                            <AddComment postId={this.props.data.post_id}/>
                             <Comments data={this.props.data.comments}/>
 
                         </div>

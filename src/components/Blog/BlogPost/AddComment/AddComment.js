@@ -2,16 +2,42 @@ import React, { Component } from 'react';
 import classes from './AddComment.scss';
 import Textarea from 'react-textarea-autosize';
 import Button from '../../../UI/Button/Button';
+import {isValidInput} from '../../../../services/InputValidationService';
+import {addComment} from '../../../../services/PostService';
 
 
 class AddComment extends Component {
     
     state={
-        comment: ""
+        comment: "",
+        submit: false,
     }
 
     _updateText = (event) =>{
         this.setState({comment: event.target.value});
+    }
+
+    _submitComment = async() =>{
+        this.setState({submit: true});
+
+        //check if comment has valid input
+        if(isValidInput(this.state.comment)){
+            //submit comment
+            await addComment(this.props.postId, this.state.comment)
+            
+
+            //reset comment box
+            this.setState({comment: ""});
+        }
+        else{
+            console.log("Invalid comment submission");
+            //throw error
+            //TODO: separate spinner so warning appear the same way.
+            //TODO: Hook up warnings to redux to show on axios failure?
+        }
+
+
+        this.setState({submit: false});
     }
 
 
@@ -25,7 +51,7 @@ class AddComment extends Component {
                 </div>
                 <div className={classes.submitContainer}>
                     {/*Submit Button*/}
-                    <Button clicked={null} type="submit" buttonCSS={classes.sendButton} iconSize={30} textCSS={classes.buttonText} iconColor={"#003056"}>Send</Button>
+                    {this.state.submit? <Button clicked={null} type="loading" buttonCSS={classes.sendButton} iconSize={30} textCSS={classes.buttonText} iconColor={"#003056"}>Send</Button> : <Button clicked={this._submitComment} type="submit" buttonCSS={classes.sendButton} iconSize={30} textCSS={classes.buttonText} iconColor={"#003056"}>Send</Button>} 
                 </div>
 
             </div>

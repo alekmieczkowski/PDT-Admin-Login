@@ -4,10 +4,13 @@ import {MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend} from 'react-i
 import {IoTrashB} from 'react-icons/lib/io'
 import { FaEdit } from "react-icons/lib/fa";
 import FitText from '@kennethormandy/react-fittext'
+import Loading from '../../../assets/img/Spinner/loading-blue.gif';
 
 const button = (props) => {
 
     let type = "";
+
+
 
     //check icon size
     let iconSize = 20;
@@ -17,7 +20,7 @@ const button = (props) => {
     
     switch(props.type){
         case "logout":
-            type= <MdExitToApp size={iconSize} color={props.iconColor}/>;
+            type= <MdExitToApp size={iconSize}  color={props.iconColor}/>;
             break;
         case "email":
             type= <MdEmail size={iconSize} style={props.iconColor}/>;
@@ -38,7 +41,10 @@ const button = (props) => {
             type= <IoTrashB size={iconSize} color={props.iconColor}/>;
             break;
         case "submit":
-            type= <MdSend size={iconSize} color={props.iconColor}/>;
+            type= <MdSend size={iconSize} className={classes.icon} color={props.iconColor}/>;
+            break;
+        case "loading":
+            type= <img height={iconSize} className={classes.loadingImg} src={Loading} alt={"Loading"}/>;
             break;
         default:
             type= null;
@@ -73,14 +79,8 @@ const button = (props) => {
 
     return(
     <div className={buttonCSS} onClick={props.clicked}>
-        <div className={classes.icon}>
-            {type}
-        </div>
-        
+        {type}
         {textData}
-      
-       
-
     </div>
     );
 };

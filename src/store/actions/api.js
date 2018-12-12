@@ -4,6 +4,7 @@ export const SET_POSTS = "SET_POSTS";
 export const SET_CALENDAR = "SET_CALENDAR";
 export const SET_POST_LIKE="SET_POST_LIKE";
 export const SET_COMMENT_LIKE="SET_COMMENT_LIKE";
+export const SUBMIT_COMMENT="SET_COMMENT"
 
 
 export let setUsers = (users) =>{

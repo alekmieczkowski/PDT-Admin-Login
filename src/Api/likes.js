@@ -34,8 +34,9 @@ export let setPostLike = (token, postId) =>{
             post_id: postId
         }).then(
             response => {
-                console.log(JSON.stringify(response));
+
                 let postLiked = true;
+                
                 //if post has been unliked
                 if(typeof response.data.result.like === 'undefined'){
                     postLiked = false;
@@ -50,15 +51,14 @@ export let setPostLike = (token, postId) =>{
 }
 
 export let setCommentLike = (token, commentId) =>{
-
-    console.log("commentID: " + commentId);
     return (dispatch) =>{
         return axios(token).post('/like',{
             comment_id: commentId
         }).then(
             response => {
-                console.log(JSON.stringify(response));
+
                 let commentLiked = true;
+
                 //if post has been unliked
                 if(typeof response.data.result.like === 'undefined'){
                     commentLiked = false;
