@@ -17,6 +17,6 @@ export function updateCommentLike(comment_id){
 
 
 //submit comment and get new comment data
-export function addComment(post_id, content){
-    store.dispatch(setComment(token, post_id, content));
+export async function addComment(post_id, content){
+    await store.dispatch(setComment(token, post_id, content));
 }

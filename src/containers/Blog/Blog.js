@@ -6,9 +6,9 @@ import {connect} from 'react-redux';
 
 
 
+
 class Blog extends Component {
 
-    
     render() {
         return (
             <div className={classes.container}>

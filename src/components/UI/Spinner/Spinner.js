@@ -10,9 +10,15 @@ export default class Spinner extends Component {
 
 
     render() {
+        
+        //block out background clicks if active
+        let backgroundStyle = classes.background;
+        if(this.props.isActive){
+            backgroundStyle= [classes.background, classes.backgroundActive].join(' ');
+        }
 
-        //console.log("Spinner: " + this.props.isActive);
         return (
+            <div className={backgroundStyle} onClick={this.props.clicked}>
             <CSSTransition
                 in={this.props.isActive}
                 timeout={800}
@@ -20,24 +26,15 @@ export default class Spinner extends Component {
                 appear={false}
                 unmountOnExit
             >
-                
-                    <div className={classes.container}>
-                        <div className={classes.textBox}>
-                            {this.props.spinnerText}
-                    </div>
-
-                        <div className={classes.spinnerBox}>
-                            <img src={SpinnerIcon} className={classes.spinnerIcon} alt={"Where'd the spinner go?..."}/>
-                        </div>
-
-                    </div>
             
-
-
-
-
-
+                <div className={classes.container}>
+                    {this.props.children}
+                </div>
+            
+            
+                
             </CSSTransition>
+            </div>
 
 
 

@@ -1,0 +1,28 @@
+@import '../../../../constants/theme';
+
+.textBox{
+    flex: 2;
+    text-align: -webkit-center;
+    font-size: 30px;
+    padding: 4px;
+    justify-content: center;
+
+
+}
+.spinnerText{
+    font-size: 60px;
+    color: $primary;
+
+}
+.spinnerBox{
+
+    text-align: -webkit-center;
+    flex: 1;
+}
+.spinnerIcon{
+    align-items:'center';
+    max-height: 80px;
+    max-width: 80px;
+
+}
+

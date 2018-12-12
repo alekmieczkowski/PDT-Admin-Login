@@ -4,7 +4,7 @@ import Textarea from 'react-textarea-autosize';
 import Button from '../../../UI/Button/Button';
 import {isValidInput} from '../../../../services/InputValidationService';
 import {addComment} from '../../../../services/PostService';
-
+import {showError} from '../../../../services/ErrorService';
 
 class AddComment extends Component {
     
@@ -25,13 +25,13 @@ class AddComment extends Component {
             //submit comment
             await addComment(this.props.postId, this.state.comment)
             
-
             //reset comment box
             this.setState({comment: ""});
         }
         else{
-            console.log("Invalid comment submission");
+            
             //throw error
+            showError("Invalid input. Comment must contain text");
             //TODO: separate spinner so warning appear the same way.
             //TODO: Hook up warnings to redux to show on axios failure?
         }
