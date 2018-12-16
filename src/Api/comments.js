@@ -1,7 +1,7 @@
 import axios from './axios_config';
 import {getPosts} from './posts';
 import {store} from '../store/configureStore';
-import * as api from '../store/actions/api';
+
 
 
 /*

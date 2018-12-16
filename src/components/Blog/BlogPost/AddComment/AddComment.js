@@ -23,7 +23,7 @@ class AddComment extends Component {
         //check if comment has valid input
         if(isValidInput(this.state.comment)){
             //submit comment
-            await addComment(this.props.postId, this.state.comment)
+            await addComment(this.props.postId, this.state.comment);
             
             //reset comment box
             this.setState({comment: ""});
@@ -32,8 +32,6 @@ class AddComment extends Component {
             
             //throw error
             showError("Invalid input. Comment must contain text");
-            //TODO: separate spinner so warning appear the same way.
-            //TODO: Hook up warnings to redux to show on axios failure?
         }
 
 

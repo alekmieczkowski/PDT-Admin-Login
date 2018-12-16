@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classes from './Spinner.scss';
-import SpinnerIcon from '../../../assets/img/Spinner/spinner.gif';
 import { CSSTransition } from 'react-transition-group';
 
 export default class Spinner extends Component {

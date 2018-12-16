@@ -1,6 +1,5 @@
 import * as actionTypes from '../actions/api';
 import { CLEAR_STATE } from '../actions/global';
-import Comments from '../../components/Blog/Comments/Comments';
 
 let initialState = {
     user: null,

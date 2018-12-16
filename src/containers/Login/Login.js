@@ -9,6 +9,7 @@ import GoogleButton from '../../components/Login/GoogleButton/GoogleButton';
 import { requestUserAccessRequest, ENUM_USERACCESSREQUEST_STATUS_ACCEPTED } from '../../Api/accessRequest';
 import { CSSTransition } from 'react-transition-group';
 import * as AuthService from '../../services/AuthService';
+import {showError} from '../../services/ErrorService';
 
 //redux actions
 import {startSpinner, stopSpinner} from '../../store/actions/spinner';
@@ -51,7 +52,11 @@ class Login extends Component {
             }
         });
 
-        if (requestResponse.status !== ENUM_USERACCESSREQUEST_STATUS_ACCEPTED) {
+        //if server request was null
+        if(requestResponse === null){
+            showError("Error Connecting to Server");
+        }
+        else if (requestResponse.status !== ENUM_USERACCESSREQUEST_STATUS_ACCEPTED) {
             //if user is not active
             alert("Sorry, you are not authorized to access this app");
         }
@@ -76,7 +81,7 @@ class Login extends Component {
 
     error = (response) => {
 
-        alert(response.error) // eslint-disable-line
+        showError("Error Signing into Google"); // eslint-disable-line
     }
 
     loading = () => {
