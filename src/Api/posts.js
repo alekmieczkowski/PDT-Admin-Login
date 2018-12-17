@@ -66,7 +66,7 @@ export let getPosts = (token) =>{
 export let removePost = (token, post_id) =>{
     return (dispatch) =>{
         return axios(token).delete('/post/'+post_id).then(
-            response => store.dispatch(api.setPosts(response.data.result.posts)),
+            response => dispatch(getPosts(token)),
             error => showError("Error Deleting Posts")
         );
     }

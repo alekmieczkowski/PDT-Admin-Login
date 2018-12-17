@@ -1,28 +1,52 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Confirmation.scss';
 import Spinner from '../Spinner';
 import Button from '../../../UI/Button/Button';
-import {MdError} from 'react-icons/lib/md';
+import { MdError } from 'react-icons/lib/md';
+import { deletePost } from '../../../../services/PostService';
+import { DELETE_POST } from '../../../../store/actions/api';
 
-const confirmation = (props) => {
+class Confirmation extends Component {
 
-    return (
+    _onAccept = ()=>{
+        console.log("Type: "+ this.props.type + " Data: "+this.props.data);
+        let acceptButton = null;
 
-        <Spinner isActive={props.isActive} clicked={props.dismiss}>
-        
+        switch (this.props.type) {
+            case DELETE_POST:
+                acceptButton = deletePost;
+                break;
+            default:
+                acceptButton = null;
+                break;
+        }
+
+        if(this.props.data !== null)
+            acceptButton(this.props.data);
+        else
+            acceptButton();
+    }
+
+    render() {
+
+        return (
+
+            <Spinner isActive={this.props.isActive} clicked={null}>
+
                 <div className={classes.textBox}>
-                    <div className={classes.errorIcon}><MdError size={35}  color={'#003056'} className={classes.icon}/></div>
+                    <div className={classes.errorIcon}><MdError size={35} color={'#003056'} className={classes.icon} /></div>
                     <div className={classes.errorHeader}>Confirm</div>
                 </div>
                 <div className={classes.errorMessage}>
-                    {props.errorText}
+                    {this.props.text}
                 </div>
-                <Button clicked={props.accept} textCSS={classes.buttonText} buttonCSS={classes.buttonCSS}>Accept</Button>
-                <Button clicked={props.dismiss} textCSS={classes.buttonText} buttonCSS={classes.buttonCSS}>Dismiss</Button>
-        </Spinner>
+                <Button clicked={this._onAccept} textCSS={classes.buttonText} buttonCSS={classes.buttonCSS}>Accept</Button>
+                <Button clicked={this.props.dismiss} textCSS={classes.buttonText} buttonCSS={classes.buttonCSS}>Dismiss</Button>
+            </Spinner>
 
-    );
+        );
+    }
 
 }
 
-export default confirmation;
+export default Confirmation;

@@ -4,7 +4,9 @@ import {CLEAR_STATE} from '../actions/global';
 let initialState={
     toggleConfirmation: false,
     message: "",
-    confirmationAccept: false,
+    type: "",
+    data: "",
+
 }
 
 const confirmation = (state = initialState, action) => {
@@ -13,8 +15,9 @@ const confirmation = (state = initialState, action) => {
             return state = {
                 ...state,
                 toggleConfirmation: true,
-                confirmationAccept: false,
-                message: action.confirmationMessage,
+                message: action.message,
+                type: action.confirmationType,
+                data: action.data
             }
         case confirmationActions.HIDE_CONFIRMATION:
             return state ={
@@ -24,7 +27,6 @@ const confirmation = (state = initialState, action) => {
         case confirmationActions.ACCEPT_CONFIRMATION:
             return state ={
                 ...state,
-                confirmationAccept: true,
                 toggleConfirmation: false,
             }
         case confirmationActions.DECLINE_CONFIRMATION:

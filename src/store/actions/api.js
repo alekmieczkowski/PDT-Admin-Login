@@ -4,7 +4,8 @@ export const SET_POSTS = "SET_POSTS";
 export const SET_CALENDAR = "SET_CALENDAR";
 export const SET_POST_LIKE="SET_POST_LIKE";
 export const SET_COMMENT_LIKE="SET_COMMENT_LIKE";
-export const SUBMIT_COMMENT="SET_COMMENT"
+export const SUBMIT_COMMENT="SET_COMMENT";
+export const DELETE_POST="DELETE_POST";
 
 
 export let setUsers = (users) =>{
@@ -48,7 +49,6 @@ export let setPostLike = (likedPost) =>{
 }
 
 export let setCommentLike = (likedComment) =>{
-    console.log(JSON.stringify(likedComment));
     return{
         type: SET_COMMENT_LIKE,
         likedComment

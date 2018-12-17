@@ -27,7 +27,7 @@ class Layout extends Component{
             <Wrapper>
                 <LoadingSpinner spinnerText={this.props.spinnerText} isActive={this.props.animateSpinner}/>
                 <ErrorSpinner errorText={this.props.errorMessage} isActive={this.props.error} dismiss={hideError}/>
-                <ConfirmationSpinner confirmationText={this.props.confirmationMessage} isActive={this.props.confirmation} accept={confirmationService.acceptConfirmation} dismiss={confirmationService.hideConfirmation}/>              
+                <ConfirmationSpinner text={this.props.confirmationMessage} isActive={this.props.confirmation} type={this.props.confirmationType} data={this.props.confirmationData} dismiss={confirmationService.hideConfirmation}/>              
                 <main className={classes.Layout}>
                     {this.props.children}
                 </main> 
@@ -46,6 +46,8 @@ const mapStateToProps = state => {
         error: state.error.toggleError,
         confirmationMessage: state.confirmation.message,
         confirmation: state.confirmation.toggleConfirmation,
+        confirmationType: state.confirmation.type,
+        confirmationData: state.confirmation.data
     };
 };
 

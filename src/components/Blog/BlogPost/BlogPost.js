@@ -14,7 +14,8 @@ import * as postService from '../../../services/PostService';
 import * as loadingService from '../../../services/LoadingService';
 //confirmation activation
 import * as confirmationService from '../../../services/ConfirmationService';
-//
+
+import {DELETE_POST} from '../../../store/actions/api';
 
 
 class BlogPost extends Component {
@@ -35,36 +36,8 @@ class BlogPost extends Component {
     _removePost = async () =>{
 
         //ask for confirmation
-        await confirmationService.showConfirmation("Are you sure you wish to delete this post?");
+        await confirmationService.showConfirmation("Are you sure you wish to delete this post?", DELETE_POST, this.props.data.post_id);
 
-             //if user clicked confirm on deletion
-             console.log("AllowDelete: " + this.props.allowDelete);
-             if(this.props.allowDelete){
-                 console.log("Inside post remove");
-                 //start spinner
-                 loadingService.showLoading("Deleting Post");
-     
-                 //call delete 
-                  postService.deletePost(this.props.data.post_id);
-     
-                 //stop spinner
-                 loadingService.hideLoading();
-     
-                 
-     
-             }
-             //remove allow for deletion from confirmation
-              confirmationService.declineConfirmation();
-
-        
-           
-
-       
-
-        
-        
-
-        
     }
 
 

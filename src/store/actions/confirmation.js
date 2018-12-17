@@ -3,11 +3,11 @@ export const HIDE_CONFIRMATION = "HIDE_CONFIRMATION";
 export const ACCEPT_CONFIRMATION = "ACCEPT_CONFIRMATION";
 export const DECLINE_CONFIRMATION = "DECLINE_CONFIRMATION";
 
-export let showConfirmationOverlay = (confirmationMessage) =>{
+export let showConfirmationOverlay = (message, confirmationType, data) =>{
     
     return{
         type: DISPLAY_CONFIRMATION,
-        confirmationMessage
+        message, confirmationType, data
     }
 }
 
