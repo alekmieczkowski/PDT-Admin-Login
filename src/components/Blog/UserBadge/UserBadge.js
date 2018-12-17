@@ -16,7 +16,12 @@ const userbadge = (props) =>{
                 {props.data.first_name} {props.data.last_name}
             </div>
             <div className={classes.badgeContainer}>
-                <Badge>Philanthropy</Badge><Badge>Community Service</Badge>
+            {
+                props.data.positions.map(position =>{
+                    return <Badge>{position}</Badge>;
+                })
+
+            }
             </div>
             
             </div>

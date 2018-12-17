@@ -40,8 +40,11 @@ class Confirmation extends Component {
                 <div className={classes.errorMessage}>
                     {this.props.text}
                 </div>
-                <Button clicked={this._onAccept} textCSS={classes.buttonText} buttonCSS={classes.buttonCSS}>Accept</Button>
-                <Button clicked={this.props.dismiss} textCSS={classes.buttonText} buttonCSS={classes.buttonCSS}>Dismiss</Button>
+                <div className={classes.buttonContainer}>
+                    <Button clicked={this._onAccept} textCSS={classes.buttonText} buttonCSS={classes.buttonCSS}>Accept</Button>
+                    <Button clicked={this.props.dismiss} textCSS={classes.buttonText} buttonCSS={classes.buttonCSS}>Dismiss</Button>
+                </div>
+                
             </Spinner>
 
         );
