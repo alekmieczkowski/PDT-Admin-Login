@@ -1,5 +1,5 @@
-export const SPINNER_START = true;
-export const SPINNER_STOP = false;
+export const SPINNER_START = "LOADING_START";
+export const SPINNER_STOP = "LOADING_STOP";
 
 export let startSpinner = (spinnerText) =>{
 

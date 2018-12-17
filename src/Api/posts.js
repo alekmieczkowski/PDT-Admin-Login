@@ -1,6 +1,7 @@
 import axios from './axios_config';
 import {store} from '../store/configureStore';
 import * as api from '../store/actions/api';
+import {showError} from '../services/ErrorService';
 
 /*
 export async function getPosts(token) {
@@ -56,7 +57,17 @@ export let getPosts = (token) =>{
     return (dispatch) =>{
         return axios(token).get('/posts').then(
             response => store.dispatch(api.setPosts(response.data.result.posts)),
-            error => console.log(error)
+            error => showError("Error Fetching Posts")
+        );
+    }
+     
+}
+
+export let removePost = (token, post_id) =>{
+    return (dispatch) =>{
+        return axios(token).delete('/post/'+post_id).then(
+            response => store.dispatch(api.setPosts(response.data.result.posts)),
+            error => showError("Error Deleting Posts")
         );
     }
      

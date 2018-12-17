@@ -6,9 +6,15 @@ import UserInfo from './UserInfo/UserInfo';
 import PostContents from './PostContents/PostContents';
 import Comments from '../Comments/Comments';
 import AddComment from './AddComment/AddComment';
+import {connect} from 'react-redux';
 
-//like update
-import {updatePostLike} from '../../../services/PostService';
+//Post Services
+import * as postService from '../../../services/PostService';
+//spinner services
+import * as loadingService from '../../../services/LoadingService';
+//confirmation activation
+import * as confirmationService from '../../../services/ConfirmationService';
+//
 
 
 class BlogPost extends Component {
@@ -23,9 +29,42 @@ class BlogPost extends Component {
     }
 
     _updateLike =  () =>{
+        postService.updatePostLike(this.props.data.post_id);
+    }
 
-        console.log("Update like clicked");
-        updatePostLike(this.props.data.post_id);
+    _removePost = async () =>{
+
+        //ask for confirmation
+        await confirmationService.showConfirmation("Are you sure you wish to delete this post?");
+
+             //if user clicked confirm on deletion
+             console.log("AllowDelete: " + this.props.allowDelete);
+             if(this.props.allowDelete){
+                 console.log("Inside post remove");
+                 //start spinner
+                 loadingService.showLoading("Deleting Post");
+     
+                 //call delete 
+                  postService.deletePost(this.props.data.post_id);
+     
+                 //stop spinner
+                 loadingService.hideLoading();
+     
+                 
+     
+             }
+             //remove allow for deletion from confirmation
+              confirmationService.declineConfirmation();
+
+        
+           
+
+       
+
+        
+        
+
+        
     }
 
 
@@ -77,7 +116,7 @@ class BlogPost extends Component {
                     {/*Comments Contents */}
                     <div className={classes.rightContainer}>
                         {/*Buttons */}
-                        <Options delete={null} submit={null} admin={admin} updateLike={this._updateLike} likes={this.props.data.likes} likedByUser={this.props.data.isLikedByUser} comments={this.props.data.comments.length}/>
+                        <Options delete={this._removePost} submit={null} admin={admin} updateLike={this._updateLike} likes={this.props.data.likes} likedByUser={this.props.data.isLikedByUser} comments={this.props.data.comments.length}/>
                         
                     </div>
                 </div>
@@ -92,4 +131,8 @@ class BlogPost extends Component {
 
 }
 
-export default BlogPost;
+function mapStateToProps(state) {
+    return { allowDelete: state.confirmation.confirmationAccept }
+  }
+
+export default connect(mapStateToProps, null)(BlogPost);

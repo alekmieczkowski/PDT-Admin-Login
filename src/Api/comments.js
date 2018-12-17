@@ -1,7 +1,7 @@
 import axios from './axios_config';
 import {getPosts} from './posts';
 import {store} from '../store/configureStore';
-
+import {showError} from '../services/ErrorService';
 
 
 /*
@@ -51,7 +51,7 @@ export let setComment = (token, postId, postContent) =>{
             content: postContent
         }).then(
             response => store.dispatch(getPosts(token)),
-            error => console.log(error)
+            error => showError("Error Adding Comment")
         );
     }
      

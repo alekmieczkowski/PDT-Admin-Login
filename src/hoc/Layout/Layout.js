@@ -5,9 +5,13 @@ import Wrapper from '../Wrapper/Wrapper';
 import LoadingSpinner from '../../components/UI/Spinner/Loading/Loading';
 import ErrorSpinner from '../../components/UI/Spinner/Error/Error';
 import {connect} from 'react-redux';
+import ConfirmationSpinner from '../../components/UI/Spinner/Confirmation/Confirmation';
 
 //hide error message
 import {hideError} from '../../services/ErrorService';
+
+//confirmation handling
+import * as confirmationService from '../../services/ConfirmationService';
 
 class Layout extends Component{
     
@@ -22,7 +26,8 @@ class Layout extends Component{
         return(
             <Wrapper>
                 <LoadingSpinner spinnerText={this.props.spinnerText} isActive={this.props.animateSpinner}/>
-                <ErrorSpinner errorText={this.props.errorMessage} isActive={this.props.error} dismiss={this._hideError}/>               
+                <ErrorSpinner errorText={this.props.errorMessage} isActive={this.props.error} dismiss={hideError}/>
+                <ConfirmationSpinner confirmationText={this.props.confirmationMessage} isActive={this.props.confirmation} accept={confirmationService.acceptConfirmation} dismiss={confirmationService.hideConfirmation}/>              
                 <main className={classes.Layout}>
                     {this.props.children}
                 </main> 
@@ -38,7 +43,9 @@ const mapStateToProps = state => {
         spinnerText: state.spinner.spinnerText,
         animateSpinner: state.spinner.animateSpinner,
         errorMessage: state.error.message,
-        error: state.error.toggleError
+        error: state.error.toggleError,
+        confirmationMessage: state.confirmation.message,
+        confirmation: state.confirmation.toggleConfirmation,
     };
 };
 

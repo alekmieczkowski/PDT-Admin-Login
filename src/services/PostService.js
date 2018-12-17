@@ -1,6 +1,7 @@
 import {store} from '../store/configureStore';
 import { setPostLike, setCommentLike } from '../Api/likes';
 import {setComment} from '../Api/comments';
+import {removePost} from '../Api/posts';
 
 let token = localStorage.getItem('token');
 
@@ -19,4 +20,9 @@ export function updateCommentLike(comment_id){
 //submit comment and get new comment data
 export async function addComment(post_id, content){
     await store.dispatch(setComment(token, post_id, content));
+}
+
+//remove comment
+export async function deletePost(post_id){
+    await store.dispatch(removePost(token, post_id));
 }

@@ -1,4 +1,5 @@
 import * as spinnerActions from '../actions/spinner';
+import {DISPLAY_ERROR} from '../actions/error';
 import {CLEAR_STATE} from '../actions/global';
 
 
@@ -12,6 +13,11 @@ const spinner = (state = {}, action) => {
             }
 
         case spinnerActions.SPINNER_STOP:
+            return state = {
+                ...state,
+                animateSpinner: false,
+            }
+        case DISPLAY_ERROR:
             return state = {
                 ...state,
                 animateSpinner: false,
