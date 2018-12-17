@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
-import Member from '../../../components/Members/Members';
+import classes from './Members.scss';
+import userViewStyle from '../../../components/AdminPortal/Members/UserList/UserView/UserView.scss';
+import UserList from '../../../components/AdminPortal/Members/UserList/UserList';
+//import PlaceholderUser from '../../assets/img/Homepage/placeholder-user.png';
+import users from '../../../users';
 
 /**
  * 
@@ -15,16 +19,39 @@ import Member from '../../../components/Members/Members';
 class Members extends Component{
 
 
-    render(){
-        let text = <p>Hello</p>;
-        if(true){
-            text= <p>Goodbye</p>
+    render() {
+
+
+        const fakeUser = {
+            fname: 'Alek',
+            lname: 'Mieczkowski',
+            email: 'amieczko@uncc.edu',
+            position: 'Webmaster',
+            phone: '1234567890',
+            //profile_img: PlaceholderUser
+
         }
-        return(
-            <Member>{text}</Member>
-            
+
+
+        return (
+                
+
+
+                <div className={classes.Members}>
+                    
+                    <UserList userData={users} />
+
+
+                </div>
+              
+           
+
         );
+
+
     }
+
+
 }
 
 export default Members;

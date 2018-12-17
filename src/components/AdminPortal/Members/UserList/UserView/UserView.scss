@@ -1,0 +1,26 @@
+.DataContainer {
+    display: flex;
+    flex-direction: row;
+    padding-top: 2%;
+    background-color: #ffffff;
+    border-style: solid;
+    border-color:#003054;
+    width: 100%;
+ 
+   
+}
+
+.Data {
+    
+    width: 100%;
+    display: flex;
+    flex: 1;
+    padding-top: 1%;
+
+}
+
+.ImgWrapper {
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+}
