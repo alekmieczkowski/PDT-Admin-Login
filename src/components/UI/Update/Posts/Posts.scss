@@ -34,6 +34,7 @@
 }
 
 .bottomContainer{
+    display: flex;
     padding:10px;
     flex: 1;
     flex-direction: row;
@@ -41,6 +42,8 @@
 
 .imagesContainer{
     flex: 3;
+    display: flex;
+    flex-direction: row;
 
 }
 

@@ -5,10 +5,14 @@ import InputContainer from './InputContainer/InputContainer';
 import Button from '../../Button/Button';
 import { MdClose } from 'react-icons/lib/md';
 import { hideUpdate } from '../../../../services/UpdateService';
+import ImageUpload from './ImageUpload/ImageUpload';
 class Posts extends Component {
 
     state = {
         inputValue: "",
+        image1: null,
+        image2: null,
+        image3: null,
     }
 
     _updateInput = (event) => {
@@ -18,6 +22,17 @@ class Posts extends Component {
     _dismiss = async () => {
         this.setState({ inputValue: "" });
         hideUpdate();
+    }
+
+    _setImage = (key, image) =>{
+        switch(key){
+            case 1: this.setState({image1: image});
+                    break;
+            case 2: this.setState({image2: image});
+                    break;
+            case 3: this.setState({image3: image});
+                    break;
+        }
     }
 
     render() {
@@ -38,9 +53,13 @@ class Posts extends Component {
                     </div>
                     <div className={classes.bottomContainer}>
                         <div className={classes.imagesContainer}>
+                            <ImageUpload id={1} setImage={this._setImage}/>
+                            <ImageUpload id={2} setImage={this._setImage}/>
+                            <ImageUpload id={3} setImage={this._setImage}/>
                         </div>
                         <div className={classes.submitContainer}>
                             <Button clicked={null} buttonCSS={classes.button} textCSS={classes.buttonText} iconSize={22} iconColor={'#003056'} type={"create"}>Submit</Button>
+                            <Button clicked={this._dismiss} buttonCSS={classes.button} textCSS={classes.buttonText} iconSize={22} iconColor={'#003056'} type={"close"}>Close</Button>
                         </div>
                     </div>
 

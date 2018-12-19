@@ -1,0 +1,17 @@
+.container{
+    width: 150px;
+    height: 150px;
+    
+    flex: 1;
+    display: flex;
+}
+
+.image{
+    height:150px;
+    width: 150px;
+    border-radius: 8px;
+}
+
+input[type="file"] {
+    display: none;
+}
