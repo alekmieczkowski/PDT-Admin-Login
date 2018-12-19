@@ -4,12 +4,14 @@ import BlogRender from '../../components/Blog/Blog';
 import {connect} from 'react-redux';
 import UserBadge from '../../components/Blog/UserBadge/UserBadge';
 import SideBar from '../../components/Blog/Sidebar/Sidebar';
+import {showUpdate} from '../../services/UpdateService';
 
 
 
 
 
 class Blog extends Component {
+
 
     render() {
         return (
@@ -19,7 +21,7 @@ class Blog extends Component {
                 {/*Left Side Bar*/}
                 <div className={classes.sidebar}>
                     <UserBadge data={this.props.user}/>
-                    <SideBar/>
+                    <SideBar updatePost={showUpdate(this.props.posts)}/>
 
                 </div>
 

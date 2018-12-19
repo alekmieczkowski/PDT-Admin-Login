@@ -6,6 +6,7 @@ import LoadingSpinner from '../../components/UI/Spinner/Loading/Loading';
 import ErrorSpinner from '../../components/UI/Spinner/Error/Error';
 import {connect} from 'react-redux';
 import ConfirmationSpinner from '../../components/UI/Spinner/Confirmation/Confirmation';
+import UpdatePost from '../../components/Blog/UpdatePost/UpdatePost';
 
 //hide error message
 import {hideError} from '../../services/ErrorService';
@@ -27,7 +28,8 @@ class Layout extends Component{
             <Wrapper>
                 <LoadingSpinner spinnerText={this.props.spinnerText} isActive={this.props.animateSpinner}/>
                 <ErrorSpinner errorText={this.props.errorMessage} isActive={this.props.error} dismiss={hideError}/>
-                <ConfirmationSpinner text={this.props.confirmationMessage} isActive={this.props.confirmation} type={this.props.confirmationType} data={this.props.confirmationData} dismiss={confirmationService.hideConfirmation}/>              
+                <ConfirmationSpinner text={this.props.confirmationMessage} isActive={this.props.confirmation} type={this.props.confirmationType} data={this.props.confirmationData} dismiss={confirmationService.hideConfirmation}/>     
+                <UpdatePost active={this.props.updateActive} title={this.props.updateTitle} data={this.props.updateData}/>         
                 <main className={classes.Layout}>
                     {this.props.children}
                 </main> 
@@ -40,14 +42,21 @@ class Layout extends Component{
 //map auth state in reducer to local state
 const mapStateToProps = state => {
     return {
+        //loading spinner
         spinnerText: state.spinner.spinnerText,
         animateSpinner: state.spinner.animateSpinner,
+        //error popup
         errorMessage: state.error.message,
         error: state.error.toggleError,
+        //confirmation popup
         confirmationMessage: state.confirmation.message,
         confirmation: state.confirmation.toggleConfirmation,
         confirmationType: state.confirmation.type,
-        confirmationData: state.confirmation.data
+        confirmationData: state.confirmation.data,
+        //Update post
+        updateActive: state.update.active,
+        updateTitle: state.update.title,
+        updateData: state.update.data,
     };
 };
 

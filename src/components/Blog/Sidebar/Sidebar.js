@@ -6,7 +6,7 @@ const sidebar = (props) =>{
     
     return(
         <div className={classes.container}>
-            <Options/>
+            <Options update={props.updatePost}/>
         </div>
     )
 

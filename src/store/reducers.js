@@ -5,6 +5,7 @@ import transition from './reducers/transition';
 import api from './reducers/api';
 import error from './reducers/error';
 import confirmation from './reducers/confirmation';
+import update from './reducers/update';
 
 export default combineReducers({
     auth,
@@ -12,5 +13,6 @@ export default combineReducers({
     transition,
     api,
     error,
-    confirmation
+    confirmation,
+    update
 })
