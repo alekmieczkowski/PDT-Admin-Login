@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Textarea from 'react-textarea-autosize';
 import classes from './InputContainer.scss'
 
@@ -9,7 +9,7 @@ const inputContainer = (props)=>{
         <Textarea 
             className={classes.inputContainer} 
             value={props.value} 
-            onChange={() => props.onChange}
+            onChange={props.onChange}
             maxLength={250}
 
             />

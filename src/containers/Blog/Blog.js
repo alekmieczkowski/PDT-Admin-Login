@@ -12,6 +12,9 @@ import {showUpdate} from '../../services/UpdateService';
 
 class Blog extends Component {
 
+    _createPost = () =>{
+        showUpdate(null);
+    }
 
     render() {
         return (
@@ -21,8 +24,7 @@ class Blog extends Component {
                 {/*Left Side Bar*/}
                 <div className={classes.sidebar}>
                     <UserBadge data={this.props.user}/>
-                    <SideBar updatePost={showUpdate(this.props.posts)}/>
-
+                    <SideBar updatePost={this._createPost}/>
                 </div>
 
                 {/*Center Blog view */}

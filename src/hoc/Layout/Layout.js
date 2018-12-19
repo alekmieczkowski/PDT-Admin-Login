@@ -6,7 +6,7 @@ import LoadingSpinner from '../../components/UI/Spinner/Loading/Loading';
 import ErrorSpinner from '../../components/UI/Spinner/Error/Error';
 import {connect} from 'react-redux';
 import ConfirmationSpinner from '../../components/UI/Spinner/Confirmation/Confirmation';
-import UpdatePost from '../../components/Blog/UpdatePost/UpdatePost';
+import UpdatePost from '../../components/UI/Update/Posts/Posts';
 
 //hide error message
 import {hideError} from '../../services/ErrorService';
@@ -14,12 +14,14 @@ import {hideError} from '../../services/ErrorService';
 //confirmation handling
 import * as confirmationService from '../../services/ConfirmationService';
 
+//update service
+import {hideUpdate} from '../../services/UpdateService';
+
 class Layout extends Component{
     
 
     _hideError = () =>{
         //call service to hide error
-        console.log("dismiss error pressed");
         hideError();
     }
 
@@ -29,7 +31,7 @@ class Layout extends Component{
                 <LoadingSpinner spinnerText={this.props.spinnerText} isActive={this.props.animateSpinner}/>
                 <ErrorSpinner errorText={this.props.errorMessage} isActive={this.props.error} dismiss={hideError}/>
                 <ConfirmationSpinner text={this.props.confirmationMessage} isActive={this.props.confirmation} type={this.props.confirmationType} data={this.props.confirmationData} dismiss={confirmationService.hideConfirmation}/>     
-                <UpdatePost active={this.props.updateActive} title={this.props.updateTitle} data={this.props.updateData}/>         
+                <UpdatePost active={this.props.updateActive} title={this.props.updateTitle} data={this.props.updateData} dismiss={hideUpdate}/>         
                 <main className={classes.Layout}>
                     {this.props.children}
                 </main> 

@@ -10,8 +10,7 @@ import {connect} from 'react-redux';
 
 //Post Services
 import * as postService from '../../../services/PostService';
-//spinner services
-import * as loadingService from '../../../services/LoadingService';
+
 //confirmation activation
 import * as confirmationService from '../../../services/ConfirmationService';
 

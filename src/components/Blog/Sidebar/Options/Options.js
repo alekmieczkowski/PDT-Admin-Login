@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from  '../../../UI/Button/Button';
 import classes from "./Options.scss";
-import {showUpdate} from '../../../../services/UpdateService';
 
 
 const options = (props) =>{

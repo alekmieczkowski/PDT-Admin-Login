@@ -8,7 +8,7 @@ const userbadge = (props) =>{
     return(
         <div className={classes.container}>
             <div className={classes.imageContainer}>
-                <img src={props.data.google_picture} className={classes.image}/>
+                <img src={props.data.google_picture} className={classes.image} alt={"user"}/>
             </div>
 
             <div className={classes.dataContainer}>

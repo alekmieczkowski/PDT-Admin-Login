@@ -5,6 +5,7 @@
     height:100vh;
     width:100vw;
     position:absolute;
+    background-color: rgba(0,0,0,.6);
 }
 
 .backgroundActive{
@@ -13,14 +14,13 @@
 
 .container{
     position: absolute;
-    width: 300px;
+    width: 700px;
     left: 0;
     right: 0;
     z-index: 30;
     margin:auto;
     justify-content: center;
-    background-color: $secondary;
     border-radius: 8px;
     top: 27vh;
-    border: 1px solid $primary;
+    display: flex;
 }

@@ -3,10 +3,8 @@ import { setPostLike, setCommentLike } from '../Api/likes';
 import {setComment} from '../Api/comments';
 import {removePost} from '../Api/posts';
 import * as loadingService from './LoadingService';
-import {showError} from './ErrorService';
 import {hideConfirmation} from './ConfirmationService';
-import {startSpinner, stopSpinner} from '../store/actions/spinner';
-import {hideConfirmationOverlay} from '../store/actions/confirmation';
+
 
 
 let token = localStorage.getItem('token');

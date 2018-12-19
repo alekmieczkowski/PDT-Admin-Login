@@ -22,8 +22,8 @@ const update = (state = initialState, action) => {
             return state = {
                 ...state,
                 active: false,
-                title: "",
-                data: null,
+                //title: "",
+                //data: null,
             }
         case CLEAR_STATE:
             return {};

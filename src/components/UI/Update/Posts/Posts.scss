@@ -1,0 +1,67 @@
+@import '../../../../constants/theme';
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+
+}
+
+.iconClose{
+    position:absolute;
+    right: 0;
+    margin-right: -40px;
+    margin-top: -40px;
+
+}
+
+.topContainer{
+    flex: 2;
+    padding: 10px;
+    background-color: $secondary;
+    border-radius: 8px;
+
+}
+.headerContainer{
+    flex: 1;
+    font-size:30px;
+    font-weight: bold;
+    color: $primary;
+}
+
+.inputContainer{
+    flex: 3;
+}
+
+.bottomContainer{
+    padding:10px;
+    flex: 1;
+    flex-direction: row;
+}
+
+.imagesContainer{
+    flex: 3;
+
+}
+
+.submitContainer{
+    flex: 1;
+}
+
+//button
+.button{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    background-color: $secondary;
+    border-radius: 4px;
+    height: 20px;
+    margin-top: 4px;
+
+
+}
+.buttonText{
+    font-size: 16px;
+    padding-left: 6px;
+
+}
