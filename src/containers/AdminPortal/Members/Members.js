@@ -5,6 +5,7 @@ import UserList from '../../../components/AdminPortal/Members/UserList/UserList'
 import Toolbar from '../../../components/AdminPortal/Members/Toolbar/Toolbar';
 import SearchBar from '../../../components/AdminPortal/Members/SearchBar/SearchBar';
 
+import * as Page from '../../../components/AdminPortal/Members/Toolbar/ToolbarPages';
 /**
  * 
  * Containers:
@@ -20,7 +21,17 @@ class Members extends Component {
 
 
     state={
-        searchInput: ""
+        searchInput: "",
+        activePage: null,
+    }
+
+    componentDidMount(){
+        this.setState({activePage: Page.ACTIVE });
+    }
+
+    _setActivePage = (page)=>{
+        console.log(page);
+        this.setState({activePage: page });
     }
 
     _onSearchInput = (event) =>{
@@ -36,7 +47,7 @@ class Members extends Component {
 
             <div className={classes.container}>
                 <div className={classes.toolbarContainer}>
-                    <Toolbar />
+                    <Toolbar active={this.state.activePage} setActive={this._setActivePage}/>
                 </div>
 
                 <div className={classes.dataContainer}>
@@ -45,7 +56,7 @@ class Members extends Component {
                          <SearchBar onSearch={this._onSearchInput} value={this.state.searchInput}/>
                     </div>
                     
-                    <UserList userData={this.props.users} />
+                    <UserList page={this.state.activePage} userData={this.props.users} />
                 </div>
 
 

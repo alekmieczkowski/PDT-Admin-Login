@@ -1,0 +1,19 @@
+@import '../../../../../constants/theme';
+
+.container{
+    flex: 1;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.active{
+    background-color: $secondary;
+    color: $primary;
+}
+
+.inactive{
+    background-color: $primary;
+    color: $triary;
+}
