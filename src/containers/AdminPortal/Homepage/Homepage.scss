@@ -15,8 +15,7 @@
 
 .RowA{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    width: 100vw;
 
 }
 .RowAItemA{
@@ -24,7 +23,7 @@
 }
 
 .RowAItemB{
-    flex: 2;
+    flex: 3;
 }
 
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import classes from './Button.scss';
-import {MdClose, MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend, MdCreate} from 'react-icons/lib/md';
+import {MdWork, MdClose, MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend, MdCreate} from 'react-icons/lib/md';
 import {IoTrashB} from 'react-icons/lib/io'
-import { FaEdit } from "react-icons/lib/fa";
+import { FaEdit, FaGroup } from "react-icons/lib/fa";
 import FitText from '@kennethormandy/react-fittext'
 import Loading from '../../../assets/img/Spinner/loading-blue.gif';
 
@@ -51,6 +51,12 @@ const button = (props) => {
             break;
         case "close":
             type=<MdClose size={iconSize} color={props.iconColor}/>;
+            break;
+        case "group":
+            type=<FaGroup size={iconSize} color={props.iconColor}/>;
+            break;
+        case "work":
+            type=<MdWork size={iconSize} color={props.iconColor}/>;
             break;
         default:
             type= null;
