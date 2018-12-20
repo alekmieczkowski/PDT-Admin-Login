@@ -1,0 +1,8 @@
+@import '../../../../constants/theme';
+
+.container{
+    display: flex;
+    padding: 10px;
+    flex: 1;
+    color: $secondary;
+}

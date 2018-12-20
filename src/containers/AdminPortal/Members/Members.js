@@ -1,8 +1,9 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import classes from './Members.scss';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import UserList from '../../../components/AdminPortal/Members/UserList/UserList';
-
+import Toolbar from '../../../components/AdminPortal/Members/Toolbar/Toolbar';
+import SearchBar from '../../../components/AdminPortal/Members/SearchBar/SearchBar';
 
 /**
  * 
@@ -15,24 +16,35 @@ import UserList from '../../../components/AdminPortal/Members/UserList/UserList'
  * 
  * @param  props 
  */
-class Members extends Component{
+class Members extends Component {
 
 
     render() {
 
 
         return (
-                
 
 
-                <div className={classes.Members}>
+
+            <div className={classes.container}>
+                <div className={classes.toolbarContainer}>
+                    <Toolbar />
+                </div>
+
+                <div className={classes.dataContainer}>
+                    <div className={classes.topRowContainer}>
+                         <div className={classes.dataTypeText}>Active Brothers</div>
+                         <SearchBar />
+                    </div>
                     
                     <UserList userData={this.props.users} />
-
-
                 </div>
-              
-           
+
+
+
+            </div>
+
+
 
         );
 

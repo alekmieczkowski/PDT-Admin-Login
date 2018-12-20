@@ -1,5 +1,33 @@
-.Members {
+@import '../../../constants/theme';
+
+.container {
    display: flex;
+   flex-direction: row;
+   flex: 1;
+}
+
+.toolbarContainer{
+   flex: 1;
    flex-direction: column;
-   padding-left: 10%;
+   max-width:200px;
+   margin-right: 20px;
+}
+
+.topRowContainer{
+   display: flex;
+   flex-direction: row;
+
+}
+.dataTypeText{
+   flex: 1;
+   font-size: 26px;
+   color: $secondary;
+   font-weight: bold;
+
+}
+
+.dataContainer{
+   padding-top: 10px;
+   flex: 3;
+   flex-direction: column;
 }
