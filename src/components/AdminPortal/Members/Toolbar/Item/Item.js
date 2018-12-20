@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Item.scss';
+import { NavLink } from 'react-router-dom';
 
 class Item extends Component {
 
@@ -16,9 +17,15 @@ class Item extends Component {
         }
 
         return (
+            <NavLink 
+            to={this.props.link}
+            exact={this.props.exact}
+            activeClassName={{color: '#fffffff'}}
+            >
             <div className={[classes.container, itemStyle].join(' ')} onClick={this._setActive}>
                 {this.props.children}
             </div>
+            </NavLink>
         )
     }
 

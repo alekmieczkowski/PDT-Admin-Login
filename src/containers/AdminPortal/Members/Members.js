@@ -26,7 +26,8 @@ class Members extends Component {
     }
 
     componentDidMount(){
-        this.setState({activePage: Page.ACTIVE });
+        console.log("Component Mount: " + this.props.page)
+        this.setState({activePage: this.props.page });
     }
 
     _setActivePage = (page)=>{

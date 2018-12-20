@@ -7,7 +7,7 @@ const quicklinks =(props) =>{
     return(
         <div className={classes.container}>
              <Quicklink exact={false} link={'/Admin/Members'} type={'group'}>Manage Members</Quicklink>
-             <Quicklink exact={false} link={'/Admin/Members'} type={'work'}>Manage Positions</Quicklink> 
+             <Quicklink exact={false} link={'/Admin/Positions'} type={'work'}>Manage Positions</Quicklink> 
         </div>
        
     )

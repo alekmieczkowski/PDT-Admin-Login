@@ -2,10 +2,13 @@ import React from 'react';
 import PrivateRoute from '..//PrivateRoute';
 import HomePage from '../../../containers/AdminPortal/Homepage/Homepage';
 import Members from '../../AdminPortal/Members/Members';
+import Positions from '../../AdminPortal/Positions/Positions'
 
 import { connect } from 'react-redux';
 import { Switch, withRouter } from 'react-router-dom';
 
+
+import MemberRouting from './MemberRouting';
 
 
 const adminRouting = (props) => {
@@ -14,8 +17,8 @@ const adminRouting = (props) => {
     return (
 
         <Switch>
-            <PrivateRoute path={'/Admin/Analytics'} auth={props.auth} component={Members} />
-            <PrivateRoute path={'/Admin/Members'}  auth={props.auth} component={Members} />
+            <PrivateRoute path={'/Admin/Positions'} auth={props.auth} component={Positions} />
+            <PrivateRoute path={'/Admin/Members'}  auth={props.auth} component={MemberRouting} />
             <PrivateRoute path={'/Admin'}    auth={props.auth} component={HomePage} />
         </Switch>
 
