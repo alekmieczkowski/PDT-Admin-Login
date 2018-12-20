@@ -19,6 +19,14 @@ import SearchBar from '../../../components/AdminPortal/Members/SearchBar/SearchB
 class Members extends Component {
 
 
+    state={
+        searchInput: ""
+    }
+
+    _onSearchInput = (event) =>{
+        this.setState({searchInput: event.target.value});
+    }
+
     render() {
 
 
@@ -34,7 +42,7 @@ class Members extends Component {
                 <div className={classes.dataContainer}>
                     <div className={classes.topRowContainer}>
                          <div className={classes.dataTypeText}>Active Brothers</div>
-                         <SearchBar />
+                         <SearchBar onSearch={this._onSearchInput} value={this.state.searchInput}/>
                     </div>
                     
                     <UserList userData={this.props.users} />

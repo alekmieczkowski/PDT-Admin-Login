@@ -2,7 +2,30 @@
 
 .container{
     display: flex;
+    flex-direction: row;
     padding: 10px;
     flex: 1;
     color: $secondary;
+    justify-content: center;
+}
+
+.searchIcon{
+    //flex: 1;
+}
+
+.searchBar{
+    //flex: 3;
+}
+
+.textInput{
+    resize: none;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    color: $secondary;
+    border-bottom: 1px solid $secondary;
+    width: 400px;
+}
+
+::-webkit-input-placeholder{
+    color: $triary;
 }

@@ -1,24 +1,34 @@
-import React, {Component} from 'react';
+import React from 'react';
 import classes from './SearchBar.scss';
+import { MdSearch } from 'react-icons/lib/md';
+import Textarea from 'react-textarea-autosize';
 
-class SearchBar extends Component {
+const searchbar = (props) =>{
 
 
-    render(){
-
-        return(
+        return (
 
             <div className={classes.container}>
-                SearchBar here
+                <div className={classes.searchIcon}>
+                    <MdSearch size={26} color={'#ffffff'} />
+                </div>
+                <div className={classes.searchBar}>
+                    <Textarea
+                        className={classes.textInput}
+                        placeholder={"Search Name, Bond, Email, Phone Number, ..."}
+                        maxRows={1}
+                        width={'200px'}
+                        maxLength={51}
+                        value={props.value}
+                        onChange={props.onSearch}
+                        />
+                </div>
             </div>
 
-        )
-
-
-    }
+        );
 
 
 
 }
 
-export default SearchBar;
+export default searchbar;
