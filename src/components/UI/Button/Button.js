@@ -1,10 +1,6 @@
 import React from 'react';
 import classes from './Button.scss';
-<<<<<<< HEAD
-import {MdClose, MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend, MdCreate, MdIndeterminateCheckBox, MdCheckCircle, MdSchool} from 'react-icons/lib/md';
-=======
-import {MdWork, MdClose, MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend, MdCreate} from 'react-icons/lib/md';
->>>>>>> 672fcc3772c107279ea9940ba25e33c9b7c24300
+import {MdWork, MdClose, MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend, MdCreate, MdIndeterminateCheckBox, MdCheckCircle, MdSchool} from 'react-icons/lib/md';
 import {IoTrashB} from 'react-icons/lib/io'
 import { FaEdit, FaGroup } from "react-icons/lib/fa";
 import FitText from '@kennethormandy/react-fittext'
