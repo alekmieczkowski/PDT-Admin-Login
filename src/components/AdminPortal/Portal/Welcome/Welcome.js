@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Welcome.scss';
-import Form from "../../../hoc/Form/Form";
+import Form from "../../../../hoc/Form/Form";
 
 const welcome = (props) => (
     <Form css={classes.FormCSS}>

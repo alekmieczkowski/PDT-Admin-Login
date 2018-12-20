@@ -1,0 +1,32 @@
+@import '../../../../../constants/theme';
+
+.button{
+    height: 260px;
+    width: 268px;
+    margin: 4px;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex: 1 1;
+    flex: 1 1;
+    text-align: center;
+    background-color: $secondary;
+    color: $primary;
+    font-weight: bold;
+    font-style: inherit;
+    padding: 10px;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.buttonText{
+    font-size: 30px;
+    bottom: 0;
+    margin:auto;
+    
+
+}
+
+a{
+    text-decoration: none;
+}

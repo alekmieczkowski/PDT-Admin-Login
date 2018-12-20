@@ -22,6 +22,7 @@ const userbadge = (props) =>{
                 })
 
             }
+            {props.data.is_admin ? <Badge>Admin</Badge>: null}
             </div>
             
             </div>

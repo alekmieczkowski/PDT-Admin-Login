@@ -1,3 +1,4 @@
-export let ACTIVE = "Active Users";
-export let INACTIVE = "Inactive Users";
-export let ALUMNI = "Alumni Users";
+export let ACTIVE = "Active Brothers";
+export let INACTIVE = "Inactive Brothers";
+export let ALUMNI = "Alumni";
+export let PENDING = "Pending Requests";

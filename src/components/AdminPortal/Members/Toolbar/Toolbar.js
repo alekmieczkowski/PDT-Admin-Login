@@ -10,6 +10,7 @@ const toolbar = (props) =>{
             <Item id={Page.ACTIVE} activeId={props.active} setActive={props.setActive}>Actives</Item>
             <Item id={Page.INACTIVE} activeId={props.active} setActive={props.setActive}>Inactives</Item>
             <Item id={Page.ALUMNI} activeId={props.active} setActive={props.setActive}>Alumni</Item>
+            <Item id={Page.PENDING} activeId={props.active} setActive={props.setActive}>Pending</Item>
         </div>
     )
 }

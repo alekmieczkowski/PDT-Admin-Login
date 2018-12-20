@@ -1,8 +1,12 @@
 import React from 'react';
 import classes from './Button.scss';
+<<<<<<< HEAD
 import {MdClose, MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend, MdCreate, MdIndeterminateCheckBox, MdCheckCircle, MdSchool} from 'react-icons/lib/md';
+=======
+import {MdWork, MdClose, MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend, MdCreate} from 'react-icons/lib/md';
+>>>>>>> 672fcc3772c107279ea9940ba25e33c9b7c24300
 import {IoTrashB} from 'react-icons/lib/io'
-import { FaEdit } from "react-icons/lib/fa";
+import { FaEdit, FaGroup } from "react-icons/lib/fa";
 import FitText from '@kennethormandy/react-fittext'
 import Loading from '../../../assets/img/Spinner/loading-blue.gif';
 
@@ -60,6 +64,12 @@ const button = (props) => {
             break;
         case "alumni":
             type=<MdSchool size={iconSize} color={props.iconColor}/>;
+            break;
+        case "group":
+            type=<FaGroup size={iconSize} color={props.iconColor}/>;
+            break;
+        case "work":
+            type=<MdWork size={iconSize} color={props.iconColor}/>;
             break;
         default:
             type= null;

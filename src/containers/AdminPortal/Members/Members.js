@@ -52,7 +52,7 @@ class Members extends Component {
 
                 <div className={classes.dataContainer}>
                     <div className={classes.topRowContainer}>
-                         <div className={classes.dataTypeText}>Active Brothers</div>
+                         <div className={classes.dataTypeText}>{this.state.activePage}</div>
                          <SearchBar onSearch={this._onSearchInput} value={this.state.searchInput}/>
                     </div>
                     
