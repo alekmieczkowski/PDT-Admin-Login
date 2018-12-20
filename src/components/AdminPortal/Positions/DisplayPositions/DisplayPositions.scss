@@ -1,0 +1,20 @@
+@import '../../../../constants/theme';
+
+.container{
+    padding-top: 40px;
+    width: 700px;
+    margin: auto;
+    
+}
+
+.areaContainer{
+    width:700px;
+    display: flex; 
+    flex: 1;
+    flex-wrap:wrap;
+}
+
+.header{
+    color: $secondary;
+    font-size: 30px;
+}
