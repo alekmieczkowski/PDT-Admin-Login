@@ -1,0 +1,49 @@
+@import '../../../../constants/theme';
+
+
+
+.textBox{
+    flex: 2;
+    padding: 4px;
+    display:flex;
+}
+.errorIcon{
+    padding-top:2px;
+    width:40px;
+}
+
+.errorHeader{
+    font-size: 30px;
+    color: $primary;
+    font-weight:bold;
+
+}
+
+.errorMessage{
+    font-size: 16px;
+    color: $primary;
+    padding: 20px;
+
+}
+
+.buttonText{
+    color: $secondary;
+    font-size: 20px;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.buttonCSS{
+    border-radius: 10px;
+    width: 100px;
+    margin: 10px;
+    background-color: $primary;
+    text-align: center;
+    padding: 10px;
+    cursor:pointer;
+    flex: 1;
+}
+

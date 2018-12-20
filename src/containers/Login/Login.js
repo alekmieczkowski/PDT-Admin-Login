@@ -8,14 +8,15 @@ import * as transitionActions from '../../store/actions/transition';
 import GoogleButton from '../../components/Login/GoogleButton/GoogleButton';
 import { requestUserAccessRequest, ENUM_USERACCESSREQUEST_STATUS_ACCEPTED } from '../../Api/accessRequest';
 import { CSSTransition } from 'react-transition-group';
+
+//Auth service
 import * as AuthService from '../../services/AuthService';
+
+//error service
 import {showError} from '../../services/ErrorService';
 
-//redux actions
-import {startSpinner, stopSpinner} from '../../store/actions/spinner';
-
-
-
+//loading service
+import * as loadingService from '../../services/LoadingService';
 
 class Login extends Component {
 
@@ -62,16 +63,14 @@ class Login extends Component {
         }
         else {
             //start animation out
-            this.props.startSpinner();
+            loadingService.showLoading("Loading Data");
             this.setState({animateIn: false});
             
             //AuthService.login
             await AuthService.login(response.tokenId);
 
             //hide spinner
-            this.props.hideSpinner();
-
-            
+            loadingService.hideLoading();
 
             //Allow User past
             this.props.history.push("/");
@@ -132,8 +131,6 @@ class Login extends Component {
 //dispatch props to auth reducer
 const mapDispatchToProps = dispatch => {
     return {
-        startSpinner: () => dispatch(startSpinner("Loading Data")),
-        hideSpinner: () => dispatch(stopSpinner()),
         startTransition: () => dispatch({type: transitionActions.TRANSITION_START})
     }
 };

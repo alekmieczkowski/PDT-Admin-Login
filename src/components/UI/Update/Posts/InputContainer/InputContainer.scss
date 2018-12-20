@@ -1,0 +1,14 @@
+@import '../../../../../constants/theme';
+
+.inputContainer{
+
+    border: none;
+    resize: none;
+    background-color: $secondary;
+    border: 1px solid $primary;
+    border-radius: 4px;
+    min-height: 180px;
+    max-height: 300px;
+    font-size: 20px;
+    width: 700px;
+}

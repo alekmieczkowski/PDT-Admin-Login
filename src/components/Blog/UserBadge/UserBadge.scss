@@ -1,0 +1,41 @@
+@import '../../../constants/theme';
+
+.container{
+    display: flex;
+    flex-direction: row;
+    background-color: $secondary;
+    border-radius: 2px;
+    padding:10px;
+    width: 320px;
+
+}
+
+.imageContainer{
+    flex: 1;
+    min-height: 80px;
+}
+.image{
+    height:80px;
+    width: 80px;
+    border-radius: 50px;
+    border: 2px solid $primary;
+}
+
+.dataContainer{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    padding-left:10px;
+}
+
+.textContainer{
+    flex: 1;
+    font-size: 20px; 
+    margin-bottom: -10px;
+    padding-top: 10px;
+}
+.badgeContainer{
+    flex: 1;
+}
+
+

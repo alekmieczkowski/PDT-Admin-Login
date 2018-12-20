@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Button.scss';
-import {MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend} from 'react-icons/lib/md';
+import {MdClose, MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend, MdCreate} from 'react-icons/lib/md';
 import {IoTrashB} from 'react-icons/lib/io'
 import { FaEdit } from "react-icons/lib/fa";
 import FitText from '@kennethormandy/react-fittext'
@@ -45,6 +45,12 @@ const button = (props) => {
             break;
         case "loading":
             type= <img height={iconSize} className={classes.loadingImg} src={Loading} alt={"Loading"}/>;
+            break;
+        case "create":
+            type=<MdCreate size={iconSize} color={props.iconColor}/>;
+            break;
+        case "close":
+            type=<MdClose size={iconSize} color={props.iconColor}/>;
             break;
         default:
             type= null;

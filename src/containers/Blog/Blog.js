@@ -2,12 +2,19 @@ import React, { Component } from 'react';
 import classes from './Blog.scss';
 import BlogRender from '../../components/Blog/Blog';
 import {connect} from 'react-redux';
+import UserBadge from '../../components/Blog/UserBadge/UserBadge';
+import SideBar from '../../components/Blog/Sidebar/Sidebar';
+import {showUpdate} from '../../services/UpdateService';
 
 
 
 
 
 class Blog extends Component {
+
+    _createPost = () =>{
+        showUpdate(null);
+    }
 
     render() {
         return (
@@ -16,7 +23,8 @@ class Blog extends Component {
 
                 {/*Left Side Bar*/}
                 <div className={classes.sidebar}>
-                    THIS WILL BE THE SIDEBAR
+                    <UserBadge data={this.props.user}/>
+                    <SideBar updatePost={this._createPost}/>
                 </div>
 
                 {/*Center Blog view */}
@@ -47,6 +55,7 @@ class Blog extends Component {
 const mapStateToProps = state => {
     return {
         posts: state.api.posts,
+        user: state.api.user,
         userId: state.api.user.user_id,
         admin: state.api.user.is_admin,
     };
