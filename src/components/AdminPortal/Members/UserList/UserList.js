@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
 import classes from '../UserList/UserList.scss';
 import UserView from './UserView/UserView';
-import userData from '../../../../users'
+
 
 
 
 
 const userList = (props) => (
-    <div className={classes.ListCSS}>
-    
+    <div className={classes.ListCSS}> 
     {
-        userData.result.users.map(function (testUsers)
+        props.userData.map(function (user)
         {
-            return <UserView data = {testUsers}/>
+            return <UserView data = {user}/>
         })
     }
     </div>

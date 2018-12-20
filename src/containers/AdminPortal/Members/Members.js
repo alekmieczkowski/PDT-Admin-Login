@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import classes from './Members.scss';
-import userViewStyle from '../../../components/AdminPortal/Members/UserList/UserView/UserView.scss';
+import {connect} from 'react-redux';
 import UserList from '../../../components/AdminPortal/Members/UserList/UserList';
-//import PlaceholderUser from '../../assets/img/Homepage/placeholder-user.png';
-import users from '../../../users';
+
 
 /**
  * 
@@ -22,24 +21,13 @@ class Members extends Component{
     render() {
 
 
-        const fakeUser = {
-            fname: 'Alek',
-            lname: 'Mieczkowski',
-            email: 'amieczko@uncc.edu',
-            position: 'Webmaster',
-            phone: '1234567890',
-            //profile_img: PlaceholderUser
-
-        }
-
-
         return (
                 
 
 
                 <div className={classes.Members}>
                     
-                    <UserList userData={users} />
+                    <UserList userData={this.props.users} />
 
 
                 </div>
@@ -54,4 +42,10 @@ class Members extends Component{
 
 }
 
-export default Members;
+const mapStateToProps = state => {
+    return {
+        users: state.api.users,
+    };
+};
+
+export default connect(mapStateToProps)(Members);
