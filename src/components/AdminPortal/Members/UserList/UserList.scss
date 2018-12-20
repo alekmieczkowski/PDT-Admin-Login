@@ -1,5 +1,9 @@
  .ListCSS{
     
-     
+     display: flex;
+     flex-direction: column;
+     flex: 2;
+     margin-right: 20px;
+     overflow-y: scroll;
    
     }

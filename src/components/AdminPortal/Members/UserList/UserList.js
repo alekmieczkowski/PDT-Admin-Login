@@ -4,8 +4,6 @@ import UserView from './UserView/UserView';
 
 
 
-
-
 const userList = (props) => (
     <div className={classes.ListCSS}> 
     {

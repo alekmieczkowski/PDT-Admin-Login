@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Button.scss';
-import {MdClose, MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend, MdCreate} from 'react-icons/lib/md';
+import {MdClose, MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend, MdCreate, MdIndeterminateCheckBox, MdCheckCircle, MdSchool} from 'react-icons/lib/md';
 import {IoTrashB} from 'react-icons/lib/io'
 import { FaEdit } from "react-icons/lib/fa";
 import FitText from '@kennethormandy/react-fittext'
@@ -51,6 +51,15 @@ const button = (props) => {
             break;
         case "close":
             type=<MdClose size={iconSize} color={props.iconColor}/>;
+            break;
+        case "inactive":
+            type=<MdIndeterminateCheckBox size={iconSize} color={props.iconColor}/>;
+            break;
+        case "admin":
+            type=<MdCheckCircle size={iconSize} color={props.iconColor}/>;
+            break;
+        case "alumni":
+            type=<MdSchool size={iconSize} color={props.iconColor}/>;
             break;
         default:
             type= null;
