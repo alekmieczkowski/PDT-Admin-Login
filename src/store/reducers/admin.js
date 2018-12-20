@@ -2,7 +2,8 @@ import * as adminTypes from '../actions/admin';
 import {CLEAR_STATE} from '../actions/global';
 
 let initialState = {
-    requests: []
+    requests: [],
+    positions: []
 }
 
 const admin = ( state = initialState , action ) => {
@@ -12,6 +13,11 @@ const admin = ( state = initialState , action ) => {
                 ...state,
                 requests: action.data
             };
+        case adminTypes.GET_POSITIONS:
+            return{
+                ...state,
+                positions: action.data
+            }
         case CLEAR_STATE:
             return{};
         default:
