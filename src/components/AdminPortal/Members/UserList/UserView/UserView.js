@@ -19,11 +19,30 @@ const userView = (props) => {
 
                 {/*Badges*/}
 
-
+                {/*}
                 <div className={classes.dataStyling}><span className={classes.label}>Name:</span><br></br> {props.data.first_name} {props.data.last_name}</div>
                 <div className={classes.dataStyling}><span className={classes.label}>Email:</span><br></br> {props.data.email_address}</div>
                 <div className={classes.dataStyling}><span className={classes.label}>Phone:</span><br></br> {phoneNum}</div>
                 <div className={classes.dataStyling}><span className={classes.label}>Bond #:</span><br></br>{props.data.bond_number}</div>
+                */}
+
+                <div className={classes.dataStyling}>
+                    <div className={classes.data}>
+                        {props.data.first_name} {props.data.last_name}
+                    </div>
+                    <div className={classes.data}>
+                        {props.data.email_address}
+                    </div>
+                </div>
+
+                <div className={classes.dataStyling}>
+                    <div className={classes.data}>
+                        {phoneNum}
+                    </div>
+                    <div className={classes.data}>
+                        #{props.data.bond_number}
+                    </div>
+                </div>
 
                 <div className={classes.Buttons}>
                     <div className={classes.buttonsTopRow}>

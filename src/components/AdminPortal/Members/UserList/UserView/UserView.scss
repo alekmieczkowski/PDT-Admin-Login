@@ -57,12 +57,26 @@
     margin-right: 10px;
 
 }
-
+/*
 .dataStyling{
     padding-top: 25px;
     flex: 1;
     color: $primary;
     font-weight: bold;
+}
+*/
+
+.dataStyling{
+    padding-top: 18px;
+    flex: 1;
+    color: $primary;
+    font-weight: bold;
+    flex-direction: row;
+}
+
+.data{
+    flex: 1;
+    padding: 4px;
 }
 
 .label{
@@ -72,8 +86,8 @@
 
 
 .Buttons {
-    display: flex;
-    flex: 1 1;
+    //display: flex;
+    //flex: 1 1;
     -ms-flex-align: center;
     -ms-flex-direction: column;
     flex-direction: column;

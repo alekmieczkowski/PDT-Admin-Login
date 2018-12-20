@@ -6,6 +6,7 @@ import api from './reducers/api';
 import error from './reducers/error';
 import confirmation from './reducers/confirmation';
 import update from './reducers/update';
+import admin from './reducers/admin'
 
 export default combineReducers({
     auth,
@@ -14,5 +15,6 @@ export default combineReducers({
     api,
     error,
     confirmation,
-    update
+    update,
+    admin
 })
