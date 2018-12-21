@@ -4,6 +4,7 @@ import {showError} from '../services/ErrorService';
 import {setPositions} from '../store/actions/admin';
 
 export let getExistingPositions = (token) =>{
+    console.log("Get positions");
     return (dispatch) =>{
         return axios(token).get('/positions').then(
             response => store.dispatch(setPositions(response.data.result.positions)),
@@ -14,22 +15,24 @@ export let getExistingPositions = (token) =>{
 }
 
 export let createPosition = (token, position) =>{
+    console.log("createPosition: " + position);
     return (dispatch) =>{
         return axios(token).post('/positions',{
             title: position
         }).then(
-            response => //store.dispatch(api.setUsers(response.data.result.users)),
-            error => showError("Error Fetching Users")
+            response => getExistingPositions(token),
+            error => showError("Error Creating Position")
         );
     }
      
 }
 
-export let deletePosition = (token, position_id) =>{
+export let removePosition = (token, position_id) =>{
+    console.log("id: " + position_id);
     return (dispatch) =>{
         return axios(token).delete('/positions/'+position_id).then(
-            response => //store.dispatch(api.setUsers(response.data.result.users)),
-            error => showError("Error Fetching Users")
+            response => null,
+            error => showError("Error Removing Position")
         );
     }
      

@@ -8,10 +8,13 @@ const displayPositions = (props) =>{
         <div className={classes.container}>
             <div className={classes.header}>Existing Positions</div><br/>
             <div className={classes.areaContainer}>
-            
-            <Position text={"philanthropy chair"}/><Position text={"community service"}/><Position text={"position"}/>
-            <Position text={"position"}/><Position text={"position"}/><Position text={"position"}/>
-            <Position text={"position"}/><Position text={"position"}/><Position text={"position"}/>
+            {props.data !== null && typeof props.data !== undefined ? 
+                props.data.map(positionObj =>{
+                    return <Position text={positionObj.title} id={positionObj.position_id}/>;
+                })
+                :
+                <div className={classes.header}>No Positions</div>
+            }
             
             </div>
         </div>

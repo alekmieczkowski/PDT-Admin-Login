@@ -6,16 +6,20 @@ import CreatePositions from '../../../components/AdminPortal/Positions/CreatePos
 
 class Positions extends Component{
 
+    _refresh = () =>{
+        console.log("Refresh Called")
+        this.forceUpdate();
+    }
     render(){
 
 
         return(
             <div className={classes.container}>
                 <div className={classes.topContainer}>
-                    <DisplayPositions/>
+                    <DisplayPositions data={this.props.positions}/>
                 </div>
                 <div className={classes.bottomContainer}>
-                    <CreatePositions/>
+                    <CreatePositions refresh={this._refresh}/>
                 </div>
             </div>
         );
@@ -26,7 +30,7 @@ class Positions extends Component{
 
 const mapStateToProps = state => {
     return {
-        users: state.api.users,
+        positions: state.admin.positions,
     };
 };
 

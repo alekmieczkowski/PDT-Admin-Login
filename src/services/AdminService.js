@@ -1,5 +1,5 @@
 import {getUserAccessRequests} from '../Api/accessRequest';
-import {getExistingPositions} from '../Api/positions';
+import {getExistingPositions, removePosition, createPosition} from '../Api/positions';
 import {store} from '../store/configureStore';
 
 // return authorization header with jwt token
@@ -11,4 +11,12 @@ export function getAccessRequests(){
 
 export function getPositions(){
     store.dispatch(getExistingPositions(token));
+}
+
+export function deletePosition(positionId){
+    store.dispatch(removePosition(token, positionId));
+}
+
+export function addPosition(positionName){
+    store.dispatch(createPosition(token, positionName));
 }

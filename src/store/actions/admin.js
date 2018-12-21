@@ -9,7 +9,7 @@ export let setUserRequests = (data) =>{
 }
 
 export let setPositions = (data) =>{
-
+    console.log("Set Positions")
     return{
         type: GET_POSITIONS,
         data
