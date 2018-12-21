@@ -16,14 +16,14 @@ class CreatePositions extends Component {
     _handleInput = (event) =>{
 
         //if enter key is not pressed
-        if(event.keyCode != 13){
+        if(event.keyCode !== 13){
             this.setState({input: event.target.value});
         }
         
     }
 
     ignoreEnter = (e) =>{
-        if(e.keyCode == 13) {
+        if(e.keyCode === 13) {
             e.preventDefault();
         }
     }

@@ -23,16 +23,41 @@ class Members extends Component {
     state={
         searchInput: "",
         activePage: null,
+        activeData: [],
     }
 
     componentDidMount(){
         console.log("Component Mount: " + this.props.page)
         this.setState({activePage: this.props.page });
+        //set the correct data for correct page
+        switch(this.props.page){
+            case Page.ACTIVE:
+                console.log("set active user data")
+                this._setActiveData(this.props.users);
+                break;
+            case Page.PENDING:
+                this._setActiveData(this.props.requests);
+                break;
+            default:
+                this._setActiveData(this.props.users);
+                break;
+        }
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        if(this.state.activePage === nextState.activePage){
+            return false;
+        }
+        return true;
     }
 
     _setActivePage = (page)=>{
         console.log(page);
         this.setState({activePage: page });
+    }
+
+    _setActiveData = (data)=>{
+        this.setState({activeData: data});
     }
 
     _onSearchInput = (event) =>{
@@ -41,7 +66,9 @@ class Members extends Component {
 
     render() {
 
+        
 
+        console.log("Data: " + this.state.activeData);
         return (
 
 
@@ -57,7 +84,7 @@ class Members extends Component {
                          <SearchBar onSearch={this._onSearchInput} value={this.state.searchInput}/>
                     </div>
                     
-                    <UserList page={this.state.activePage} userData={this.props.users} />
+                    <UserList page={this.state.activePage} userData={this.state.activeData} />
                 </div>
 
 
@@ -77,6 +104,7 @@ class Members extends Component {
 const mapStateToProps = state => {
     return {
         users: state.api.users,
+        requests: state.admin.requests,
     };
 };
 

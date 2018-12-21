@@ -6,11 +6,15 @@ import UserView from './UserView/UserView';
 
 const userList = (props) => (
     <div className={classes.ListCSS}> 
+    
     {
+        props.userData.length > 0 ?
         props.userData.map( (user) =>
         {
             return <UserView data = {user}/>
         })
+        :
+        <div className={classes.noData}>No Users</div>
     }
     </div>
 );
