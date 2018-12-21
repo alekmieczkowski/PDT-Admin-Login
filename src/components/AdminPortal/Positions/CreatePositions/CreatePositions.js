@@ -14,7 +14,18 @@ class CreatePositions extends Component {
     }
 
     _handleInput = (event) =>{
-        this.setState({input: event.target.value});
+
+        //if enter key is not pressed
+        if(event.keyCode != 13){
+            this.setState({input: event.target.value});
+        }
+        
+    }
+
+    ignoreEnter = (e) =>{
+        if(e.keyCode == 13) {
+            e.preventDefault();
+        }
     }
 
     _createPosition = () =>{
@@ -45,6 +56,7 @@ class CreatePositions extends Component {
                         maxLength={18}
                         value={this.state.input}
                         onChange={this._handleInput}
+                        onKeyDown={this.ignoreEnter}
                     />
                  <Button clicked={this._createPosition} buttonCSS={classes.button} textCSS={classes.buttonText} iconSize={22}>Submit</Button>
             </div>
