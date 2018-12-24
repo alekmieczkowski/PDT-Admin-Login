@@ -1,6 +1,6 @@
 import * as updateActions from '../actions/update';
 import {CLEAR_STATE} from '../actions/global';
-
+import {SET_POSTS} from '../actions/api';
 
 let initialState={
     active: false,
@@ -24,6 +24,11 @@ const update = (state = initialState, action) => {
                 active: false,
                 //title: "",
                 //data: null,
+            }
+        case SET_POSTS:
+            return state ={
+                ...state,
+                active: false,
             }
         case CLEAR_STATE:
             return {};

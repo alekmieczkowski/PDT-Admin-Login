@@ -5,6 +5,7 @@ export const SET_CALENDAR = "SET_CALENDAR";
 export const SET_POST_LIKE="SET_POST_LIKE";
 export const SET_COMMENT_LIKE="SET_COMMENT_LIKE";
 export const SUBMIT_COMMENT="SET_COMMENT";
+export const SUBMIT_POST="SET_POST";
 export const DELETE_POST="DELETE_POST";
 
 
@@ -56,4 +57,6 @@ export let setCommentLike = (likedComment) =>{
     }
     
 }
+
+
 

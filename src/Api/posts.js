@@ -72,3 +72,16 @@ export let removePost = (token, post_id) =>{
     }
      
 }
+
+export let createPost = (token, post_body) =>{
+    return (dispatch) =>{
+        return axios(token).post('/post', {
+            title: 'No Title',
+            content: post_body
+        }).then(
+            response => dispatch(getPosts(token)),
+            error => {showError("Error Creating Post"); console.log(JSON.stringify(error))}
+        );
+    }
+     
+}

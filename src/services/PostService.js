@@ -1,7 +1,7 @@
 import {store} from '../store/configureStore';
 import { setPostLike, setCommentLike } from '../Api/likes';
 import {setComment} from '../Api/comments';
-import {removePost} from '../Api/posts';
+import {removePost, createPost} from '../Api/posts';
 import * as loadingService from './LoadingService';
 import {hideConfirmation} from './ConfirmationService';
 
@@ -38,60 +38,17 @@ export async function deletePost(post_id){
         await store.dispatch(removePost(token, post_id));
 
         await loadingService.hideLoading();
+}
 
+export async function addPost(data){
+  await hideConfirmation();
+  
+  await loadingService.showLoading("Creating Post");
 
-        /*
-        return dispatch(loadingService.showLoading("Deleting Post"))
-          .then(()=> 
-            dispatch(hideConfirmation()) 
-          ).then(()=> 
-            dispatch(removePost(token, post_id))   
-          ).then(()=>
-            dispatch(loadingService.hideLoading())
-          );
-          
-    }
-    /*
-    return (dispatch, getState) =>{
-        console.log("Made it in the return");
-        return dispatch(startSpinner("Deleting Post"))
-          .then(()=> 
-            dispatch(hideConfirmationOverlay())
-          ).then(()=> 
-            dispatch(removePost(token, post_id))   
-          ).then(()=>
-            dispatch(stopSpinner())
-          );
-          
-    }
-   
+        
 
-   
-    /*
-     return store.dispatch(loadingService.showLoading("Deleting Post")).then(
+        await store.dispatch(createPost(token, data));
 
-       response => store.dispatch(removePost(token, post_id)).then(
-           response => store.dispatch(loadingService.hideLoading()),
-           error => showError("Error Deleting Post")
-       ),
-       error => showError("Error Deleting Post")
-    ) 
-
-    /*
-     return (dispatch, getState) =>{
-        return store.dispatch(loadingService.showLoading("Deleting Post")
-          ).then(()=> 
-            store.dispatch(hideConfirmation()) 
-          ).then(()=> 
-            store.dispatch(removePost(token, post_id))   
-          ).then(()=>
-            store.dispatch(loadingService.hideLoading())
-          );
-          
-    }
-
-
-    /*
+        await loadingService.hideLoading();
     
-    */
 }

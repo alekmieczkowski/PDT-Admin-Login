@@ -27,7 +27,6 @@ class Members extends Component {
     }
 
     componentDidMount(){
-        console.log("Component Mount: " + this.props.page)
         this.setState({activePage: this.props.page });
         //set the correct data for correct page
         switch(this.props.page){
@@ -52,7 +51,6 @@ class Members extends Component {
     }
 
     _setActivePage = (page)=>{
-        console.log(page);
         this.setState({activePage: page });
     }
 
@@ -66,12 +64,7 @@ class Members extends Component {
 
     render() {
 
-        
-
-        console.log("Data: " + this.state.activeData);
         return (
-
-
 
             <div className={classes.container}>
                 <div className={classes.toolbarContainer}>

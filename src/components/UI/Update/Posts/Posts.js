@@ -5,7 +5,11 @@ import InputContainer from './InputContainer/InputContainer';
 import Button from '../../Button/Button';
 import { MdClose } from 'react-icons/lib/md';
 import { hideUpdate } from '../../../../services/UpdateService';
+import {showError} from '../../../../services/ErrorService';
+import {showConfirmation} from '../../../../services/ConfirmationService';
+import {isValidInput} from '../../../../services/InputValidationService';
 import ImageUpload from './ImageUpload/ImageUpload';
+import{SUBMIT_POST} from '../../../../store/actions/api';
 class Posts extends Component {
 
     state = {
@@ -24,6 +28,21 @@ class Posts extends Component {
         hideUpdate();
     }
 
+    _submit = async () =>{
+        console.log("Update pressed");
+        //if input is valid
+        if(isValidInput(this.state.inputValue)){
+
+            //confirmation
+            showConfirmation("Are you sure you wish to submit this post?",SUBMIT_POST , this.state.inputValue);
+
+        }
+        else{
+            showError("Please input valid post contents");
+        }
+        
+    }
+
     _setImage = (key, image) =>{
         switch(key){
             case 1: this.setState({image1: image});
@@ -36,7 +55,6 @@ class Posts extends Component {
     }
 
     render() {
-
 
         return (
 
@@ -58,7 +76,7 @@ class Posts extends Component {
                             <ImageUpload id={3} setImage={this._setImage}/>
                         </div>
                         <div className={classes.submitContainer}>
-                            <Button clicked={null} buttonCSS={classes.button} textCSS={classes.buttonText} iconSize={22} iconColor={'#003056'} type={"create"}>Submit</Button>
+                            <Button clicked={this._submit} buttonCSS={classes.button} textCSS={classes.buttonText} iconSize={22} iconColor={'#003056'} type={"create"}>Submit</Button>
                             <Button clicked={this._dismiss} buttonCSS={classes.button} textCSS={classes.buttonText} iconSize={22} iconColor={'#003056'} type={"close"}>Close</Button>
                         </div>
                     </div>
