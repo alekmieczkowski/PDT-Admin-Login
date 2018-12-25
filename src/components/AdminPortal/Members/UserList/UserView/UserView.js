@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import classes from './UserView.scss';
 import Badge from '../../../../UI/Badge/Badge';
-import Button from '../../../../UI/Button/Button';
+
+import * as Page from '../../Toolbar/ToolbarPages';
+
+//buttons
+import Active from './Buttons/Active/Active';
+import Pending from './Buttons/Pending/Pending';
+
 
 
 const userView = (props) => {
@@ -9,6 +15,22 @@ const userView = (props) => {
     // phone number conversion
     let phoneNum = props.data.phone_number.toString().match(/(\d{3})(\d{3})(\d{4})/);
     phoneNum = "(" + phoneNum[1] + ")" + phoneNum[2] + "-" + phoneNum[3];
+
+
+    let buttons = null;
+
+    //set button options
+    switch(props.page){
+        case Page.ACTIVE:
+            buttons =  <Active setAlumni={null} setInactive={null} edit={null} makeAdmin={null} />;
+            break;
+        case Page.PENDING:
+            buttons = <Pending accept={null} deny={null}/>;
+            break;
+        default:
+            buttons =  <Active setAlumni={null} setInactive={null} edit={null} makeAdmin={null} />;
+            break;
+    }
 
     return (
 
@@ -18,13 +40,6 @@ const userView = (props) => {
                 <div className={classes.Img}><img src={props.data.google_picture} alt="profile" /></div>
 
                 {/*Badges*/}
-
-                {/*}
-                <div className={classes.dataStyling}><span className={classes.label}>Name:</span><br></br> {props.data.first_name} {props.data.last_name}</div>
-                <div className={classes.dataStyling}><span className={classes.label}>Email:</span><br></br> {props.data.email_address}</div>
-                <div className={classes.dataStyling}><span className={classes.label}>Phone:</span><br></br> {phoneNum}</div>
-                <div className={classes.dataStyling}><span className={classes.label}>Bond #:</span><br></br>{props.data.bond_number}</div>
-                */}
 
                 <div className={classes.dataStyling}>
                     <div className={classes.data}>
@@ -45,17 +60,8 @@ const userView = (props) => {
                 </div>
 
                 <div className={classes.Buttons}>
-                    <div className={classes.buttonsTopRow}>
-                        <Button clicked={props.delete} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"admin"}>Make Admin</Button>
-
-                        <Button clicked={props.delete} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"inactive"}>Set Inactive</Button>
-                        <Button clicked={props.delete} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"alumni"}>Set Alumni</Button>
-                    </div>
-                    <div className={classes.buttonsBottomRow}>
-                        <Button clicked={props.delete} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"edit"}>Edit Info</Button>
-                    </div>
-
-
+                    {/*Buttons*/}   
+                    {buttons}
                 </div>
 
             </div>

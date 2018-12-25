@@ -11,7 +11,7 @@ const userList = (props) => (
         props.userData.length > 0 ?
         props.userData.map( (user) =>
         {
-            return <UserView data = {user}/>
+            return <UserView data = {user} page={props.page}/>
         })
         :
         <div className={classes.noData}>No Users</div>
