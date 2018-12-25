@@ -64,22 +64,22 @@ class Members extends Component {
 
     /*Make User Active*/
     _makeActive = (id) =>{
-
+        console.log("Set Active");
     }
 
     /*Make User Inactive*/
     _makeInactive = (id) =>{
-        
+        console.log("Set Inactive");
     }
 
     /*Make User Alumni*/
     _makeAlumni = (id) =>{
-        
+        console.log("Set Alumni");
     }
 
     /*Toggle User Admin Status*/
     _toggleAdmin = (id) =>{
-
+        console.log("toggle Admin");
     }
 
     /*Edit user*/
@@ -94,7 +94,7 @@ class Members extends Component {
 
     /*Deny User Request*/
     _denyRequest = (id)=>{
-
+        console.log("Deny User Request");
     }
 
     render() {

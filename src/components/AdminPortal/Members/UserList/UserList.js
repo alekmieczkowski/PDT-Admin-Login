@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import classes from '../UserList/UserList.scss';
 import UserView from './UserView/UserView';
 
@@ -9,9 +9,10 @@ const userList = (props) => (
     
     {
         props.userData.length > 0 ?
-        props.userData.map( (user) =>
+        props.userData.map( (user, index) =>
         {
             return <UserView 
+                        key={index}
                         data = {user} 
                         page={props.page}
                         active={props.active}

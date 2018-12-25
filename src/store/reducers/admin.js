@@ -22,7 +22,7 @@ const admin = ( state = initialState , action ) => {
             return{};
         default:
             return state;
-};
+    }
 }
 
 export default admin;

@@ -51,6 +51,7 @@ class Posts extends Component {
                     break;
             case 3: this.setState({image3: image});
                     break;
+            default: break;
         }
     }
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import PrivateRoute from '..//PrivateRoute';
 import HomePage from '../../../containers/AdminPortal/Homepage/Homepage';
-import Members from '../../AdminPortal/Members/Members';
 import Positions from '../../AdminPortal/Positions/Positions'
 
 import { connect } from 'react-redux';

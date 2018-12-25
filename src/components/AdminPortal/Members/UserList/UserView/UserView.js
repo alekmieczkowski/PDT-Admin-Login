@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classes from './UserView.scss';
 import Badge from '../../../../UI/Badge/Badge';
 
