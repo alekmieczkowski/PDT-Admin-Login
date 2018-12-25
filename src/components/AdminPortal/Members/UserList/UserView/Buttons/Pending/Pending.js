@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Pending.scss';
-import Wrapper from '../../../../../../../hoc/Wrapper/Wrapper';
 import Button from '../../../../../../UI/Button/Button';
 
-const pending = (props) =>{
+class Pending extends Component {
 
 
-    return(
+    _onAccept = () =>{
+        this.props.accept(this.props.id);
+    }
+
+    _onDeny = () =>{
+        this.props.deny(this.props.id);
+    }
+
+    render() {
+        return (
 
             <div className={classes.buttonContainer}>
-                <Button clicked={props.makeAdmin} buttonCSS={[classes.button, classes.accept].join(' ')} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"admin"}>Accept</Button>
-                <Button clicked={props.setInactive} buttonCSS={[classes.button, classes.deny].join(' ')} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"inactive"}>Deny</Button>
+                <Button clicked={this._onAccept} buttonCSS={[classes.button, classes.accept].join(' ')} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"admin"}>Accept</Button>
+                <Button clicked={this._onDeny} buttonCSS={[classes.button, classes.deny].join(' ')} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"inactive"}>Deny</Button>
             </div>
 
-    )
+        )
+    }
+
 }
 
-export default pending;
+export default Pending;

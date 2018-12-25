@@ -62,6 +62,41 @@ class Members extends Component {
         this.setState({searchInput: event.target.value});
     }
 
+    /*Make User Active*/
+    _makeActive = (id) =>{
+
+    }
+
+    /*Make User Inactive*/
+    _makeInactive = (id) =>{
+        
+    }
+
+    /*Make User Alumni*/
+    _makeAlumni = (id) =>{
+        
+    }
+
+    /*Toggle User Admin Status*/
+    _toggleAdmin = (id) =>{
+
+    }
+
+    /*Edit user*/
+    _editUser =(id) =>{
+        console.log("Edit User");
+    }
+
+    /*Accept User Request*/
+    _acceptRequest = (id)=>{
+        console.log("Accept user request");
+    }
+
+    /*Deny User Request*/
+    _denyRequest = (id)=>{
+
+    }
+
     render() {
 
         return (
@@ -77,7 +112,17 @@ class Members extends Component {
                          <SearchBar onSearch={this._onSearchInput} value={this.state.searchInput}/>
                     </div>
                     
-                    <UserList page={this.state.activePage} userData={this.state.activeData} />
+                    <UserList 
+                        page={this.state.activePage} 
+                        userData={this.state.activeData} 
+                        active={this._makeActive}
+                        inactive={this._makeInactive}
+                        alumni={this._makeAlumni}
+                        admin={this._toggleAdmin}
+                        edit={this._editUser}
+                        accept={this._acceptRequest}
+                        deny={this._denyRequest}
+                        />
                 </div>
 
 

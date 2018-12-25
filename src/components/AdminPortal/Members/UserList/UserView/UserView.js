@@ -22,13 +22,13 @@ const userView = (props) => {
     //set button options
     switch(props.page){
         case Page.ACTIVE:
-            buttons =  <Active setAlumni={null} setInactive={null} edit={null} makeAdmin={null} />;
+            buttons =  <Active id={props.data.user_id} setAlumni={props.alumni} setInactive={props.inactive} edit={props.edit} makeAdmin={props.admin} />;
             break;
         case Page.PENDING:
-            buttons = <Pending accept={null} deny={null}/>;
+            buttons = <Pending id={props.request_id} accept={props.accept} deny={props.deny}/>;
             break;
         default:
-            buttons =  <Active setAlumni={null} setInactive={null} edit={null} makeAdmin={null} />;
+            buttons =  <Active id={props.data.user_id} setAlumni={props.alumni} setInactive={props.inactive} edit={props.edit} makeAdmin={props.admin} />;
             break;
     }
 
