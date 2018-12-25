@@ -5,15 +5,15 @@ import classes from './Active.scss';
 class Active extends Component {
 
     _onMakeAdmin = () =>{
-        this.props.admin(this.props.id);
+        this.props.makeAdmin(this.props.id);
     }
 
     _onSetInactive = () =>{
-        this.props.inactive(this.props.id);
+        this.props.setInactive(this.props.id);
     }
 
     _onSetAlumni =() =>{
-        this.props.alumni(this.props.id);
+        this.props.setAlumni(this.props.id);
     }
 
     _onEditInfo = () =>{

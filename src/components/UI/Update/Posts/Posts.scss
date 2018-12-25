@@ -3,14 +3,13 @@
 .container{
     display: flex;
     flex-direction: column;
-    width: 100vw;
+    //width: 100vw;
 
 }
 
 .iconClose{
     position:absolute;
-    right: 0;
-    margin-right: -40px;
+    margin-left: 390px;
     margin-top: -40px;
 
 }

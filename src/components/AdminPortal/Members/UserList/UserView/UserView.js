@@ -20,15 +20,15 @@ const userView = (props) => {
     let buttons = null;
 
     //set button options
-    switch(props.page){
+    switch (props.page) {
         case Page.ACTIVE:
-            buttons =  <Active id={props.data.user_id} setAlumni={props.alumni} setInactive={props.inactive} edit={props.edit} makeAdmin={props.admin} />;
+            buttons = <Active id={props.data.user_id} setAlumni={props.alumni} setInactive={props.inactive} edit={props.edit} makeAdmin={props.admin} />;
             break;
         case Page.PENDING:
-            buttons = <Pending id={props.request_id} accept={props.accept} deny={props.deny}/>;
+            buttons = <Pending id={props.request_id} accept={props.accept} deny={props.deny} />;
             break;
         default:
-            buttons =  <Active id={props.data.user_id} setAlumni={props.alumni} setInactive={props.inactive} edit={props.edit} makeAdmin={props.admin} />;
+            buttons = <Active id={props.data.user_id} setAlumni={props.alumni} setInactive={props.inactive} edit={props.edit} makeAdmin={props.admin} />;
             break;
     }
 
@@ -39,14 +39,23 @@ const userView = (props) => {
             <div className={classes.Data}>
                 <div className={classes.Img}><img src={props.data.google_picture} alt="profile" /></div>
 
-                {/*Badges*/}
+                
 
                 <div className={classes.dataStyling}>
                     <div className={classes.data}>
-                        {props.data.first_name} {props.data.last_name}
+                        #{props.data.bond_number} {props.data.first_name} {props.data.last_name}
                     </div>
                     <div className={classes.data}>
-                        {props.data.email_address}
+                    
+                        {/*Badges*/}
+
+                        {typeof props.data.positions !== "undefined" ?
+                            props.data.positions.map(position => {
+                                return <Badge>{position.title}</Badge>;
+                            })
+                            :
+                            null}
+
                     </div>
                 </div>
 
@@ -55,12 +64,12 @@ const userView = (props) => {
                         {phoneNum}
                     </div>
                     <div className={classes.data}>
-                        #{props.data.bond_number}
+                        {props.data.email_address}
                     </div>
                 </div>
 
                 <div className={classes.Buttons}>
-                    {/*Buttons*/}   
+                    {/*Buttons*/}
                     {buttons}
                 </div>
 
