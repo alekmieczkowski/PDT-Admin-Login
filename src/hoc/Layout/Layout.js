@@ -7,6 +7,7 @@ import ErrorSpinner from '../../components/UI/Spinner/Error/Error';
 import {connect} from 'react-redux';
 import ConfirmationSpinner from '../../components/UI/Spinner/Confirmation/Confirmation';
 import UpdatePost from '../../components/UI/Update/Posts/Posts';
+import UpdateUser from '../../components/UI/Update/User/User';
 
 //hide error message
 import {hideError} from '../../services/ErrorService';
@@ -31,7 +32,8 @@ class Layout extends Component{
                 <LoadingSpinner spinnerText={this.props.spinnerText} isActive={this.props.animateSpinner}/>
                 <ErrorSpinner errorText={this.props.errorMessage} isActive={this.props.error} dismiss={hideError}/>
                 <ConfirmationSpinner text={this.props.confirmationMessage} isActive={this.props.confirmation} type={this.props.confirmationType} data={this.props.confirmationData} dismiss={confirmationService.hideConfirmation}/>     
-                <UpdatePost active={this.props.updateActive} title={this.props.updateTitle} data={this.props.updateData} dismiss={hideUpdate}/>         
+                <UpdatePost active={this.props.updatePost} title={this.props.updateTitle} data={this.props.updateData} dismiss={hideUpdate}/> 
+                <UpdateUser active={this.props.updateUser} title={this.props.updateTitle} data={this.props.updateData} dismiss={hideUpdate}/>        
                 <main className={classes.Layout}>
                     {this.props.children}
                 </main> 
@@ -56,7 +58,8 @@ const mapStateToProps = state => {
         confirmationType: state.confirmation.type,
         confirmationData: state.confirmation.data,
         //Update post
-        updateActive: state.update.active,
+        updatePost: state.update.activePost,
+        updateUser: state.update.activeUser,
         updateTitle: state.update.title,
         updateData: state.update.data,
     };

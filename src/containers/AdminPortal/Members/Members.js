@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import UserList from '../../../components/AdminPortal/Members/UserList/UserList';
 import Toolbar from '../../../components/AdminPortal/Members/Toolbar/Toolbar';
 import SearchBar from '../../../components/AdminPortal/Members/SearchBar/SearchBar';
-
+import {getUserById} from '../../../services/AdminService';
+import {editUser} from '../../../services/UpdateService';
 import * as Page from '../../../components/AdminPortal/Members/Toolbar/ToolbarPages';
 /**
  * 
@@ -84,7 +85,8 @@ class Members extends Component {
 
     /*Edit user*/
     _editUser =(id) =>{
-        console.log("Edit User");
+        console.log("Edit User id: " + id + " User Data: " + JSON.stringify(getUserById(id)));
+        editUser(getUserById(id));
     }
 
     /*Accept User Request*/

@@ -20,3 +20,14 @@ export function deletePosition(positionId){
 export function addPosition(positionName){
     store.dispatch(createPosition(token, positionName));
 }
+
+export function getUserById(id){
+    let users =  store.getState().api.users;
+
+    let user = users.map(user =>{
+        if(user.user_id === id){
+            return user;
+        }
+    })
+    return user[0];
+}

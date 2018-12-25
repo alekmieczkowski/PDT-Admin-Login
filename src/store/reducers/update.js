@@ -1,9 +1,10 @@
 import * as updateActions from '../actions/update';
 import {CLEAR_STATE} from '../actions/global';
-import {SET_POSTS} from '../actions/api';
+import {SET_POSTS, SET_USER} from '../actions/api';
 
 let initialState={
-    active: false,
+    activePost: false,
+    activeUser: false,
     title: "",
     data: null,
 }
@@ -13,22 +14,31 @@ const update = (state = initialState, action) => {
         case updateActions.UPDATE_POST:
             return state = {
                 ...state,
-                active: true,
+                activePost: true,
                 title: action.title,
                 data: action.data,
             }
-
+        case updateActions.UPDATE_USER:
+            return state = {
+                ...state,
+                activeUser: true,
+                data: action.data,
+            }
         case updateActions.UPDATE_CLOSE:
             return state = {
                 ...state,
-                active: false,
-                //title: "",
-                //data: null,
+                activePost: false,
+                activeUser: false,
             }
         case SET_POSTS:
             return state ={
                 ...state,
-                active: false,
+                activePost: false,
+            }
+        case SET_USER:
+            return state ={
+                ...state,
+                activeUser: false,
             }
         case CLEAR_STATE:
             return {};

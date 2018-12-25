@@ -17,6 +17,7 @@ class Active extends Component {
     }
 
     _onEditInfo = () =>{
+        console.log("Id of edit: " + this.props.id);
         this.props.edit(this.props.id);
     }
 
@@ -24,13 +25,13 @@ class Active extends Component {
         return (
             <Wrapper>
                 <div className={classes.buttonsTopRow}>
-                    <Button clicked={this.props.makeAdmin} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"admin"}>Make Admin</Button>
+                    <Button clicked={this._onMakeAdmin} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"admin"}>Make Admin</Button>
     
-                    <Button clicked={this.props.setInactive} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"inactive"}>Set Inactive</Button>
-                    <Button clicked={this.props.setAlumni} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"alumni"}>Set Alumni</Button>
+                    <Button clicked={this._onSetInactive} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"inactive"}>Set Inactive</Button>
+                    <Button clicked={this._onSetAlumni} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"alumni"}>Set Alumni</Button>
                 </div>
                 <div className={classes.buttonsBottomRow}>
-                    <Button clicked={this.props.edit} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"edit"}>Edit Info</Button>
+                    <Button clicked={this._onEditInfo} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"edit"}>Edit Info</Button>
                 </div>
             </Wrapper>
     

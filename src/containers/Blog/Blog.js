@@ -4,7 +4,7 @@ import BlogRender from '../../components/Blog/Blog';
 import {connect} from 'react-redux';
 import UserBadge from '../../components/Blog/UserBadge/UserBadge';
 import SideBar from '../../components/Blog/Sidebar/Sidebar';
-import {showUpdate} from '../../services/UpdateService';
+import {editPost} from '../../services/UpdateService';
 
 
 
@@ -13,7 +13,7 @@ import {showUpdate} from '../../services/UpdateService';
 class Blog extends Component {
 
     _createPost = () =>{
-        showUpdate(null);
+        editPost(null);
     }
 
     render() {
