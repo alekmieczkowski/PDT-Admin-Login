@@ -116,7 +116,6 @@ class User extends Component {
     }
 
     _removeById = (array, id) =>{
-        //console.log("remove by ID before: " +array);
         let final = _.remove(array, function(data) { return data.position_id !== id; });
         return final;
         
