@@ -4,8 +4,20 @@ import { CSSTransition } from 'react-transition-group';
 
 export default class Update extends Component {
 
+    componentDidMount(){
+        setTimeout(
+            function() {
+                this.setState({active: this.props.isActive});
+            }
+            .bind(this),
+            1
+        );
+    }
+
+    state={
+        active: false,
+    }
     render() {
-        
         //block out background clicks if active
         let backgroundStyle = classes.background;
         if(this.props.isActive){
@@ -15,11 +27,10 @@ export default class Update extends Component {
         return (
             <div className={backgroundStyle} onClick={this.props.clicked}>
             <CSSTransition
-                in={this.props.isActive}
+                in={this.state.active}
                 timeout={800}
                 classNames="spinner"
-                appear={false}
-                unmountOnExit
+                unmountOnExit={true}
             >
             
                 <div className={classes.container}>

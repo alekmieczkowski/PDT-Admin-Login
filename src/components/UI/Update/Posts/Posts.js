@@ -56,7 +56,7 @@ class Posts extends Component {
     }
 
     render() {
-
+        console.log("In posts updatea");
         return (
 
             <Update isActive={this.props.active}>

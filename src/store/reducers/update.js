@@ -41,7 +41,12 @@ const update = (state = initialState, action) => {
                 activeUser: false,
             }
         case CLEAR_STATE:
-            return {};
+            return {
+                activeUser: false,
+                activePost: false,
+                data: null,
+                title: "",
+            };
 
         default:
             return state;

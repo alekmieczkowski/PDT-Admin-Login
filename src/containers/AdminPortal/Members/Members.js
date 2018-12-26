@@ -84,7 +84,7 @@ class Members extends Component {
     }
 
     /*Edit user*/
-    _editUser =(id) =>{
+    _editUser = (id) =>{
         console.log("Edit User id: " + id + " User Data: " + JSON.stringify(getUserById(id)));
         editUser(getUserById(id));
     }

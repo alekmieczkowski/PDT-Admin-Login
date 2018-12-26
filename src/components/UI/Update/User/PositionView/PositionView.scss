@@ -1,0 +1,21 @@
+@import '../../../../../constants/theme';
+
+.container{
+    flex: 1;
+    background-color: $secondary;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.header{
+    font-size: 20px;
+    color: $primary;
+    font-weight: bold;
+    flex: 1;
+}
+
+.positionContainer{
+    border-top: 1px solid $primary;
+    flex: 2;
+}

@@ -51,7 +51,7 @@ const userView = (props) => {
 
                         {typeof props.data.positions !== "undefined" ?
                             props.data.positions.map(position => {
-                                return <Badge>{position.title}</Badge>;
+                                return <Badge key={position.position_id}>{position.title}</Badge>;
                             })
                             :
                             null}

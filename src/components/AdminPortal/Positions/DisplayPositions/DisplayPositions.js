@@ -9,7 +9,7 @@ const displayPositions = (props) =>{
         <div className={classes.container}>
             <div className={classes.header}>Existing Positions</div><br/>
             <div className={classes.areaContainer}>
-            {props.data !== null && typeof props.data != "undefined" ? 
+            {props.data !== null && typeof props.data !== "undefined" ? 
                 props.data.map(positionObj =>{
                     return <Position key={positionObj.position_id} text={positionObj.title} id={positionObj.position_id}/>;
                 })

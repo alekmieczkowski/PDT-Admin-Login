@@ -3,6 +3,7 @@ import classes from './User.scss';
 import Update from '../Update';
 import Textarea from 'react-textarea-autosize';
 import InputMask from 'react-input-mask';
+import PositionView from './PositionView/PositionView';
 
 class User extends Component {
 
@@ -39,7 +40,6 @@ class User extends Component {
         }
     }
 
-
     _changeFName =(event)=>{
         this.setState({fName: event.target.value});
     }
@@ -58,6 +58,14 @@ class User extends Component {
 
     _changeBond =(event)=>{
         this.setState({bond: event.target.value});
+    }
+
+    _addPosition = (id)=>{
+
+    }
+
+    _removePosition = (id)=>{
+
     }
 
     
@@ -87,7 +95,6 @@ class User extends Component {
                                 <div className={[classes.InputContainer, classes.nameContainer].join(' ')}>
                                     <div className={classes.label}>Phone Number</div>
                                     <InputMask className={[classes.textInput, classes.phone].join(' ')} value={this.state.phone} onChange={this._changePhone} mask="(999) 999-9999"/>
-                                    {/*<Textarea className={[classes.textInput, classes.phone].join(' ')} maxRows={1} maxLength={30} value={this.state.phone} onChange={this._changePhone} />*/}
                                 </div>
                                 <div className={[classes.InputContainer, classes.nameContainer].join(' ')}>
                                     <div className={classes.label}>Bond Number</div>
@@ -105,8 +112,10 @@ class User extends Component {
                         </div>
                     </div>
                     <div className={classes.positionContainer}>
+                        <PositionView title={"Current Positions"} data={this.state.positions}/>
                     </div>
                     <div className={classes.positionContainer}>
+                        <PositionView title={"Add Positions"} data={this.props.positions}/>
                     </div>
                     <div onClick={this.props.dismiss}>Dismiss</div>
                 </div>

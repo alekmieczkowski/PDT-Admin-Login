@@ -8,7 +8,7 @@ const userList = (props) => (
     <div className={classes.ListCSS}> 
     
     {
-        typeof props.userData != "undefined" && props.userData.length > 0  ?
+        typeof props.userData !== "undefined" && props.userData.length > 0  ?
         props.userData.map( (user, index) =>
         {
             return <UserView 
