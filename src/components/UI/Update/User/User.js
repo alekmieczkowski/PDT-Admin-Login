@@ -27,8 +27,22 @@ class User extends Component {
             phone: this.props.data.phone_number,
             email: this.props.data.email_address,
             bond:  this.props.data.bond_number,
-            userPositions: this.props.data.positions,
-            positions: this.props.positions,
+           
+        })
+
+        //avoid mutating global and user positions
+        let globalPositions = [...this.props.positions];
+        let userPositions = [...this.props.data.positions];
+
+        //remove duplicate positions from positions array
+        userPositions.map(position=>{
+            globalPositions =  this._removeById(globalPositions, position.position_id);
+        });
+
+        //save updated positions
+        this.setState({
+            userPositions: userPositions,
+            positions: globalPositions,
         })
     }
 
@@ -73,12 +87,10 @@ class User extends Component {
         let positionArr = [...this.state.positions];
         let userPositionArr = [...this.state.userPositions];
 
-        //console.log("UserPosition Before: " + userPositionArr.length)
-
         //add to user positions array
         userPositionArr.push(this._getById([...positionArr], id));
 
-        //console.log("Position Arr Before: " + JSON.stringify(positionArr));
+        //remove position from global positions
         positionArr = this._removeById(positionArr, id);
 
         //set state
@@ -92,12 +104,10 @@ class User extends Component {
         let positionArr = [...this.state.positions];
         let userPositionArr = [...this.state.userPositions];
 
-        //console.log("UserPosition Before: " + userPositionArr.length)
-
         //add to user positions array
         positionArr.push(this._getById([...userPositionArr], id));
 
-        //console.log("Position Arr Before: " + JSON.stringify(positionArr));
+        //remove position from users positions
         userPositionArr = this._removeById(userPositionArr, id);
 
         //set state
@@ -119,7 +129,6 @@ class User extends Component {
     
 
     render() {
-        console.log("data in user update: " + JSON.stringify(this.props.data));
         return (
             <Update isActive={this.props.active}>
             <div className={classes.container}>
