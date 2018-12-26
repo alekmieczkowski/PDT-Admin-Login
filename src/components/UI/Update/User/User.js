@@ -67,11 +67,8 @@ class User extends Component {
     }
 
     //add position to user
-    //add to user positions array
-    //remove from positions array
     _addPosition = (id)=>{
 
-        console.log("Add Position Clicked: " + id);
         //make copies of arrays to avoid mutating state
         let positionArr = [...this.state.positions];
         let userPositionArr = [...this.state.userPositions];
@@ -80,11 +77,9 @@ class User extends Component {
 
         //add to user positions array
         userPositionArr.push(this._getById([...positionArr], id));
-        console.log("UserPosition After: " + JSON.stringify(userPositionArr));
 
         //console.log("Position Arr Before: " + JSON.stringify(positionArr));
         positionArr = this._removeById(positionArr, id);
-        console.log("Position Arr After: " + JSON.stringify(positionArr));
 
         //set state
         this.setState({positions: positionArr, userPositions: userPositionArr});
@@ -92,23 +87,33 @@ class User extends Component {
     }
 
     //remove position from user
-    //remove from user array
-    //add to positions array
     _removePosition = (id)=>{
-        console.log("Remove Position Clicked: " + id);
+        //make copies of arrays to avoid mutating state
+        let positionArr = [...this.state.positions];
+        let userPositionArr = [...this.state.userPositions];
+
+        //console.log("UserPosition Before: " + userPositionArr.length)
+
+        //add to user positions array
+        positionArr.push(this._getById([...userPositionArr], id));
+
+        //console.log("Position Arr Before: " + JSON.stringify(positionArr));
+        userPositionArr = this._removeById(userPositionArr, id);
+
+        //set state
+        this.setState({positions: positionArr, userPositions: userPositionArr});
+        this.forceUpdate();
     }
 
     _removeById = (array, id) =>{
         //console.log("remove by ID before: " +array);
         let final = _.remove(array, function(data) { return data.position_id !== id; });
-        console.log("remove by Id after: " + JSON.stringify(final));
         return final;
         
     }
 
     _getById = (array, id)=>{
         let final = _.remove(array, function(data) { return data.position_id === id; });
-        console.log("get by id:" + JSON.stringify(final));
         return final[0];
     }
     
