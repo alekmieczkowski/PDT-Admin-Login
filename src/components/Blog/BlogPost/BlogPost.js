@@ -61,7 +61,7 @@ class BlogPost extends Component {
         //check if user has admin privelages for post
         let admin = false;
         //console.log("userId: " + this.props.userId + " admin: " + this.props.admin + " ownerId: " + this.props.data.owner_id);
-        if(this.props.userId === this.props.data.owner_id || this.props.admin){
+        if(this.props.userId === this.props.data.owner_id || this.props.admin === true){
             admin = true;
         }
 
@@ -74,7 +74,7 @@ class BlogPost extends Component {
                         <div className={classes.userPostContainer}>
                             {/*User Information */}
                             <div className={classes.userInformationContainer}>
-                                <UserInfo data={this.props.data.user}/>
+                                <UserInfo data={this.props.data.user} positions={this.props.data.positions}/>
                             </div>
 
                             {/*User Post */}
@@ -86,7 +86,7 @@ class BlogPost extends Component {
 
                             {/*Comments */}
                             <AddComment postId={this.props.data.post_id}/>
-                            <Comments data={this.props.data.comments}/>
+                            <Comments data={this.props.data.comments} userId={this.props.userId} admin={this.props.admin}/>
 
                         </div>
 

@@ -157,7 +157,7 @@ class User extends Component {
                                 </div>
                                 <div className={[classes.InputContainer, classes.nameContainer].join(' ')}>
                                     <div className={classes.label}>Bond Number</div>
-                                    <Textarea className={[classes.textInput, classes.bond].join(' ')} maxRows={1} maxLength={4} value={this.state.bond} onChange={this._changeBond} />
+                                    <Textarea className={[classes.textInput, classes.bond].join(' ')} maxRows={1} maxLength={4} value={this.state.bond.toString()} onChange={this._changeBond} />
                                 </div>
                             </div>
                             <div className={classes.inputNameContainer}>

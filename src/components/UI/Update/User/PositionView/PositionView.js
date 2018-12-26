@@ -11,7 +11,7 @@ const positionView = (props) => {
             </div>
             <div className={classes.positionContainer}>
                 {props.data.length > 0 ? props.data.map(position => {
-                    return <Position data={position} type={props.type} onClick={props.onClick}/>;
+                    return <Position key={position.position_id} data={position} type={props.type} onClick={props.onClick}/>;
                 })
             : "No Positions"}
             </div>

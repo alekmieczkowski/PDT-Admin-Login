@@ -17,8 +17,8 @@ const userbadge = (props) =>{
             </div>
             <div className={classes.badgeContainer}>
             {
-                props.data.positions.map(position =>{
-                    return <Badge>{position}</Badge>;
+                props.data.positions.map((position) =>{
+                    return <Badge key={position.position_id}>{position.title}</Badge>;
                 })
 
             }

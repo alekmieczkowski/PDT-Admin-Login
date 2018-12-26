@@ -28,12 +28,24 @@ class Comments extends Component {
         updateCommentLike(commentId);
     }
 
+    _editComment = (id) =>{
+
+    }
+
+    _removeComment = (id) =>{
+
+    }
+
 
     render(){
 
         //render out comments
         let comments = this.props.data.map((comment) => {
-            return <Comment key={comment.comment_id} data={comment} updateLike={this._updateCommentLike}/>;
+            let admin = false;
+            if(this.props.admin || comment.owner_id === this.props.userId){
+                admin = true;
+            }
+            return <Comment key={comment.comment_id} admin={admin} data={comment} updateLike={this._updateCommentLike}/>;
         });
 
 

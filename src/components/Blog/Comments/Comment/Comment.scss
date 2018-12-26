@@ -67,8 +67,12 @@
 }
 
 .likeContainer{
+    //background-color: red;
     flex: 1;
-    max-width: 60px;
+    flex-direction: row;
+    display: flex;
+    //max-width: 60px;
+    justify-content: flex-end;
     padding-right: 20px;
     padding-top: 8px;
 }
@@ -77,6 +81,8 @@
     position: relative;
     padding-left: 10px;
     padding-top: 1px;
+    margin: 6px;
+    cursor: pointer;
 }
 
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './Comment.scss';
 import LikeButton from './LikeButton/LikeButton';
+import Button from '../../../UI/Button/Button';
+import Wrapper from '../../../../hoc/Wrapper/Wrapper'
 
 
 const comment = (props) => {
@@ -27,6 +29,12 @@ const comment = (props) => {
                     </div>
 
                     <div className={classes.likeContainer}>
+                        {props.admin ? 
+                            <Wrapper>
+                                <Button clicked={props.edit} buttonCSS={classes.button} iconSize={26} iconColor={'#003056'} type={"edit"}></Button>
+                                <Button clicked={props.delete} buttonCSS={classes.button} iconSize={26} iconColor={'#003056'} type={"delete"}></Button>
+                            </Wrapper>
+                        : null}
                         <LikeButton emblemTextCSS={classes.buttonEmblemText} emblemCSS={classes.buttonEmblem} css={classes.button} commentId={props.data.comment_id} clicked={props.updateLike}  likedByUser={props.data.isLikedByUser} likes={props.data.likes} iconSize={22} iconColor={'#003056'} />
                     </div>
 
