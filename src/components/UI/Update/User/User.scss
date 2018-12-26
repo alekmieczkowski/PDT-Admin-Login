@@ -1,6 +1,12 @@
 @import '../../../../constants/theme';
 
 .container{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.userContainer{
     background-color: $secondary;
     border: 1px solid $secondary;
     color: $primary;
@@ -11,6 +17,7 @@
     margin-top: -150px;
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .topContainer{
@@ -99,4 +106,41 @@ input:focus {
 
 .positionContainer{
     padding: 10px;
+}
+
+.submitContainer{
+    flex: 1;
+    flex-direction: row;
+    display: flex; 
+    justify-content: flex-end;
+
+}
+
+//button
+.button{
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    background-color: $secondary;
+    border-radius: 4px;
+    height: 20px;
+    margin: 4px;
+    cursor: pointer;
+    right: 0;
+
+
+}
+
+.submit{
+    background-color: $primary;
+    color: $secondary;
+    //border-color: $secondary;
+    border: 1px solid $secondary;
+}
+
+.buttonText{
+    font-size: 16px;
+    padding-left: 6px;
+
 }

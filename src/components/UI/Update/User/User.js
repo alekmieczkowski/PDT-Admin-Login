@@ -4,6 +4,7 @@ import Update from '../Update';
 import Textarea from 'react-textarea-autosize';
 import InputMask from 'react-input-mask';
 import PositionView from './PositionView/PositionView';
+import Button from '../../Button/Button';
 
 class User extends Component {
 
@@ -75,7 +76,10 @@ class User extends Component {
         console.log("data in user update: " + JSON.stringify(this.props.data));
         return (
             <Update isActive={this.props.active}>
-                <div className={classes.container}>
+            <div className={classes.container}>
+            
+           
+                <div className={classes.userContainer}>
                     <div className={classes.topContainer}>
                         <div className={classes.imageContainer}>
                             <img className={classes.profileImg} src={this.props.data.google_picture} alt={'usr_img'} />
@@ -118,9 +122,12 @@ class User extends Component {
                     <div className={classes.positionContainer}>
                         <PositionView title={"Add Positions"} data={this.props.positions} type={"add"} onClick={this._addPosition}/>
                     </div>
-                    <div onClick={this.props.dismiss}>Dismiss</div>
                 </div>
-
+                <div className={classes.submitContainer}>
+                            <Button clicked={this.props.dismiss} buttonCSS={classes.button} textCSS={classes.buttonText} iconSize={22} iconColor={'#003056'} type={"close"}>Close</Button>
+                            <Button clicked={this._submit} buttonCSS={[classes.button, classes.submit].join(' ')} textCSS={classes.buttonText} iconSize={22} iconColor={'#fff'} type={"create"}>Submit</Button>
+                </div>
+                </div>
             </Update>
         )
 
