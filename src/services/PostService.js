@@ -1,7 +1,7 @@
 import {store} from '../store/configureStore';
 import { setPostLike, setCommentLike } from '../Api/likes';
 import {setComment} from '../Api/comments';
-import {removePost, createPost} from '../Api/posts';
+import {removePost, createPost, editPost} from '../Api/posts';
 import * as loadingService from './LoadingService';
 import {hideConfirmation} from './ConfirmationService';
 
@@ -28,27 +28,36 @@ export async function addComment(post_id, content){
 
 //remove post
 export async function deletePost(post_id){
-    console.log("in delete post: " + post_id);
 
-        console.log("Made it into return");
-        await loadingService.showLoading("Deleting Post");
+    await loadingService.showLoading("Deleting Post");
 
-        await hideConfirmation();
+    await hideConfirmation();
 
-        await store.dispatch(removePost(token, post_id));
+    await store.dispatch(removePost(token, post_id));
 
-        await loadingService.hideLoading();
+    await loadingService.hideLoading();
 }
 
 export async function addPost(data){
-  await hideConfirmation();
+    
+    await hideConfirmation();
   
-  await loadingService.showLoading("Creating Post");
+    await loadingService.showLoading("Creating Post");
 
-        
+    await store.dispatch(createPost(token, data));
 
-        await store.dispatch(createPost(token, data));
+    await loadingService.hideLoading();
+    
+}
 
-        await loadingService.hideLoading();
+export async function updatePost(post){
+
+    await hideConfirmation();
+  
+    await loadingService.showLoading("Updating Post");
+  
+    await store.dispatch(editPost(token, post.post_id, post.content));
+  
+    await loadingService.hideLoading();
     
 }

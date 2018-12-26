@@ -85,3 +85,16 @@ export let createPost = (token, post_body) =>{
     }
      
 }
+
+export let editPost = (token, post_id, post_body)=>{
+    console.log("Edit post Token: " + token);
+    return (dispatch) =>{
+        return axios(token).put('/post/'+post_id,{
+            content: post_body
+        }).then(
+            response => dispatch(getPosts(token)),
+            error => {showError("Error Updating Post"); console.log(JSON.stringify(error))}
+        );
+    }
+
+}

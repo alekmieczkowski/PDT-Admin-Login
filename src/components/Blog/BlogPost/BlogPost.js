@@ -11,6 +11,8 @@ import {connect} from 'react-redux';
 //Post Services
 import * as postService from '../../../services/PostService';
 
+//update service
+import {editPost} from '../../../services/UpdateService';
 //confirmation activation
 import * as confirmationService from '../../../services/ConfirmationService';
 
@@ -37,6 +39,10 @@ class BlogPost extends Component {
         //ask for confirmation
         await confirmationService.showConfirmation("Are you sure you wish to delete this post?", DELETE_POST, this.props.data.post_id);
 
+    }
+
+    _updatePost = async ()=>{
+        editPost(this.props.data);
     }
 
 
@@ -88,7 +94,7 @@ class BlogPost extends Component {
                     {/*Comments Contents */}
                     <div className={classes.rightContainer}>
                         {/*Buttons */}
-                        <Options delete={this._removePost} submit={null} admin={admin} updateLike={this._updateLike} likes={this.props.data.likes} likedByUser={this.props.data.isLikedByUser} comments={this.props.data.comments.length}/>
+                        <Options delete={this._removePost} edit={this._updatePost} admin={admin} updateLike={this._updateLike} likes={this.props.data.likes} likedByUser={this.props.data.isLikedByUser} comments={this.props.data.comments.length}/>
                         
                     </div>
                 </div>

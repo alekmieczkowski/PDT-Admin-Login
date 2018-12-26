@@ -10,31 +10,50 @@ import {showConfirmation} from '../../../../services/ConfirmationService';
 import {isValidInput} from '../../../../services/InputValidationService';
 import ImageUpload from './ImageUpload/ImageUpload';
 import{SUBMIT_POST} from '../../../../store/actions/api';
+import{UPDATE_POST} from '../../../../store/actions/update';
 class Posts extends Component {
 
     state = {
+        update: false,
         inputValue: "",
         image1: null,
         image2: null,
         image3: null,
     }
 
+    componentDidMount(){
+
+        //if update post set post data in state
+        if(this.props.data !== null){
+            this.setState({update: true, inputValue: this.props.data.content});
+        }
+
+    }
+
     _updateInput = (event) => {
         this.setState({ inputValue: event.target.value });
     }
 
-    _dismiss = async () => {
+    _dismiss =  () => {
         this.setState({ inputValue: "" });
         hideUpdate();
     }
 
-    _submit = async () =>{
+    _submit =  () =>{
         console.log("Update pressed");
         //if input is valid
         if(isValidInput(this.state.inputValue)){
 
-            //confirmation
-            showConfirmation("Are you sure you wish to submit this post?",SUBMIT_POST , this.state.inputValue);
+            //if this is an update
+            if(this.state.update){
+                //confirmation
+                showConfirmation("Are you sure you wish to update this post?",UPDATE_POST , {...this.props.data, content: this.state.inputValue});
+            }
+            else{
+                //new post
+                showConfirmation("Are you sure you wish to submit this post?",SUBMIT_POST , this.state.inputValue);
+            }
+            
 
         }
         else{

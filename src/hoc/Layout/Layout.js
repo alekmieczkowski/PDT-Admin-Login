@@ -62,6 +62,7 @@ const mapStateToProps = state => {
         updatePost: state.update.activePost,
         updateTitle: state.update.title,
         updateData: state.update.data,
+        updateType: state.update.type,
         //updateUser
         updateUser: state.update.activeUser,
         positions: state.admin.positions

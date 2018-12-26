@@ -17,7 +17,7 @@ const options = (props) => {
             {props.admin === true ?
                 <Wrapper>
                     <div className={classes.divider} />
-                    <Button clicked={props.submit} buttonCSS={classes.button} iconSize={26} iconColor={'#003056'} type={"edit"}>Edit</Button>
+                    <Button clicked={props.edit} buttonCSS={classes.button} iconSize={26} iconColor={'#003056'} type={"edit"}>Edit</Button>
                     <Button clicked={props.delete} buttonCSS={classes.button} iconSize={26} iconColor={'#003056'} type={"delete"}>Delete</Button>
                 </Wrapper>
                 : null}

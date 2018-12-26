@@ -3,8 +3,8 @@ import classes from './Confirmation.scss';
 import Spinner from '../Spinner';
 import Button from '../../../UI/Button/Button';
 import { MdError } from 'react-icons/lib/md';
-import { deletePost, addPost } from '../../../../services/PostService';
-import { DELETE_POST, SUBMIT_POST } from '../../../../store/actions/api';
+import { deletePost, addPost, updatePost } from '../../../../services/PostService';
+import { DELETE_POST, SUBMIT_POST, UPDATE_POST } from '../../../../store/actions/api';
 
 class Confirmation extends Component {
 
@@ -18,6 +18,9 @@ class Confirmation extends Component {
                 break;
             case SUBMIT_POST:
                 acceptButton = addPost;
+                break;
+            case UPDATE_POST:
+                acceptButton = updatePost;
                 break;
             default:
                 acceptButton = null;
