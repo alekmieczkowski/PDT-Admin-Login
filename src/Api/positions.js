@@ -8,7 +8,7 @@ export let getExistingPositions = (token) =>{
     return (dispatch) =>{
         return axios(token).get('/positions').then(
             response => store.dispatch(setPositions(response.data.result.positions)),
-            error => showError("Error Fetching Positions")
+            error => {showError("Error Fetching Positions"); console.log(error)}
         );
     }
      

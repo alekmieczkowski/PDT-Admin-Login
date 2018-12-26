@@ -5,6 +5,8 @@ import Textarea from 'react-textarea-autosize';
 import InputMask from 'react-input-mask';
 import PositionView from './PositionView/PositionView';
 import Button from '../../Button/Button';
+import * as _ from 'lodash';
+
 
 class User extends Component {
 
@@ -14,6 +16,7 @@ class User extends Component {
         phone:"",
         email:"",
         bond:"",
+        userPositions: [],
         positions: [],
     }
 
@@ -24,7 +27,8 @@ class User extends Component {
             phone: this.props.data.phone_number,
             email: this.props.data.email_address,
             bond:  this.props.data.bond_number,
-            positions: this.props.data.positions,
+            userPositions: this.props.data.positions,
+            positions: this.props.positions,
         })
     }
 
@@ -36,7 +40,8 @@ class User extends Component {
                 phone: this.props.data.phone_number,
                 email: this.props.data.email_address,
                 bond:  this.props.data.bond_number,
-                positions: this.props.data.positions,
+                userPositions: this.props.data.positions,
+                positions: this.props.positions,
             })
         }
     }
@@ -61,15 +66,51 @@ class User extends Component {
         this.setState({bond: event.target.value});
     }
 
+    //add position to user
+    //add to user positions array
+    //remove from positions array
     _addPosition = (id)=>{
-        console.log("Add Position Clicked: " + id);
 
+        console.log("Add Position Clicked: " + id);
+        //make copies of arrays to avoid mutating state
+        let positionArr = [...this.state.positions];
+        let userPositionArr = [...this.state.userPositions];
+
+        //console.log("UserPosition Before: " + userPositionArr.length)
+
+        //add to user positions array
+        userPositionArr.push(this._getById([...positionArr], id));
+        console.log("UserPosition After: " + JSON.stringify(userPositionArr));
+
+        //console.log("Position Arr Before: " + JSON.stringify(positionArr));
+        positionArr = this._removeById(positionArr, id);
+        console.log("Position Arr After: " + JSON.stringify(positionArr));
+
+        //set state
+        this.setState({positions: positionArr, userPositions: userPositionArr});
+        this.forceUpdate();
     }
 
+    //remove position from user
+    //remove from user array
+    //add to positions array
     _removePosition = (id)=>{
         console.log("Remove Position Clicked: " + id);
     }
 
+    _removeById = (array, id) =>{
+        //console.log("remove by ID before: " +array);
+        let final = _.remove(array, function(data) { return data.position_id !== id; });
+        console.log("remove by Id after: " + JSON.stringify(final));
+        return final;
+        
+    }
+
+    _getById = (array, id)=>{
+        let final = _.remove(array, function(data) { return data.position_id === id; });
+        console.log("get by id:" + JSON.stringify(final));
+        return final[0];
+    }
     
 
     render() {
@@ -117,10 +158,10 @@ class User extends Component {
                         </div>
                     </div>
                     <div className={classes.positionContainer}>
-                        <PositionView title={"Current Positions"} data={this.state.positions} onClick={this._removePosition}/>
+                        <PositionView title={"Current Positions"} data={this.state.userPositions} onClick={this._removePosition}/>
                     </div>
                     <div className={classes.positionContainer}>
-                        <PositionView title={"Add Positions"} data={this.props.positions} type={"add"} onClick={this._addPosition}/>
+                        <PositionView title={"Add Positions"} data={this.state.positions} type={"add"} onClick={this._addPosition}/>
                     </div>
                 </div>
                 <div className={classes.submitContainer}>
