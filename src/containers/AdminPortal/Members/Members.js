@@ -124,6 +124,7 @@ class Members extends Component {
                         accept={this._acceptRequest}
                         deny={this._denyRequest}
                         />
+                        
                 </div>
 
 
