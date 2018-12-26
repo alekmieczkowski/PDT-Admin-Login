@@ -5,18 +5,6 @@ import {showError} from '../services/ErrorService';
 
 
 /*
-export async function setComment(token, postId, postContent) {
-    let data = null;
-    await axios(token).post('/comment', {
-        post_id: postId,
-        content: postContent
-    }).then(response => {
-        data = response
-    }).catch(error => {
-        data = error;
-    });
-    return data;
-}
 
 export async function deleteComment(token, commentId){
     let data = null;
@@ -57,3 +45,13 @@ export let setComment = (token, postId, postContent) =>{
      
 }
 
+export let deleteComment = (token, commentId) =>{
+    return (dispatch) =>{
+        return axios(token).delete('/comment/'+commentId
+        ).then(
+            response => store.dispatch(getPosts(token)),
+            error => showError("Error Adding Comment")
+        );
+    }
+     
+}

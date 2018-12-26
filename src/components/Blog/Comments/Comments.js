@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import classes from './Comments.scss';
 import Comment from './Comment/Comment';
-import {updateCommentLike} from '../../../services/PostService';
+import {updateCommentLike, removeComment} from '../../../services/PostService';
+
 
 class Comments extends Component {
 
@@ -29,11 +30,11 @@ class Comments extends Component {
     }
 
     _editComment = (id) =>{
-
+        console.log("Edit Comment: "+ id)
     }
 
-    _removeComment = (id) =>{
-
+    _removeComment = async (id) =>{
+        await removeComment(id);
     }
 
 
@@ -44,8 +45,9 @@ class Comments extends Component {
             let admin = false;
             if(this.props.admin || comment.owner_id === this.props.userId){
                 admin = true;
+                
             }
-            return <Comment key={comment.comment_id} admin={admin} data={comment} updateLike={this._updateCommentLike}/>;
+            return <Comment key={comment.comment_id} admin={admin} data={comment} updateLike={this._updateCommentLike} delete={this._removeComment} update={this._editComment}/>;
         });
 
 

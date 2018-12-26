@@ -7,6 +7,14 @@ import Wrapper from '../../../../hoc/Wrapper/Wrapper'
 
 const comment = (props) => {
 
+    const _deleteComment = () =>{
+        props.delete(props.data.comment_id);
+    }
+
+    const _updateComment = () =>{
+        props.update(props.data.comment_id);
+    }
+
     return (
         <div className={classes.container}>
             <div className={classes.commentContainer}>
@@ -31,8 +39,8 @@ const comment = (props) => {
                     <div className={classes.likeContainer}>
                         {props.admin ? 
                             <Wrapper>
-                                <Button clicked={props.edit} buttonCSS={classes.button} iconSize={26} iconColor={'#003056'} type={"edit"}></Button>
-                                <Button clicked={props.delete} buttonCSS={classes.button} iconSize={26} iconColor={'#003056'} type={"delete"}></Button>
+                                <Button clicked={_updateComment} buttonCSS={classes.button} iconSize={26} iconColor={'#003056'} type={"edit"}></Button>
+                                <Button clicked={_deleteComment} buttonCSS={classes.button} iconSize={26} iconColor={'#003056'} type={"delete"}></Button>
                             </Wrapper>
                         : null}
                         <LikeButton emblemTextCSS={classes.buttonEmblemText} emblemCSS={classes.buttonEmblem} css={classes.button} commentId={props.data.comment_id} clicked={props.updateLike}  likedByUser={props.data.isLikedByUser} likes={props.data.likes} iconSize={22} iconColor={'#003056'} />
