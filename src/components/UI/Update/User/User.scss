@@ -51,6 +51,10 @@
     //margin: 8px;
 }
 
+input:focus {
+    outline-width: 0;
+}
+
 .inputContainer{
     flex: 1;
     flex-direction: column;

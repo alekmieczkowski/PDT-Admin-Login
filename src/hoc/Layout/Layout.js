@@ -33,7 +33,7 @@ class Layout extends Component{
                 <ErrorSpinner errorText={this.props.errorMessage} isActive={this.props.error} dismiss={hideError}/>
                 <ConfirmationSpinner text={this.props.confirmationMessage} isActive={this.props.confirmation} type={this.props.confirmationType} data={this.props.confirmationData} dismiss={confirmationService.hideConfirmation}/>     
                 <UpdatePost active={this.props.updatePost} title={this.props.updateTitle} data={this.props.updateData} dismiss={hideUpdate}/> 
-                <UpdateUser active={this.props.updateUser} data={this.props.updateData} dismiss={hideUpdate}/>        
+                <UpdateUser active={this.props.updateUser} data={this.props.updateData} dismiss={hideUpdate}/>   
                 <main className={classes.Layout}>
                     {this.props.children}
                 </main> 

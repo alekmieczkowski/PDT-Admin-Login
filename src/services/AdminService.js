@@ -29,5 +29,6 @@ export function getUserById(id){
             return user;
         }
     })
-    return user[0];
+
+    return user.filter(n=>n)[0];
 }
