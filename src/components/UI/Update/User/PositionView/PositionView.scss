@@ -18,4 +18,7 @@
 .positionContainer{
     border-top: 1px solid $primary;
     flex: 2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

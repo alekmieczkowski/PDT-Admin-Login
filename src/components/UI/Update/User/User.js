@@ -61,11 +61,12 @@ class User extends Component {
     }
 
     _addPosition = (id)=>{
+        console.log("Add Position Clicked: " + id);
 
     }
 
     _removePosition = (id)=>{
-
+        console.log("Remove Position Clicked: " + id);
     }
 
     
@@ -112,10 +113,10 @@ class User extends Component {
                         </div>
                     </div>
                     <div className={classes.positionContainer}>
-                        <PositionView title={"Current Positions"} data={this.state.positions}/>
+                        <PositionView title={"Current Positions"} data={this.state.positions} onClick={this._removePosition}/>
                     </div>
                     <div className={classes.positionContainer}>
-                        <PositionView title={"Add Positions"} data={this.props.positions}/>
+                        <PositionView title={"Add Positions"} data={this.props.positions} type={"add"} onClick={this._addPosition}/>
                     </div>
                     <div onClick={this.props.dismiss}>Dismiss</div>
                 </div>

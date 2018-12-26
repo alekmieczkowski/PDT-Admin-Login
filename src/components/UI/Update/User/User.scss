@@ -6,14 +6,15 @@
     color: $primary;
     border-radius: 8px;
     width: 900px;
-    height: 700px;
+    min-height: 600px;
+    max-height: 900px;
     margin-top: -150px;
     display: flex;
     flex-direction: column;
 }
 
 .topContainer{
-    flex: 2;
+    flex: 1;
     display: flex;
     flex-direction: row;
 
@@ -97,7 +98,5 @@ input:focus {
 }
 
 .positionContainer{
-    background-color: yellow;
-    flex: 1;
     padding: 10px;
 }

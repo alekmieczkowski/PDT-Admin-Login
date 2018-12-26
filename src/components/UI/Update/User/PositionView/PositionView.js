@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './PositionView.scss';
+import Position from '../Position/Position';
 
 const positionView = (props) => {
 
@@ -10,7 +11,7 @@ const positionView = (props) => {
             </div>
             <div className={classes.positionContainer}>
                 {props.data.map(position => {
-                    return null;
+                    return <Position data={position} type={props.type} onClick={props.onClick}/>;
                 })}
             </div>
         </div>
