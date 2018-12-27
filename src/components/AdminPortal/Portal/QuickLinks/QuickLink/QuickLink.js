@@ -9,7 +9,7 @@ const quicklink = (props) =>{
         <NavLink 
             to={props.link}
             exact={props.exact}
-            activeClassName={{textDecoration: 'none'}}
+            activeClassName={classes.active}
             >
             
             <Button clicked={null} buttonCSS={classes.button} textCSS={classes.buttonText} iconSize={200} iconColor={'#003056'} type={props.type}>{props.children}</Button>

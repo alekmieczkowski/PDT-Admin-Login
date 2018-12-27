@@ -1,6 +1,6 @@
 import {store} from '../store/configureStore';
 import { setPostLike, setCommentLike } from '../Api/likes';
-import {setComment, deleteComment} from '../Api/comments';
+import {setComment, deleteComment, editComment} from '../Api/comments';
 import {removePost, createPost, editPost} from '../Api/posts';
 import * as loadingService from './LoadingService';
 import {hideConfirmation} from './ConfirmationService';
@@ -29,6 +29,11 @@ export async function addComment(post_id, content){
 //delete comment
 export async function removeComment(commentId){
     await store.dispatch(deleteComment(token, commentId));
+}
+
+//update comment
+export async function updateComment(commentId, body){
+    await store.dispatch(editComment(token, commentId, body));
 }
 
 //remove post

@@ -93,4 +93,16 @@
     color: $primary;
 }
 
+.textArea{
+    border: none;
+    background-color: $secondary;
+    color: $primary;
+    padding: 2px;
+    font-size: 14px;
+    font-style: italic;
+    border-bottom: 1px solid $primary;
+    resize: none;
+    width: 540px;
+}
+
 

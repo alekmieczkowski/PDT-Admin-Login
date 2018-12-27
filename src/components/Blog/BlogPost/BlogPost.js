@@ -74,7 +74,7 @@ class BlogPost extends Component {
                         <div className={classes.userPostContainer}>
                             {/*User Information */}
                             <div className={classes.userInformationContainer}>
-                                <UserInfo data={this.props.data.user} positions={this.props.data.positions}/>
+                                <UserInfo data={this.props.data.user}/>
                             </div>
 
                             {/*User Post */}

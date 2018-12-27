@@ -40,7 +40,6 @@ class Posts extends Component {
     }
 
     _submit =  () =>{
-        console.log("Update pressed");
         //if input is valid
         if(isValidInput(this.state.inputValue)){
 
@@ -75,7 +74,6 @@ class Posts extends Component {
     }
 
     render() {
-        console.log("In posts updatea");
         return (
 
             <Update isActive={this.props.active}>

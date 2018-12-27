@@ -22,8 +22,8 @@ const userInfo = (props) =>{
 
                 {/*User Badges*/}
                 <div className={classes.userBadgeContainer}>
-                    {props.positions.length > 0 ? 
-                    props.positions.map(position=>{
+                    {props.data.positions.length > 0 ? 
+                    props.data.positions.map(position=>{
                         return <Badge key={position.position_id}>{position.title}</Badge>;
                     })
                     : null}
