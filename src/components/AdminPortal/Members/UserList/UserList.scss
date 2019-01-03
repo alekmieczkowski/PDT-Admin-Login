@@ -9,6 +9,9 @@
      padding-bottom: 180px;
      box-sizing: border-box;
      height: 100vh;
+
+     //experimental remove scrollbar for firefox
+     scrollbar-width: none;
    
     }
 

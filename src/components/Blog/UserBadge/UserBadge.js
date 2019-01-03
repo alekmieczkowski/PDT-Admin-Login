@@ -16,12 +16,17 @@ const userbadge = (props) =>{
                 {props.data.first_name} {props.data.last_name}
             </div>
             <div className={classes.badgeContainer}>
-            {
-                props.data.positions.map((position) =>{
-                    return <Badge key={position.position_id}>{position.title}</Badge>;
-                })
+                {//add admin badge if admin
+                    props.data.is_admin ?
+                    <Badge>Admin</Badge>
+                    : null        
+                }
+                {   //load position badges
+                    props.data.positions.map((position) =>{
+                        return <Badge key={position.position_id}>{position.title}</Badge>;
+                    })
 
-            }
+                }
             {props.data.is_admin ? <Badge>Admin</Badge>: null}
             </div>
             

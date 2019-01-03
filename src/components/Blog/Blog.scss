@@ -3,6 +3,9 @@
     height: 88vh;
     overflow-y:scroll;
 
+    //experimental remove scrollbar for firefox
+    scrollbar-width: none;
+
 }
 
 .header{

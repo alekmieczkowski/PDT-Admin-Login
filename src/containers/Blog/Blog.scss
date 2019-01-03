@@ -8,6 +8,7 @@
     align-content: center;
     height: 100vh;
     justify-content: center;
+    scrollbar-width: none;
     
 }
 
@@ -54,4 +55,6 @@
 
 ::-webkit-scrollbar { 
     display: none; 
+    width: 0px;
+    background: transparent;
 }
