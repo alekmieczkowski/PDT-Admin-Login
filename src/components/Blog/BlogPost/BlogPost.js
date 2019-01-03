@@ -8,6 +8,7 @@ import Comments from '../Comments/Comments';
 import AddComment from './AddComment/AddComment';
 import {connect} from 'react-redux';
 
+
 //Post Services
 import * as postService from '../../../services/PostService';
 
@@ -79,7 +80,9 @@ class BlogPost extends Component {
 
                             {/*User Post */}
                             <div className={classes.postContentContainer}>
+                                
                                 <PostContents content={this.props.data.content} submitted={this.props.data.created_at}/>
+                                
                             </div>
                             {/*Post Images*/}
                             {images}

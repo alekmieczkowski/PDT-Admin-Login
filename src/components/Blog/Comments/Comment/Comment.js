@@ -7,7 +7,7 @@ import Textarea from 'react-textarea-autosize';
 import {isValidInput} from '../../../../services/InputValidationService';
 import {showError} from '../../../../services/ErrorService';
 import {updateComment} from '../../../../services/PostService';
-
+import Linkify from 'react-linkify';
 
 class Comment extends Component{
 
@@ -122,7 +122,10 @@ class Comment extends Component{
                                 maxLength={250}
                                 />
                             
-                            :this.state.comment}
+                            :
+                            <Linkify  properties={{target: '_blank', style: {fontStyle: 'italic'}}}>
+                                {this.state.comment}
+                            </Linkify>}
                     </div>
                 </div>
     
