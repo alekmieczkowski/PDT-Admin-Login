@@ -20,19 +20,19 @@ class Comments extends Component {
         return true;
     }
 
+    //show comments
     _toggleComments = () =>{
         this.setState({showComments: !this.state.showComments});
     }
 
+
+    //update comment likes with server
     _updateCommentLike = (commentId) =>{
         console.log("Calling comment like update");
         updateCommentLike(commentId);
     }
 
-    _editComment = (id) =>{
-        console.log("Edit Comment: "+ id)
-    }
-
+    //remove a comment
     _removeComment = async (id) =>{
         await removeComment(id);
     }

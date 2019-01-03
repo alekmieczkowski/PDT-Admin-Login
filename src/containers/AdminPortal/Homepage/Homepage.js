@@ -7,11 +7,6 @@ import Quicklinks from '../../../components/AdminPortal/Portal/QuickLinks/QuickL
 
 class Homepage extends Component {
 
-
-    removePostClickedHandler = () =>{
-        alert("button clicked");
-    }
-
     render(){
 
 

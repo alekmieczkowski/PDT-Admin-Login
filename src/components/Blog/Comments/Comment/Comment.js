@@ -14,6 +14,7 @@ class Comment extends Component{
     state={
         comment: "",
         edit: false,
+        updateIcon: false,
     }
 
     //load comment data into state on mount
@@ -33,14 +34,19 @@ class Comment extends Component{
         this.props.delete(this.props.data.comment_id);
     }
 
+    //toggle update comment view
     _updateComment = () =>{
         this.setState({edit: true});
     }
 
-    _saveUpdate = async () =>{
 
+    //update comment
+    _saveUpdate = async () =>{
+        //set update icon to prevent user spam clicks
+        this.setState({updateIcon: true});
         //check if input is valid, and is not the same as the old comment input
         if(isValidInput(this.state.comment) && this.state.comment !== this.props.data.content){
+            
             await updateComment(this.props.data.comment_id, this.state.comment);
             this.setState({edit: false});
             this.forceUpdate();
@@ -48,6 +54,8 @@ class Comment extends Component{
         else{
             showError("Invalid Input");
         }
+        //turn off update icon
+        this.setState({updateIcon: false});
     }
 
     _dismissUpdate = () =>{
@@ -85,7 +93,8 @@ class Comment extends Component{
                                 
                                     this.state.edit ?
                                     <Wrapper>
-                                        <Button clicked={this._saveUpdate} buttonCSS={classes.button} iconSize={26} iconColor={'#003056'} type={"submit"}></Button>
+                                        
+                                        {this.state.updateIcon ? <Button clicked={null} type="loading" buttonCSS={classes.button} iconSize={26} iconColor={"#003056"}></Button> : <Button clicked={this._saveUpdate} buttonCSS={classes.button} iconSize={26} iconColor={'#003056'} type={"submit"}></Button>}
                                         <Button clicked={this._dismissUpdate} buttonCSS={classes.button} iconSize={26} iconColor={'#003056'} type={"close"}></Button>
                                     </Wrapper>
                                     :
