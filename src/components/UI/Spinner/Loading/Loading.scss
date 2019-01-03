@@ -6,6 +6,8 @@
     font-size: 30px;
     padding: 4px;
     justify-content: center;
+    text-align: center;
+    color: $primary;
 
 
 }
@@ -18,6 +20,7 @@
 
     text-align: -webkit-center;
     flex: 1;
+    text-align: center;
 }
 .spinnerIcon{
     align-items:'center';
