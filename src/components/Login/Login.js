@@ -13,9 +13,9 @@ const login = (props) => {
         return (
                 <Form css={classes.FormCSS}>
                         <div className={classes.FormContents}>
-                                <Logo height="140px" width="400" color="#ffffff" />
-                                <h2 className={classes.AdminText}>Admin Portal</h2>
-                                {props.children}
+                                <Logo height="200px" color="#ffffff" />
+                                {/*<h2 className={classes.AdminText}>Admin Portal</h2>*/}
+                                <div className={classes.contents}>{props.children}</div>
                         </div>
                 </Form>
         );
