@@ -14,6 +14,13 @@ class SearchBar extends Component{
             this.props.onSearch(event.target.value);
         }
 
+        //ignore enter key on input
+        _ignoreEnter = (e) =>{
+            if(e.keyCode === 13) {
+                e.preventDefault();
+            }
+        }
+
         render(){
             return (
             
@@ -30,6 +37,7 @@ class SearchBar extends Component{
                             maxLength={51}
                             value={this.state.input}
                             onChange={this._changeInput}
+                            onKeyDown={this._ignoreEnter}
                             />
                     </div>
                 </div>
