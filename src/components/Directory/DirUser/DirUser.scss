@@ -3,21 +3,33 @@
 .container{
     display: flex;
     flex-direction: column;
-    width: 260px;
-    min-height: 360px;
-    max-width: 1700px;
+    width: 280px;
     border-radius: 4px;
     margin: 10px;
-    padding: 10px;
     background-color: $secondary;
+    overflow: hidden;
+    padding-top: 10px;
+    cursor: default;
+    position: relative;
+}
+
+.standard{
+    height: 370px;
+}
+
+.toggled{
+    height: 420px;
 }
 
 .badgeContainer{
     position: absolute;
-    margin-top: 230px;
+    margin-top: 220px;
+    padding: 10px;
 }
 
 .dataContainer{
+    padding-left: 10px;
+    padding-right: 10px;
     flex: 1;
     justify-content: center;
     align-items: center;
@@ -31,11 +43,33 @@
 }
 
 .nameText{
+    color: $primary;
     font-weight: bold;
     font-size: 18px;
+    max-height: 30px;
 }
 
 .bondText{
+    color: $primary;
     font-style: italic;
+    max-height: 40px;
+}
+
+.imageContainer{
+    max-height: 270px;
+}
+
+.moreContainer{
+    background-color: $primary;
+    color: $secondary;
+    flex: 1;
     height: 40px;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.iconText{
+    color: $primary;
+    padding-left: 4px;
 }
