@@ -7,6 +7,7 @@ import SearchBar from '../../../components/AdminPortal/Members/SearchBar/SearchB
 import {getUserById} from '../../../services/AdminService';
 import {editUser} from '../../../services/UpdateService';
 import * as Page from '../../../components/AdminPortal/Members/Toolbar/ToolbarPages';
+import {filterObjArrayByValue} from '../../../services/DataServices';
 /**
  * 
  * Containers:
@@ -22,27 +23,18 @@ class Members extends Component {
 
 
     state={
-        searchInput: "",
         activePage: null,
         activeData: [],
     }
 
     componentDidMount(){
         this.setState({activePage: this.props.page });
-        //set the correct data for correct page
-        switch(this.props.page){
-            case Page.ACTIVE:
-                console.log("set active user data")
-                this._setActiveData(this.props.users);
-                break;
-            case Page.PENDING:
-                this._setActiveData(this.props.requests);
-                break;
-            default:
-                this._setActiveData(this.props.users);
-                break;
-        }
+        this._setActiveData();
     }
+
+    /*
+
+    dont remember why I added this.. Should do more commenting. 
 
     shouldComponentUpdate(nextProps, nextState){
         if(this.state.activePage === nextState.activePage){
@@ -50,17 +42,40 @@ class Members extends Component {
         }
         return true;
     }
+    */
 
     _setActivePage = (page)=>{
         this.setState({activePage: page });
     }
 
-    _setActiveData = (data)=>{
-        this.setState({activeData: data});
+    _setActiveData = ()=>{
+        //set the correct data for correct page
+        switch(this.props.page){
+            case Page.ACTIVE:
+                this.setState({activeData: [...this.props.users]});
+                break;
+            case Page.PENDING:
+                this.setState({activeData:[...this.props.requests]});
+                break;
+            default:
+                this.setState({activeData: [...this.props.users]});
+                break;
+        }
     }
 
-    _onSearchInput = (event) =>{
-        this.setState({searchInput: event.target.value});
+    _onSearchInput = (searchText) =>{
+
+        //check if search is empty, reset data to default
+        if(searchText.length === 0){
+            console.log("Refresh data");
+            this._setActiveData();
+        }
+        else{
+            //set active Data to search query
+            let newData = filterObjArrayByValue(this.state.activeData, searchText);
+            this.setState({activeData: newData}); 
+        }
+        
     }
 
     /*Make User Active*/
@@ -110,18 +125,27 @@ class Members extends Component {
                 <div className={classes.dataContainer}>
                     <div className={classes.topRowContainer}>
                          <div className={classes.dataTypeText}>{this.state.activePage}</div>
-                         <SearchBar onSearch={this._onSearchInput} value={this.state.searchInput}/>
+                         <SearchBar onSearch={this._onSearchInput}/>
                     </div>
                     
                     <UserList 
-                        page={this.state.activePage} 
-                        userData={this.state.activeData} 
+                        //active page 
+                        page={this.state.activePage}
+                        //data to display
+                        userData={this.state.activeData}
+                        //make user active toggle
                         active={this._makeActive}
+                        //make user inactive toggle
                         inactive={this._makeInactive}
+                        //make user alumni toggle
                         alumni={this._makeAlumni}
+                        //make user admin toggle
                         admin={this._toggleAdmin}
+                        //edit user toggle
                         edit={this._editUser}
+                        //accept request toggle
                         accept={this._acceptRequest}
+                        //deny request toggle
                         deny={this._denyRequest}
                         />
                         
