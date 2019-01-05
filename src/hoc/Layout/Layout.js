@@ -34,7 +34,7 @@ class Layout extends Component{
                 <ErrorSpinner errorText={this.props.errorMessage} isActive={this.props.error} dismiss={hideError}/>
                 <ConfirmationSpinner text={this.props.confirmationMessage} isActive={this.props.confirmation} type={this.props.confirmationType} data={this.props.confirmationData} dismiss={confirmationService.hideConfirmation}/>     
                 {this.props.updatePost ? <UpdatePost active={this.props.updatePost} title={this.props.updateTitle} data={this.props.updateData} dismiss={hideUpdate}/> : null}
-                {this.props.updateUser ? <UpdateUser active={this.props.updateUser} data={this.props.updateData} dismiss={hideUpdate} positions={this.props.positions}/> : null}
+                {this.props.updateUser ? <UpdateUser active={this.props.updateUser} admin={this.props.admin} data={this.props.updateData} dismiss={hideUpdate} positions={this.props.positions}/> : null}
                 <main className={classes.Layout}>
                     {this.props.children}
                 </main> 
@@ -65,7 +65,8 @@ const mapStateToProps = state => {
         updateType: state.update.type,
         //updateUser
         updateUser: state.update.activeUser,
-        positions: state.admin.positions
+        positions: state.admin.positions,
+        admin: state.api.user.is_admin
 
     };
 };

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import classes from './User.scss';
 import Badge from '../../UI/Badge/Badge';
 import {MdPhone, MdEmail} from 'react-icons/lib/md';
+import Button from '../../UI/Button/Button';
 
 class User extends Component{
 
@@ -14,6 +15,7 @@ class User extends Component{
         return(
             <div className={classes.container}>
                 <div className={classes.imageContainer}>
+                    <img src={this.props.data.google_picture} className={classes.image} alt={"user"}/>
                 </div>
                 <div className={classes.dataContainer}>
                     <div className={classes.infoContainer}>
@@ -25,7 +27,17 @@ class User extends Component{
                         </div>
                     </div>
                     <div className={[classes.infoContainer, classes.positionContainer].join(' ')}>
-                        <Badge>Webmaster</Badge>
+                        {//add admin badge if admin
+                            this.props.data.is_admin ?
+                            <Badge>Admin</Badge>
+                            : null        
+                        }
+                        {   //load position badges
+                            this.props.data.positions.map((position) =>{
+                                return <Badge key={position.position_id}>{position.title}</Badge>;
+                            })
+
+                        }
                     </div>
                     <div className={[classes.infoContainer, classes.emailContainer].join(' ')}>
                         <MdEmail size={26} style={'#003056'}/><span className={classes.iconText}>{this.props.data.email_address}</span>
@@ -34,7 +46,7 @@ class User extends Component{
                         <MdPhone size={26} style={'#003056'}/><span className={classes.iconText}>{phoneNum}</span>
                     </div>
                     <div className={[classes.infoContainer, classes.optionsContainer].join(' ')}>
-                        Edit Options go here
+                        <Button type={'edit'}  textCSS={classes.buttonText} clicked={this.props.edit}>Edit Profile</Button>
                     </div>
                 </div>
             </div>

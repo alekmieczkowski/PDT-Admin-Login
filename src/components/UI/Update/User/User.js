@@ -6,6 +6,7 @@ import InputMask from 'react-input-mask';
 import PositionView from './PositionView/PositionView';
 import Button from '../../Button/Button';
 import * as _ from 'lodash';
+import Wrapper from '../../../../hoc/Wrapper/Wrapper'
 
 
 class User extends Component {
@@ -170,12 +171,17 @@ class User extends Component {
 
                         </div>
                     </div>
-                    <div className={classes.positionContainer}>
-                        <PositionView title={"Current Positions"} data={this.state.userPositions} onClick={this._removePosition}/>
-                    </div>
-                    <div className={classes.positionContainer}>
-                        <PositionView title={"Add Positions"} data={this.state.positions} type={"add"} onClick={this._addPosition}/>
-                    </div>
+
+                    {this.props.admin ? 
+                    <Wrapper>
+                        <div className={classes.positionContainer}>
+                            <PositionView title={"Current Positions"} data={this.state.userPositions} onClick={this._removePosition}/>
+                        </div>
+                        <div className={classes.positionContainer}>
+                            <PositionView title={"Add Positions"} data={this.state.positions} type={"add"} onClick={this._addPosition}/>
+                        </div>
+                    </Wrapper>
+                    : null}
                 </div>
                 <div className={classes.submitContainer}>
                             <Button clicked={this.props.dismiss} buttonCSS={classes.button} textCSS={classes.buttonText} iconSize={22} iconColor={'#003056'} type={"close"}>Close</Button>

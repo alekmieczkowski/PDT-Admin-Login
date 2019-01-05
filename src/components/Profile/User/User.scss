@@ -4,7 +4,7 @@
     background-color: $secondary;
     color: $primary;
     width: 100%;
-    min-height: 300px;
+    //min-height: 300px;
     border-radius: 4px;
     display: flex;
     flex-direction: row;
@@ -14,10 +14,16 @@
 
 .imageContainer{
     flex: 1;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
 }
 
 .image{
-
+    height: 80%;
+    width: 80%;
+    border-radius: 4px;
 }
 
 .dataContainer{
@@ -70,4 +76,15 @@
 .optionsContainer{
     height: 60px;
     align-items: center;
+}
+
+.button{
+    background-color: $primary;
+    border-radius: 6px;
+}
+
+.buttonText{
+    color: $secondary;
+    font-size: 18px;
+    padding-left: 4px;
 }
