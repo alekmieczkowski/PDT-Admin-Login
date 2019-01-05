@@ -1,0 +1,73 @@
+@import '../../../constants/theme';
+
+.container{
+    background-color: $secondary;
+    color: $primary;
+    width: 100%;
+    min-height: 300px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+
+}
+
+.imageContainer{
+    flex: 1;
+}
+
+.image{
+
+}
+
+.dataContainer{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    font-size: 26px;
+    padding-right: 20px;
+}
+
+.infoContainer{
+    //flex: 1;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+}
+
+.nameContainer{
+    flex: 2;
+    font-size: 30px;
+    font-weight: bold;
+    
+}
+
+.bondContainer{
+    flex: 1;
+    font-size: 30px;
+    text-align: center;
+}
+
+.positionContainer{
+    align-items: center;
+    max-height: 40px;
+
+}
+
+.emailContainer{
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    //justify-content: center;
+    align-items: center;
+}
+
+.iconText{
+    padding-left: 10px;
+}
+
+.optionsContainer{
+    height: 60px;
+    align-items: center;
+}

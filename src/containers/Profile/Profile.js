@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import classes from './Profile.scss';
+import User from '../../components/Profile/User/User';
 
 
 class Profile extends Component {
@@ -8,7 +10,7 @@ class Profile extends Component {
 
         return(
             <div className={classes.container}>
-                Profile PAGE
+                <User data={this.props.user}/>
             </div>
         );
 
@@ -16,8 +18,12 @@ class Profile extends Component {
 
 }
 
+const mapStateToProps = state => {
+    return {
+        user: state.api.user,
+    };
+};
 
+export default connect(mapStateToProps)(Profile);
 
-
-export default Profile;
 
