@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import classes from './Directory.scss';
+import UserDirectory from '../../components/Directory/Directory';
 
 
 class Directory extends Component {
@@ -8,7 +10,10 @@ class Directory extends Component {
 
         return(
             <div className={classes.container}>
-                Directory PAGE
+                <div className={classes.header}>
+                    Active Brothers
+                </div>
+                <UserDirectory users={this.props.users}/>
             </div>
         );
 
@@ -17,7 +22,11 @@ class Directory extends Component {
 }
 
 
+const mapStateToProps = state => {
+    return {
+        users: state.api.users,
+    };
+};
 
-
-export default Directory;
+export default connect(mapStateToProps)(Directory);
 

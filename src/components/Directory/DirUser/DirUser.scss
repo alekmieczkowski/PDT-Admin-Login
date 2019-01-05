@@ -1,0 +1,41 @@
+@import '../../../constants/theme';
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    min-height: 360px;
+    max-width: 1700px;
+    border-radius: 4px;
+    margin: 10px;
+    padding: 10px;
+    background-color: $secondary;
+}
+
+.badgeContainer{
+    position: absolute;
+    margin-top: 230px;
+}
+
+.dataContainer{
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+}
+
+.image{
+    height: 260px;
+    width: 260px;
+    border-radius: 4px;
+}
+
+.nameText{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.bondText{
+    font-style: italic;
+    height: 40px;
+}

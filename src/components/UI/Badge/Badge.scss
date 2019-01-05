@@ -1,7 +1,7 @@
+@import '../../../constants/theme';
+
 .Badge{
     height: 20px;
-    background-color: #003056;
-    color: white;
     padding-top: 2px;
     padding-left: 8px;
     padding-right: 8px;
@@ -9,17 +9,28 @@
     margin-right: 2px;
     margin-top: 2px;
     display: inline-block;
-    border: 2px solid #003056;
     border-radius: 4px;
     position:relative;
 }
 
 .BadgeText{
-    color: white;
     text-align: center;
     margin:auto;
     font-size: 12px;
     font-weight: bold;
     padding-top: 2px;
 
+}
+
+
+.standard{
+    background-color: $primary;
+    color: $secondary;
+    border: 2px solid $primary;
+}
+
+.inverse{
+    background-color: $secondary;
+    color: $primary;
+    border: 2px solid $primary;
 }

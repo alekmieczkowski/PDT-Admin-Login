@@ -2,6 +2,7 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const EDIT_PROFILE = 'EDIT_PROFILE';
 export const UPDATE_TOKEN = 'UPDATE_TOKEN';
+export const SET_ADMIN = 'SET_ADMIN'
 
 export let userLogin = () =>{
     
@@ -24,4 +25,10 @@ export let updateToken = (token) =>{
         token
     }
 
+}
+
+export let setAdmin = () =>{
+    return{
+        type: SET_ADMIN
+    }
 }

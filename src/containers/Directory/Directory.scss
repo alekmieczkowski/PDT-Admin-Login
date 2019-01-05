@@ -1,0 +1,15 @@
+@import '../../constants/theme';
+
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+
+}
+
+.header{
+    font-size: 30px;
+    font-weight: bold;
+    color: $secondary;
+}

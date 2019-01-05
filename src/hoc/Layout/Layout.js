@@ -66,7 +66,7 @@ const mapStateToProps = state => {
         //updateUser
         updateUser: state.update.activeUser,
         positions: state.admin.positions,
-        admin: state.api.user.is_admin
+        admin: state.auth.admin
 
     };
 };

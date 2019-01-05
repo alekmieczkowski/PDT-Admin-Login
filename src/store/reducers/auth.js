@@ -3,7 +3,8 @@ import {CLEAR_STATE} from '../actions/global';
 
 let initialState = {
     auth: false,
-    token: null
+    token: null,
+    admin: false,
 }
 
 const auth = ( state = initialState , action ) => {
@@ -18,12 +19,17 @@ const auth = ( state = initialState , action ) => {
             ...state,
             auth: false,
             token: null
-        };
+            };
         case actionTypes.UPDATE_TOKEN:
             localStorage.setItem("token", action.token);
             return{
                 ...state,
                 token: action.token
+            }
+        case actionTypes.SET_ADMIN:
+            return{
+                ...state,
+                admin: true,
             }
         case CLEAR_STATE:
             return initialState;
