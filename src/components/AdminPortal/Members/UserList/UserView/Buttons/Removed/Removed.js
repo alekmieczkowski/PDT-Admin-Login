@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import Wrapper from '../../../../../../../hoc/Wrapper/Wrapper';
 import Button from '../../../../../../UI/Button/Button';
-import classes from './Active.scss';
-class Active extends Component {
+import classes from './Removed.scss';
+class Removed extends Component {
 
     _onMakeAdmin = () =>{
         this.props.makeAdmin(this.props.id, this.props.isAdmin);
     }
 
-    _onRemove = () =>{
-        this.props.setRemoved(this.props.id);
+    _onSetActive = () =>{
+        this.props.setActive(this.props.id);
     }
 
     _onSetAlumni =() =>{
@@ -27,7 +27,7 @@ class Active extends Component {
                 <div className={classes.buttonsTopRow}>
                     <Button clicked={this._onMakeAdmin} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"admin"}>Set Admin</Button>
     
-                    <Button clicked={this._onRemove} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"inactive"}>Remove</Button>
+                    <Button clicked={this._onSetActive} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"active"}>Set Active</Button>
                     <Button clicked={this._onSetAlumni} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"alumni"}>Set Alumni</Button>
                 </div>
                 <div className={classes.buttonsBottomRow}>
@@ -40,4 +40,4 @@ class Active extends Component {
 
 }
 
-export default Active;
+export default Removed;

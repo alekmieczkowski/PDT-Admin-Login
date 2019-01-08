@@ -19,7 +19,7 @@ const userList = (props) => {
                             data={user}
                             page={props.page}
                             active={props.active}
-                            inactive={props.inactive}
+                            removed={props.removed}
                             alumni={props.alumni}
                             admin={props.admin}
                             edit={props.edit}

@@ -24,6 +24,5 @@ export function hideUpdate(){
 
 //user updates self
 export async function updateSelf(data){
-    console.log("update self key: " + token);
     await store.dispatch(updateUserSelf(data));
 }

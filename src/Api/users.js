@@ -3,9 +3,9 @@ import {store} from '../store/configureStore';
 import * as api from '../store/actions/api';
 import {showError} from '../services/ErrorService';
 
+
 /*Get Active Users*/
 export let getActive = (token) =>{
-    console.log(store.getState().auth.token);
     return (dispatch) =>{
         return axios(store.getState().auth.token).get('/users/1').then(
             response => store.dispatch(api.setUsers(response.data.result.users)),
@@ -29,8 +29,8 @@ export let getAlumni = (token) =>{
 /*Get Removed Users*/
 export let getRemoved = (token) =>{
     return (dispatch) =>{
-        return axios(token).get('/users').then(
-            response => store.dispatch(api.setUsers(response.data.result.users)),
+        return axios(token).get('/users/3').then(
+            response => store.dispatch(api.setRemoved(response.data.result.users)),
             error => showError("Error Fetching Users")
         );
     }
@@ -99,4 +99,18 @@ export let setAdmin = (userId, shouldBeAdmin) =>{
         )
     }
 
+}
+
+
+/*Change Users Status*/
+export let setUserStatus = (userId, status) =>{
+    console.log("In set user status, id: " + userId, " status: " + status);
+    return (dispatch) =>{
+        return axios(store.getState().auth.token).put("/user/"+userId+"/status",{
+            status_type: status
+        }).then(
+            response => null,
+            error => showError("Error Setting User Status")
+        )
+    }
 }

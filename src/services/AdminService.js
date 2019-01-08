@@ -1,6 +1,6 @@
 import {getUserAccessRequests, acceptUserAccessRequest, denyUserAccessRequest} from '../Api/accessRequest';
 import {getExistingPositions, removePosition, createPosition} from '../Api/positions';
-import {getActive, getAlumni, updateUserAdmin, setAdmin} from '../Api/users';
+import {getActive, getAlumni, getRemoved, updateUserAdmin, setAdmin, setUserStatus} from '../Api/users';
 import {store} from '../store/configureStore';
 import {showLoading, hideLoading} from './LoadingService';
 
@@ -54,7 +54,7 @@ export async function getAlumniUsers(){
 
 
 export async function refreshAllUsersData(){
-    console.log("in refresh all");
+
     //get all users
     await store.dispatch(getActive(token));
 
@@ -62,9 +62,9 @@ export async function refreshAllUsersData(){
     await store.dispatch(getAlumni(token));
 
     //get all removed
+    await store.dispatch(getRemoved(token));
 
     //get all requests
-    console.log("Get access requests");
     await getAccessRequests();
     
 }
@@ -97,4 +97,14 @@ export async function toggleUserAdmin(userId, isAdmin){
     await store.dispatch(setAdmin(userId, admin));
     await hideLoading();
    
+}
+
+
+//change users status
+export async function updateUserStatus(userId, status){
+
+    await showLoading("Moving User");
+    await store.dispatch(setUserStatus(userId, status));
+    await refreshAllUsersData();
+    hideLoading();
 }

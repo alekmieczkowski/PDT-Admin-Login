@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Button.scss';
-import {MdLock, MdGavel, MdWork, MdClose, MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend, MdCreate, MdIndeterminateCheckBox, MdCheckCircle, MdSchool} from 'react-icons/lib/md';
+import {MdStar, MdLock, MdGavel, MdWork, MdClose, MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend, MdCreate, MdIndeterminateCheckBox, MdCheckCircle, MdSchool} from 'react-icons/lib/md';
 import {IoTrashB} from 'react-icons/lib/io'
 import { FaEdit, FaGroup } from "react-icons/lib/fa";
 import FitText from '@kennethormandy/react-fittext'
@@ -56,10 +56,13 @@ const button = (props) => {
             type=<MdIndeterminateCheckBox size={iconSize} color={props.iconColor}/>;
             break;
         case "admin":
-            type=<MdCheckCircle size={iconSize} color={props.iconColor}/>;
+            type=<MdStar size={iconSize} color={props.iconColor}/>;
             break;
         case "alumni":
             type=<MdSchool size={iconSize} color={props.iconColor}/>;
+            break;
+        case "active":
+            type=<MdCheckCircle size={iconSize} color={props.iconColor}/>;
             break;
         case "group":
             type=<FaGroup size={iconSize} color={props.iconColor}/>;

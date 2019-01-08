@@ -6,6 +6,9 @@ import * as Page from '../../Toolbar/ToolbarPages';
 
 //buttons
 import Active from './Buttons/Active/Active';
+import Alumni from './Buttons/Alumni/Alumni';
+import Removed from './Buttons/Removed/Removed';
+
 import Pending from './Buttons/Pending/Pending';
 
 
@@ -22,7 +25,13 @@ const userView = (props) => {
     //set button options
     switch (props.page) {
         case Page.ACTIVE:
-            buttons = <Active id={props.data.user_id} setAlumni={props.alumni} setInactive={props.inactive} edit={props.edit} makeAdmin={props.admin} isAdmin={props.data.is_admin} />;
+            buttons = <Active id={props.data.user_id} setAlumni={props.alumni} setRemoved={props.removed} edit={props.edit} makeAdmin={props.admin} isAdmin={props.data.is_admin} />;
+            break;
+        case Page.ALUMNI:
+            buttons = <Alumni id={props.data.user_id} setActive={props.active} setRemoved={props.removed} edit={props.edit} makeAdmin={props.admin} isAdmin={props.data.is_admin} />;
+            break;
+        case Page.REMOVED:
+            buttons = <Removed id={props.data.user_id} setAlumni={props.alumni} setActive={props.active} edit={props.edit} makeAdmin={props.admin} isAdmin={props.data.is_admin} />;
             break;
         case Page.PENDING:
             buttons = <Pending id={props.data.request_id} accept={props.accept} deny={props.deny} />;

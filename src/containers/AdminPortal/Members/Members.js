@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import UserList from '../../../components/AdminPortal/Members/UserList/UserList';
 import Toolbar from '../../../components/AdminPortal/Members/Toolbar/Toolbar';
 import SearchBar from '../../../components/AdminPortal/Members/SearchBar/SearchBar';
-import {getUserById, acceptUser, denyUser,getAccessRequests, getActiveUsers, getAlumniUsers, toggleUserAdmin} from '../../../services/AdminService';
+import {getUserById, acceptUser, denyUser,getAccessRequests, getActiveUsers, getAlumniUsers, toggleUserAdmin, updateUserStatus} from '../../../services/AdminService';
 import {editUser} from '../../../services/UpdateService';
 import * as Page from '../../../components/AdminPortal/Members/Toolbar/ToolbarPages';
 import {filterObjArrayByValue} from '../../../services/DataServices';
 import {showLoading, hideLoading} from '../../../services/LoadingService';
+import {STATUS_ALUMNI, STATUS_REMOVE, STATUS_ACTIVE} from '../../../store/actions/admin';
 /**
  * 
  * Containers:
@@ -78,10 +79,10 @@ class Members extends Component {
                 this.setState({activeData:[...this.props.requests]});
                 break;
             case Page.REMOVED:
-                this.setState({activeData:[]});
+                this.setState({activeData:[...this.props.removed]});
                 break;
             default:
-                this.setState({activeData: [...this.props.active]});
+                this.setState({activeData: []});
                 break;
         }
         //this.setState({loading: false});
@@ -105,16 +106,19 @@ class Members extends Component {
     /*Make User Active*/
     _makeActive = (id) =>{
         console.log("Set Active");
+        updateUserStatus(id, STATUS_ACTIVE);
     }
 
     /*Make User Inactive*/
-    _makeInactive = (id) =>{
+    _makeRemoved = (id) =>{
         console.log("Set Removed");
+        updateUserStatus(id, STATUS_REMOVE);
     }
 
     /*Make User Alumni*/
     _makeAlumni = (id) =>{
         console.log("Set Alumni");
+        updateUserStatus(id, STATUS_ALUMNI);
     }
 
     /*Toggle User Admin Status*/
@@ -171,7 +175,7 @@ class Members extends Component {
                         //make user active toggle
                         active={this._makeActive}
                         //make user inactive toggle
-                        inactive={this._makeInactive}
+                        removed={this._makeRemoved}
                         //make user alumni toggle
                         alumni={this._makeAlumni}
                         //make user admin toggle
@@ -205,7 +209,9 @@ const mapStateToProps = state => {
     return {
         active: state.api.users.active,
         alumni: state.api.users.alumni,
+        removed: state.api.users.removed,
         requests: state.admin.requests,
+        
     };
 };
 

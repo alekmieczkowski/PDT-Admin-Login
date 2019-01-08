@@ -3,7 +3,7 @@ import { CLEAR_STATE } from '../actions/global';
 
 let initialState = {
     user: null,
-    users: {active: [], alumni: []},
+    users: {active: [], alumni: [], removed:[]},
     posts: null,
     calendar: null,
 }
@@ -29,6 +29,14 @@ const api = (state = initialState, action) => {
                 users: {
                     ...state.users,
                     alumni:  action.alumni
+                }
+            };
+        case actionTypes.SET_REMOVED_USERS:
+            return {
+                ...state,
+                users: {
+                    ...state.users,
+                    removed:  action.removed
                 }
             };
         case actionTypes.SET_POSTS:
