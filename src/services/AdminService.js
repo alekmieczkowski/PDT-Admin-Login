@@ -1,6 +1,6 @@
 import {getUserAccessRequests, acceptUserAccessRequest, denyUserAccessRequest} from '../Api/accessRequest';
 import {getExistingPositions, removePosition, createPosition} from '../Api/positions';
-import {getActive, getAlumni} from '../Api/users';
+import {getActive, getAlumni, updateUserAdmin} from '../Api/users';
 import {store} from '../store/configureStore';
 
 // return authorization header with jwt token
@@ -72,4 +72,13 @@ export async function refreshAllUsersData(){
 export async function adminLogin(token){
     await store.dispatch(getUserAccessRequests(token));
     await store.dispatch(getExistingPositions(token));
+}
+
+
+//update user
+export async function updateUser(userId, userObj){
+    await store.dispatch(updateUserAdmin(userId, userObj));
+    
+    //get latest active user positions
+    await getActiveUsers();
 }

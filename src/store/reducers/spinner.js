@@ -1,4 +1,5 @@
 import * as spinnerActions from '../actions/spinner';
+import {SET_USER} from '../actions/api';
 import {DISPLAY_ERROR} from '../actions/error';
 import {CLEAR_STATE} from '../actions/global';
 
@@ -19,6 +20,11 @@ const spinner = (state = {}, action) => {
             }
         case DISPLAY_ERROR:
             return state = {
+                ...state,
+                animateSpinner: false,
+            }
+        case SET_USER:
+            return state ={
                 ...state,
                 animateSpinner: false,
             }

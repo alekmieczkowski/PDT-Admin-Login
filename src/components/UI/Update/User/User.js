@@ -7,6 +7,9 @@ import PositionView from './PositionView/PositionView';
 import Button from '../../Button/Button';
 import * as _ from 'lodash';
 import Wrapper from '../../../../hoc/Wrapper/Wrapper'
+import {updateSelf} from '../../../../services/UpdateService';
+import {showLoading, hideLoading} from '../../../../services/LoadingService';
+import {updateUser} from '../../../../services/AdminService';
 
 
 class User extends Component {
@@ -125,6 +128,35 @@ class User extends Component {
     _getById = (array, id)=>{
         let final = _.remove(array, function(data) { return data.position_id === id; });
         return final[0];
+    }
+
+    _submit = async ()=>{
+        showLoading("Updating User");
+        
+        //set up user obj
+        let userObj={
+            first_name:this.state.fName,
+            last_name: this.state.lName,
+            bond_number:this.state.bond,
+            phone_number:this.state.phone,
+            positions:[]
+        }
+
+        if(this.props.admin){
+            //add positions
+            let positionArr = [];
+            this.state.userPositions.map(position =>{
+                positionArr.push(position.position_id);
+            })
+            userObj.positions = positionArr;
+            console.log("User Obj: " + JSON.stringify(userObj));
+            await updateUser(this.props.data.user_id, userObj);
+        }
+        else{
+            await updateSelf(userObj);
+        }
+
+
     }
     
 

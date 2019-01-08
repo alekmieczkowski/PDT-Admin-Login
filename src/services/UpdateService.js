@@ -1,5 +1,8 @@
 import {store} from '../store/configureStore';
 import { updatePost, updateUser, closeUpdate } from '../store/actions/update';
+import {updateUserSelf} from '../Api/users';
+
+let token = store.getState().auth.token;
 
 //show update screen
 export function editPost(data){
@@ -10,11 +13,17 @@ export function editPost(data){
     store.dispatch(updatePost(title, data));
 }
 
-export function editUser(data){
-    store.dispatch(updateUser(data));
+export async function editUser(data){
+    await store.dispatch(updateUser(data));
 }
 
 //hide update screen
 export function hideUpdate(){
     store.dispatch(closeUpdate());
+}
+
+//user updates self
+export async function updateSelf(data){
+    console.log("update self key: " + token);
+    await store.dispatch(updateUserSelf(data));
 }

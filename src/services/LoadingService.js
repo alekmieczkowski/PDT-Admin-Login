@@ -2,7 +2,7 @@ import {store} from '../store/configureStore';
 import {startSpinner, stopSpinner} from '../store/actions/spinner';
 
 //show error overlay
-export function showLoading(message){
+export async function showLoading(message){
     console.log("In show loading");
         return store.dispatch(startSpinner(message));
 

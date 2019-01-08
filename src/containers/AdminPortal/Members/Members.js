@@ -38,51 +38,43 @@ class Members extends Component {
     
 
     dont remember why I added this.. Should do more commenting. 
-    */
-    shouldComponentUpdate(nextProps, nextState){
+     */
 
-        /*
-        if(this.state.activePage === nextState.activePage && this.state.loading === false){
-                console.log(" should component Update true");
-            return true;
-        }
-        */
+    shouldComponentUpdate(nextProps, nextState){
        if(this.state.activePage === nextState.activePage){
         if(nextProps.active === this.props.active && nextProps.alumni === this.props.alumni && nextProps.requests === this.props.requests){
-            console.log(" should component Update false");
             if(this.state.loading)
                 return false;
         }
        }
-       
-        console.log(" should component Update true");
         return true;
     }
-    
+   
     
     _setActivePage = (page)=>{
         this.setState({activePage: page });
     }
 
     _setActiveData = async ()=>{
-
         //this.setState({loading: true});
         //set the correct data for correct page
         switch(this.props.page){
             case Page.ACTIVE:
-                
-                getActiveUsers();
+                this.setState({activeData: [...this.props.active]});
+                await getActiveUsers();
                 this.setState({activeData: [...this.props.active]});
                 break;
             case Page.ALUMNI:
                 console.log("in alumni");
-                getAlumniUsers();
                 this.setState({activeData:[...this.props.alumni]});
+                getAlumniUsers();
+                await this.setState({activeData:[...this.props.alumni]});
                 console.log("data:" + this.props.alumni);
                 break;
             case Page.PENDING:
             console.log("in access requests");
-                getAccessRequests();
+                this.setState({activeData:[...this.props.requests]});
+                await getAccessRequests();
                 this.setState({activeData:[...this.props.requests]});
                 break;
             case Page.REMOVED:
@@ -131,8 +123,9 @@ class Members extends Component {
     }
 
     /*Edit user*/
-    _editUser = (id) =>{
-        editUser(getUserById(id));
+    _editUser = async (id) =>{
+        await editUser(getUserById(id));
+
     }
 
     /*Accept User Request*/
