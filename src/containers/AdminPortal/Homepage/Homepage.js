@@ -9,9 +9,6 @@ class Homepage extends Component {
 
     render(){
 
-
-
-        console.log("in home");
         return(
             <div className={classes.Homepage}>
                 <Welcome name={this.props.user.first_name}/>

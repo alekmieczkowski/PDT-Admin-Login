@@ -25,7 +25,7 @@ const userView = (props) => {
             buttons = <Active id={props.data.user_id} setAlumni={props.alumni} setInactive={props.inactive} edit={props.edit} makeAdmin={props.admin} />;
             break;
         case Page.PENDING:
-            buttons = <Pending id={props.request_id} accept={props.accept} deny={props.deny} />;
+            buttons = <Pending id={props.data.request_id} accept={props.accept} deny={props.deny} />;
             break;
         default:
             buttons = <Active id={props.data.user_id} setAlumni={props.alumni} setInactive={props.inactive} edit={props.edit} makeAdmin={props.admin} />;

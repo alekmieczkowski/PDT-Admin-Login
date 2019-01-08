@@ -1,8 +1,9 @@
 import {store} from '../store/configureStore';
 import { userLogout, userLogin, updateToken, setAdmin } from '../store/actions/auth';
-import { getUsers, getUser } from '../Api/users';
+import { getActive, getUser } from '../Api/users';
 import { getPosts } from '../Api/posts';
 import {clearReduxState} from '../store/actions/global';
+import {adminLogin} from './AdminService';
 
 
 
@@ -41,15 +42,21 @@ export async function login(token) {
     //get user
     await store.dispatch(getUser(token));
 
-    //get users
-    await store.dispatch(getUsers(token));
+    //get active users
+    await store.dispatch(getActive(token));
 
     //get posts
     await store.dispatch(getPosts(token));
 
     //if user is admin then set flag in auth
     if(store.getState().api.user.is_admin){
+
+        //set admin
         await store.dispatch(setAdmin());
+        
+        //pull all admin stuff
+        await adminLogin(token)
+       
     }
 
     //log user in

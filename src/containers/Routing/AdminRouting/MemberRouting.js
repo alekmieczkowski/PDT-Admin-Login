@@ -13,7 +13,7 @@ const memberRouting = (props) => {
     return (
 
         <Switch>          
-            <PrivateRoute path={'/Admin/Members/Inactive'}  auth={props.auth} component={() => <Members page={Page.INACTIVE}/>} />
+            <PrivateRoute path={'/Admin/Members/Removed'}  auth={props.auth} component={() => <Members page={Page.REMOVED}/>} />
             <PrivateRoute path={'/Admin/Members/Alumni'}    auth={props.auth} component={() => <Members page={Page.ALUMNI}/>} />
             <PrivateRoute path={'/Admin/Members/Pending'}    auth={props.auth} component={() => <Members page={Page.PENDING}/>} />
             <PrivateRoute path={'/Admin/Members'} auth={props.auth} component={() => <Members page={Page.ACTIVE}/>} />

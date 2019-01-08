@@ -3,7 +3,7 @@ import classes from './DirUser.scss';
 import Badge from '../../UI/Badge/Badge';
 import {MdArrowDropUp, MdArrowDropDown, MdEmail, MdPhone} from 'react-icons/lib/md';
 import Wrapper from '../../../hoc/Wrapper/Wrapper'
-
+import {returnHighResGoogleImage} from '../../../services/ImageService';
 class DirUser extends Component{
 
     state={
@@ -44,7 +44,7 @@ class DirUser extends Component{
 
                 {/*Profile Image*/}
                 <div className={[classes.dataContainer, classes.imageContainer].join(' ')}>
-                    <img src={this.props.user.google_picture} className={classes.image} alt={"user"}/>
+                    <img src={returnHighResGoogleImage(this.props.user.google_picture)} className={classes.image} alt={"user"}/>
                 </div>
 
                 {/*Name*/}

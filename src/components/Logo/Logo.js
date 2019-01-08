@@ -51,7 +51,7 @@ const logo = (props) => {
 		c5.324,3.468,12.254,5.2,20.787,5.2c10.752,0,19.408-4.132,25.963-12.396c3.422-4.312,5.941-9.406,7.577-15.267h-16.804
 		C250.234,91.853,249.256,93.49,248.109,94.896z"/>
 </g>
-<text transform="matrix(1 0 0 1 33.79 85.6572)" display="none"><tspan x="0" y="0" display="inline" fill={props.color} font-family="'Arial-BoldMT'" font-size="38.79">NC</tspan><tspan x="56.026" y="0" display="inline" fill="#152C53" font-family="'Arial-BoldMT'" font-size="39"> </tspan><tspan x="66.861" y="0" display="inline" fill={props.color} font-family="'Arial-BoldMT'" font-size="38.79">EPSILON</tspan></text>
+<text transform="matrix(1 0 0 1 33.79 85.6572)" display="none"><tspan x="0" y="0" display="inline" fill={props.color} fontFamily="'Arial-BoldMT'" font-size="38.79">NC</tspan><tspan x="56.026" y="0" display="inline" fill="#152C53" font-family="'Arial-BoldMT'" font-size="39"> </tspan><tspan x="66.861" y="0" display="inline" fill={props.color} font-family="'Arial-BoldMT'" font-size="38.79">EPSILON</tspan></text>
 <g>
 	<path fill={props.color} d="M37.59,86.375V58.608h5.455l11.364,18.542V58.608h5.208v27.767h-5.625L42.798,68.268v18.107H37.59z"/>
 	<path fill={props.color} d="M83.312,76.166l5.436,1.724c-0.833,3.03-2.219,5.281-4.157,6.752c-1.938,1.471-4.397,2.207-7.377,2.207

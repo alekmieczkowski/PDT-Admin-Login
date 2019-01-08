@@ -3,7 +3,27 @@ import {store} from '../store/configureStore';
 import * as api from '../store/actions/api';
 import {showError} from '../services/ErrorService';
 
-export let getUsers = (token) =>{
+export let getActive = (token) =>{
+    return (dispatch) =>{
+        return axios(token).get('/users/1').then(
+            response => store.dispatch(api.setUsers(response.data.result.users)),
+            error => showError("Error Fetching Users")
+        );
+    }
+     
+}
+
+export let getAlumni = (token) =>{
+    return (dispatch) =>{
+        return axios(token).get('/users/2').then(
+            response => store.dispatch(api.setAlumni(response.data.result.users)),
+            error => showError("Error Fetching Users")
+        );
+    }
+     
+}
+
+export let getRemoved = (token) =>{
     return (dispatch) =>{
         return axios(token).get('/users').then(
             response => store.dispatch(api.setUsers(response.data.result.users)),
@@ -12,6 +32,18 @@ export let getUsers = (token) =>{
     }
      
 }
+
+export let getAllUsers = (token) =>{
+    return (dispatch) =>{
+        return axios(token).get('/users').then(
+            response => store.dispatch(api.setUsers(response.data.result.users)),
+            error => showError("Error Fetching Users")
+        );
+    }
+     
+}
+
+
 
 
 export let getUser = (token) =>{

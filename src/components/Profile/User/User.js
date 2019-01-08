@@ -3,6 +3,7 @@ import classes from './User.scss';
 import Badge from '../../UI/Badge/Badge';
 import {MdPhone, MdEmail} from 'react-icons/lib/md';
 import Button from '../../UI/Button/Button';
+import {returnHighResGoogleImage} from '../../../services/ImageService';
 
 class User extends Component{
 
@@ -15,7 +16,7 @@ class User extends Component{
         return(
             <div className={classes.container}>
                 <div className={classes.imageContainer}>
-                    <img src={this.props.data.google_picture} className={classes.image} alt={"user"}/>
+                    <img src={returnHighResGoogleImage(this.props.data.google_picture)} className={classes.image} alt={"user"}/>
                 </div>
                 <div className={classes.dataContainer}>
                     <div className={classes.infoContainer}>

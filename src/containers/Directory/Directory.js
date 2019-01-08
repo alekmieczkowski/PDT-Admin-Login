@@ -24,7 +24,7 @@ class Directory extends Component {
 
 const mapStateToProps = state => {
     return {
-        users: state.api.users,
+        users: state.api.users.active,
     };
 };
 

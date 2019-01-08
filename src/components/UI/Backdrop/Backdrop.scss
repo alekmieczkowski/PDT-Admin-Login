@@ -1,5 +1,5 @@
 
-.Background{
+:local(.Background){
     height: 100vh;
     width: 100vw;
     background-color: rgb(0,43,84);
@@ -8,7 +8,7 @@
     
 }
 
-.Ocean { 
+:local(.Ocean) { 
   height: 20vh;
   width:100%;
   position:absolute;
@@ -18,7 +18,7 @@
   
 }
 
-.Wave {
+:local(.Wave) {
   background: url('../../../assets/img/Backdrop/wave2.svg') repeat-x;
   position: absolute;
   top: -330px;
@@ -30,7 +30,7 @@
   z-index: -20;
 }
 
-.Wave:nth-of-type(2) {
+:local(.Wave:nth-of-type(2)) {
   top: -350px;
   animation: wave 16s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 16s ease -1.25s infinite;
   opacity: 1;

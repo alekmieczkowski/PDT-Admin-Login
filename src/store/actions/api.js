@@ -1,5 +1,6 @@
 export const SET_USER = "SET_USER";
 export const SET_USERS = "SET_USERS";
+export const SET_ALUMNI = "SET_ALUMNI";
 export const SET_POSTS = "SET_POSTS";
 export const SET_CALENDAR = "SET_CALENDAR";
 export const SET_POST_LIKE="SET_POST_LIKE";
@@ -15,6 +16,14 @@ export let setUsers = (users) =>{
     return{
         type: SET_USERS,
         users
+    }
+}
+
+export let setAlumni = (alumni) =>{
+    
+    return{
+        type: SET_ALUMNI,
+        alumni
     }
 }
 
