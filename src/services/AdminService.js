@@ -36,12 +36,16 @@ export function getUserById(id){
     return user.filter(n=>n)[0];
 }
 
-export function acceptUser(userId){
-    store.dispatch(acceptUserAccessRequest(token, userId));
+export async function acceptUser(userId){
+    showLoading("Accepting User");
+    await store.dispatch(acceptUserAccessRequest(token, userId));
+    hideLoading();
 }
 
 export async function denyUser(userId){
+    showLoading("Denying User");
     await store.dispatch(denyUserAccessRequest(token, userId));
+    hideLoading();
 }
 
 export async function getActiveUsers(){
@@ -87,7 +91,6 @@ export async function updateUser(userId, userObj){
 //toggles user admin
 export async function toggleUserAdmin(userId, isAdmin){
     await showLoading("Updating Admin Status");
-    console.log("admin status: " + isAdmin );
 
     let admin = true;
     if(isAdmin === 1){

@@ -57,7 +57,7 @@ class Members extends Component {
     }
 
     _setActiveData = async ()=>{
-        //this.setState({loading: true});
+
         //set the correct data for correct page
         switch(this.props.page){
             case Page.ACTIVE:
@@ -66,14 +66,11 @@ class Members extends Component {
                 this.setState({activeData: [...this.props.active]});
                 break;
             case Page.ALUMNI:
-                console.log("in alumni");
                 this.setState({activeData:[...this.props.alumni]});
                 getAlumniUsers();
                 await this.setState({activeData:[...this.props.alumni]});
-                console.log("data:" + this.props.alumni);
                 break;
             case Page.PENDING:
-            console.log("in access requests");
                 this.setState({activeData:[...this.props.requests]});
                 await getAccessRequests();
                 this.setState({activeData:[...this.props.requests]});
@@ -85,14 +82,14 @@ class Members extends Component {
                 this.setState({activeData: []});
                 break;
         }
-        //this.setState({loading: false});
+
+
     }
 
     _onSearchInput = (searchText) =>{
 
         //check if search is empty, reset data to default
         if(searchText.length === 0){
-            console.log("Refresh data");
             this._setActiveData();
         }
         else{
@@ -105,19 +102,16 @@ class Members extends Component {
 
     /*Make User Active*/
     _makeActive = (id) =>{
-        console.log("Set Active");
         updateUserStatus(id, STATUS_ACTIVE);
     }
 
     /*Make User Inactive*/
     _makeRemoved = (id) =>{
-        console.log("Set Removed");
         updateUserStatus(id, STATUS_REMOVE);
     }
 
     /*Make User Alumni*/
     _makeAlumni = (id) =>{
-        console.log("Set Alumni");
         updateUserStatus(id, STATUS_ALUMNI);
     }
 
@@ -135,18 +129,14 @@ class Members extends Component {
     /*Accept User Request*/
     _acceptRequest = async (id)=>{
         this.setState({loading: true}); 
-        showLoading("Accepting User Request");
         await acceptUser(id);
-        hideLoading();
         this.setState({loading: false}); 
     }
 
     /*Deny User Request*/
     _denyRequest = async (id)=>{
         this.setState({loading: true}); 
-        showLoading("Denying User Request");
         await denyUser(id);
-        hideLoading();
         this.setState({loading: false});
     }
 
