@@ -22,7 +22,7 @@ const userView = (props) => {
     //set button options
     switch (props.page) {
         case Page.ACTIVE:
-            buttons = <Active id={props.data.user_id} setAlumni={props.alumni} setInactive={props.inactive} edit={props.edit} makeAdmin={props.admin} />;
+            buttons = <Active id={props.data.user_id} setAlumni={props.alumni} setInactive={props.inactive} edit={props.edit} makeAdmin={props.admin} isAdmin={props.data.is_admin} />;
             break;
         case Page.PENDING:
             buttons = <Pending id={props.data.request_id} accept={props.accept} deny={props.deny} />;
@@ -39,16 +39,20 @@ const userView = (props) => {
             <div className={classes.Data}>
                 <div className={classes.Img}><img src={props.data.google_picture} alt="profile" /></div>
 
-                
+
 
                 <div className={classes.dataStyling}>
                     <div className={classes.data}>
                         #{props.data.bond_number} {props.data.first_name} {props.data.last_name}
                     </div>
                     <div className={classes.data}>
-                    
+
                         {/*Badges*/}
 
+                        {props.data.is_admin ?
+                            <Badge>Admin</Badge>
+
+                            : null}
                         {typeof props.data.positions !== "undefined" ?
                             props.data.positions.map(position => {
                                 return <Badge key={position.position_id}>{position.title}</Badge>;

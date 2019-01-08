@@ -1,7 +1,8 @@
 import {getUserAccessRequests, acceptUserAccessRequest, denyUserAccessRequest} from '../Api/accessRequest';
 import {getExistingPositions, removePosition, createPosition} from '../Api/positions';
-import {getActive, getAlumni, updateUserAdmin} from '../Api/users';
+import {getActive, getAlumni, updateUserAdmin, setAdmin} from '../Api/users';
 import {store} from '../store/configureStore';
+import {showLoading, hideLoading} from './LoadingService';
 
 // return authorization header with jwt token
 let token = localStorage.getItem('token');
@@ -81,4 +82,19 @@ export async function updateUser(userId, userObj){
     
     //get latest active user positions
     await getActiveUsers();
+}
+
+//toggles user admin
+export async function toggleUserAdmin(userId, isAdmin){
+    await showLoading("Updating Admin Status");
+    console.log("admin status: " + isAdmin );
+
+    let admin = true;
+    if(isAdmin === 1){
+        admin = false;
+    }
+    
+    await store.dispatch(setAdmin(userId, admin));
+    await hideLoading();
+   
 }

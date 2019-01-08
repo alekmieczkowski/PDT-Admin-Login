@@ -5,7 +5,7 @@ import classes from './Active.scss';
 class Active extends Component {
 
     _onMakeAdmin = () =>{
-        this.props.makeAdmin(this.props.id);
+        this.props.makeAdmin(this.props.id, this.props.isAdmin);
     }
 
     _onSetInactive = () =>{

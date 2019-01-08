@@ -3,9 +3,9 @@ import {store} from '../store/configureStore';
 import * as api from '../store/actions/api';
 import {showError} from '../services/ErrorService';
 
-
 /*Get Active Users*/
 export let getActive = (token) =>{
+    console.log(store.getState().auth.token);
     return (dispatch) =>{
         return axios(store.getState().auth.token).get('/users/1').then(
             response => store.dispatch(api.setUsers(response.data.result.users)),
@@ -67,7 +67,7 @@ export let updateUserSelf = (userObj) =>{
     return (dispatch)=>{
         return axios(store.getState().auth.token).put('/user', userObj).then(
             response => store.dispatch(api.setUser(response.data.result.user)),
-            error => showError("Error Fetching User")
+            error => showError("Error Updating User")
         );
     }
 }
@@ -81,7 +81,22 @@ export let updateUserAdmin = (userId, userObj) =>{
     return (dispatch)=>{
         return axios(store.getState().auth.token).put('/user/'+userId, userObj).then(
             response => store.dispatch(api.setUser(response.data.result.user)),
-            error => showError("Error Fetching User")
+            error => showError("Error Updating User")
         );
     }
+}
+
+/*Setting a User as admin*/
+export let setAdmin = (userId, shouldBeAdmin) =>{
+
+    return (dispatch)=>{
+        return axios(store.getState().auth.token).post('/admin',{
+            user_id: userId,
+            admin_status: shouldBeAdmin
+        }).then(
+            response => store.dispatch(api.setUser(response.data.result.user)),
+            error => showError("Error Updating Admin Status")
+        )
+    }
+
 }

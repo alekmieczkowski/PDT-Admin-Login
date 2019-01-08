@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import UserList from '../../../components/AdminPortal/Members/UserList/UserList';
 import Toolbar from '../../../components/AdminPortal/Members/Toolbar/Toolbar';
 import SearchBar from '../../../components/AdminPortal/Members/SearchBar/SearchBar';
-import {getUserById, acceptUser, denyUser,getAccessRequests, getActiveUsers, getAlumniUsers} from '../../../services/AdminService';
+import {getUserById, acceptUser, denyUser,getAccessRequests, getActiveUsers, getAlumniUsers, toggleUserAdmin} from '../../../services/AdminService';
 import {editUser} from '../../../services/UpdateService';
 import * as Page from '../../../components/AdminPortal/Members/Toolbar/ToolbarPages';
 import {filterObjArrayByValue} from '../../../services/DataServices';
@@ -118,8 +118,8 @@ class Members extends Component {
     }
 
     /*Toggle User Admin Status*/
-    _toggleAdmin = (id) =>{
-        console.log("toggle Admin");
+    _toggleAdmin = async (id, isAdmin) =>{
+        await toggleUserAdmin(id, isAdmin);
     }
 
     /*Edit user*/
