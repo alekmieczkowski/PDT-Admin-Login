@@ -23,11 +23,6 @@ const spinner = (state = {}, action) => {
                 ...state,
                 animateSpinner: false,
             }
-        case SET_USER:
-            return state ={
-                ...state,
-                animateSpinner: false,
-            }
         case CLEAR_STATE:
             return {};
 

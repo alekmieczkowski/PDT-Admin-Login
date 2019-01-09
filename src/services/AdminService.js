@@ -82,10 +82,12 @@ export async function adminLogin(token){
 
 //update user
 export async function updateUser(userId, userObj){
+    await showLoading("Updating User");
     await store.dispatch(updateUserAdmin(userId, userObj));
     
     //get latest active user positions
     await getActiveUsers();
+    await hideLoading();
 }
 
 //toggles user admin

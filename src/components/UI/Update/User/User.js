@@ -131,7 +131,7 @@ class User extends Component {
     }
 
     _submit = async ()=>{
-        showLoading("Updating User");
+        //showLoading("Updating User");
         
         //set up user obj
         let userObj={
