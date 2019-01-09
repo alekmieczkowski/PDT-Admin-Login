@@ -1,5 +1,5 @@
 import {store} from '../store/configureStore';
-import { updatePost, updateUser, closeUpdate } from '../store/actions/update';
+import { updatePost, updateUser, closeUpdate, hideUserUpdate,hidePostUpdate } from '../store/actions/update';
 import {updateUserSelf} from '../Api/users';
 
 let token = store.getState().auth.token;
@@ -18,8 +18,32 @@ export async function editUser(data){
 }
 
 //hide update screen
-export function hideUpdate(){
-    store.dispatch(closeUpdate());
+export async function hideUpdateUser(){
+      await store.dispatch(closeUpdate());
+
+     //hide user
+     setTimeout(
+        function() {
+         store.dispatch(hideUserUpdate());
+        }
+        .bind(this),
+        800
+    );
+     
+}
+
+//hide update screen
+export async function hideUpdatePost(){
+     store.dispatch(closeUpdate());
+
+     //hide user
+     setTimeout(
+        function() {
+         store.dispatch(hidePostUpdate());
+        }
+        .bind(this),
+        500
+    );
 }
 
 //user updates self

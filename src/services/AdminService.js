@@ -3,6 +3,7 @@ import {getExistingPositions, removePosition, createPosition} from '../Api/posit
 import {getActive, getAlumni, getRemoved, updateUserAdmin, setAdmin, setUserStatus} from '../Api/users';
 import {store} from '../store/configureStore';
 import {showLoading, hideLoading} from './LoadingService';
+import {hideUpdateUser} from './UpdateService';
 
 // return authorization header with jwt token
 let token = localStorage.getItem('token');
@@ -83,8 +84,9 @@ export async function adminLogin(token){
 //update user
 export async function updateUser(userId, userObj){
     await showLoading("Updating User");
-    await store.dispatch(updateUserAdmin(userId, userObj));
     
+    await store.dispatch(updateUserAdmin(userId, userObj)); 
+    await hideUpdateUser();
     //get latest active user positions
     await getActiveUsers();
     await hideLoading();

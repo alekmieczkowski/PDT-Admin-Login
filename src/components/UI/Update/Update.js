@@ -4,6 +4,11 @@ import { CSSTransition } from 'react-transition-group';
 
 export default class Update extends Component {
 
+
+    state={
+        active: false,
+    }
+
     componentDidMount(){
         setTimeout(
             function() {
@@ -14,9 +19,25 @@ export default class Update extends Component {
         );
     }
 
-    state={
-        active: false,
+    /*
+    shouldComponentUpdate(nextProps, nextState){
+        console.log("In should component Update /n next Props: " + nextProps.isActive + " this state: " + this.state.active);
+        if(nextProps.isActive !== this.state.active){
+            return true;
+        }
+        return false;
     }
+    
+    */
+
+    componentDidUpdate(prevProps, prevState){
+        console.log("In Component Did Update");
+
+        if(prevProps.isActive !== this.props.isActive)
+            this.setState({active: this.props.isActive});
+    }
+    
+    
     render() {
         //block out background clicks if active
         let backgroundStyle = classes.background;

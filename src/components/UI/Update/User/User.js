@@ -22,6 +22,7 @@ class User extends Component {
         bond:"",
         userPositions: [],
         positions: [],
+        active: false,
     }
 
     componentDidMount() {
@@ -48,7 +49,18 @@ class User extends Component {
             userPositions: userPositions,
             positions: globalPositions,
         })
+
+        this.setState({active: this.props.active})
     }
+    /*
+    shouldComponentUpdate(nextProps, nextState){
+        console.log("In should component Update User /n next Props: " + nextProps.active + " next state: " + nextState.active);
+        if(nextProps.active !== nextState.active){
+            return true;
+        }
+        return false;
+    }
+    */
 
     componentDidUpdate(prevProps){
         if(this.props.data.user_id !== prevProps.data.user_id){
@@ -62,6 +74,8 @@ class User extends Component {
                 positions: this.props.positions,
             })
         }
+        if(this.props.active !== prevProps.active)
+            this.setState({active: this.props.active})
     }
 
     _changeFName =(event)=>{
@@ -162,7 +176,7 @@ class User extends Component {
 
     render() {
         return (
-            <Update isActive={this.props.active}>
+            <Update isActive={this.state.active}>
             <div className={classes.container}>
             
            

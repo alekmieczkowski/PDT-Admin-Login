@@ -36,7 +36,7 @@ class Posts extends Component {
 
     _dismiss =  () => {
         this.setState({ inputValue: "" });
-        hideUpdate();
+        this.props.dismiss();
     }
 
     _submit =  () =>{

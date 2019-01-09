@@ -7,6 +7,7 @@ let initialState={
     activeUser: false,
     title: "",
     data: null,
+    visible: false,
 }
 
 const update = (state = initialState, action) => {
@@ -17,28 +18,33 @@ const update = (state = initialState, action) => {
                 activePost: true,
                 title: action.title,
                 data: action.data,
+                visible: true,
             }
         case updateActions.UPDATE_USER:
             return state = {
                 ...state,
                 activeUser: true,
                 data: action.data,
+                visible: true,
             }
         case updateActions.UPDATE_CLOSE:
             return state = {
                 ...state,
-                activePost: false,
-                activeUser: false,
+                //activePost: false,
+                //activeUser: false,
+                visible: false,
             }
-        case SET_POSTS:
+        case updateActions.HIDE_POST:
             return state ={
                 ...state,
+                //visible: false,
                 activePost: false,
             }
-        case SET_USER:
+        case updateActions.HIDE_USER:
             return state ={
                 ...state,
                 activeUser: false,
+                //visible: false,
             }
         case CLEAR_STATE:
             return {

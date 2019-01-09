@@ -4,6 +4,7 @@ import {setComment, deleteComment, editComment} from '../Api/comments';
 import {removePost, createPost, editPost} from '../Api/posts';
 import * as loadingService from './LoadingService';
 import {hideConfirmation} from './ConfirmationService';
+import {hideUpdatePost} from './UpdateService';
 
 
 
@@ -51,8 +52,12 @@ export async function deletePost(post_id){
 export async function addPost(data){
     
     await hideConfirmation();
+
+    await hideUpdatePost();
   
     await loadingService.showLoading("Creating Post");
+
+    
 
     await store.dispatch(createPost(token, data));
 
@@ -63,11 +68,15 @@ export async function addPost(data){
 export async function updatePost(post){
 
     await hideConfirmation();
+
+    await hideUpdatePost();
   
     await loadingService.showLoading("Updating Post");
   
     await store.dispatch(editPost(token, post.post_id, post.content));
-  
+    
+    
+
     await loadingService.hideLoading();
     
 }
