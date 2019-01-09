@@ -57,8 +57,6 @@ export async function addPost(data){
   
     await loadingService.showLoading("Creating Post");
 
-    
-
     await store.dispatch(createPost(token, data));
 
     await loadingService.hideLoading();
@@ -75,8 +73,6 @@ export async function updatePost(post){
   
     await store.dispatch(editPost(token, post.post_id, post.content));
     
-    
-
     await loadingService.hideLoading();
     
 }

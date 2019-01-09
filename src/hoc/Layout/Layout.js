@@ -9,6 +9,9 @@ import ConfirmationSpinner from '../../components/UI/Spinner/Confirmation/Confir
 import UpdatePost from '../../components/UI/Update/Posts/Posts';
 import UpdateUser from '../../components/UI/Update/User/User';
 
+//Routing
+import {authHeader} from '../../services/AuthService';
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 
 //hide error message
 import {hideError} from '../../services/ErrorService';
@@ -28,6 +31,7 @@ class Layout extends Component{
     }
 
     render(){
+        console.log("Route: " + this.props.location);
         return(
             <Wrapper>
                 <LoadingSpinner spinnerText={this.props.spinnerText} isActive={this.props.animateSpinner}/>
@@ -36,6 +40,7 @@ class Layout extends Component{
                 {this.props.updatePost ? <UpdatePost active={this.props.visible} title={this.props.updateTitle} data={this.props.updateData} dismiss={hideUpdatePost}/> : null}
                 {this.props.updateUser ? <UpdateUser active={this.props.visible} admin={this.props.admin} data={this.props.updateData} dismiss={hideUpdateUser} positions={this.props.positions}/> : null}
                 <main className={classes.Layout}>
+                    {authHeader() !== false ? <Toolbar admin={this.props.admin}/>: null}
                     {this.props.children}
                 </main> 
                 <Backdrop />

@@ -4,6 +4,7 @@ import { getActive, getUser } from '../Api/users';
 import { getPosts } from '../Api/posts';
 import {clearReduxState} from '../store/actions/global';
 import {adminLogin} from './AdminService';
+import {showLoading, hideLoading} from './LoadingService';
 
 
 
@@ -34,12 +35,14 @@ export function logout() {
 
 export async function login(token) {
 
-    console.log(token);
+    //showLoading
+    showLoading("Fetching Data");
 
     //set Token
     await store.dispatch(updateToken(token));
 
-    
+    //get user
+    await store.dispatch(getUser(token));
 
     //get active users
     await store.dispatch(getActive(token));
@@ -47,8 +50,7 @@ export async function login(token) {
     //get posts
     await store.dispatch(getPosts(token));
 
-    //get user
-    await store.dispatch(getUser(token));
+    
 
     //if user is admin then set flag in auth
     if(store.getState().api.user.is_admin){
@@ -63,6 +65,9 @@ export async function login(token) {
 
     //log user in
     store.dispatch(userLogin());
+
+    //hide loading
+    hideLoading();
 
 
 }

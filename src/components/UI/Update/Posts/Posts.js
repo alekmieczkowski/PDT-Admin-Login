@@ -4,7 +4,6 @@ import classes from './Posts.scss';
 import InputContainer from './InputContainer/InputContainer';
 import Button from '../../Button/Button';
 import { MdClose } from 'react-icons/lib/md';
-import { hideUpdate } from '../../../../services/UpdateService';
 import {showError} from '../../../../services/ErrorService';
 import {showConfirmation} from '../../../../services/ConfirmationService';
 import {isValidInput} from '../../../../services/InputValidationService';

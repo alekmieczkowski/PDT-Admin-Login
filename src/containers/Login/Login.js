@@ -62,15 +62,12 @@ class Login extends Component {
             alert("Sorry, you are not authorized to access this app");
         }
         else {
+            
             //start animation out
-            loadingService.showLoading("Loading Data");
             this.setState({animateIn: false});
             
             //AuthService.login
             await AuthService.login(response.tokenId);
-
-            //hide spinner
-            loadingService.hideLoading();
 
             //Allow User past
             this.props.history.push("/");

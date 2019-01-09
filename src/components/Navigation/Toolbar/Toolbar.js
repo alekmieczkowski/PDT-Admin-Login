@@ -79,7 +79,7 @@ class Toolbar extends Component {
                     </div >
                     <div className={classes.DesktopOnly}>
                         <nav>
-                            <NavigationItems url={this.props.url} />
+                            <NavigationItems admin={this.props.admin} url={this.props.url} />
 
 
                         </nav>

@@ -9,7 +9,7 @@ const navigationItems = (props) => (
         <NavigationItem exact link='/Calendar' >Calendar</NavigationItem>
         <NavigationItem  link='/Directory' >Directory</NavigationItem>
         <NavigationItem exact link='/Profile' >Profile</NavigationItem>
-        <NavigationItem  link='/Admin' >Admin Portal</NavigationItem>
+        {props.admin ? <NavigationItem  link='/Admin' >Admin Portal</NavigationItem> : null}
     </ul>
 );
 
