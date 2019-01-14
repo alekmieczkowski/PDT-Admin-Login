@@ -10,6 +10,7 @@ import * as Page from '../../../components/AdminPortal/Members/Toolbar/ToolbarPa
 import {filterObjArrayByValue} from '../../../services/DataServices';
 import {showLoading, hideLoading} from '../../../services/LoadingService';
 import {STATUS_ALUMNI, STATUS_REMOVE, STATUS_ACTIVE} from '../../../store/actions/admin';
+import { showError } from '../../../services/ErrorService';
 /**
  * 
  * Containers:
@@ -117,7 +118,12 @@ class Members extends Component {
 
     /*Toggle User Admin Status*/
     _toggleAdmin = async (id, isAdmin) =>{
-        await toggleUserAdmin(id, isAdmin);
+        if(this.props.user.user_id === id){
+            showError("You cannot remove your own admin status");
+        }
+        else{
+            await toggleUserAdmin(id, isAdmin);
+        }  
     }
 
     /*Edit user*/
@@ -201,6 +207,7 @@ const mapStateToProps = state => {
         alumni: state.api.users.alumni,
         removed: state.api.users.removed,
         requests: state.admin.requests,
+        user: state.api.user
         
     };
 };

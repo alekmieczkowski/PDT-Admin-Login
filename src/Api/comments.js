@@ -6,7 +6,7 @@ import {showError} from '../services/ErrorService';
 
 export let setComment = (token, postId, postContent) =>{
     return (dispatch) =>{
-        return axios(token).post('/comment',{
+        return axios(store.getState().auth.token).post('/comment',{
             post_id: postId,
             content: postContent
         }).then(
@@ -19,7 +19,7 @@ export let setComment = (token, postId, postContent) =>{
 
 export let deleteComment = (token, commentId) =>{
     return (dispatch) =>{
-        return axios(token).delete('/comment/'+commentId
+        return axios(store.getState().auth.token).delete('/comment/'+commentId
         ).then(
             response => store.dispatch(getPosts(token)),
             error => showError("Error Adding Comment")
@@ -30,7 +30,7 @@ export let deleteComment = (token, commentId) =>{
 
 export let editComment = (token, comment_id, comment_body) =>{
     return (dispatch) =>{
-        return axios(token).put('/comment/'+comment_id,{
+        return axios(store.getState().auth.token).put('/comment/'+comment_id,{
             content: comment_body
         }
         ).then(

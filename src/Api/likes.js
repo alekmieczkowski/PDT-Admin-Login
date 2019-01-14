@@ -6,7 +6,7 @@ import {showError} from '../services/ErrorService';
 
 export let setPostLike = (token, postId) =>{
     return (dispatch) =>{
-        return axios(token).post('/like',{
+        return axios(store.getState().auth.token).post('/like',{
             post_id: postId
         }).then(
             response => {
@@ -28,7 +28,7 @@ export let setPostLike = (token, postId) =>{
 
 export let setCommentLike = (token, commentId) =>{
     return (dispatch) =>{
-        return axios(token).post('/like',{
+        return axios(store.getState().auth.token).post('/like',{
             comment_id: commentId
         }).then(
             response => {

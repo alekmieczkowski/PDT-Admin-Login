@@ -176,10 +176,11 @@ module.exports = {
           // tags. If you use code splitting, however, any async bundles will still
           // use the "style" loader inside the async code so CSS from them won't be
           // in the main CSS file.
+          
           {
-            test: /\.scss$/,
+            test: /\.(s*)css$/,
             loader: ExtractTextPlugin.extract(
-              Object.assign(
+              
                 {
                   fallback: {
                     loader: require.resolve('style-loader'),
@@ -190,14 +191,17 @@ module.exports = {
                     },
                   },
                   use: [
+                    
                     {
                       loader: require.resolve('css-loader'),
                       options: {
-                        importLoaders: 1,
-                        minimize: true,
+                        importLoaders: 2,
+                        minimize: false,
                         sourceMap: shouldUseSourceMap,
+                        modules: true,
                       },
                     },
+                   
                     {
                       loader: require.resolve('postcss-loader'),
                       options: {
@@ -219,15 +223,61 @@ module.exports = {
                       },
                     },
                     {
-                      loader: 'sass-loader',
+                      loader: require.resolve('sass-loader'),
                     },
                   ],
                 },
                 extractTextPluginOptions
               )
-            ),
+            
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
-          },
+      },/*
+          {
+            test: /\.(s*)css$/,
+            loader: ExtractTextPlugin.extract(
+              
+                {
+                  fallback: {
+                    loader: require.resolve('style-loader'),
+                    options: {
+                      hmr: false,
+                      modules: true,
+                      localIdentName: '[name]__[local]__[hash:base64:5]'
+                    },
+                  },
+                  use: [
+                    {
+                      loader: require.resolve('style-loader'),
+                    options: {
+                      hmr: false,
+                      modules: true,
+                      localIdentName: '[name]__[local]__[hash:base64:5]'
+                    },
+                    },
+                    
+                    {
+                      loader: require.resolve('css-loader'),
+                      options: {
+                        importLoaders: 2,
+                        minimize: false,
+                        sourceMap: shouldUseSourceMap,
+                      },
+                    },
+                    {
+                      loader: require.resolve('sass-loader'),
+                    },
+                  ],
+                },
+                extractTextPluginOptions
+              )
+            
+            // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+          },*//*
+          { 
+            test:/\.scss$/,
+            use:ExtractTextPlugin.extract({fallback:"style-loader",use:["css-loader","sass-loader"]}),
+            //include:path.join(__dirname,"client/src"),
+        },*/
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
           // This loader doesn't use a "test" so it will catch all modules
@@ -249,6 +299,7 @@ module.exports = {
       },
     ],
   },
+  
   plugins: [
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:

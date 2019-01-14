@@ -18,7 +18,7 @@ export let getActive = (token) =>{
 /*Get Alumni*/
 export let getAlumni = (token) =>{
     return (dispatch) =>{
-        return axios(token).get('/users/2').then(
+        return axios(store.getState().auth.token).get('/users/2').then(
             response => store.dispatch(api.setAlumni(response.data.result.users)),
             error => showError("Error Fetching Users")
         );
@@ -29,7 +29,7 @@ export let getAlumni = (token) =>{
 /*Get Removed Users*/
 export let getRemoved = (token) =>{
     return (dispatch) =>{
-        return axios(token).get('/users/3').then(
+        return axios(store.getState().auth.token).get('/users/3').then(
             response => store.dispatch(api.setRemoved(response.data.result.users)),
             error => showError("Error Fetching Users")
         );
@@ -40,7 +40,7 @@ export let getRemoved = (token) =>{
 /*Get All Users*/
 export let getAllUsers = (token) =>{
     return (dispatch) =>{
-        return axios(token).get('/users').then(
+        return axios(store.getState().auth.token).get('/users').then(
             response => store.dispatch(api.setUsers(response.data.result.users)),
             error => showError("Error Fetching Users")
         );
@@ -51,7 +51,7 @@ export let getAllUsers = (token) =>{
 /*Get Specific User*/
 export let getUser = (token) =>{
     return (dispatch) =>{
-        return axios(token).get('/user').then(
+        return axios(store.getState().auth.token).get('/user').then(
             response => store.dispatch(api.setUser(response.data.result.user)),
             error => showError("Error Fetching User")
         );

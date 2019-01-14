@@ -6,9 +6,10 @@ import Routing from './containers/Routing/Routing';
 
 class App extends Component {
   render() {
-
+    console.log(process.env);
     return (
       <BrowserRouter>
+      
         <Routing/>
       </BrowserRouter>  
     );

@@ -14,7 +14,7 @@ export let getUserAccessRequests = (token) =>{
 
 
     return (dispatch) =>{
-        return axios(token).get('/useraccessrequests?status=0').then(
+        return axios(store.getState().auth.token).get('/useraccessrequests?status=0').then(
             response => store.dispatch(setUserRequests(response.data.result.useraccessrequests)),
             error => {showError("Error Fetching Access Requests"), console.log(error)}
         );
@@ -26,7 +26,7 @@ export let getUserAccessRequests = (token) =>{
 export let acceptUserAccessRequest = (token, requestId)=>{
 
     return (dispatch) =>{
-        return axios(token).post('/useraccessrequests/accept',{
+        return axios(store.getState().auth.token).post('/useraccessrequests/accept',{
             request_id: requestId
         }).then(
             response => refreshAllUsersData(),
@@ -39,7 +39,7 @@ export let acceptUserAccessRequest = (token, requestId)=>{
 export let denyUserAccessRequest = (token, requestId)=>{
 
     return (dispatch) =>{
-        return axios(token).post('/useraccessrequests/deny',{
+        return axios(store.getState().auth.token).post('/useraccessrequests/deny',{
             request_id: requestId
         }).then(
             response => refreshAllUsersData(),

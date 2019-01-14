@@ -3,7 +3,6 @@ import LoginView from '../../components/Login/Login';
 import classes from './Login.scss';
 import { connect } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
-import { clientId } from '../../constants/secrets';
 import * as transitionActions from '../../store/actions/transition';
 import GoogleButton from '../../components/Login/GoogleButton/GoogleButton';
 import { requestUserAccessRequest, ENUM_USERACCESSREQUEST_STATUS_ACCEPTED } from '../../Api/accessRequest';
@@ -15,8 +14,6 @@ import * as AuthService from '../../services/AuthService';
 //error service
 import {showError} from '../../services/ErrorService';
 
-//loading service
-import * as loadingService from '../../services/LoadingService';
 
 class Login extends Component {
 
@@ -84,9 +81,6 @@ class Login extends Component {
         //console.log('loading') // eslint-disable-line
     }
 
-    
-
-
     render() {
 
         return (
@@ -101,7 +95,7 @@ class Login extends Component {
                 >
                     <LoginView>
                         <GoogleLogin
-                            clientId={clientId}
+                            clientId={process.env.REACT_APP_CLIENT_ID}
                             buttonText="Sign in With google"
                             onSuccess={this.success}
                             onFailure={this.error}
