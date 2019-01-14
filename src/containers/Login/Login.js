@@ -41,10 +41,12 @@ class Login extends Component {
 
 
     success = async (response) => {
-
+        
         let requestResponse = null;
         //call server sign in
         await requestUserAccessRequest(response.tokenId, null, null).then(response => {
+            
+            
             if (!(response instanceof Error)) {//if not error
                 requestResponse = response.result.useraccessrequest;
             }
@@ -73,7 +75,6 @@ class Login extends Component {
     }
 
     error = (response) => {
-
         showError("Error Signing into Google"); // eslint-disable-line
     }
 

@@ -31,7 +31,6 @@ class Layout extends Component{
     }
 
     render(){
-        console.log("Route: " + this.props.location);
         return(
             <Wrapper>
                 <LoadingSpinner spinnerText={this.props.spinnerText} isActive={this.props.animateSpinner}/>

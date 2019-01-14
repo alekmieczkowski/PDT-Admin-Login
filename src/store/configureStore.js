@@ -10,12 +10,18 @@ const persistConfig = {
   storage,
 }
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const middlewares = [reduxThunk];
+
+if(process.env.NODE_ENV !== 'production'){
+  middlewares.push(logger);
+}
+
 
 export const store = createStore(
-    persistedReducer,
-    applyMiddleware(reduxThunk, logger)
-    );
-
+  persistedReducer,
+  applyMiddleware(...middlewares)
+  );
 export let persistor = persistStore(store);
 

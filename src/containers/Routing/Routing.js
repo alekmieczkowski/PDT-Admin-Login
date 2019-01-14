@@ -20,7 +20,7 @@ const routing = (props) => {
                     <PrivateRoute path={'/Admin'}       component={AdminPortal} />
                     <PrivateRoute path={'/Profile'}     component={Profile} />
                     <PrivateRoute path={'/Directory'}   component={Directory} />
-                    <PrivateRoute path={'/Calendar'}    component={Calendar} />
+                    {/*<PrivateRoute path={'/Calendar'}    component={Calendar} />*/}
                     <PrivateRoute path={'/'}   exact    component={Blog} />
                     <Route path='/login' component={Login}/>
                 </Switch>
