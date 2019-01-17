@@ -1,6 +1,6 @@
 import {getUserAccessRequests, acceptUserAccessRequest, denyUserAccessRequest} from '../Api/accessRequest';
 import {getExistingPositions, removePosition, createPosition} from '../Api/positions';
-import {getActive, getAlumni, getRemoved, updateUserAdmin, setAdmin, setUserStatus} from '../Api/users';
+import {getActive, getAlumni, getRemoved, updateUserAdmin, setAdmin, setUserStatus, updateSelfAdmin} from '../Api/users';
 import {store} from '../store/configureStore';
 import {showLoading, hideLoading} from './LoadingService';
 import {hideUpdateUser} from './UpdateService';
@@ -86,6 +86,17 @@ export async function updateUser(userId, userObj){
     await showLoading("Updating User");
     
     await store.dispatch(updateUserAdmin(userId, userObj)); 
+    await hideUpdateUser();
+    //get latest active user positions
+    await getActiveUsers();
+    await hideLoading();
+}
+
+//update user
+export async function updateAdminSelf(userId, userObj){
+    await showLoading("Updating User");
+    
+    await store.dispatch(updateSelfAdmin(userId, userObj)); 
     await hideUpdateUser();
     //get latest active user positions
     await getActiveUsers();

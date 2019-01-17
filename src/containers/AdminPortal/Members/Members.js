@@ -130,6 +130,7 @@ class Members extends Component {
 
     /*Toggle User Admin Status*/
     _toggleAdmin = async (id, isAdmin) =>{
+        console.log("current ID: " + this.props.user.user_id + "  users ID: " + id);
         if(this.props.user.user_id === id){
             showError("You cannot remove your own admin status");
         }

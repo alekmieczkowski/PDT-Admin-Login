@@ -2,7 +2,7 @@ import axios from './axios_config';
 import {store} from '../store/configureStore';
 import * as api from '../store/actions/api';
 import {showError} from '../services/ErrorService';
-
+import {getActiveUsers} from '../services/AdminService'
 
 /*Get Active Users*/
 export let getActive = (token) =>{
@@ -63,10 +63,11 @@ export let getUser = (token) =>{
 Returns user with updated information
 */
 export let updateUserSelf = (userObj) =>{
+    console.log("User OBJ in update: " + JSON.stringify(userObj));
 
     return (dispatch)=>{
         return axios(store.getState().auth.token).put('/user', userObj).then(
-            response => store.dispatch(api.setUser(response.data.result.user)),
+            response => {store.dispatch(api.setUser(response.data.result.user)); console.log("user object returned: " + JSON.stringify(response.data.result.user))},
             error => showError("Error Updating User")
         );
     }
@@ -80,7 +81,18 @@ export let updateUserAdmin = (userId, userObj) =>{
 
     return (dispatch)=>{
         return axios(store.getState().auth.token).put('/user/'+userId, userObj).then(
-            response => store.dispatch(api.setUser(response.data.result.user)),
+            response => store.dispatch(getActive('s')),
+            error => showError("Error Updating User")
+        );
+    }
+}
+
+export let updateSelfAdmin = (userId, userObj) =>{
+    console.log("User OBJ in update: " + JSON.stringify(userObj));
+
+    return (dispatch)=>{
+        return axios(store.getState().auth.token).put('/user/'+userId, userObj).then(
+            response => {store.dispatch(api.setUser(response.data.result.user)); console.log("user object returned: " + JSON.stringify(response.data.result.user))},
             error => showError("Error Updating User")
         );
     }
@@ -94,7 +106,7 @@ export let setAdmin = (userId, shouldBeAdmin) =>{
             user_id: userId,
             admin_status: shouldBeAdmin
         }).then(
-            response => store.dispatch(api.setUser(response.data.result.user)),
+            response => store.dispatch(getActive('s')),
             error => showError("Error Updating Admin Status")
         )
     }

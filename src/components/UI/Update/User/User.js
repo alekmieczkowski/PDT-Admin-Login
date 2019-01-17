@@ -9,7 +9,7 @@ import * as _ from 'lodash';
 import Wrapper from '../../../../hoc/Wrapper/Wrapper'
 import {updateSelf} from '../../../../services/UpdateService';
 import {showLoading, hideLoading} from '../../../../services/LoadingService';
-import {updateUser} from '../../../../services/AdminService';
+import {updateUser, updateAdminSelf} from '../../../../services/AdminService';
 
 
 class User extends Component {
@@ -145,7 +145,6 @@ class User extends Component {
     }
 
     _submit = async ()=>{
-        //showLoading("Updating User");
         
         //set up user obj
         let userObj={
@@ -164,9 +163,22 @@ class User extends Component {
             })
             userObj.positions = positionArr;
             console.log("User Obj: " + JSON.stringify(userObj));
-            await updateUser(this.props.data.user_id, userObj);
+
+            //console.log("Current User ID: " + this.props.userId + " passed in user id : " + this.props.data.user_id);
+            //if admin is updating himself
+            if (this.props.data.user_id === this.props.userId){
+                console.log("Updating self");
+                await updateAdminSelf(this.props.data.user_id, userObj);
+            }
+            else{
+                //if admin is updating user
+                console.log("Updating random user");
+                await updateUser(this.props.data.user_id, userObj);
+            }
+           
         }
         else{
+            console.log("Updating self non admin");
             await updateSelf(userObj);
         }
 

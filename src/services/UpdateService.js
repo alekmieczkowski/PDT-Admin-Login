@@ -1,6 +1,8 @@
 import {store} from '../store/configureStore';
 import { updatePost, updateUser, closeUpdate, hideUserUpdate,hidePostUpdate } from '../store/actions/update';
 import {updateUserSelf} from '../Api/users';
+import {showLoading, hideLoading} from './LoadingService';
+import {getActiveUsers} from './AdminService';
 
 let token = store.getState().auth.token;
 
@@ -48,5 +50,12 @@ export async function hideUpdatePost(){
 
 //user updates self
 export async function updateSelf(data){
+    await showLoading("Updating User");
+    
     await store.dispatch(updateUserSelf(data));
+    await hideUpdateUser();
+    //get latest active user positions
+    await getActiveUsers();
+    await hideLoading();
+    
 }
