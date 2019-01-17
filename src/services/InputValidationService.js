@@ -7,3 +7,18 @@ export function isValidInput(input){
     }
     return true;
 }
+
+export function isValidPhoneNumber(input){
+    if(input === null ||input.length !== 10 || input.match(/[a-z]/i)){
+        return false;
+    }
+    return true;
+}
+
+export function isValidBondNumber(input){
+
+    if(input === null || input.length > 4 || input.length <= 0 || input.match(/[a-z]/i)){
+        return false;
+    }
+    return true;
+}

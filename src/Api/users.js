@@ -7,7 +7,7 @@ import {showError} from '../services/ErrorService';
 /*Get Active Users*/
 export let getActive = (token) =>{
     return (dispatch) =>{
-        return axios(store.getState().auth.token).get('/users/1').then(
+        return axios(store.getState().auth.token).get('/users?status=1').then(
             response => store.dispatch(api.setUsers(response.data.result.users)),
             error => showError("Error Fetching Users")
         );
@@ -18,7 +18,7 @@ export let getActive = (token) =>{
 /*Get Alumni*/
 export let getAlumni = (token) =>{
     return (dispatch) =>{
-        return axios(store.getState().auth.token).get('/users/2').then(
+        return axios(store.getState().auth.token).get('/users?status=2').then(
             response => store.dispatch(api.setAlumni(response.data.result.users)),
             error => showError("Error Fetching Users")
         );
@@ -29,7 +29,7 @@ export let getAlumni = (token) =>{
 /*Get Removed Users*/
 export let getRemoved = (token) =>{
     return (dispatch) =>{
-        return axios(store.getState().auth.token).get('/users/3').then(
+        return axios(store.getState().auth.token).get('/users?status=3').then(
             response => store.dispatch(api.setRemoved(response.data.result.users)),
             error => showError("Error Fetching Users")
         );
