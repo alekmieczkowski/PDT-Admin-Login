@@ -108,12 +108,24 @@ class Members extends Component {
 
     /*Make User Inactive*/
     _makeRemoved = (id) =>{
-        updateUserStatus(id, STATUS_REMOVE);
+        if(this.props.user.user_id === id){
+            showError("You cannot remove yourself");
+        }
+        else{
+            updateUserStatus(id, STATUS_REMOVE);
+        }
+        
     }
 
     /*Make User Alumni*/
     _makeAlumni = (id) =>{
-        updateUserStatus(id, STATUS_ALUMNI);
+        if(this.props.user.user_id === id){
+            showError("You cannot make yourself Alumni");
+        }
+        else{
+            updateUserStatus(id, STATUS_ALUMNI);
+        }
+        
     }
 
     /*Toggle User Admin Status*/
