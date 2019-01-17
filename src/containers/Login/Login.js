@@ -55,6 +55,7 @@ class Login extends Component {
         //if server request was null
         if(requestResponse === null){
             showError("Error Connecting to Server");
+
         }
         else if (requestResponse.status !== ENUM_USERACCESSREQUEST_STATUS_ACCEPTED) {
             //if user is not active

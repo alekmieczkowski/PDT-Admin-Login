@@ -63,9 +63,11 @@ export async function requestUserAccessRequest(token, bondNumber, phoneNumber) {
         })
         .then(response => {
             data = response.data;
+
         })
         .catch(error => {
             data = error;
+            
         });
     }
     else{

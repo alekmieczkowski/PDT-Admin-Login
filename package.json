@@ -90,7 +90,7 @@
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
-    "homepage": "http://app.phideltuncc.org",
+    "homepage": "https://app.phideltuncc.org",
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
