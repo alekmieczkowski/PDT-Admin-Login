@@ -31,7 +31,6 @@ export default class Update extends Component {
     */
 
     componentDidUpdate(prevProps, prevState){
-        console.log("In Component Did Update");
 
         if(prevProps.isActive !== this.props.isActive)
             this.setState({active: this.props.isActive});

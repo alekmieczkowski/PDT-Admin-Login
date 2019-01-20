@@ -3,7 +3,6 @@ import {startSpinner, stopSpinner} from '../store/actions/spinner';
 
 //show error overlay
 export async function showLoading(message){
-    console.log("In show loading");
         return store.dispatch(startSpinner(message));
 
 }

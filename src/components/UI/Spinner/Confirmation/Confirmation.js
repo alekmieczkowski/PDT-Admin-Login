@@ -9,7 +9,7 @@ import { DELETE_POST, SUBMIT_POST, UPDATE_POST } from '../../../../store/actions
 class Confirmation extends Component {
 
     _onAccept = ()=>{
-        console.log("Type: "+ this.props.type + " Data: "+this.props.data);
+        //console.log("Type: "+ this.props.type + " Data: "+this.props.data);
         let acceptButton = null;
 
         switch (this.props.type) {
