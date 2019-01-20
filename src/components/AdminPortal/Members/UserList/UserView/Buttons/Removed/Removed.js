@@ -25,7 +25,7 @@ class Removed extends Component {
         return (
             <Wrapper>
                 <div className={classes.buttonsTopRow}>
-                    <Button clicked={this._onMakeAdmin} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"admin"}>Set Admin</Button>
+                    {/*<Button clicked={this._onMakeAdmin} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"admin"}>Set Admin</Button>*/}
     
                     <Button clicked={this._onSetActive} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"active"}>Set Active</Button>
                     <Button clicked={this._onSetAlumni} buttonCSS={classes.button} textCSS={classes.text} iconSize={26} iconColor={'#ffffff'} type={"alumni"}>Set Alumni</Button>
