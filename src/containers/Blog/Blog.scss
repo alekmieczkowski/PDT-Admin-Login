@@ -40,10 +40,12 @@
 }
 
 .blogHeader{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
     font-size: 24px;
     color: $secondary;
-    text-align: center;
-    justify-content: center;
+
     font-weight: bold;
     padding: 6px;
     margin-bottom: 4px;
@@ -51,6 +53,28 @@
     border: none;
     border-bottom: 2px solid white;
 
+}
+
+.blogHeaderText{
+    flex: 1;
+    text-align: center;
+}
+
+.blogHeaderButton{
+    flex: 1;
+    justify-content: left;
+}
+
+.button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 22px;
+}
+
+.loadingAlign{
+    margin-top: 6px;
+    margin-bottom: -6px;
 }
 
 ::-webkit-scrollbar { 

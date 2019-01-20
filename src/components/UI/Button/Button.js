@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from './Button.scss';
-import {MdStar, MdLock, MdGavel, MdWork, MdClose, MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend, MdCreate, MdIndeterminateCheckBox, MdCheckCircle, MdSchool} from 'react-icons/lib/md';
+import {MdRefresh, MdStar, MdLock, MdGavel, MdWork, MdClose, MdExitToApp, MdPhone, MdEmail, MdClear, MdComment, MdSend, MdCreate, MdIndeterminateCheckBox, MdCheckCircle, MdSchool} from 'react-icons/lib/md';
 import {IoTrashB} from 'react-icons/lib/io'
 import { FaEdit, FaGroup } from "react-icons/lib/fa";
 import FitText from '@kennethormandy/react-fittext'
 import Loading from '../../../assets/img/Spinner/loading-blue.gif';
+import LoadingWhite from '../../../assets/img/Spinner/loading-white.gif';
 
 const button = (props) => {
 
@@ -46,6 +47,9 @@ const button = (props) => {
         case "loading":
             type= <img height={iconSize} className={classes.loadingImg} src={Loading} alt={"Loading"}/>;
             break;
+        case "loading-white":
+            type= <img height={iconSize} className={classes.loadingImg} src={LoadingWhite} alt={"Loading"}/>;
+            break;
         case "create":
             type=<MdCreate size={iconSize} color={props.iconColor}/>;
             break;
@@ -75,6 +79,9 @@ const button = (props) => {
             break;
         case "access":
             type=<MdLock size={iconSize} color={props.iconColor}/>;
+            break;
+        case "refresh":
+            type=<MdRefresh size={iconSize} color={props.iconColor}/>;
             break;
         default:
             type= null;

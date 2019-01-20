@@ -6,9 +6,9 @@ export default  function axiosInstance(token){
         baseURL: process.env.REACT_APP_SERVER_IP,
         timeout: 6000,
         headers: {
-            'api_key': process.env.REACT_APP_KEY,
+            'api-key': process.env.REACT_APP_KEY,
             'Content-Type': 'application/json',
-            'google_jwt_token': token,
+            'google-jwt-token': token,
             
         }
     });

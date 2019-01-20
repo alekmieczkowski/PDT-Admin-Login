@@ -1,7 +1,7 @@
 import {store} from '../store/configureStore';
 import { setPostLike, setCommentLike } from '../Api/likes';
 import {setComment, deleteComment, editComment} from '../Api/comments';
-import {removePost, createPost, editPost} from '../Api/posts';
+import {removePost, createPost, editPost, getPosts} from '../Api/posts';
 import * as loadingService from './LoadingService';
 import {hideConfirmation} from './ConfirmationService';
 import {hideUpdatePost} from './UpdateService';
@@ -75,4 +75,8 @@ export async function updatePost(post){
     
     await loadingService.hideLoading();
     
+}
+
+export async function getLatestPosts(){
+    await store.dispatch(getPosts('s'));
 }

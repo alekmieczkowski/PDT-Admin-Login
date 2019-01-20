@@ -7,7 +7,6 @@ import CreatePositions from '../../../components/AdminPortal/Positions/CreatePos
 class Positions extends Component{
 
     _refresh = () =>{
-        console.log("Refresh Called")
         this.forceUpdate();
     }
     render(){

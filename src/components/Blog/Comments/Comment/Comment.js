@@ -83,7 +83,7 @@ class Comment extends Component{
                             </div>
     
                             <div className={classes.bondContainer}>
-                                #55 
+                                #{this.props.data.user.bond_number}
                             </div>
     
                         </div>

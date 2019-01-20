@@ -10,7 +10,7 @@ const inputContainer = (props)=>{
             className={classes.inputContainer} 
             value={props.value} 
             onChange={props.onChange}
-            maxLength={250}
+            maxLength={1000000}
 
             />
     )

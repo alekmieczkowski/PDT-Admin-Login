@@ -13,7 +13,6 @@ export async function getAccessRequests(){
 }
 
 export function getPositions(){
-    console.log("getting positions");
     store.dispatch(getExistingPositions(token));
 }
 

@@ -12,7 +12,6 @@ import MemberRouting from './MemberRouting';
 
 const adminRouting = (props) => {
 
-    console.log(props.match);
     return (
 
         <Switch>
@@ -27,7 +26,6 @@ const adminRouting = (props) => {
 
 //map auth state in reducer to local state
 const mapStateToProps = state => {
-    //console.log("In router auth:" + JSON.stringify(state.auth));
     return {
         auth: state.auth,
 
