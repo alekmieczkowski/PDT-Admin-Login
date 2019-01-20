@@ -1,6 +1,5 @@
 import * as updateActions from '../actions/update';
 import {CLEAR_STATE} from '../actions/global';
-import {SET_POSTS, SET_USER} from '../actions/api';
 
 let initialState={
     activePost: false,

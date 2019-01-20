@@ -1,5 +1,4 @@
 import * as spinnerActions from '../actions/spinner';
-import {SET_USER} from '../actions/api';
 import {DISPLAY_ERROR} from '../actions/error';
 import {CLEAR_STATE} from '../actions/global';
 

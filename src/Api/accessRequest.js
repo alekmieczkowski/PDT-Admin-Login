@@ -16,7 +16,7 @@ export let getUserAccessRequests = (token) =>{
     return (dispatch) =>{
         return axios(store.getState().auth.token).get('/useraccessrequests?status=0').then(
             response => store.dispatch(setUserRequests(response.data.result.useraccessrequests)),
-            error => {showError("Error Fetching Access Requests"), console.log(error)}
+            error => showError("Error Fetching Access Requests")
         );
     }
      
@@ -30,7 +30,7 @@ export let acceptUserAccessRequest = (token, requestId)=>{
             request_id: requestId
         }).then(
             response => refreshAllUsersData(),
-            error=> {showError("Error Accepting User"), console.log(error)}
+            error=> showError("Error Accepting User")
         );
     }
 }

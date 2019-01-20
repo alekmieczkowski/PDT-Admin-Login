@@ -61,10 +61,10 @@ class BlogPost extends Component {
 
         //check if user has admin privelages for post
         let admin = false;
-        console.log("userId: " + this.props.userId + " admin: " + this.props.admin + " ownerId: " + this.props.data.owner_id);
+        //console.log("userId: " + this.props.userId + " admin: " + this.props.admin + " ownerId: " + this.props.data.owner_id);
 
         if(this.props.userId === this.props.data.owner_id || this.props.admin == true){
-            console.log("setting admin to true");
+            //console.log("setting admin to true");
             admin = true;
         }
 

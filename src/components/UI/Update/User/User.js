@@ -8,7 +8,7 @@ import Button from '../../Button/Button';
 import * as _ from 'lodash';
 import Wrapper from '../../../../hoc/Wrapper/Wrapper'
 import { updateSelf } from '../../../../services/UpdateService';
-import { isValidInput, isValidPhoneNumber, isValidBondNumber } from '../../../../services/InputValidationService';
+import { isValidInput } from '../../../../services/InputValidationService';
 import { updateUser, updateAdminSelf } from '../../../../services/AdminService';
 import { showError } from '../../../../services/ErrorService';
 

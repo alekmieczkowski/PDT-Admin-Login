@@ -24,6 +24,7 @@ class Blog extends Component {
     }
 
     _getLatestPosts = async () =>{
+
         this.setState({getLatestPosts: true});
         //get latest posts
         await getLatestPosts();
@@ -37,6 +38,16 @@ class Blog extends Component {
         );
        
 
+    }
+
+    //get latest data every 3 minutes
+    componentDidMount(){
+
+        //call latest data when comoponent is mounted (Eg when tab is reloaded)
+        this._getLatestPosts();
+
+        //get latest data every 3 minutes
+        setInterval(this._getLatestPosts, 180000);
     }
 
     render() {
