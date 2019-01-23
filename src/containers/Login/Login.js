@@ -50,6 +50,25 @@ class Login extends Component {
 
     success = async (response) => {
 
+
+
+
+        response.reloadAuthResponse().then(
+            // success handler.
+            (authResponse) => {
+              // The GoogleUser is mutated in-place, this callback updates component state.
+              console.log("Got an auth response: " + JSON.stringify(authResponse));
+            },
+            // fail handler.
+            (failResponse) => {
+               this.accessToken = "";
+               console.log("Could not refresh token");
+               console.log(failResponse);
+            }
+          );
+
+        console.log("Google Login Obj:"  + JSON.stringify(response));
+
         let requestResponse = null;
 
         //call server sign in
@@ -180,7 +199,7 @@ class Login extends Component {
                             onFailure={this.error}
                             onRequest={this.loading}
                             autoload={false}
-                            responseType="id_token"
+                            //responseType="id_token"
                             render={renderProps => (
                                 <GoogleButton onClick={renderProps.onClick} />
                             )}

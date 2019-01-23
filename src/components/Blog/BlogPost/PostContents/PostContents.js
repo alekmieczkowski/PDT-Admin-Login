@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './PostContents.scss';
 import Linkify from 'react-linkify';
+import {getDateAndTimeFromString} from '../../../../services/DateService';
+
 const postContents = (props) =>{
 
     return(
@@ -11,7 +13,7 @@ const postContents = (props) =>{
                 </div>
             </Linkify>
             <div className={classes.dateSubmittedContainer}>
-                Submitted: {props.submitted.substring(0, 10).split("-").join("/")}
+                Submitted: {getDateAndTimeFromString(props.submitted)}
             </div>
         </div>
     );
