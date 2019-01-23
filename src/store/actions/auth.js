@@ -19,7 +19,6 @@ export let userLogout = () =>{
 }
 
 export let updateToken = (token) =>{
-    console.log("Updating token");
 
     return{
         type: UPDATE_TOKEN,

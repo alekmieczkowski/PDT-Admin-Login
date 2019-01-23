@@ -146,7 +146,6 @@ let reloadAuthToken = () => {
                   // The GoogleUser is mutated in-place, this callback updates component state.
                   this.accessToken = authResponse.id_token;
                   store.dispatch(updateToken(authResponse.id_token));
-                  console.log(authResponse.id_token);
                   setRefreshTimeout(authResponse.expires_at);
                 },
                 // fail handler.
