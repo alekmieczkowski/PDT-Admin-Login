@@ -10,13 +10,14 @@ class User extends Component{
     render(){
 
         // phone number conversion
-        let phoneNum = this.props.data.phone_number.toString().match(/(\d{3})(\d{3})(\d{4})/);
-        phoneNum = "(" + phoneNum[1] + ")" + phoneNum[2] + "-" + phoneNum[3];
+        //let phoneNum = this.props.data.phone_number.toString().match(/(\d{3})(\d{3})(\d{4})/);
+        //phoneNum = "(" + phoneNum[1] + ")" + phoneNum[2] + "-" + phoneNum[3];
+        let phoneNum = "9999999999"
 
         return(
             <div className={classes.container}>
                 <div className={classes.imageContainer}>
-                    <img src={returnHighResGoogleImage(this.props.data.google_picture)} className={classes.image} alt={"user"}/>
+                    <img src={returnHighResGoogleImage(this.props.data.google_picture)} className={classes.profileImage} alt={"user"}/>
                 </div>
                 <div className={classes.dataContainer}>
                     <div className={classes.infoContainer}>

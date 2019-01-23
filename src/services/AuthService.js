@@ -83,14 +83,6 @@ export async function login(token) {
     //get user
     await store.dispatch(getUser(token));
 
-    //get active users
-    await store.dispatch(getActive(token));
-
-    //get posts
-    await store.dispatch(getPosts(token));
-
-    
-
     //if user is admin then set flag in auth
     if(store.getState().api.user.is_admin){
 
@@ -101,6 +93,16 @@ export async function login(token) {
         await adminLogin(token)
        
     }
+
+    //get active users
+    await store.dispatch(getActive(token));
+
+    //get posts
+    await store.dispatch(getPosts(token));
+
+    
+
+    
 
     //log user in
     store.dispatch(userLogin());

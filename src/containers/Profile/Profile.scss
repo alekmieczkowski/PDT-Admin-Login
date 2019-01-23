@@ -1,3 +1,5 @@
+@import '../../constants/theme';
+
 .container{
     display: flex;
     flex-direction: column;
@@ -8,7 +10,7 @@
 
 .placeholder{
     font-size: 30px;
-    color: white;
+    color: $secondary;
     font-weight: bold;
     padding-top: 40px;
 }
