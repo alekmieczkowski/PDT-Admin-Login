@@ -7,7 +7,9 @@ import {adminLogin} from './AdminService';
 import {showLoading, hideLoading} from './LoadingService';
 
 
+let googleObj = null;
 
+let timeoutLoop = null;
 
 export function authHeader() {
     // return authorization header with jwt token
@@ -26,12 +28,19 @@ export function logout() {
     //clear local storage
     localStorage.clear();
 
+    //clear google login
+    clearGoogleLogin();
+
     //log user out
     store.dispatch(userLogout());
 
     //clear redux state and storage
     store.dispatch(clearReduxState());
+
+
 }
+
+
 
 export async function login(token) {
 
@@ -71,3 +80,56 @@ export async function login(token) {
 
 
 }
+
+export async function saveGoogleLogin(response) {
+    googleObj = response;
+    setRefreshTimeout(response.tokenObj.expires_at);
+
+}
+
+export async function clearGoogleLogin(){
+    googleObj = null;
+}
+
+
+let setRefreshTimeout = (expiresAt) => {
+    // Either 5 minutes before the deadline, or 5 minutes from now. This
+    // should prevent thrashing while keeping the credentials fresh.
+    const oneMin = 60 * 1000;
+    var refreshDeadline =  Math.max(
+      5*oneMin,
+      expiresAt - Date.now() - (5*oneMin));
+    console.log("Refreshing credentials in "
+                + Math.floor(refreshDeadline/oneMin).toString()
+                + " minutes");
+    timeoutLoop = setTimeout(reloadAuthToken, 20000); //refreshDeadline
+  }
+
+let reloadAuthToken = () => {
+    
+    if(store.getState().auth.auth){
+        console.log("Refreshing token");
+
+            googleObj.reloadAuthResponse().then(
+                // success handler.
+                (authResponse) => {
+                  // The GoogleUser is mutated in-place, this callback updates component state.
+                  this.accessToken = authResponse.id_token;
+                  store.dispatch(updateToken(authResponse.id_token));
+                  console.log(authResponse.id_token);
+                  setRefreshTimeout(authResponse.expires_at);
+                },
+                // fail handler.
+                (failResponse) => {
+                   this.accessToken = "";
+                   console.log("Could not refresh token");
+                   console.log(failResponse);
+                }
+              );  
+    }
+    else{
+        console.log("Stopped token refresh");
+        clearTimeout(timeoutLoop);
+    }
+   
+  }

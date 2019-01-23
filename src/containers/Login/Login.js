@@ -51,24 +51,6 @@ class Login extends Component {
     success = async (response) => {
 
 
-
-
-        response.reloadAuthResponse().then(
-            // success handler.
-            (authResponse) => {
-              // The GoogleUser is mutated in-place, this callback updates component state.
-              console.log("Got an auth response: " + JSON.stringify(authResponse));
-            },
-            // fail handler.
-            (failResponse) => {
-               this.accessToken = "";
-               console.log("Could not refresh token");
-               console.log(failResponse);
-            }
-          );
-
-        console.log("Google Login Obj:"  + JSON.stringify(response));
-
         let requestResponse = null;
 
         //call server sign in
@@ -110,11 +92,16 @@ class Login extends Component {
         else {
             //user is authenticated
 
+           
+
             //start animation out
             this.setState({ animateIn: false });
 
             //AuthService.login
             await AuthService.login(response.tokenId);
+
+             //save google object for refresh
+             await AuthService.saveGoogleLogin(response);
 
             //Allow User past
             this.props.history.push("/");
