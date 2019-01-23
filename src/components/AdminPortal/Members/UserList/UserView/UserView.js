@@ -17,7 +17,7 @@ const userView = (props) => {
 
     // phone number conversion
     let phoneNum = props.data.phone_number.toString().match(/(\d{3})(\d{3})(\d{4})/);
-    phoneNum = "(" + phoneNum[1] + ")" + phoneNum[2] + "-" + phoneNum[3];
+    phoneNum = "(" + phoneNum[1] + ") " + phoneNum[2] + "-" + phoneNum[3];
 
 
     let buttons = null;
