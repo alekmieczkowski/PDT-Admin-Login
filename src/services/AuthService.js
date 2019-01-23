@@ -5,11 +5,41 @@ import { getPosts } from '../Api/posts';
 import {clearReduxState} from '../store/actions/global';
 import {adminLogin} from './AdminService';
 import {showLoading, hideLoading} from './LoadingService';
-
+import React, {Component} from 'react';
+/* global gapi */
 
 let googleObj = null;
 
 let timeoutLoop = null;
+
+
+//run function to refresh google token if page is reloaded and user was signed in
+window.onload = function(){
+    
+    if(store.getState().auth.auth){
+       getGoogleTokenOnReload();
+    }
+  };
+
+
+  //creates new gapi object using client ID, and signs user in. 
+  export function getGoogleTokenOnReload(){
+    
+      setTimeout(() => {
+        window.gapi.load('auth2', () => {
+            window.gapi.auth2.init({client_id: process.env.REACT_APP_CLIENT_ID, scope: 'profile'}).then(
+                res=>{
+                    let resNew = res.currentUser.get();
+                    const authResponse = resNew.getAuthResponse();
+                    resNew.tokenObj = authResponse;
+                    resNew.tokenId = authResponse.id_token;
+                    resNew.accessToken = authResponse.access_token;
+                    saveGoogleLogin(resNew);
+                }
+            )
+        })}, 2000);
+    
+  }
 
 export function authHeader() {
     // return authorization header with jwt token
@@ -82,7 +112,10 @@ export async function login(token) {
 }
 
 export async function saveGoogleLogin(response) {
+
+    //save response as object locally
     googleObj = response;
+
     setRefreshTimeout(response.tokenObj.expires_at);
 
 }
@@ -99,16 +132,13 @@ let setRefreshTimeout = (expiresAt) => {
     var refreshDeadline =  Math.max(
       5*oneMin,
       expiresAt - Date.now() - (5*oneMin));
-    console.log("Refreshing credentials in "
-                + Math.floor(refreshDeadline/oneMin).toString()
-                + " minutes");
-    timeoutLoop = setTimeout(reloadAuthToken, 20000); //refreshDeadline
+
+    timeoutLoop = setTimeout(reloadAuthToken, refreshDeadline);
   }
 
 let reloadAuthToken = () => {
     
     if(store.getState().auth.auth){
-        console.log("Refreshing token");
 
             googleObj.reloadAuthResponse().then(
                 // success handler.
@@ -128,7 +158,6 @@ let reloadAuthToken = () => {
               );  
     }
     else{
-        console.log("Stopped token refresh");
         clearTimeout(timeoutLoop);
     }
    

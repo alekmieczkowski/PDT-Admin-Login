@@ -38,6 +38,7 @@ class Login extends Component {
         else {
             this.setState({ animateIn: true });
         }
+        
 
     }
 
