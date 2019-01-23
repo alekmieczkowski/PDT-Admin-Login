@@ -18,7 +18,7 @@ class DirUser extends Component{
 
         // phone number conversion
         let phoneNum = this.props.user.phone_number.toString().match(/(\d{3})(\d{3})(\d{4})/);
-        phoneNum = "(" + phoneNum[1] + ")" + phoneNum[2] + "-" + phoneNum[3];
+        phoneNum = "(" + phoneNum[1] + ") " + phoneNum[2] + "-" + phoneNum[3];
 
         //check if user toggled click and change height of container
         let containerHeight = classes.standard;

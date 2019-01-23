@@ -36,7 +36,7 @@ class navigationItem extends Component{
             setTimeout(() => {
 
                 //get rid of active nav 
-            this.setState({navHighlight: false});
+                this.setState({navHighlight: false});
                 
     
                 //push new page
