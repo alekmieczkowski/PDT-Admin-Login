@@ -73,3 +73,23 @@ export let uploadPostImage = (post_id, contentType, image)=>{
     }
 
 }
+
+export let getPostImage = (imageURL)=>{
+    console.log("Calling get Post Image");
+        return axios(store.getState().auth.token, 'application/json' ,"blob").get(imageURL).then(
+            response =>  {
+                console.log(response);
+                let reader = new FileReader();
+                reader.readAsDataURL(response.data); 
+                reader.onload = () => {
+                    return reader.result;
+                }
+                
+                
+
+              // console.log(response); return response; Buffer.from(response.data, 'binary').toString('base64');
+                
+            },
+            error => {showError("Error Fetching Image"); console.log(JSON.stringify(error))}
+        );
+}

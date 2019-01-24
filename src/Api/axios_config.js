@@ -9,6 +9,7 @@ export default  function axiosInstance(token, contentType= 'application/json'){
             'api-key': process.env.REACT_APP_KEY,
             'Content-Type': contentType,
             'google-jwt-token': token,
+            'response-type': null
             
         }
     });
