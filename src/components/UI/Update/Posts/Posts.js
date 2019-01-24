@@ -8,6 +8,7 @@ import {showError} from '../../../../services/ErrorService';
 import {showConfirmation} from '../../../../services/ConfirmationService';
 import {isValidInput} from '../../../../services/InputValidationService';
 import ImageUpload from './ImageUpload/ImageUpload';
+import Placeholder from '../../../../assets/img/Default/img-placeholder.png';
 
 import{SUBMIT_POST, UPDATE_POST} from '../../../../store/actions/api';
 class Posts extends Component {
@@ -15,9 +16,9 @@ class Posts extends Component {
     state = {
         update: false,
         inputValue: "",
-        image1: null,
-        image2: null,
-        image3: null,
+        image1: Placeholder,
+        image2: Placeholder,
+        image3: Placeholder,
     }
 
     componentDidMount(){
@@ -25,6 +26,16 @@ class Posts extends Component {
         //if update post set post data in state
         if(this.props.data !== null){
             this.setState({update: true, inputValue: this.props.data.content});
+            
+            if(this.props.data.images[0] !== null){
+                this.setState({image1: process.env.REACT_APP_SERVER_IP + "" +this.props.data.images[0].location})
+            }
+            if(this.props.data.images[1] !== null){
+                this.setState({image2: process.env.REACT_APP_SERVER_IP + "" +this.props.data.images[1].location})
+            }
+            if(this.props.data.images[2] !== null){
+                this.setState({image3: process.env.REACT_APP_SERVER_IP + "" +this.props.data.images[2].location})
+            }
         }
 
     }
@@ -99,9 +110,9 @@ class Posts extends Component {
                     </div>
                     <div className={classes.bottomContainer}>
                         <div className={classes.imagesContainer}>
-                            <ImageUpload id={1} setImage={this._setImage}/>
-                            <ImageUpload id={2} setImage={this._setImage}/>
-                            <ImageUpload id={3} setImage={this._setImage}/>
+                            <ImageUpload id={1} setImage={this._setImage} defaultImage={this.state.image1}/>
+                            <ImageUpload id={2} setImage={this._setImage} defaultImage={this.state.image2}/>
+                            <ImageUpload id={3} setImage={this._setImage} defaultImage={this.state.image3}/>
                         </div>
                         <div className={classes.submitContainer}>
                             <Button clicked={this._submit} buttonCSS={classes.button} textCSS={classes.buttonText} iconSize={22} iconColor={'#003056'} type={"create"}>Submit</Button>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './ImageUpload.scss';
-import Placeholder from '../../../../../assets/img/Default/img-placeholder.png';
+
 import { showError } from '../../../../../services/ErrorService';
 import  {UPLOAD_PNG, UPLOAD_GIF, UPLOAD_JPEG} from '../../../../../store/actions/api';
 
@@ -24,7 +24,7 @@ class ImageUpload extends Component {
     
 
     componentDidMount() {
-        this.setState({ imgSource: Placeholder });
+        this.setState({ imgSource: this.props.defaultImage });
     }
 
     _setImage = async (event) => {

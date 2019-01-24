@@ -4,10 +4,17 @@
 .container{
     flex: 1;
     padding: 10px;
-    //min-height:440px;
+    height:440px;
+    overflow:hidden;
+}
+
+.galleryContainer{
+    height:440px;
 }
 
 .image{
-    height: 362px;
-
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    
 }

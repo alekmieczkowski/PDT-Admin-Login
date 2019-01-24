@@ -34,6 +34,7 @@ class Gallery extends Component {
                 lazyLoad={false}
                 thumbnailPosition={"top"}
                 showThumbnails={this.props.images.length > 1 ? true : false}
+                additionalClass={classes.galleryContainer}
             />
           </div>
         
