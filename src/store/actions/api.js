@@ -11,6 +11,11 @@ export const SUBMIT_POST="SUBMIT_POST";
 export const UPDATE_POST="UPDATE_POST";
 export const DELETE_POST="DELETE_POST";
 
+//header types for image upload
+export const UPLOAD_PNG="image/png";
+export const UPLOAD_GIF="image/gif";
+export const UPLOAD_JPEG="image/jpeg";
+
 
 export let setUsers = (users) =>{
     

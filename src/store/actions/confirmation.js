@@ -2,12 +2,14 @@ export const DISPLAY_CONFIRMATION = "DISPLAY_CONFIRMATION";
 export const HIDE_CONFIRMATION = "HIDE_CONFIRMATION";
 export const ACCEPT_CONFIRMATION = "ACCEPT_CONFIRMATION";
 export const DECLINE_CONFIRMATION = "DECLINE_CONFIRMATION";
+export const RESET_CONFIRMATION = "RESET_CONFIRMATION";
 
-export let showConfirmationOverlay = (message, confirmationType, data) =>{
+
+export let showConfirmationOverlay = (message, actionType,  data) =>{
     
     return{
         type: DISPLAY_CONFIRMATION,
-        message, confirmationType, data
+        message,  data, actionType
     }
 }
 
@@ -30,5 +32,13 @@ export let declineConfirmationOverlay = () =>{
     
     return{
         type: DECLINE_CONFIRMATION,
+    }
+}
+
+export let resetConfirmationOverlay = () =>{
+    console.log("Resetting confirmation");
+    
+    return{
+        type: RESET_CONFIRMATION,
     }
 }

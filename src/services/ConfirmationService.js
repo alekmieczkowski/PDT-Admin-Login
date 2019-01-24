@@ -1,9 +1,9 @@
 import {store} from '../store/configureStore';
-import { showConfirmationOverlay, acceptConfirmationOverlay, declineConfirmationOverlay, hideConfirmationOverlay} from '../store/actions/confirmation';
+import { showConfirmationOverlay, acceptConfirmationOverlay, declineConfirmationOverlay, hideConfirmationOverlay, resetConfirmationOverlay} from '../store/actions/confirmation';
 
 //show confirmation overlay
-export function showConfirmation(message, type, data){
-    store.dispatch(showConfirmationOverlay(message, type, data));
+export function showConfirmation(message, actionType, data){
+    store.dispatch(showConfirmationOverlay(message, actionType,  data));
 }
 
 //hide confirmation overlay
@@ -19,4 +19,10 @@ export function acceptConfirmation(){
 //decline confirmation
 export function declineConfirmation(){
     store.dispatch(declineConfirmationOverlay());
+}
+
+
+//reset Confirmation data
+export function resetConfirmation(){
+    store.dispatch(resetConfirmationOverlay());
 }

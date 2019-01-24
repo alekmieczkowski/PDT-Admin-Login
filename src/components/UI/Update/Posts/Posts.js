@@ -8,8 +8,8 @@ import {showError} from '../../../../services/ErrorService';
 import {showConfirmation} from '../../../../services/ConfirmationService';
 import {isValidInput} from '../../../../services/InputValidationService';
 import ImageUpload from './ImageUpload/ImageUpload';
-import{SUBMIT_POST} from '../../../../store/actions/api';
-import{UPDATE_POST} from '../../../../store/actions/update';
+
+import{SUBMIT_POST, UPDATE_POST} from '../../../../store/actions/api';
 class Posts extends Component {
 
     state = {
@@ -38,18 +38,30 @@ class Posts extends Component {
         this.props.dismiss();
     }
 
-    _submit =  () =>{
+    _submit =  async () =>{
         //if input is valid
         if(isValidInput(this.state.inputValue)){
+
+            //create img array to pass
+            let imgArr = [];
+            if(this.state.image1 !== null){
+                imgArr.push(this.state.image1);
+            }
+            if(this.state.image2 !== null){
+                imgArr.push(this.state.image2);
+            }
+            if(this.state.image3 !== null){
+                imgArr.push(this.state.image3);
+            }
 
             //if this is an update
             if(this.state.update){
                 //confirmation
-                showConfirmation("Are you sure you wish to update this post?",UPDATE_POST , {...this.props.data, content: this.state.inputValue});
+                showConfirmation("Are you sure you wish to update this post?", UPDATE_POST, {...this.props.data, content: this.state.inputValue, images: imgArr});
             }
             else{
                 //new post
-                showConfirmation("Are you sure you wish to submit this post?",SUBMIT_POST , this.state.inputValue);
+                showConfirmation("Are you sure you wish to submit this post?", SUBMIT_POST, {content: this.state.inputValue, images: imgArr});
             }
             
 
@@ -74,7 +86,6 @@ class Posts extends Component {
 
     render() {
         return (
-
             <Update isActive={this.props.active}>
                 <MdClose size={30} color={"#ffffff"} className={classes.iconClose} onClick={this._dismiss} />;
                     <div className={classes.container}>

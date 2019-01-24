@@ -3,12 +3,40 @@ import { setPostLike, setCommentLike } from '../Api/likes';
 import {setComment, deleteComment, editComment} from '../Api/comments';
 import {removePost, createPost, editPost, getPosts} from '../Api/posts';
 import * as loadingService from './LoadingService';
-import {hideConfirmation} from './ConfirmationService';
+import {resetConfirmation, hideConfirmation} from './ConfirmationService';
 import {hideUpdatePost} from './UpdateService';
+import {SUBMIT_POST, UPDATE_POST, DELETE_POST} from '../store/actions/api';
 
 
 
 let token = localStorage.getItem('token');
+
+//create subscriber that checks when to add new posts and update posts
+store.subscribe(()=>{
+
+    //check if confirmation message has been accepted
+    if(store.getState().confirmation.confirmed === true){
+
+        //switch statement to determine what to run
+        switch(store.getState().confirmation.actionType){
+            case SUBMIT_POST:
+                resetConfirmation();
+                addPost(store.getState().confirmation.data);
+                break;
+            case UPDATE_POST:
+                resetConfirmation();
+                updatePost(store.getState().confirmation.data);
+                break;
+            case DELETE_POST:
+                resetConfirmation();
+                deletePost(store.getState().confirmation.data);
+                break;
+            default:
+                break;
+        }
+    }
+
+});
 
 
 //send post like data to server and update local state data
@@ -50,22 +78,17 @@ export async function deletePost(post_id){
 }
 
 export async function addPost(data){
-    
-    await hideConfirmation();
 
     await hideUpdatePost();
-  
+    
     await loadingService.showLoading("Creating Post");
 
-    await store.dispatch(createPost(token, data));
+    await store.dispatch(createPost(data.content, data.images));
 
     await loadingService.hideLoading();
-    
 }
 
 export async function updatePost(post){
-
-    await hideConfirmation();
 
     await hideUpdatePost();
   

@@ -16,9 +16,6 @@ import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 //hide error message
 import {hideError} from '../../services/ErrorService';
 
-//confirmation handling
-import * as confirmationService from '../../services/ConfirmationService';
-
 //update service
 import {hideUpdateUser, hideUpdatePost} from '../../services/UpdateService';
 
@@ -35,7 +32,7 @@ class Layout extends Component{
             <Wrapper>
                 <LoadingSpinner spinnerText={this.props.spinnerText} isActive={this.props.animateSpinner}/>
                 <ErrorSpinner errorText={this.props.errorMessage} isActive={this.props.error} dismiss={hideError}/>
-                <ConfirmationSpinner text={this.props.confirmationMessage} isActive={this.props.confirmation} type={this.props.confirmationType} data={this.props.confirmationData} dismiss={confirmationService.hideConfirmation}/>     
+                <ConfirmationSpinner text={this.props.confirmationMessage} isActive={this.props.confirmation}/>     
                 {this.props.updatePost ? <UpdatePost active={this.props.visible} title={this.props.updateTitle} data={this.props.updateData} dismiss={hideUpdatePost}/> : null}
                 {this.props.updateUser ? <UpdateUser userId={this.props.user.user_id} active={this.props.visible} admin={this.props.admin} data={this.props.updateData} dismiss={hideUpdateUser} positions={this.props.positions}/> : null}
                 <main className={classes.Layout}>

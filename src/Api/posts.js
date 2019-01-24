@@ -23,13 +23,27 @@ export let removePost = (token, post_id) =>{
      
 }
 
-export let createPost = (token, post_body) =>{
+export let createPost = (post_body, imgArr) =>{
     return (dispatch) =>{
         return axios(store.getState().auth.token).post('/post', {
             title: 'No Title',
             content: post_body
         }).then(
-            response => dispatch(getPosts(token)),
+            response => {
+                //upload images if there are any
+                console.log(imgArr);
+                console.log(JSON.stringify(response));
+                if(imgArr.length > 0){
+                    
+                    imgArr.forEach(image=>{
+                        console.log(image);
+                        dispatch(uploadPostImage(response.data.result.post.post_id, image.type, image.blob));
+                        
+                    })
+                }
+                dispatch(getPosts(store.getState().auth.token));
+                        
+            },
             error => {showError("Error Creating Post"); console.log(JSON.stringify(error))}
         );
     }
@@ -43,6 +57,18 @@ export let editPost = (token, post_id, post_body)=>{
         }).then(
             response => dispatch(getPosts(token)),
             error => {showError("Error Updating Post"); console.log(JSON.stringify(error))}
+        );
+    }
+
+}
+
+export let uploadPostImage = (post_id, contentType, image)=>{
+    return (dispatch) =>{
+        return axios(store.getState().auth.token, contentType).post('/post/'+post_id+'/image',
+            image
+        ).then(
+            response => true,
+            error => {showError("Error Uploading Image"); console.log(JSON.stringify(error))}
         );
     }
 
