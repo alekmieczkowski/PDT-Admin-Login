@@ -8,6 +8,7 @@ import Comments from '../Comments/Comments';
 import AddComment from './AddComment/AddComment';
 import {connect} from 'react-redux';
 import {getPostImage} from '../../../Api/posts';
+import Gallery from './Gallery/Gallery';
 
 //Post Services
 import * as postService from '../../../services/PostService';
@@ -23,21 +24,7 @@ import {DELETE_POST} from '../../../store/actions/api';
 class BlogPost extends Component {
 
 
-    state={
-        images: [],
-    }
 
-    componentDidMount(){
-
-        let imageArr = [];
-        this.props.data.images.forEach(image =>{
-            getPostImage(image.location).then(response =>{
-                imageArr.push(response);
-            })
-        })
-
-        this.setState({images: imageArr});
-    }
     //check if post should update on data refresh
     shouldComponentUpdate(nextProps, nextState) {
         //check if post data is the same
@@ -100,10 +87,10 @@ class BlogPost extends Component {
                             <div className={classes.postContentContainer}>
                                 
                                 <PostContents content={this.props.data.content} submitted={this.props.data.created_at}/>
-                                {this.state.images.length > 0?<img src={`data:image/jpeg;base64,${this.state.images[0].data}`} className={{height: 200, width:200}}/> : null}
                             </div>
-                            {/*Post Images*/}
-                            {images}
+                            {/*Post Images*/
+                                this.props.data.images.length > 0 ? <Gallery images={this.props.data.images}/> : null
+                            }
 
                             {/*Comments */}
                             <AddComment postId={this.props.data.post_id}/>

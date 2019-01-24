@@ -23,16 +23,16 @@ export let removePost = (token, post_id) =>{
      
 }
 
-export let createPost = (post_body, imgArr) =>{
+
+export let createPost = (post_body, imgArr = []) =>{
     return (dispatch) =>{
         return axios(store.getState().auth.token).post('/post', {
             title: 'No Title',
             content: post_body
         }).then(
             response => {
+                
                 //upload images if there are any
-                console.log(imgArr);
-                console.log(JSON.stringify(response));
                 if(imgArr.length > 0){
                     
                     imgArr.forEach(image=>{
@@ -41,6 +41,7 @@ export let createPost = (post_body, imgArr) =>{
                         
                     })
                 }
+                
                 dispatch(getPosts(store.getState().auth.token));
                         
             },
@@ -49,6 +50,7 @@ export let createPost = (post_body, imgArr) =>{
     }
      
 }
+
 
 export let editPost = (token, post_id, post_body)=>{
     return (dispatch) =>{
@@ -72,24 +74,4 @@ export let uploadPostImage = (post_id, contentType, image)=>{
         );
     }
 
-}
-
-export let getPostImage = (imageURL)=>{
-    console.log("Calling get Post Image");
-        return axios(store.getState().auth.token, 'application/json' ,"blob").get(imageURL).then(
-            response =>  {
-                console.log(response);
-                let reader = new FileReader();
-                reader.readAsDataURL(response.data); 
-                reader.onload = () => {
-                    return reader.result;
-                }
-                
-                
-
-              // console.log(response); return response; Buffer.from(response.data, 'binary').toString('base64');
-                
-            },
-            error => {showError("Error Fetching Image"); console.log(JSON.stringify(error))}
-        );
 }
