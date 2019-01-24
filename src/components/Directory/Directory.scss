@@ -1,12 +1,7 @@
 .container{
     display: flex;
     flex-wrap: wrap;
-    //width: 98vw;
     max-width: 1700px;
     justify-content: center;
-    overflow-y: scroll;
-    height: calc(100vh - 120px);
     padding-bottom: 40px;
-    scrollbar-width: none;
-
 }
