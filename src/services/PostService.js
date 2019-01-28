@@ -94,7 +94,7 @@ export async function updatePost(post){
   
     await loadingService.showLoading("Updating Post");
   
-    await store.dispatch(editPost(token, post.post_id, post.content));
+    await store.dispatch(editPost(post.post_id, post.content, post.images, post.imagesOld));
     
     await loadingService.hideLoading();
     

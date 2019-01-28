@@ -55,20 +55,20 @@ class Posts extends Component {
 
             //create img array to pass
             let imgArr = [];
-            if(this.state.image1 !== null){
+            if(this.state.image1 !== Placeholder){
                 imgArr.push(this.state.image1);
             }
-            if(this.state.image2 !== null){
+            if(this.state.image2 !== Placeholder){
                 imgArr.push(this.state.image2);
             }
-            if(this.state.image3 !== null){
+            if(this.state.image3 !== Placeholder){
                 imgArr.push(this.state.image3);
             }
 
             //if this is an update
             if(this.state.update){
                 //confirmation
-                showConfirmation("Are you sure you wish to update this post?", UPDATE_POST, {...this.props.data, content: this.state.inputValue, images: imgArr});
+                showConfirmation("Are you sure you wish to update this post?", UPDATE_POST, {...this.props.data, content: this.state.inputValue, images: imgArr, imagesOld: this.props.data.images});
             }
             else{
                 //new post
