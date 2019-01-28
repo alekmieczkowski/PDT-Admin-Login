@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import ImageGallery from 'react-image-gallery';
 import classes from './Gallery.scss';
-import "react-image-gallery/styles/css/image-gallery.css";
+//import "react-image-gallery/styles/css/image-gallery.css";
+import "./image-gallery.css";
 
 
 class Gallery extends Component {
@@ -14,7 +15,7 @@ class Gallery extends Component {
         //set images to state
         let imageArr = [];
         this.props.images.forEach(image=>{
-            let imageLink = process.env.REACT_APP_SERVER_IP + "" + image.location;
+            let imageLink = process.env.REACT_APP_SERVER_IP + "/upload/image/" + image.name;
             imageArr.push({original: imageLink, thumbnail: imageLink, originalClass: classes.image});
         })
         this.setState({images: imageArr});
@@ -33,10 +34,11 @@ class Gallery extends Component {
                 disableArrowKeys={true}
                 lazyLoad={false}
                 thumbnailPosition={"top"}
+                showFullscreenButton={false}
                 showThumbnails={this.props.images.length > 1 ? true : false}
-                additionalClass={classes.galleryContainer}
             />
           </div>
+          
         
       );
     }

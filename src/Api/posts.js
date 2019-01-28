@@ -75,3 +75,21 @@ export let uploadPostImage = (post_id, contentType, image)=>{
     }
 
 }
+
+export let removeImage = (imageURL)=>{
+    return (dispatch) =>{
+        return axios(store.getState().auth.token).delete(imageURL).then(
+            response => true,
+            error => {showError("Error Deleting Image"); console.log(JSON.stringify(error))}
+        );
+    }
+}
+
+export let updateImage = (imageURL, contentType, newImageBlob) =>{
+    return (dispatch) =>{
+        return axios(store.getState().auth.token, contentType).put(imageURL, newImageBlob).then(
+            response => true,
+            error => {showError("Error Updating Image"); console.log(JSON.stringify(error))}
+        );
+    }
+}

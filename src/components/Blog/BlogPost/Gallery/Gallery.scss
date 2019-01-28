@@ -9,7 +9,16 @@
 }
 
 .galleryContainer{
+    .image-gallery-thumbnail .image-gallery-thumbnail-inner{
+        color: red;
+        background-color: red;
+    }
     height:440px;
+}
+
+.image-gallery-thumbnail .image-gallery-thumbnail-inner{
+    color: red;
+    background-color: red;
 }
 
 .image{
