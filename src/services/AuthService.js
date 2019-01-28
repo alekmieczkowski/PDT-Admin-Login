@@ -24,7 +24,7 @@ window.onload = function(){
 
   //creates new gapi object using client ID, and signs user in. 
   export function getGoogleTokenOnReload(){
-    
+    console.log("getting token on refresh");
       setTimeout(() => {
         window.gapi.load('auth2', () => {
             window.gapi.auth2.init({client_id: process.env.REACT_APP_CLIENT_ID, scope: 'profile'}).then(
@@ -34,6 +34,7 @@ window.onload = function(){
                     resNew.tokenObj = authResponse;
                     resNew.tokenId = authResponse.id_token;
                     resNew.accessToken = authResponse.access_token;
+                    store.dispatch(updateToken(resNew.tokenId));
                     saveGoogleLogin(resNew);
                 }
             )

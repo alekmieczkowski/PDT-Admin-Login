@@ -29,6 +29,7 @@ class BlogPost extends Component {
     shouldComponentUpdate(nextProps, nextState) {
         //check if post data is the same
         if (this.props.data === nextProps.data) {
+            console.log("Not updaing post");
             return false;
         }
         return true;

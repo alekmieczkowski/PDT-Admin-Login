@@ -9,6 +9,7 @@ class Gallery extends Component {
 
     state = {
         images: [],
+        display: true,
     }
     componentDidMount() {
 
@@ -21,30 +22,29 @@ class Gallery extends Component {
         this.setState({ images: imageArr });
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        if (this.props.images !== nextProps.images) {
-            
-            return true;
-        }
-        return false;
-    }
-
-    componentDidUpdate(){
+    componentDidUpdate(prevProps){
         //set images to state
-        let imageArr = [];
-        this.props.images.forEach(image => {
-            let imageLink = process.env.REACT_APP_SERVER_IP + image.location;
-            imageArr.push({ original: imageLink, thumbnail: imageLink, originalClass: classes.image });
-        })
-        this.setState({ images: imageArr });
+        if(this.state.display === false){
+            this.setState({display: true});
+        }
+        else if (this.props.images !== prevProps.images) {
+            this.setState({display: false});
+            let imageArr = [];
+            this.props.images.forEach(image => {
+                let imageLink = process.env.REACT_APP_SERVER_IP + image.location;
+                imageArr.push({ original: imageLink, thumbnail: imageLink, originalClass: classes.image });
+            })
+            this.setState({ images: imageArr});
+            
+        }
+        
     }
+   
 
     render() {
-
-
-
         return (
             <div className={classes.container}>
+            {this.state.display ? 
                 <ImageGallery
                     items={this.state.images}
                     showPlayButton={false}
@@ -53,8 +53,9 @@ class Gallery extends Component {
                     lazyLoad={false}
                     thumbnailPosition={"top"}
                     showFullscreenButton={false}
+                    startIndex={0}
                     showThumbnails={this.props.images.length > 1 ? true : false}
-                />
+                /> : null}
             </div>
 
 

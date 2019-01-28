@@ -90,7 +90,7 @@ export let deleteImage = (imageURL)=>{
     console.log("Deleting: " + process.env.REACT_APP_SERVER_IP+imageURL);
     return (dispatch) =>{
         return axios(store.getState().auth.token).delete(process.env.REACT_APP_SERVER_IP+imageURL).then(
-            response => true,
+            response => dispatch(getPosts(store.getState().auth.token)),
             error => {showError("Error Deleting Image"); console.log(JSON.stringify(error))}
         );
     }
