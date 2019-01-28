@@ -3,15 +3,18 @@ import classes from './ImageUpload.scss';
 
 import { showError } from '../../../../../services/ErrorService';
 import  {UPLOAD_PNG, UPLOAD_GIF, UPLOAD_JPEG} from '../../../../../store/actions/api';
-
+import Placeholder from '../../../../../assets/img/Default/img-placeholder.png';
+import {removeImage, getLatestPosts} from '../../../../../services/PostService';
+import {MdClose} from 'react-icons/lib/md'; 
 
 
 class ImageUpload extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            image: false,
             imgSource: null,
+            image: false,
+            newImage: false,
         }
 
         this._setImage = this._setImage.bind(this);
@@ -24,16 +27,35 @@ class ImageUpload extends Component {
     
 
     componentDidMount() {
-        this.setState({ imgSource: this.props.defaultImage });
+
+        if(this.props.defaultImage === null){
+            this.setState({ image: false, imgSource: Placeholder });
+        }
+            
+        else{
+            this.setState({ image: true, imgSource:  this.props.defaultImage });
+        }
+            
+    }
+    _removeImage = async () =>{
+        //remove image
+        console.log(this.state.imgSource);
+        await removeImage(this.state.imgSource);
+
+        //pass null to update post
+        this.props.setImage(this.props.id, null);
+
+        //set placeholder
+        this.setState({image: false, newImage: false, imgSource: Placeholder});
+
+        //refresh posts\
+        getLatestPosts();
     }
 
     _setImage = async (event) => {
 
         //cover for if user decided not to upload file
         if(event.target.files[0]){
-            //console.log(event.target.files[0].name.split('.').pop().toLowerCase());
-            //check if image is appropriate type
-            //let correctType = this.fileTypes.indexOf(event.target.files[0].name.split('.').pop().toLowerCase()) > -1;
 
             let correctType = false;
             //check if blob is correct type
@@ -46,10 +68,9 @@ class ImageUpload extends Component {
             
             if(correctType){
                 //set image to state for preview
-                this.setState({ imgSource: URL.createObjectURL(event.target.files[0]) });
+                this.setState({ image: true, newImage: true, imgSource: URL.createObjectURL(event.target.files[0]) });
 
                 //convert image to blob
-                //let imgBlob = new Blob(this.FileReader.readAsArrayBuffer(event.target.files[0]));
                 console.log(event.target.files[0])
                 let data = {
                     blob: event.target.files[0],
@@ -71,9 +92,9 @@ class ImageUpload extends Component {
 
         return (
             <div className={classes.container}>
-                <input id={this.props.id} type={"file"} onChange={this._setImage} />
+                {this.state.imgSource === Placeholder ? <input id={this.props.id} type={"file"} onChange={ this._setImage} /> : <div className={classes.deleteButton} onClick={this._removeImage}><MdClose size={26} color={{color: "#fff"}}/></div>}
                 <label htmlFor={this.props.id}>
-                    <img className={classes.image} src={this.state.imgSource} alt={'upload'} />
+                    <img className={classes.image} src={this.state.newImage ? this.state.imgSource : this.state.image ? process.env.REACT_APP_SERVER_IP  +this.state.imgSource : this.state.imgSource} alt={'upload'} />
                 </label>
             </div>
         )

@@ -1,7 +1,7 @@
 import {store} from '../store/configureStore';
 import { setPostLike, setCommentLike } from '../Api/likes';
 import {setComment, deleteComment, editComment} from '../Api/comments';
-import {removePost, createPost, editPost, getPosts} from '../Api/posts';
+import {removePost, createPost, editPost, getPosts, deleteImage} from '../Api/posts';
 import * as loadingService from './LoadingService';
 import {resetConfirmation, hideConfirmation} from './ConfirmationService';
 import {hideUpdatePost} from './UpdateService';
@@ -94,7 +94,7 @@ export async function updatePost(post){
   
     await loadingService.showLoading("Updating Post");
   
-    await store.dispatch(editPost(post.post_id, post.content, post.images, post.imagesOld));
+    await store.dispatch(editPost(post.post_id, post.content, post.images));
     
     await loadingService.hideLoading();
     
@@ -102,4 +102,8 @@ export async function updatePost(post){
 
 export async function getLatestPosts(){
     await store.dispatch(getPosts('s'));
+}
+
+export async function removeImage(imageURL){
+    await store.dispatch(deleteImage(imageURL));
 }

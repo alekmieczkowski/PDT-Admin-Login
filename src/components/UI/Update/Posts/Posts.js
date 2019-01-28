@@ -7,8 +7,9 @@ import { MdClose } from 'react-icons/lib/md';
 import {showError} from '../../../../services/ErrorService';
 import {showConfirmation} from '../../../../services/ConfirmationService';
 import {isValidInput} from '../../../../services/InputValidationService';
+
 import ImageUpload from './ImageUpload/ImageUpload';
-import Placeholder from '../../../../assets/img/Default/img-placeholder.png';
+
 
 import{SUBMIT_POST, UPDATE_POST} from '../../../../store/actions/api';
 class Posts extends Component {
@@ -16,29 +17,34 @@ class Posts extends Component {
     state = {
         update: false,
         inputValue: "",
-        image1: Placeholder,
-        image2: Placeholder,
-        image3: Placeholder,
+        image1: null,
+        image2: null,
+        image3: null,
     }
 
+    
     componentDidMount(){
 
         //if update post set post data in state
         if(this.props.data !== null){
             this.setState({update: true, inputValue: this.props.data.content});
-            
-            if(this.props.data.images[0] !== null){
-                this.setState({image1: process.env.REACT_APP_SERVER_IP + "" +this.props.data.images[0].location})
+            /*
+            console.log(this.props.data);
+
+            if(this.props.data.images.length > 0){
+                this.setState({image1:  this.props.data.images[0].location})
             }
-            if(this.props.data.images[1] !== null){
-                this.setState({image2: process.env.REACT_APP_SERVER_IP + "" +this.props.data.images[1].location})
+            if(this.props.data.images.length > 1){
+                this.setState({image2: this.props.data.images[1].location})
             }
-            if(this.props.data.images[2] !== null){
-                this.setState({image3: process.env.REACT_APP_SERVER_IP + "" +this.props.data.images[2].location})
+            if(this.props.data.images.length > 2){
+                this.setState({image3: this.props.data.images[2].location})
             }
+            */
         }
 
     }
+    
 
     _updateInput = (event) => {
         this.setState({ inputValue: event.target.value });
@@ -55,13 +61,13 @@ class Posts extends Component {
 
             //create img array to pass
             let imgArr = [];
-            if(this.state.image1 !== Placeholder){
+            if(this.state.image1 !== null){
                 imgArr.push(this.state.image1);
             }
-            if(this.state.image2 !== Placeholder){
+            if(this.state.image2 !== null){
                 imgArr.push(this.state.image2);
             }
-            if(this.state.image3 !== Placeholder){
+            if(this.state.image3 !== null){
                 imgArr.push(this.state.image3);
             }
 
@@ -110,9 +116,9 @@ class Posts extends Component {
                     </div>
                     <div className={classes.bottomContainer}>
                         <div className={classes.imagesContainer}>
-                            <ImageUpload id={1} setImage={this._setImage} defaultImage={this.state.image1}/>
-                            <ImageUpload id={2} setImage={this._setImage} defaultImage={this.state.image2}/>
-                            <ImageUpload id={3} setImage={this._setImage} defaultImage={this.state.image3}/>
+                            <ImageUpload id={1} setImage={this._setImage} defaultImage={this.props.data !== null && this.props.data.images.length > 0 ? this.props.data.images[0].location : null}/>
+                            <ImageUpload id={2} setImage={this._setImage} defaultImage={this.props.data !== null && this.props.data.images.length > 1 ? this.props.data.images[1].location : null}/>
+                            <ImageUpload id={3} setImage={this._setImage} defaultImage={this.props.data !== null && this.props.data.images.length > 2 ? this.props.data.images[2].location : null}/>
                         </div>
                         <div className={classes.submitContainer}>
                             <Button clicked={this._submit} buttonCSS={classes.button} textCSS={classes.buttonText} iconSize={22} iconColor={'#003056'} type={"create"}>Submit</Button>

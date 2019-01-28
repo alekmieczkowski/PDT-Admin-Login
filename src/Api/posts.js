@@ -7,7 +7,7 @@ export let getPosts = (token) =>{
     return (dispatch) =>{
         return axios(store.getState().auth.token).get('/posts').then(
             response => store.dispatch(api.setPosts(response.data.result.posts)),
-            error => showError("Error Fetching Posts")
+            error => {showError("Error Fetching Posts"); console.log(error)}
         );
     }
      
@@ -52,12 +52,22 @@ export let createPost = (post_body, imgArr = []) =>{
 }
 
 
-export let editPost = (token, post_id, post_body)=>{
+export let editPost = (post_id, post_body, post_images = [])=>{
     return (dispatch) =>{
         return axios(store.getState().auth.token).put('/post/'+post_id,{
             content: post_body
         }).then(
-            response => dispatch(getPosts(token)),
+            response => { //upload images if there are any
+                if(post_images.length > 0){
+                    
+                    post_images.forEach(image=>{
+                        console.log(image);
+                        dispatch(uploadPostImage(response.data.result.post.post_id, image.type, image.blob));
+                        
+                    })
+                }
+                
+                dispatch(getPosts(store.getState().auth.token));},
             error => {showError("Error Updating Post"); console.log(JSON.stringify(error))}
         );
     }
@@ -76,9 +86,10 @@ export let uploadPostImage = (post_id, contentType, image)=>{
 
 }
 
-export let removeImage = (imageURL)=>{
+export let deleteImage = (imageURL)=>{
+    console.log("Deleting: " + process.env.REACT_APP_SERVER_IP+imageURL);
     return (dispatch) =>{
-        return axios(store.getState().auth.token).delete(imageURL).then(
+        return axios(store.getState().auth.token).delete(process.env.REACT_APP_SERVER_IP+imageURL).then(
             response => true,
             error => {showError("Error Deleting Image"); console.log(JSON.stringify(error))}
         );
@@ -89,7 +100,7 @@ export let updateImage = (imageURL, contentType, newImageBlob) =>{
     return (dispatch) =>{
         return axios(store.getState().auth.token, contentType).put(imageURL, newImageBlob).then(
             response => true,
-            error => {showError("Error Updating Image"); console.log(JSON.stringify(error))}
+            error => {showError("Error Updating Image"); console.log(error)}
         );
     }
 }
