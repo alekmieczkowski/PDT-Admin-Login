@@ -29,7 +29,6 @@ class BlogPost extends Component {
     shouldComponentUpdate(nextProps, nextState) {
         //check if post data is the same
         if (this.props.data === nextProps.data) {
-            console.log("Not updaing post");
             return false;
         }
         return true;
@@ -53,22 +52,10 @@ class BlogPost extends Component {
 
     render() {
 
-
-        //image container handling
-        let images = null;
-
-        /*
-        if(this.props.data.images.length > 0 && this.props.data.images.length !== null || undefined){
-            images = <div className={classes.postImageContainer}></div>;
-        }
-        */
-
         //check if user has admin privelages for post
         let admin = false;
-        //console.log("userId: " + this.props.userId + " admin: " + this.props.admin + " ownerId: " + this.props.data.owner_id);
 
         if(this.props.userId === this.props.data.owner_id || this.props.admin == true){
-            //console.log("setting admin to true");
             admin = true;
         }
 

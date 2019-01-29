@@ -36,7 +36,6 @@ export let createPost = (post_body, imgArr = []) =>{
                 if(imgArr.length > 0){
                     
                     imgArr.forEach(image=>{
-                        console.log(image);
                         dispatch(uploadPostImage(response.data.result.post.post_id, image.type, image.blob));
                         
                     })
@@ -61,7 +60,6 @@ export let editPost = (post_id, post_body, post_images = [])=>{
                 if(post_images.length > 0){
                     
                     post_images.forEach(image=>{
-                        console.log(image);
                         dispatch(uploadPostImage(response.data.result.post.post_id, image.type, image.blob));
                         
                     })
@@ -87,7 +85,6 @@ export let uploadPostImage = (post_id, contentType, image)=>{
 }
 
 export let deleteImage = (imageURL)=>{
-    console.log("Deleting: " + process.env.REACT_APP_SERVER_IP+imageURL);
     return (dispatch) =>{
         return axios(store.getState().auth.token).delete(process.env.REACT_APP_SERVER_IP+imageURL).then(
             response => dispatch(getPosts(store.getState().auth.token)),

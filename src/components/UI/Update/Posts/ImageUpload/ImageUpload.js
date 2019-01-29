@@ -39,7 +39,6 @@ class ImageUpload extends Component {
     }
     _removeImage = async () =>{
         //remove image
-        console.log(this.state.imgSource);
         await removeImage(this.state.imgSource);
 
         //pass null to update post
@@ -71,12 +70,10 @@ class ImageUpload extends Component {
                 this.setState({ image: true, newImage: true, imgSource: URL.createObjectURL(event.target.files[0]) });
 
                 //convert image to blob
-                console.log(event.target.files[0])
                 let data = {
                     blob: event.target.files[0],
                     type: event.target.files[0].type,
                 }
-                console.dir(data);
                 //send blob data to state of update component
                 this.props.setImage(this.props.id, data);
             }
@@ -92,7 +89,7 @@ class ImageUpload extends Component {
 
         return (
             <div className={classes.container}>
-                {this.state.imgSource === Placeholder ? <input id={this.props.id} type={"file"} onChange={ this._setImage} /> : <div className={classes.deleteButton} onClick={this._removeImage}><MdClose size={26} color={{color: "#fff"}}/></div>}
+                {this.state.imgSource === Placeholder ? <input id={this.props.id} type={"file"} onChange={this._setImage} /> : <div className={classes.deleteButton} onClick={this._removeImage}><MdClose size={26} color={"#fff"}/></div>}
                 <label htmlFor={this.props.id}>
                     <img className={classes.image} src={this.state.newImage ? this.state.imgSource : this.state.image ? process.env.REACT_APP_SERVER_IP  +this.state.imgSource : this.state.imgSource} alt={'upload'} />
                 </label>
