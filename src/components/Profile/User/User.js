@@ -4,6 +4,7 @@ import Badge from '../../UI/Badge/Badge';
 import {MdPhone, MdEmail} from 'react-icons/lib/md';
 import Button from '../../UI/Button/Button';
 import {returnHighResGoogleImage} from '../../../services/ImageService';
+import {standardizeBond} from '../../../services/DataServices';
 
 class User extends Component{
 
@@ -24,7 +25,7 @@ class User extends Component{
                             {this.props.data.first_name} {this.props.data.last_name}
                         </div>
                         <div className={classes.bondContainer}>
-                            #{this.props.data.bond_number}
+                            #{standardizeBond(this.props.data.bond_number)}
                         </div>
                     </div>
                     <div className={[classes.infoContainer, classes.positionContainer].join(' ')}>

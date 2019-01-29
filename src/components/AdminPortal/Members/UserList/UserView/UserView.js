@@ -4,6 +4,8 @@ import Badge from '../../../../UI/Badge/Badge';
 
 import * as Page from '../../Toolbar/ToolbarPages';
 
+import {standardizeBond} from '../../../../../services/DataServices';
+
 //buttons
 import Active from './Buttons/Active/Active';
 import Alumni from './Buttons/Alumni/Alumni';
@@ -52,7 +54,7 @@ const userView = (props) => {
 
                 <div className={classes.dataStyling}>
                     <div className={classes.data}>
-                        #{props.data.bond_number} {props.data.first_name} {props.data.last_name}
+                        #{standardizeBond(props.data.bond_number)} {props.data.first_name} {props.data.last_name}
                     </div>
                     <div className={classes.data}>
 

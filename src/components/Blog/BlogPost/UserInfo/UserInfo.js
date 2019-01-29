@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './UserInfo.scss';
 import Badge from '../../../UI/Badge/Badge';
-
+import {standardizeBond} from '../../../../services/DataServices';
 
 const userInfo = (props) =>{
 
@@ -17,7 +17,7 @@ const userInfo = (props) =>{
             <div className={classes.userInfoContainer}>
                 {/*User Name and Bond */}
                 <div className={classes.userNameContainer}>
-                    {props.data.full_name} <span className={classes.userBondText}>#{props.data.bond_number}</span>
+                    {props.data.full_name} <span className={classes.userBondText}>#{standardizeBond(props.data.bond_number)}</span>
                 </div>
 
                 {/*User Badges*/}

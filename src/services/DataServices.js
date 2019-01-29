@@ -11,3 +11,12 @@ export function filterObjArrayByValue(array, value){
 
     return arrNew;
 }
+
+export function standardizeBond(bondNumber){
+    console.log(bondNumber);
+    let num = bondNumber + "";
+    let pad = "0000"
+    let ans = pad.substring(0, pad.length - num.length) + num;
+    console.log(ans);
+    return ans; 
+}

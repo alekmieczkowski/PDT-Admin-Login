@@ -4,6 +4,7 @@ import Badge from '../../UI/Badge/Badge';
 import {MdArrowDropUp, MdArrowDropDown, MdEmail, MdPhone} from 'react-icons/lib/md';
 import Wrapper from '../../../hoc/Wrapper/Wrapper'
 import {returnHighResGoogleImage} from '../../../services/ImageService';
+import {standardizeBond} from '../../../services/DataServices';
 class DirUser extends Component{
 
     state={
@@ -54,7 +55,7 @@ class DirUser extends Component{
 
                 {/*Bond*/}
                 <div className={[classes.dataContainer, classes.bondText].join(' ')}>
-                    #{this.props.user.bond_number}
+                    #{standardizeBond(this.props.user.bond_number)}
                 </div>
 
                 {
