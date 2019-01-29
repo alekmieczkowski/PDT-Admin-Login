@@ -89,7 +89,7 @@ class ImageUpload extends Component {
 
         return (
             <div className={classes.container}>
-                {this.state.imgSource === Placeholder ? <input id={this.props.id} type={"file"} onChange={this._setImage} /> : <div className={classes.deleteButton} onClick={this._removeImage}><MdClose size={26} color={"#fff"}/></div>}
+                {this.state.imgSource === Placeholder ? <input id={this.props.id} type={"file"} onChange={this._setImage} /> : <div className={classes.deleteButton} onClick={this._removeImage}><MdClose size={26} color={"#003056"}/></div>}
                 <label htmlFor={this.props.id}>
                     <img className={classes.image} src={this.state.newImage ? this.state.imgSource : this.state.image ? process.env.REACT_APP_SERVER_IP  +this.state.imgSource : this.state.imgSource} alt={'upload'} />
                 </label>
