@@ -33,9 +33,10 @@
 }
 
 .image-gallery-image {
-    height: 400px;
-    margin-left: 10px;
-    margin-right: 10px;
+  height: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-size: cover;
   }
 
   .image-gallery-slide img {
@@ -48,6 +49,13 @@
     position: relative; 
     height: 340px;
   }
+
+  .image-gallery-slide {
+    background: #fff;
+    left: 0;
+    position: absolute;
+    top: 0;
+    height:340px; }
 
   /*******/
 
@@ -215,12 +223,7 @@
 
 
 
-.image-gallery-slide {
-  background: #fff;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%; }
+
   .image-gallery-slide.center {
     position: relative; }
  
