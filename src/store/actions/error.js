@@ -1,11 +1,11 @@
 export const DISPLAY_ERROR = "DISPLAY_ERROR";
 export const HIDE_ERROR = "HIDE_ERROR";
 
-export let showErrorOverlay = (errorMessage) =>{
+export let showErrorOverlay = (errorMessage, errorHeader) =>{
     
     return{
         type: DISPLAY_ERROR,
-        errorMessage
+        errorMessage, errorHeader
     }
 }
 

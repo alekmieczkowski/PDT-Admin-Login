@@ -15,7 +15,7 @@ const error = (props) => {
         
                 <div className={classes.textBox}>
                     <div className={classes.errorIcon}><MdError size={35}  color={'#003056'} className={classes.icon}/></div>
-                    <div className={classes.errorHeader}>Error</div>
+                    <div className={classes.errorHeader}>{props.errorHeader}</div>
                 </div>
                 <div className={classes.errorMessage}>
                     {props.errorText}

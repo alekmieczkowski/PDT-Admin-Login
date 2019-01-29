@@ -38,8 +38,13 @@ class ImageUpload extends Component {
             
     }
     _removeImage = async () =>{
-        //remove image
-        await removeImage(this.state.imgSource);
+
+        //only remove image if its new img
+        if(this.props.update){
+            //remove image
+            await removeImage(this.state.imgSource);
+        }
+        
 
         //pass null to update post
         this.props.setImage(this.props.id, null);

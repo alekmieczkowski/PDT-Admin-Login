@@ -84,11 +84,11 @@ class Login extends Component {
         }
         else if (requestResponse.status === ENUM_USERACCESSREQUEST_STATUS_DENIED) {
             //if user is denied
-            alert("Sorry, you are not authorized to access this app");
+            showError("Sorry, you are not authorized to access this app", "Alert");
         }
         else if (requestResponse.status === ENUM_USERACCESSREQUEST_STATUS_WAITING) {
             //user is awaiting authentication
-            showError("Awaiting user authorization. Please contact your admin");
+            showError("Awaiting user authorization. Please contact your admin", "Alert");
         }
         else {
             //user is authenticated
@@ -161,7 +161,7 @@ class Login extends Component {
 
             hideLoading();
             //no error and we good
-            showError("Sign Up successful! Please contact an Admin to be approved");
+            showError("Sign Up successful! Please contact an Admin to be approved", "Alert");
         }
         
     }

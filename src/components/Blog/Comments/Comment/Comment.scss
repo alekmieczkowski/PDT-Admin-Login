@@ -61,17 +61,13 @@
     flex: 1 1;
     padding: 14px;
     font-size: 14px;
-    font-style: italic;
     color: $primary;
-
 }
 
 .likeContainer{
-    //background-color: red;
     flex: 1;
     flex-direction: row;
     display: flex;
-    //max-width: 60px;
     justify-content: flex-end;
     padding-right: 20px;
     padding-top: 8px;

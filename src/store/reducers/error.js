@@ -3,7 +3,8 @@ import {CLEAR_STATE} from '../actions/global';
 
 let initialState={
     toggleError: false,
-    message: ""
+    message: "",
+    header: ""
 }
 
 const error = (state = initialState, action) => {
@@ -13,6 +14,7 @@ const error = (state = initialState, action) => {
                 ...state,
                 toggleError: true,
                 message: action.errorMessage,
+                header: action.errorHeader,
             }
 
         case errorActions.HIDE_ERROR:

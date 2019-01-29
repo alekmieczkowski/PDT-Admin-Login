@@ -116,9 +116,9 @@ class Posts extends Component {
                     </div>
                     <div className={classes.bottomContainer}>
                         <div className={classes.imagesContainer}>
-                            <ImageUpload id={1} setImage={this._setImage} defaultImage={this.props.data !== null && this.props.data.images.length > 0 ? this.props.data.images[0].location : null}/>
-                            <ImageUpload id={2} setImage={this._setImage} defaultImage={this.props.data !== null && this.props.data.images.length > 1 ? this.props.data.images[1].location : null}/>
-                            <ImageUpload id={3} setImage={this._setImage} defaultImage={this.props.data !== null && this.props.data.images.length > 2 ? this.props.data.images[2].location : null}/>
+                            <ImageUpload id={1} update={this.props.update} setImage={this._setImage} defaultImage={this.props.data !== null && this.props.data.images.length > 0 ? this.props.data.images[0].location : null}/>
+                            <ImageUpload id={2} update={this.props.update} setImage={this._setImage} defaultImage={this.props.data !== null && this.props.data.images.length > 1 ? this.props.data.images[1].location : null}/>
+                            <ImageUpload id={3} update={this.props.update} setImage={this._setImage} defaultImage={this.props.data !== null && this.props.data.images.length > 2 ? this.props.data.images[2].location : null}/>
                         </div>
                         <div className={classes.submitContainer}>
                             <Button clicked={this._submit} buttonCSS={classes.button} textCSS={classes.buttonText} iconSize={22} iconColor={'#003056'} type={"create"}>Submit</Button>
